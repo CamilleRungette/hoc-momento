@@ -25,21 +25,6 @@ body {
   justify-content: space-around;
 }
 
-.yellow {
-  color: #fbb03b;
-}
-
-.yellow:hover {
-  color: #fbb03b;
-}
-
-.red {
-  color: #c32527;
-}
-
-.red:hover {
-  color: #c32527;
-}
 
 /* =================================================
                         Carroussel
@@ -213,6 +198,67 @@ body {
 }
 
 /* ==========================================
-              Frame carousel
+              Compagnie
   =========================================== */
 
+.company-text{
+  font-size: 1.2em;
+  max-width: 98%;
+}
+
+.img-company1{
+  width: 35%;
+}
+
+/* ==========================================
+              Générique
+  =========================================== */
+  .container{
+    min-height: 85vh;
+  }
+
+  .yellow {
+    color: #fbb03b;
+  }
+  
+  .yellow:hover {
+    color: #fbb03b;
+  }
+  
+  .red {
+    color: #c32527;
+  }
+  
+  .red:hover {
+    color: #c32527;
+  }
+
+  .dashboard-container{
+    min-height: 85vh;
+
+  }
+
+  /* ==========================================
+              Login
+  =========================================== */
+  .login-form{
+    font-size: 1.2em;
+    margin-top: 10%;
+  }
+
+  #login-button{
+    margin: auto;
+    color: white;
+    font-size: 1.3rem;
+    text-align: center;
+    margin-left: 40%;
+  }
+
+
+   /* ==========================================
+              Dashboard
+  =========================================== */
+ 
+label{
+  font-size: 1.2em;
+}

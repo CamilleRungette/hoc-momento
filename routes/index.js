@@ -18,31 +18,6 @@ router.get('/company', function(req, res, next){
   res.render('company')
 })
 
-
-router.post('/create-action', function(req, res, next){
-  console.log(req.body)
-
-  newAction = new ActionModel({
-    photo: req.body.photo, 
-    place: req.body.place, 
-    title: req.body.title, 
-    period: req.body.period, 
-    partners: req.body.partners, 
-    gallery: req.body.gallery,
-    description: req.body.description,
-  })
-
-  newAction.save(function(error, action){
-    if (error){
-        console.log("ADMIN NOT SAVED:", error)
-        res.json({error})
-    } else if (action){
-        console.log("ADMIN SAVED", action)
-        res.json({action})
-    }
-})
-})
-
 router.post('/create-show', function(req, res, next){
   console.log(req.body)
 
