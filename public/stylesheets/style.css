@@ -1,8 +1,218 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px;
+  font-family: "Lato", sans-serif;
 }
 
-a {
-  color: #00B7FF;
+.logo {
+  width: 7em;
+  transform: rotate(-20deg);
 }
+
+.hand-nav {
+  background-color: white;
+  height: 7.5em;
+  padding: 1.6em;
+  padding-left: 3%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: solid 4px #c32527;
+}
+
+.nav-links {
+  font-size: 1.2em;
+  display: flex;
+  justify-content: space-around;
+}
+
+.yellow {
+  color: #fbb03b;
+}
+
+.yellow:hover {
+  color: #fbb03b;
+}
+
+.red {
+  color: #c32527;
+}
+
+.red:hover {
+  color: #c32527;
+}
+
+/* =================================================
+                        Carroussel
+==================================================*/
+
+.carroussel {
+  position: relative;
+  height: 105vh;
+}
+
+.carroussel > *:nth-child(1) {
+  transform: translateX(-100%);
+  visibility: hidden;
+}
+
+.carroussel > *:nth-child(3) {
+  transform: translateX(100%);
+  visibility: hidden;
+}
+
+.carroussel > * {
+  position: absolute;
+  transition: visibility ease-out 0s 0.4s, transform ease-out 0.4s 0.4s,
+    opacity ease-out 0.4s;
+  z-index: 0;
+  opacity: 0.5;
+  visibility: hidden;
+}
+
+.carroussel > *.mouv {
+  visibility: visible;
+  opacity: 1;
+}
+
+.douce_disparition {
+  transition: visibility ease-out 0.4s, transform ease-out 0.4s;
+  z-index: 1;
+}
+
+/*=================================================
+                        Description
+==================================================*/
+
+.relative {
+  position: relative;
+}
+
+#carrousselImg {
+  overflow: hidden;
+  display: flex;
+  flex: 0 0 100%;
+}
+
+#carrousselImg .img_carrous {
+  flex: 0 0 100%;
+}
+
+.img_carrous {
+  width: 100%;
+}
+
+.img1{
+  position: relative;
+  background-color: rosybrown;
+  background-image: url(/images/compagnie.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.home-frame {
+  position: absolute;
+  bottom: 4%;
+  left: 2%;
+  height: 40%;
+  width: 60%;
+  background-color: rgba(249, 176, 58, 0.6);
+  padding: 1em;
+}
+
+.home-title{
+  font-size: 4em;
+  color: #fbb03b;
+  font-weight: bold;
+  text-align: right;
+  margin-right: 2%;
+  margin-top: 2%;
+}
+
+.home-text{
+  font-size: 5em;
+  color: white;
+  font-weight: bold;
+}
+
+#carrousselImg .img_carrous img {
+  margin-left: 0;
+  width: 100%;
+}
+.arrow {
+  cursor: pointer;
+  height: 4rem;
+  width: 4rem;
+  position: absolute;
+  top: calc(50% - 4rem);
+  background: rgb(68, 68, 68, 0.95);
+  transition: transform 0.1s ease-out;
+  box-shadow: 20px 19px 17px -13px rgba(0, 0, 0, 0.2);
+  z-index: 5;
+}
+.arrow.gauche {
+  left: 0;
+  transform: rotateY(180deg);
+}
+.arrow.droite {
+  right: 0rem;
+}
+.arrow-top,
+.arrow-bottom {
+  background-color: rgb(198, 198, 198);
+  height: 2px;
+  left: 27%;
+  position: absolute;
+  top: 50%;
+  width: 35%;
+}
+.arrow-top:after,
+.arrow-bottom:after {
+  background-color: #fff;
+  content: "";
+  height: 100%;
+  position: absolute;
+  top: 0;
+  transition: all 0.1s;
+}
+.arrow-top {
+  transform: rotate(54deg);
+  transform-origin: bottom right;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
+}
+.arrow-top:after {
+  left: 100%;
+  right: 0;
+  transition-delay: 0s;
+}
+.arrow-bottom {
+  z-index: 0;
+  transform: rotate(-54deg);
+  transform-origin: top right;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
+}
+.arrow-bottom:after {
+  left: 0;
+  right: 100%;
+  transition-delay: 0.1s;
+}
+.arrow:hover .arrow-top:after {
+  left: 0;
+  transition-delay: 0.1s;
+}
+.arrow:hover .arrow-bottom:after {
+  right: 0;
+  transition-delay: 0s;
+}
+.arrow:active {
+  transform: scale(0.95);
+  box-shadow: 2px 8px 4px -6px rgba(0, 0, 0, 0.5);
+}
+.arrow.gauche:active {
+  transform: rotateY(180deg) scale(0.95);
+  box-shadow: 2px 8px 4px -6px rgba(0, 0, 0, 0.5);
+}
+
+/* ==========================================
+              Frame carousel
+  =========================================== */
+
