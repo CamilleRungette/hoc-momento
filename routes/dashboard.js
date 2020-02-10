@@ -17,7 +17,7 @@ const uriBase = 'https://westcentralus.api.cognitive.microsoft.com/face/v1.0/det
 
 
 
-/* GET users listing. */
+/* CREATION AND CONNECTION ADMIN */
 router.post('/create-admin', function(req, res, next){
   newAdmin = new AdminModel({
     email: req.body.email,
@@ -54,11 +54,13 @@ router.post('/login', async function(req, res, next){
 
 })
 
+/* ACTIONS PART: DISPLAY, CREATION, DELETING AND UPDATING */
+
 router.get('/actions', async function(req, res, next) {
   allActions = await ActionModel.find(function(err, actions){
     console.log("VOILA========+++>")
   })
-  res.render('dashboard-actions', {allActions});
+  res.render('./dashboard/actions', {allActions});
 });
 
 router.post('/create-action', function(req, res, next){
@@ -78,16 +80,66 @@ router.post('/create-action', function(req, res, next){
   newAction.save(function(error, action){
     if (error){
         console.log("ACTION NOT SAVED:", error)
-        res.render('dashboard-actions', {problem: error})
+        res.render('./dashboard/actions', {problem: error})
     } else if (action){
         console.log("ACTION SAVED", action)
         allActions = ActionModel.find(function(err, actions){
           console.log(actions)
         })     
 
-        res.redirect('/dashboard-actions', {allActions})
+      res.redirect('./dashboard/actions')
     }
   })
+});
+
+router.post('/delete-action', async function(req, res, next){
+  action = await ActionModel.deleteOne({_id: req.body.id})
+  console.log(`${action.title} DELETED ============`)
+
+  res.redirect('./dashboard/actions')
+});
+
+router.get('/update-action', async function(req, res, next){
+  action = await ActionModel.findById(req.query.id)
+  console.log("L'ACTION =============>", action)
+
+  res.render('./dashboard/actions-update', {action})
+})
+
+router.post('/update-action', async function(req, res, next){
+  console.log(req.body);
+  try {
+  if (req.body.description === " ") {
+    console.log("hello =====>")
+    update = await ActionModel.updateOne(
+      {_id: req.body.id},
+      {place: req.body.place,
+      title: req.body.title,
+      period: req.body.period}
+    );
+  } else {
+    update = await ActionModel.updateOne(
+      {_id: req.body.id},
+      {place: req.body.place,
+      title: req.body.title,
+      period: req.body.period,
+      description: req.body.description}
+    ) ; 
+  }
+  res.redirect('/dashboard/actions');
+}catch(error){
+  console.log(error);
+};
+
+});
+
+/* SHOWS PART: DISPLAY, CREATION, DELETING AND UPDATING */
+
+router.get('/shows', async function(req, res, next){
+  allShows = await ShowModel.find(function(err, shows){
+    console.log("VOILA========+++>", shows)
+  })
+  res.render('dashboard-shows')
 });
 
 router.post('/create-show', function(req, res, next){
@@ -116,14 +168,8 @@ router.post('/create-show', function(req, res, next){
 
     }
   })
-})
+});
 
-router.get('/shows', async function(req, res, next){
-  allShows = await ShowModel.find(function(err, shows){
-    console.log("VOILA========+++>", shows)
-  })
-  res.render('dashboard-shows')
-})
 
 
 

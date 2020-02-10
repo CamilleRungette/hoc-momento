@@ -8,6 +8,16 @@ body {
   transform: rotate(-20deg);
 }
 
+.hand-nav-admin{
+  background-color:rgb(31, 30, 30);
+  height: 7.5em;
+  padding: 1.6em;
+  padding-left: 3%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .hand-nav {
   background-color: white;
   height: 7.5em;
@@ -16,10 +26,11 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: solid 4px #c32527;
+  border: #c32527 4px solid;
 }
 
 .nav-links {
+  color: #fff !important;
   font-size: 1.2em;
   display: flex;
   justify-content: space-around;
@@ -292,6 +303,14 @@ body {
     color: #c32527;
   }
 
+  .white{
+    color: #fff;
+  }
+
+  .white:hover{
+    color: #fff;
+  }
+
   .dashboard-container{
     min-height: 85vh;
 
@@ -358,4 +377,9 @@ font-size: 1.3em;
 
 .cultural-actions{
   margin-top:5em;
+}
+
+.delete-button{
+  background-color: transparent;
+  border: none;
 }
