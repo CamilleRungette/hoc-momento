@@ -99,7 +99,6 @@ body {
   bottom: 4%;
   left: 2%;
   height: 40%;
-  width: 60%;
   background-color: rgba(249, 176, 58, 0.6);
   padding: 1em;
 }
@@ -117,6 +116,31 @@ body {
   font-size: 5em;
   color: white;
   font-weight: bold;
+}
+
+@media screen and (max-width: 1530px){
+  .home-text{
+    font-size: 4.4em;
+  }
+
+  .home-frame{
+    height: 36%;
+  }
+}
+@media screen and (max-width: 1250px){
+  .home-text{
+    font-size: 4em;
+  }
+}
+@media screen and (max-width: 1050px){
+  .home-text{
+    font-size: 3.5em;
+  }
+}
+@media screen and (max-width: 700px){
+  .home-text{
+    font-size: 2.5em;
+  }
 }
 
 #carrousselImg .img_carrous img {
@@ -206,9 +230,44 @@ body {
   max-width: 98%;
 }
 
-.img-company1{
-  width: 35%;
+.company-text-photo{
+  font-size: 1.2em;
 }
+
+.company-title{
+  margin-left: 50%;
+}
+
+@media screen and (min-width: 1610px){
+  .img-company1{
+    width: 49%;
+  }
+  .company-text-photo{
+    width: 44%;
+    margin-left: 2px;
+  }
+}
+
+@media screen and (max-width: 1610px){
+  .company-text-photo{
+    width: 90%;
+  }
+  .company-text{
+    width: 90%;
+  }
+  .img-company1{
+    width: 100%;
+    margin-bottom: 3em;
+  }
+  .first-word{
+    margin-left: 1em;
+  }
+  .company-title{
+    margin-left: auto;
+  }
+}
+
+
 
 /* ==========================================
               Générique
@@ -237,6 +296,15 @@ body {
     min-height: 85vh;
 
   }
+  .separator{
+    border-top: 1px solid rgb(184, 184, 184);
+    margin: auto;
+    width: 90vw;
+  }
+
+  .button-container{
+    text-align: center;
+  } 
 
   /* ==========================================
               Login
@@ -261,4 +329,33 @@ body {
  
 label{
   font-size: 1.2em;
+}
+
+.action-title{
+  font-size: 3em;
+  margin-top: 2em;
+}
+
+.action-button{
+font-size: 1.3em;
+}
+
+.actions-list{
+  font-size: 1.13em;
+}
+
+.action-item{
+  height:10.3em
+}
+
+.photo-list{
+  height: 10em;
+}
+
+.description-list{
+  overflow: auto;
+}
+
+.cultural-actions{
+  margin-top:5em;
 }

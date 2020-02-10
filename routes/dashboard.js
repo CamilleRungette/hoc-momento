@@ -1,0 +1,145 @@
+var express = require('express');
+var router = express.Router();
+var AdminModel = require ('../models/admin')
+var ActionModel = require('../models/cultural_actions')
+let cloudinary = require('cloudinary').v2;
+var ShowModel = require('../models/shows')
+
+cloudinary.config({
+  cloud_name:'dduugb9jy',
+  api_key: '163237792357483',
+  api_secret:'-kKI2ELa5qrQWcoqKv5A1kn5asw'
+});
+
+const subscriptionKey = '1a0dfb978e12409aac6d71d4cdf8de50';
+const uriBase = 'https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect';
+
+
+
+
+/* GET users listing. */
+router.post('/create-admin', function(req, res, next){
+  newAdmin = new AdminModel({
+    email: req.body.email,
+    password: req.body.password
+  })
+
+  newAdmin.save(function(error, admin){
+    if (error){
+        console.log("ADMIN NOT SAVED:", error)
+        res.json({error})
+    } else if (admin){
+        console.log("ADMIN SAVED", admin)
+        res.json({admin})
+    }
+  })
+})
+
+router.get('/login', function(req, res, next){
+  res.render('login')
+})
+
+router.post('/login', async function(req, res, next){
+  console.log(req.body)
+
+  admin = AdminModel.find({email: req.body.email, password: req.body.password})
+
+  if (admin){
+    console.log("OK")
+    res.redirect('/users/dashboard')
+  } else {
+    console.log("NOT OK")
+    res.redirect('/users/login')
+  }
+
+})
+
+router.get('/actions', async function(req, res, next) {
+  allActions = await ActionModel.find(function(err, actions){
+    console.log("VOILA========+++>")
+  })
+  res.render('dashboard-actions', {allActions});
+});
+
+router.post('/create-action', function(req, res, next){
+  console.log(req.body)
+
+  newAction = new ActionModel({
+    photo: req.body.photo, 
+    place: req.body.place, 
+    title: req.body.title, 
+    period: req.body.period, 
+    partners: req.body.partners, 
+    gallery: req.body.gallery,
+    description: req.body.description,
+    city: req.body.city
+  })
+
+  newAction.save(function(error, action){
+    if (error){
+        console.log("ACTION NOT SAVED:", error)
+        res.render('dashboard-actions', {problem: error})
+    } else if (action){
+        console.log("ACTION SAVED", action)
+        allActions = ActionModel.find(function(err, actions){
+          console.log(actions)
+        })     
+
+        res.redirect('/dashboard-actions', {allActions})
+    }
+  })
+});
+
+router.post('/create-show', function(req, res, next){
+  console.log(req.body)
+
+  newShow = new ShowModel({
+    photo: req.body.photo,
+    place: req.body.place,
+    title: req.body.title,
+    period: req.body.period,
+    partners: req.body.partners,
+    gallery: req.body.gallery,
+    description: req.body.description,
+  })
+
+  newShow.save(function(error, show){
+    if (error){
+      console.log("SHOW NOT SAVED:", error)
+      res.render('dashboard-shows')
+    } else if (show){
+      console.log("SHOW SAVED", show)
+      allShows = ShowModel.find(function(err, shows){
+        console.log(shows)
+      })     
+      res.redirect('/dashboard-shows')
+
+    }
+  })
+})
+
+router.get('/shows', async function(req, res, next){
+  allShows = await ShowModel.find(function(err, shows){
+    console.log("VOILA========+++>", shows)
+  })
+  res.render('dashboard-shows')
+})
+
+
+
+
+router.post('/upload', function(req, res, next){
+
+  console.log(req.files)
+
+  res.json({
+    success: true,
+    message: "File uploaded"
+  })
+
+})
+
+
+
+
+module.exports = router;

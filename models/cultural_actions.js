@@ -8,6 +8,7 @@ let actionSchema = mongoose.Schema({
     partners: [String], 
     gallery: [String],
     description: String,
+    city: String,
 });
 
 const ActionModel = mongoose.model("actions", actionSchema);
