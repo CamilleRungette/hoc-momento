@@ -389,9 +389,53 @@ font-size: 1.3em;
             Cultural Actions
 =========================================== */
 
-.aactions-img{
+.aaction-img{
   background-image: url(/images/culturelle.png);
   background-size: cover;
-  width: 70%;  
+  width: 48%;  
   height: 30em;
+  padding-top: 2em;
+} 
+
+.aaction-hover{
+  transition-duration: 500ms;
+  background-color: rgba(249, 176, 58, 0.6);
+  height: 92%;
+  width: 90%;
+  margin-top: 2em;
+  color: #fff;
+  font-weight: bold;
+  opacity: 0;
+}
+
+.aaction-img:hover > .aaction-hover{
+  transition-duration: 500ms;
+  opacity: 1;
+}
+
+.aaction-place{
+  font-size: 3.5em;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+.aaction-title{
+  text-align: right;
+  font-size: 2.6em;
+  padding-right: 25px;
+  font-style: italic;
+}
+
+.aaction-period{
+  text-align: right;
+  padding-right: 25px;
+  font-size: 1.5em;
+  font-style: italic;
+}
+
+.aaction-logo{
+  background-color: rgba(255, 255, 255, 0.5);
+  height: 8em;
+  width: 90%;
+  margin: auto;
 }

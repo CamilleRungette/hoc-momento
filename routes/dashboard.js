@@ -218,6 +218,8 @@ router.post('/create-person', function(req, res, next){
 
 
 router.post('/upload', function(req, res, next){
+  cloudinary.v2.uploader.upload("./corazon.jpg", 
+  function(error, result) {console.log(result, error)});
 })
 
 

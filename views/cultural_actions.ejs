@@ -7,12 +7,19 @@
   </head>
   <body>
     <%- include('./partials/navbar') %> 
-    <div class="container">
+    <div class="container col-10 ">
 
-      <div class="d-flex">
+      <div class="d-flex justify-content-between mt-5">
         <% for (i=0; i< actions.length; i++) {%>
-          <div class="col-6 aactions-img">
+          <div class="aaction-img">
+            <div class="aaction-hover m-auto">
+              <p class="aaction-place pt-4"><%= actions[i].place %> </p>
+              <p class="aaction-title"> <%= actions[i].title %></p>
+              <p class="aaction-period"> <%= actions[i].period %> </p>
+              <div class="aaction-logo">
 
+              </div>
+            </div>
           </div>
         <% } %> 
       </div>
