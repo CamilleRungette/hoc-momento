@@ -171,6 +171,54 @@ router.post('/create-show', function(req, res, next){
 });
 
 
+router.post('/create-show', function(req, res, next){
+  console.log(req.body)
+
+  newShow = new ShowModel({
+    photo: req.body.photo, 
+    place: req.body.place, 
+    title: req.body.title, 
+    period: req.body.period, 
+    partners: req.body.partners, 
+    gallery: req.body.gallery,
+    description: req.body.description,
+  })
+
+  newShow.save(function(error, show){
+    if (error){
+        console.log("SHOW NOT SAVED:", error)
+        res.json({error})
+    } else if (show){
+        console.log("SHOW SAVED", show)
+        res.json({show})
+    }
+  })
+})
+
+router.post('/create-person', function(req, res, next){
+  console.log(req.body)
+
+  newPerson = new PersonModel({
+    first_name: req.body.first_name,
+    last_name: req.body.last_name,
+    title: req.body.title,
+    desc: req.body.description,
+    email: req.body.email,
+    telephone: req.body.telephone
+  })
+
+  newPerson.save(function(error, person){
+    if (error){
+        console.log("PERSON NOT SAVED:", error)
+        res.json({error})
+    } else if (person){
+        console.log("PERSON SAVED", person)
+        res.json({person})
+    }
+  })
+
+})
+
 
 
 

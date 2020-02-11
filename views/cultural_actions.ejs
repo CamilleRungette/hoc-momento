@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+  </head>
+  <body>
+    <%- include('./partials/navbar') %> 
+    <div class="container">
+
+      <div class="d-flex">
+        <% for (i=0; i< actions.length; i++) {%>
+          <div class="col-6 aactions-img">
+
+          </div>
+        <% } %> 
+      </div>
+    
+    </div>
+    <%- include('./partials/footer') %> 
+  </body>
+</html>

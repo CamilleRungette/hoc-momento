@@ -383,3 +383,15 @@ font-size: 1.3em;
   background-color: transparent;
   border: none;
 }
+
+
+  /* ==========================================
+            Cultural Actions
+=========================================== */
+
+.aactions-img{
+  background-image: url(/images/culturelle.png);
+  background-size: cover;
+  width: 70%;  
+  height: 30em;
+}
