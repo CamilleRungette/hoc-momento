@@ -11,11 +11,6 @@ cloudinary.config({
   api_secret:'-kKI2ELa5qrQWcoqKv5A1kn5asw'
 });
 
-const subscriptionKey = '1a0dfb978e12409aac6d71d4cdf8de50';
-const uriBase = 'https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect';
-
-
-
 
 /* CREATION AND CONNECTION ADMIN */
 router.post('/create-admin', function(req, res, next){
@@ -223,14 +218,6 @@ router.post('/create-person', function(req, res, next){
 
 
 router.post('/upload', function(req, res, next){
-
-  console.log(req.files)
-
-  res.json({
-    success: true,
-    message: "File uploaded"
-  })
-
 })
 
 
