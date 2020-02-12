@@ -8,6 +8,7 @@ let showSchema = mongoose.Schema({
     partners: [String], 
     gallery: [String],
     description: String,
+    city: String,
 });
 
 const ShowModel = mongoose.model("shows", showSchema);

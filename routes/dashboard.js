@@ -71,11 +71,7 @@ router.post('/create-action', function(req, res, next){
         res.render('./dashboard/actions', {problem: error})
     } else if (action){
         console.log("ACTION SAVED", action)
-        allActions = ActionModel.find(function(err, actions){
-          console.log(actions)
-        })     
-
-      res.redirect('./dashboard/actions')
+      res.redirect('/dashboard/actions')
     }
   })
 });
@@ -125,17 +121,18 @@ router.post('/update-action', async function(req, res, next){
 
 router.get('/shows', async function(req, res, next){
   allShows = await ShowModel.find(function(err, shows){
-    console.log("VOILA========+++>", shows)
+    console.log("VOILA========+++>")
   })
-  res.render('dashboard-shows')
+  res.render('./dashboard/shows', {allShows})
 });
 
 router.post('/create-show', function(req, res, next){
-  console.log(req.body)
+  console.log("REQ.BODY", req.body)
 
   newShow = new ShowModel({
     photo: req.body.photo,
     place: req.body.place,
+    city: req.body.city,
     title: req.body.title,
     period: req.body.period,
     partners: req.body.partners,
@@ -146,42 +143,58 @@ router.post('/create-show', function(req, res, next){
   newShow.save(function(error, show){
     if (error){
       console.log("SHOW NOT SAVED:", error)
-      res.render('dashboard-shows')
+      res.render('./dashboard/shows')
     } else if (show){
-      console.log("SHOW SAVED", show)
-      allShows = ShowModel.find(function(err, shows){
-        console.log(shows)
-      })     
-      res.redirect('/dashboard-shows')
-
+      console.log("SHOW SAVED", show)  
+      res.redirect('/dashboard/shows')
     }
   })
 });
 
+router.post('/delete-show', async function(req, res, next){
+  show = await ShowModel.deleteOne({_id: req.body.id})
+  console.log(`SHOW DELETED ============`)
 
-router.post('/create-show', function(req, res, next){
-  console.log(req.body)
+  res.redirect('/dashboard/shows')
+});
 
-  newShow = new ShowModel({
-    photo: req.body.photo, 
-    place: req.body.place, 
-    title: req.body.title, 
-    period: req.body.period, 
-    partners: req.body.partners, 
-    gallery: req.body.gallery,
-    description: req.body.description,
-  })
+router.get('/update-show', async function(req, res, next){
+  show = await ShowModel.findById(req.query.id)
+  console.log("LE SHOW =============>", show)
 
-  newShow.save(function(error, show){
-    if (error){
-        console.log("SHOW NOT SAVED:", error)
-        res.json({error})
-    } else if (show){
-        console.log("SHOW SAVED", show)
-        res.json({show})
-    }
-  })
+  res.render('./dashboard/show-update', {show})
 })
+
+router.post('/update-show', async function(req, res, next){
+  console.log(req.body);
+  try {
+  if (req.body.description === " ") {
+    console.log("hello =====>")
+    update = await ShowModel.updateOne(
+      {_id: req.body.id},
+      {place: req.body.place,
+      title: req.body.title,
+      period: req.body.period}
+    );
+  } else {
+    update = await ShowModel.updateOne(
+      {_id: req.body.id},
+      {place: req.body.place,
+      title: req.body.title,
+      period: req.body.period,
+      description: req.body.description}
+    ) ; 
+  }
+  res.redirect('/dashboard/shows');
+}catch(error){
+  console.log(error);
+};
+
+});
+
+
+
+
 
 router.post('/create-person', function(req, res, next){
   console.log(req.body)
