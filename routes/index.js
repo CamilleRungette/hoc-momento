@@ -9,7 +9,6 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Hoc Momento' });
 });
 
-
 router.get('/accueil', function(req, res, next){
   res.render('home')
 })
@@ -26,5 +25,15 @@ router.get('/actions-culturelles', async function(req, res, next){
   res.render('cultural_actions', {actions})
 })
 
+router.get('/action-culturelle', async function(req, res, next){
+  
+  action = await ActionModel.findOne({_id: req.query.id})
+
+  res.render('cultural_action', {action})
+})
+
+router.get('/test', function(req, res, next){
+  res.render('test')
+})
 
 module.exports = router;

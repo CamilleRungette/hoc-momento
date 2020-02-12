@@ -2,14 +2,7 @@ var express = require('express');
 var router = express.Router();
 var AdminModel = require ('../models/admin')
 var ActionModel = require('../models/cultural_actions')
-let cloudinary = require('cloudinary').v2;
 var ShowModel = require('../models/shows')
-
-cloudinary.config({
-  cloud_name:'dduugb9jy',
-  api_key: '163237792357483',
-  api_secret:'-kKI2ELa5qrQWcoqKv5A1kn5asw'
-});
 
 
 /* CREATION AND CONNECTION ADMIN */
@@ -213,15 +206,6 @@ router.post('/create-person', function(req, res, next){
   })
 
 })
-
-
-
-
-router.post('/upload', function(req, res, next){
-  cloudinary.v2.uploader.upload("./corazon.jpg", 
-  function(error, result) {console.log(result, error)});
-})
-
 
 
 

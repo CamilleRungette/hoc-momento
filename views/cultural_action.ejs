@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- <link href="https://fonts.googleapis.com/css?family=Assistant:300|Exo:200|Lato:300&display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css?family=Assistant:300|Exo:200|Lato:300&display=swap" rel="stylesheet"> -->
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+    <body>
+      <%- include('./partials/navbar') %> 
+      <div class="container col-11">
+        <div class="col-10 mx-auto">
+          <h1 class="mt-5 aaction-place"> <%= action.place %></h1>
+          <p class=" mt-5 aaction-desc"> <%= action.description %></p>
+        </div>
+        <div class="aaction-photos my-5">
+        </div>
+      </div>
+    <%- include('./partials/footer') %> 
+  </body>
+</html>
