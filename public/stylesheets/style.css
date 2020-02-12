@@ -238,6 +238,14 @@ body {
   box-shadow: 2px 8px 4px -6px rgba(0, 0, 0, 0.5);
 }
 
+
+.landing{
+  position: absolute;
+  top: 0px;
+  width: 100vw;
+  z-index: -1;
+}
+
 /* ==========================================
               Compagnie
   =========================================== */
@@ -508,4 +516,19 @@ font-size: 1.3em;
 .show-title{
   font-size: 4em;
   font-weight: bold;
+}
+
+  /* ==========================================
+                    Landing-page
+=========================================== */
+
+.firstpage{
+  height: 99.85vh;
+  width: 100vw;
+  margin: -10px;
+}
+
+.body{
+  background-color: rgb(41, 41, 41);
+
 }

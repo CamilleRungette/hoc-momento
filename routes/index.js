@@ -6,7 +6,7 @@ var PersonModel = require('../models/persons')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Hoc Momento' });
+  res.render('home', { title: 'Hoc Momento' });
 });
 
 router.get('/accueil', function(req, res, next){
