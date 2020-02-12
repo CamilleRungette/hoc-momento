@@ -7,112 +7,113 @@ var ShowModel = require('../models/shows')
 
 /* CREATION AND CONNECTION ADMIN */
 router.post('/create-admin', function(req, res, next){
-  newAdmin = new AdminModel({
-    email: req.body.email,
-    password: req.body.password
-  })
+	newAdmin = new AdminModel({
+		email: req.body.email,
+		password: req.body.password
+	})
 
-  newAdmin.save(function(error, admin){
-    if (error){
-        console.log("ADMIN NOT SAVED:", error)
-        res.json({error})
-    } else if (admin){
-        console.log("ADMIN SAVED", admin)
-        res.json({admin})
-    }
-  })
+	newAdmin.save(function(error, admin){
+							if (error){
+									console.log("ADMIN NOT SAVED:", error)
+									res.json({error})
+							} else if (admin){
+									console.log("ADMIN SAVED", admin)
+									res.json({admin})
+							}
+						})
 })
 
 router.get('/login', function(req, res, next){
-  res.render('login')
+	res.render('login')
 })
 
 router.post('/login', async function(req, res, next){
-  console.log(req.body)
+				console.log(req.body)
 
-  admin = AdminModel.find({email: req.body.email, password: req.body.password})
+				admin = AdminModel.find({email: req.body.email, password: req.body.password})
 
-  if (admin){
-    console.log("OK")
-    res.redirect('/users/dashboard')
-  } else {
-    console.log("NOT OK")
-    res.redirect('/users/login')
-  }
+				if (admin){
+		console.log("OK")
+		res.redirect('/users/dashboard')
+	} else {
+		console.log("NOT OK")
+		res.redirect('/users/login')
+	}
 
 })
 
 /* ACTIONS PART: DISPLAY, CREATION, DELETING AND UPDATING */
 
 router.get('/actions', async function(req, res, next) {
-  allActions = await ActionModel.find(function(err, actions){
-    console.log("VOILA========+++>")
-  })
-  res.render('./dashboard/actions', {allActions});
+	allActions = await ActionModel.find(function(err, actions){
+		console.log("VOILA========+++>")
+	})
+	res.render('./dashboard/actions', {allActions});
 });
 
 router.post('/create-action', function(req, res, next){
-  console.log(req.body)
+	var city = req.body.city.toUpperCase()
+	console.log("city", city)
 
-  newAction = new ActionModel({
-    photo: req.body.photo, 
-    place: req.body.place, 
-    title: req.body.title, 
-    period: req.body.period, 
-    partners: req.body.partners, 
-    gallery: req.body.gallery,
-    description: req.body.description,
-    city: req.body.city
-  })
+	newAction = new ActionModel({
+		photo: req.body.photo, 
+		place: req.body.place.toUpperCase(), 
+		title: req.body.title, 
+		period: req.body.period.toUpperCase(), 
+		partners: req.body.partners, 
+		gallery: req.body.gallery,
+		description: req.body.description,
+		city: req.body.city
+	})
 
-  newAction.save(function(error, action){
-    if (error){
-        console.log("ACTION NOT SAVED:", error)
-        res.render('./dashboard/actions', {problem: error})
-    } else if (action){
-        console.log("ACTION SAVED", action)
-      res.redirect('/dashboard/actions')
-    }
-  })
+	newAction.save(function(error, action){
+		if (error){
+				console.log("ACTION NOT SAVED:", error)
+				res.render('./dashboard/actions', {problem: error})
+		} else if (action){
+				console.log("ACTION SAVED", action)
+			res.redirect('/dashboard/actions')
+		}
+	})
 });
 
 router.post('/delete-action', async function(req, res, next){
-  action = await ActionModel.deleteOne({_id: req.body.id})
-  console.log(`${action.title} DELETED ============`)
+	action = await ActionModel.deleteOne({_id: req.body.id})
+	console.log(`${action.title} DELETED ============`)
 
-  res.redirect('./dashboard/actions')
+	res.redirect('./dashboard/actions')
 });
 
 router.get('/update-action', async function(req, res, next){
-  action = await ActionModel.findById(req.query.id)
-  console.log("L'ACTION =============>", action)
+	action = await ActionModel.findById(req.query.id)
+	console.log("L'ACTION =============>", action)
 
-  res.render('./dashboard/actions-update', {action})
+	res.render('./dashboard/actions-update', {action})
 })
 
 router.post('/update-action', async function(req, res, next){
-  console.log(req.body);
-  try {
-  if (req.body.description === " ") {
-    console.log("hello =====>")
-    update = await ActionModel.updateOne(
-      {_id: req.body.id},
-      {place: req.body.place,
-      title: req.body.title,
-      period: req.body.period}
-    );
-  } else {
-    update = await ActionModel.updateOne(
-      {_id: req.body.id},
-      {place: req.body.place,
-      title: req.body.title,
-      period: req.body.period,
-      description: req.body.description}
-    ) ; 
-  }
-  res.redirect('/dashboard/actions');
+	console.log(req.body);
+	try {
+	if (req.body.description === " ") {
+		console.log("hello =====>")
+		update = await ActionModel.updateOne(
+			{_id: req.body.id},
+			{place: req.body.place,
+			title: req.body.title,
+			period: req.body.period}
+		);
+	} else {
+		update = await ActionModel.updateOne(
+			{_id: req.body.id},
+			{place: req.body.place,
+			title: req.body.title,
+			period: req.body.period,
+			description: req.body.description}
+		) ; 
+	}
+	res.redirect('/dashboard/actions');
 }catch(error){
-  console.log(error);
+	console.log(error);
 };
 
 });
@@ -120,74 +121,74 @@ router.post('/update-action', async function(req, res, next){
 /* SHOWS PART: DISPLAY, CREATION, DELETING AND UPDATING */
 
 router.get('/shows', async function(req, res, next){
-  allShows = await ShowModel.find(function(err, shows){
-    console.log("VOILA========+++>")
-  })
-  res.render('./dashboard/shows', {allShows})
+	allShows = await ShowModel.find(function(err, shows){
+		console.log("VOILA========+++>")
+	})
+	res.render('./dashboard/shows', {allShows})
 });
 
 router.post('/create-show', function(req, res, next){
-  console.log("REQ.BODY", req.body)
+	console.log("REQ.BODY", req.body)
 
-  newShow = new ShowModel({
-    photo: req.body.photo,
-    place: req.body.place,
-    city: req.body.city,
-    title: req.body.title,
-    period: req.body.period,
-    partners: req.body.partners,
-    gallery: req.body.gallery,
-    description: req.body.description,
-  })
+	newShow = new ShowModel({
+		photo: req.body.photo,
+		place: req.body.place.toUpperCase(),
+		city: req.body.city,
+		title: req.body.title,
+		period: req.body.period,
+		partners: req.body.partners,
+		gallery: req.body.gallery,
+		description: req.body.description,
+	})
 
-  newShow.save(function(error, show){
-    if (error){
-      console.log("SHOW NOT SAVED:", error)
-      res.render('./dashboard/shows')
-    } else if (show){
-      console.log("SHOW SAVED", show)  
-      res.redirect('/dashboard/shows')
-    }
-  })
+	newShow.save(function(error, show){
+		if (error){
+			console.log("SHOW NOT SAVED:", error)
+			res.render('./dashboard/shows')
+		} else if (show){
+			console.log("SHOW SAVED", show)  
+			res.redirect('/dashboard/shows')
+		}
+	})
 });
 
 router.post('/delete-show', async function(req, res, next){
-  show = await ShowModel.deleteOne({_id: req.body.id})
-  console.log(`SHOW DELETED ============`)
+	show = await ShowModel.deleteOne({_id: req.body.id})
+	console.log(`SHOW DELETED ============`)
 
-  res.redirect('/dashboard/shows')
+	res.redirect('/dashboard/shows')
 });
 
 router.get('/update-show', async function(req, res, next){
-  show = await ShowModel.findById(req.query.id)
-  console.log("LE SHOW =============>", show)
+	show = await ShowModel.findById(req.query.id)
+	console.log("LE SHOW =============>", show)
 
-  res.render('./dashboard/show-update', {show})
+	res.render('./dashboard/show-update', {show})
 })
 
 router.post('/update-show', async function(req, res, next){
-  console.log(req.body);
-  try {
-  if (req.body.description === " ") {
-    console.log("hello =====>")
-    update = await ShowModel.updateOne(
-      {_id: req.body.id},
-      {place: req.body.place,
-      title: req.body.title,
-      period: req.body.period}
-    );
-  } else {
-    update = await ShowModel.updateOne(
-      {_id: req.body.id},
-      {place: req.body.place,
-      title: req.body.title,
-      period: req.body.period,
-      description: req.body.description}
-    ) ; 
-  }
-  res.redirect('/dashboard/shows');
+	console.log(req.body);
+	try {
+	if (req.body.description === " ") {
+		console.log("hello =====>")
+		update = await ShowModel.updateOne(
+			{_id: req.body.id},
+			{place: req.body.place,
+			title: req.body.title,
+			period: req.body.period}
+		);
+	} else {
+		update = await ShowModel.updateOne(
+			{_id: req.body.id},
+			{place: req.body.place,
+			title: req.body.title,
+			period: req.body.period,
+			description: req.body.description}
+		) ; 
+	}
+	res.redirect('/dashboard/shows');
 }catch(error){
-  console.log(error);
+	console.log(error);
 };
 
 });
@@ -197,26 +198,26 @@ router.post('/update-show', async function(req, res, next){
 
 
 router.post('/create-person', function(req, res, next){
-  console.log(req.body)
+	console.log(req.body)
 
-  newPerson = new PersonModel({
-    first_name: req.body.first_name,
-    last_name: req.body.last_name,
-    title: req.body.title,
-    desc: req.body.description,
-    email: req.body.email,
-    telephone: req.body.telephone
-  })
+	newPerson = new PersonModel({
+		first_name: req.body.first_name,
+		last_name: req.body.last_name,
+		title: req.body.title,
+		desc: req.body.description,
+		email: req.body.email,
+		telephone: req.body.telephone
+	})
 
-  newPerson.save(function(error, person){
-    if (error){
-        console.log("PERSON NOT SAVED:", error)
-        res.json({error})
-    } else if (person){
-        console.log("PERSON SAVED", person)
-        res.json({person})
-    }
-  })
+	newPerson.save(function(error, person){
+		if (error){
+				console.log("PERSON NOT SAVED:", error)
+				res.json({error})
+		} else if (person){
+				console.log("PERSON SAVED", person)
+				res.json({person})
+		}
+	})
 
 })
 

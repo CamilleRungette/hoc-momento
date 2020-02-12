@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <%- include('./partials/navbar') %> 
+    <div class="container col-10 ">
+      <div class="d-flex flex-wrap justify-content-between mt-5">
+        <% for (i=0; i< shows.length; i++) {%>
+          <div class="aactions-img mb-5">
+            <div class="shows-hover m-auto">
+              <a href="/spectacle?id=<%=shows[i].id %>" class="white link-white">
+              <p class="shows-place pt-4"><em><%= shows[i].title %> </em></p>
+              <p class="shows-title"> <%= shows[i].place %> - <%= shows[i].period %> </p>
+              <p class="shows-desc mx-auto"> <%= shows[i].description %> </p>
+              </a>
+            </div>
+          </div>
+        <% } %> 
+      </div>
+    
+    </div>
+    <%- include('./partials/footer') %> 
+  </body>
+</html>

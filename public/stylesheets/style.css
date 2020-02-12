@@ -317,9 +317,12 @@ body {
     color: #fff;
   }
 
+  .link-white:hover{
+  text-decoration: none;
+  }
+
   .dashboard-container{
     min-height: 85vh;
-
   }
   .separator{
     border-top: 1px solid rgb(184, 184, 184);
@@ -392,7 +395,7 @@ font-size: 1.3em;
 
 
   /* ==========================================
-            Cultural Actions
+            Cultural Actions / Shows
 =========================================== */
 
 .aactions-img{
@@ -444,11 +447,6 @@ font-size: 1.3em;
   width: 90%;
   margin: auto;
 }
- .aaction-place{
-  font-size: 5em;
-  font-weight: bold !important;
-  letter-spacing: 2px;
-}
 
 .aaction-desc{
   /* font-family: 'Exo', sans-serif; */
@@ -462,4 +460,52 @@ font-size: 1.3em;
   background-color: rgba(175, 175, 175, 0.2);
   border-top: 1px black solid;
   border-bottom: 1px black solid;
+}
+
+
+  /* ==========================================
+                    Shows
+=========================================== */
+
+
+.shows-hover{
+  transition-duration: 500ms;
+  background-color: rgba(195, 37, 39, 0.5);
+  height: 92%;
+  width: 90%;
+  margin-top: 2em;
+  font-weight: bold;
+  opacity: 0;
+}
+
+.aactions-img:hover > .shows-hover{
+  transition-duration: 500ms;
+  opacity: 1;
+}
+
+.shows-place{
+  font-size: 3.5em;
+  text-align: right;
+  letter-spacing: 2px;
+}
+.shows-desc{
+  margin-top: 3.6em;
+  height: 5em;
+  width: 90%;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 2.5em;
+  text-overflow: ellipsis;
+}
+
+.shows-title{
+  text-align: right;
+  font-size: 1.8em;
+  padding-right: 25px;
+  font-style: italic;
+}
+
+.show-title{
+  font-size: 4em;
+  font-weight: bold;
 }

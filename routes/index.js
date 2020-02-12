@@ -12,7 +12,7 @@ router.get('/', function(req, res, next) {
 router.get('/accueil', function(req, res, next){
   res.render('home')
 })
-
+ 
 router.get('/compagnie', function(req, res, next){
   res.render('company')
 })
@@ -32,8 +32,19 @@ router.get('/action-culturelle', async function(req, res, next){
   res.render('cultural_action', {action})
 })
 
-router.get('/test', function(req, res, next){
-  res.render('test')
+router.get('/spectacles', async function(req, res, next){
+  shows = await ShowModel.find(function(err, shows){
+    console.log(shows)
+  })
+  res.render('shows', {shows})
 })
+
+router.get('/spectacle', async function(req, res, next){
+  console.log(req.b)
+  show = await ShowModel.findOne({_id: req.query.id})
+
+  res.render('show', {show})
+})
+
 
 module.exports = router;
