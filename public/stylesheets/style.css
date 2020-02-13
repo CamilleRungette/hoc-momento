@@ -49,7 +49,7 @@ body {
 
 .carroussel {
   position: relative;
-  height: 105vh;
+  height: 70.5vh;
 }
 
 .carroussel > *:nth-child(1) {
@@ -242,7 +242,7 @@ body {
 .landing{
   position: absolute;
   top: 0px;
-  width: 100vw;
+  width: 99vw;
   z-index: -1;
 }
 
@@ -523,12 +523,7 @@ font-size: 1.3em;
 =========================================== */
 
 .firstpage{
-  height: 99.85vh;
+  height: 101vh;
   width: 100vw;
   margin: -10px;
-}
-
-.body{
-  background-color: rgb(41, 41, 41);
-
 }
