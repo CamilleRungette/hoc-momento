@@ -1,7 +1,7 @@
 
 
 
-<form action="/dashboard/upload" method="POST" class="col-8 border p-3 form-dashboard mx-auto" enctype="multipart/form-data">
+<form action="/dashboard/create-action" method="POST" class="col-8 border p-3 form-dashboard mx-auto" enctype="multipart/form-data">
 
   <div class="form-group d-flex">
     <div class="col-6">
@@ -25,17 +25,25 @@
     </div>
   </div>
   
-  <div class="form-group">
-    <label>Description</label>
-    <textarea class="form-control" placeholder="Montjoie ! Saint-Denis ! est une œuvre théâtrale in situ ..." name="description"></textarea>
-  </div> 
-
-  <div class="form-group">
-    <input type="file" name="photo"   />
-
+  <div class="form-group d-flex">
+    <div class="col-12">
+      <label>Description</label>
+      <textarea class="form-control" placeholder="Montjoie ! Saint-Denis ! est une œuvre théâtrale in situ ..." name="description"></textarea>
+  </div>
   </div>
 
-  <div class="button-container">
+  <div class="form-group d-flex">
+    <div class="col-6 ">
+      <label>Photo principale</label><br/>
+      <input type="file" name="images"/>
+    </div>  
+    <div class="col-6 m-auto ">  
+      <label>Gallerie photos</label> <br/>
+      <input type="file" name="images" multiple  />
+    </div>
+  </div>
+
+  <div class="button-container mt-5">
     <button type="submit" class="btn btn-warning text-white action-button">Créer </button>
   </div>
 

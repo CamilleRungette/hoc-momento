@@ -28,7 +28,7 @@
             <div><%= allActions[i].title  %>  </div>
           </div>
           <div class="col-6 description-list"><%= allActions[i].description%></div>
-          <div class="col-3"> <img src="/images/compagnie.png" class="photo-list"  /> </div>
+          <div class="col-3"> <img src="<%=allActions[i].photo %>" class="photo-list"  /> </div>
           <div class=" m-auto">
             <form action="/dashboard/delete-action" method="POST">
               <input type="hidden" name="id" value="<%= allActions[i].id%>"   />

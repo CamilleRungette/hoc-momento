@@ -42,7 +42,6 @@ router.get('/spectacles', async function(req, res, next){
 })
 
 router.get('/spectacle', async function(req, res, next){
-  console.log(req.b)
   show = await ShowModel.findOne({_id: req.query.id})
 
   res.render('show', {show})

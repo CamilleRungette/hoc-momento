@@ -4,12 +4,25 @@ var AdminModel = require ('../models/admin')
 var ActionModel = require('../models/cultural_actions')
 var ShowModel = require('../models/shows')
 var multer  = require('multer')
-var upload = multer({ dest: './public/images/uploads/' })
-var cloudinary = require('cloudinary').v2
+var cloudinary = require('cloudinary')
+var cloudinaryStorage = require('multer-storage-cloudinary');
+const upload = multer({dest: './public/images/uploads/'})
+
+// var upload = multer({ dest: './public/images/uploads/' })
 cloudinary.config({
   cloud_name:'dduugb9jy',
   api_key: '163237792357483',
   api_secret:'-kKI2ELa5qrQWcoqKv5A1kn5asw'
+});
+
+var parser = multer({ 
+  storage: cloudinaryStorage({
+    cloudinary: cloudinary,
+    folder: 'hocmomento',
+    filename: function (req, file, cb) {
+      cb(undefined, file.originalname);
+    }
+  })
 });
 
 /* CREATION AND CONNECTION ADMIN */
@@ -53,21 +66,26 @@ router.post('/login', async function(req, res, next){
 
 router.get('/actions', async function(req, res, next) {
 	allActions = await ActionModel.find(function(err, actions){
-		console.log("VOILA========+++>")
+		console.log("")
 	})
 	res.render('./dashboard/actions', {allActions});
 });
 
-router.post('/create-action', function(req, res, next){
-	console.log(req.file)
+router.post('/create-action', parser.array('images'), function(req, res, next){
+  console.log("======================", req.files.length)
+  let backGallery = []
+  for (i=0; i< req.files.length; i++){
+      backGallery.push(req.files[i].secure_url)
+  }
+console.log("BACK GALLERY =============>", backGallery)
 
 	newAction = new ActionModel({
-		photo: req.body.photo, 
+		photo: req.files[0].secure_url, 
 		place: req.body.place.toUpperCase(), 
 		title: req.body.title, 
 		period: req.body.period.toUpperCase(), 
 		partners: req.body.partners, 
-		gallery: req.body.gallery,
+		gallery: backGallery,
 		description: req.body.description,
 		city: req.body.city
 	})
@@ -97,30 +115,31 @@ router.get('/update-action', async function(req, res, next){
 	res.render('./dashboard/actions-update', {action})
 })
 
-router.post('/update-action', async function(req, res, next){
-	console.log(req.body);
-	try {
-	if (req.body.description === " ") {
-		console.log("hello =====>")
-		update = await ActionModel.updateOne(
-			{_id: req.body.id},
-			{place: req.body.place,
-			title: req.body.title,
-			period: req.body.period}
-		);
-	} else {
-		update = await ActionModel.updateOne(
-			{_id: req.body.id},
-			{place: req.body.place,
-			title: req.body.title,
-			period: req.body.period,
-			description: req.body.description}
-		) ; 
-	}
-	res.redirect('/dashboard/actions');
-}catch(error){
-	console.log(error);
-};
+router.post('/update-action', parser.array('images'), function(req, res, next){
+  console;log(req.files)
+  console.log(req.body);
+// 	try {
+// 	if (req.body.description === " ") {
+// 		console.log("hello =====>")
+// 		update = await ActionModel.updateOne(
+// 			{_id: req.body.id},
+// 			{place: req.body.place,
+// 			title: req.body.title,
+// 			period: req.body.period}
+// 		);
+// 	} else {
+// 		update = await ActionModel.updateOne(
+// 			{_id: req.body.id},
+// 			{place: req.body.place,
+// 			title: req.body.title,
+// 			period: req.body.period,
+// 			description: req.body.description}
+// 		) ; 
+// 	}
+// 	res.redirect('/dashboard/actions');
+// }catch(error){
+// 	console.log(error);
+// };
 
 });
 
@@ -200,12 +219,14 @@ router.post('/update-show', async function(req, res, next){
 });
 
 
-router.post('/upload', upload.single('photo'), function(req, res, next){
-  console.log(req.file)
-  console.log('rererererer')
+router.post('/upload', parser.array('images'),function(req, res, next){
+  console.log("============================\n", req.files)
+  
+res.json("done")
+});
+  
 
-  res.redirect('/dashboard/actions')
-})
+
 
 
 

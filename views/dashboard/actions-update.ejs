@@ -10,7 +10,7 @@
     <div class="container">
       <h2 class="text-center action-title mb-5">Modifier l'action culturelle : <%= action.place %></h2>
 
-      <form action="/dashboard/update-action" class="col-10 mx-auto" method="POST">
+      <form action="/dashboard/upload" class="col-10 mx-auto" method="POST">
         <input type="hidden" name="id" value="<%= action.id %>" />
         <div class="form-group">
           <label>Lieu</label>
@@ -28,7 +28,11 @@
           <label>Description</label>
           <textarea class="form-control" value="<%= action.description %>" name="description"> </textarea>
         </div>
-        <button class="btn btn-warning"> Modifier</button>
+        <div>
+          <label>Gallerie photos</label> <br/>
+          <input type="file" name="images" multiple />
+        </div>
+        <button class="btn btn-warning mt-4"> Modifier</button>
       </form>
 
     </div>
