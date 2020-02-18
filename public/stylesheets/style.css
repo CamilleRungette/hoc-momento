@@ -49,7 +49,14 @@ body {
 
 .carroussel {
   position: relative;
+}
+
+.index-carroussel{
   height: 70.5vh;
+}
+
+.home-carroussel{
+  height: 105vh;
 }
 
 .carroussel > *:nth-child(1) {
@@ -253,10 +260,13 @@ body {
 .company-text{
   font-size: 1.2em;
   max-width: 98%;
+  line-height: 1.8em;
+
 }
 
 .company-text-photo{
   font-size: 1.2em;
+  line-height: 1.8em;
 }
 
 .company-title{
@@ -388,7 +398,7 @@ font-size: 1.3em;
   height: 10em;
 }
 
-.description-list{
+.description-list{ 
   overflow: auto;
 }
 
@@ -493,7 +503,7 @@ font-size: 1.3em;
 
 .shows-place{
   font-size: 3.5em;
-  text-align: right;
+  text-align: center;
   letter-spacing: 2px;
 }
 .shows-desc{
@@ -507,7 +517,7 @@ font-size: 1.3em;
 }
 
 .shows-title{
-  text-align: right;
+  text-align: center;
   font-size: 1.8em;
   padding-right: 25px;
   font-style: italic;

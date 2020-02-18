@@ -4,7 +4,6 @@ $(document).ready(function(){
   $('.firstpage').click(function(){
     console.log("hello")
     $('.firstpage').fadeOut(3000)
-    $('.carroussel').css('height', '105vh')
-
+    $('.index-carroussel').css('height', '105vh')
   })
-})
+}) 

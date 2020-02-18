@@ -3,10 +3,12 @@ var router = express.Router();
 var ActionModel = require('../models/cultural_actions')
 var ShowModel = require('../models/shows')
 var PersonModel = require('../models/persons')
+require('dotenv/config')
 
+console.log(process.env.SECRET_SENGRID_KEY)
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('home', { title: 'Hoc Momento' });
+  res.render('index', { title: 'Hoc Momento' });
 });
 
 router.get('/accueil', function(req, res, next){
