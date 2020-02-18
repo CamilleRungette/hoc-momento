@@ -4,7 +4,7 @@ var AdminModel = require ('../models/admin')
 var ActionModel = require('../models/cultural_actions')
 var ShowModel = require('../models/shows')
 var multer  = require('multer')
-var upload = multer({ dest: 'uploads/' })
+var upload = multer({ dest: './public/images/uploads/' })
 var cloudinary = require('cloudinary').v2
 cloudinary.config({
   cloud_name:'dduugb9jy',
