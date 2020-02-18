@@ -3,15 +3,22 @@ var router = express.Router();
 var AdminModel = require ('../models/admin')
 var ActionModel = require('../models/cultural_actions')
 var ShowModel = require('../models/shows')
-
+var multer  = require('multer')
+var upload = multer({ dest: 'uploads/' })
+var cloudinary = require('cloudinary').v2
+cloudinary.config({
+  cloud_name:'dduugb9jy',
+  api_key: '163237792357483',
+  api_secret:'-kKI2ELa5qrQWcoqKv5A1kn5asw'
+});
 
 /* CREATION AND CONNECTION ADMIN */
 router.post('/create-admin', function(req, res, next){
 	newAdmin = new AdminModel({
 		email: req.body.email,
 		password: req.body.password
-	})
-
+  })
+  
 	newAdmin.save(function(error, admin){
 							if (error){
 									console.log("ADMIN NOT SAVED:", error)
@@ -52,8 +59,7 @@ router.get('/actions', async function(req, res, next) {
 });
 
 router.post('/create-action', function(req, res, next){
-	var city = req.body.city.toUpperCase()
-	console.log("city", city)
+	console.log(req.file)
 
 	newAction = new ActionModel({
 		photo: req.body.photo, 
@@ -81,7 +87,7 @@ router.post('/delete-action', async function(req, res, next){
 	action = await ActionModel.deleteOne({_id: req.body.id})
 	console.log(`${action.title} DELETED ============`)
 
-	res.redirect('./dashboard/actions')
+	res.redirect('/dashboard/actions')
 });
 
 router.get('/update-action', async function(req, res, next){
@@ -194,6 +200,13 @@ router.post('/update-show', async function(req, res, next){
 });
 
 
+router.post('/upload', upload.single('photo'), function(req, res, next){
+  console.log(req.file)
+  console.log('rererererer')
+
+  res.redirect('/dashboard/actions')
+})
+
 
 
 
@@ -220,7 +233,5 @@ router.post('/create-person', function(req, res, next){
 	})
 
 })
-
-
 
 module.exports = router;
