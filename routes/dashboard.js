@@ -281,6 +281,55 @@ router.post('/update-show', async function(req, res, next){
 
 });
 
+router.get('/update-show-gallery', async function(req, res){
+  show = await ShowModel.findById(req.query.id)
+  gallery = show.gallery
+
+  res.render('./dashboard/update-show-gallery', {show, gallery})
+})
+
+router.get('/delete-photo-show', async function(req, res){
+  showGallery = []
+  show = await ShowModel.findById(req.query.show)
+  showGallery = show.gallery
+  showGallery.splice(req.query.index, 1)
+  update = await ShowModel.updateOne(
+    {_id: req.query.show},
+    {gallery: showGallery})
+
+  show = await ShowModel.findById(req.query.show)
+  gallery = show.gallery
+
+  res.render('./dashboard/update-show-gallery', {show, gallery})
+})
+
+router.post('/add-photo-show',  parser.array('images'), async function(req, res){
+  let showGallery = []
+console.log(req.files, req.files.length)
+
+  show = await ShowModel.findById(req.body.show)
+  showGallery = show.gallery
+  
+for (i=0; i< req.files.length; i++){
+  console.log(req.files[i].secure_url)
+  showGallery.push(req.files[i].secure_url)
+}
+console.log(showGallery)
+
+    update = await ShowModel.updateOne(
+      {_id: req.body.show},
+      {gallery: showGallery}
+    )
+    show = await ShowModel.findById(req.body.show)
+    gallery = show.gallery
+  console.log(show)
+
+  res.render('./dashboard/update-show-gallery', {show, gallery})
+
+})
+
+
+
 
 
 
