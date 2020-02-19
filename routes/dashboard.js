@@ -3,10 +3,10 @@ var router = express.Router();
 var AdminModel = require ('../models/admin')
 var ActionModel = require('../models/cultural_actions')
 var ShowModel = require('../models/shows')
+var MessageModel = require('../models/message')
 var multer  = require('multer')
 var cloudinary = require('cloudinary')
 var cloudinaryStorage = require('multer-storage-cloudinary');
-const upload = multer({dest: './public/images/uploads/'})
 
 // var upload = multer({ dest: './public/images/uploads/' })
 cloudinary.config({
@@ -24,8 +24,6 @@ var parser = multer({
     }
   })
 });
-
-
 
 
 
@@ -391,6 +389,15 @@ router.post('/add-photo-show',  parser.array('images'), async function(req, res)
 
 
 
+/* MESSAGES PART */
+router.get('/messages', async function (req, res){
+
+  allMessages = await MessageModel.find(function(err, messages){
+    console.log(messages)
+  })
+
+  res.render('./dashboard/messages', {allMessages})
+})
 
 
 
@@ -417,5 +424,8 @@ router.post('/create-person', function(req, res, next){
 	})
 
 })
+
+
+
 
 module.exports = router;

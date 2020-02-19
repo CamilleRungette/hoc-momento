@@ -390,6 +390,11 @@ label{
   margin-top: 2em;
 }
 
+.messages-title{
+  margin-top: 2em;
+  font-size: 3.4em;
+}
+
 .action-button{
 font-size: 1.3em;
 }
@@ -612,4 +617,49 @@ font-size: 1.3em;
 
 .import-gallery{
   font-size: 30%;
+}
+
+/* ==========================================
+                    Contact
+=========================================== */
+
+.contact-title{
+  margin-top: 4%;
+  margin-bottom: 4%;
+  margin-left: 23%;
+  font-weight: bold;
+  font-size: 400%;
+}
+
+.contact-container{
+  background-color: rgba(249, 176, 58, 0.3);
+  height: 65vh;
+  margin-bottom: 5%;
+}
+
+.input-contact{
+  font-size: 1.2em !important;
+}
+
+.contact-image{
+  border-radius: 50%;
+  width: 50%;
+}
+
+.contact-front-container{
+  padding-top: 4%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 60%;
+  margin: auto;
+}
+
+.contact-button{
+  width: 100%;
+  background-color: black;
+  color: #fff;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  font-size: 1.4em;
 }

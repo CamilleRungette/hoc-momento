@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel='stylesheet' type='text/css' media='screen' href='/stylesheets/style.css'>
+  </head>
+  <body>
+  <%- include('./partials/navbar') %> 
+      <h1 class="contact-title">NOUS CONTACTER</h1>
+        <div class="contact-container">
+
+          <div class="contact-front-container my-auto">
+
+            <img src="/images/compagnie2.png" class="contact-image" />
+
+            <form action="/contact" method="POST" class=" col-5 contact-form">
+              <div>
+                <input type="text" name="name" placeholder="Nom" class="form-control input-contact" />
+              </div>
+
+              <div class="mt-4">
+                <input type="email" name="email" placeholder="Email" class="form-control input-contact" />
+              </div>
+
+              <div class="mt-4">
+                <input type="text" name="organisation" placeholder="Organisation" class="form-control input-contact" />
+              </div>
+
+              <div class="mt-4">
+                <textarea name="content" placeholder="Message" class="form-control input-contact"></textarea>
+              </div>
+
+              <div class="mt-4">
+                <button class="contact-button">Envoyer</button>
+              </div>
+
+            </form>
+          </div>
+        </div>
+  <%- include('./partials/footer') %> 
+  </body>
+</html>

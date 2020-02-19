@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel='stylesheet' type='text/css' media='screen' href='/stylesheets/style.css'>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+</head>
+<body>
+  <%- include('../partials/navbarAdmin') %> 
+  <div class="dashboard-container mx-auto">
+    <h1 class="yellow text-center messages-title">Messages</h1>
+
+    <div class="messages-container">
+      <% for(i=0; i<allMessages.length; i++){ %>
+      <div class="message-container">
+        <div class="card">
+          <h5 class="card-header">Featured</h5>
+          <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+        <%= allMessages[i].name %>
+        <%= allMessages[i].organisation %>
+        <%= allMessages[i].content %>   
+      </div>
+      <% } %> 
+
+    </div>
+  
+  </div>
+  
+  <%- include('../partials/footer')%>
+</body>
+</html>
