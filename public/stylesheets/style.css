@@ -335,6 +335,14 @@ body {
     color: #fff;
   }
 
+  .black{
+    color: black;
+  }
+
+  .black:hover{
+    color: black;
+  }
+
   .link-white:hover{
   text-decoration: none;
   }
@@ -396,6 +404,13 @@ font-size: 1.3em;
 
 .photo-list{
   height: 10em;
+}
+
+.icon-column{
+  height: 10em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
 .description-list{ 
@@ -480,8 +495,7 @@ font-size: 1.3em;
   border-bottom: 1px black solid;
 }
 
-
-  /* ==========================================
+/* ==========================================
                     Shows
 =========================================== */
 
@@ -536,4 +550,62 @@ font-size: 1.3em;
   height: 101vh;
   width: 100vw;
   margin: -10px;
+}
+
+  /* ==========================================
+                    Galleries
+=========================================== */
+
+.container-gallery{
+  width: 80%;
+  margin: auto;
+}
+
+.photos-gallery{
+  margin: auto;
+  width: 90%;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.gallery-div{
+  position: relative;
+}
+
+.gallery-div:hover > .gallery-trash{
+  display: block;
+}
+
+.photo-gallery{
+  z-index: 1;
+  max-height: 15em;
+  object-fit: contain;
+}
+
+.photo-gallery:hover{
+  transition-duration: .8s;
+  filter: blur(5px);
+}
+
+.gallery-trash{
+  position: absolute;
+  top: 45%;
+  left: 45%;
+  z-index: 2;
+  display: none;
+}
+
+.gallery-trash:hover + img{
+  filter: blur(5px);
+}
+
+.add-picture{
+  height: 10%;
+  text-align: center;
+}
+
+.input-photos{
+  background-color: rgb(206, 206, 206);
 }

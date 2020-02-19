@@ -29,13 +29,13 @@
           </div>
           <div class="col-6 description-list"><%= allActions[i].description%></div>
           <div class="col-3"> <img src="<%=allActions[i].photo %>" class="photo-list"  /> </div>
-          <div class=" m-auto">
+          <div class="m-auto icon-column">
             <form action="/dashboard/delete-action" method="POST">
               <input type="hidden" name="id" value="<%= allActions[i].id%>"   />
-            <button class="fas fa-trash-alt fa-2x red delete-button"></button>
+              <button class="fas fa-trash-alt fa-2x red delete-button"></button>
             </form>
-            <br/> <br/> 
-            <a href="/dashboard/update-action?id=<%= allActions[i].id %> " ><i class="far fa-edit fa-2x ml-1 yellow"></i></a>
+            <a href="/dashboard/update-action-gallery?id=<%= allActions[i].id%>" title="Gallerie photo"><i class="fas fa-camera fa-2x mt-1 ml-1 black"></i></a> 
+            <a href="/dashboard/update-action?id=<%= allActions[i].id %>" title="Modifier l'action"><i class="far fa-edit fa-2x ml-1 yellow"></i></a>
           </div>
         </div>
       <br/> <br/>

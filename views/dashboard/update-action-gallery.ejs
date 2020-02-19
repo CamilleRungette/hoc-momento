@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel='stylesheet' type='text/css' media='screen' href='/stylesheets/style.css'>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">  
+  </head>
+  <body>
+    <%- include('../partials/navbarAdmin') %> 
+    <div class="container-gallery">
+      <h2 class="text-center action-title mb-5">Gallerie photos <br/><%= action.place %></h2>
+      <div class="photos-gallery mt-3">
+        <% for (i=0; i<gallery.length; i++){ %>
+          <div class="gallery-div mb-5 col-4">
+            <a href="/dashboard/delete-photo-action?index=<%=i%>&action=<%=action.id%>" class="fas fa-trash-alt gallery-trash fa-3x black"></a>
+            <img src="<%=gallery[i] %>" class="photo-gallery col-12" />
+          </div>
+        <% } %>
+      </div>
+
+      <form action="/dashboard/add-photo-action" method="POST" enctype="multipart/form-data">
+        <div class="form-control add-picture">  
+          <label>Ajouter des photos</label> <br/>
+          <input type="file" name="images" class="input-photos" multiple  />
+          <input type="hidden" name="action" value="<%= action.id %>" />
+          <button class="far fa-check-circle"></button>
+        </div>
+      </form>
+    </div>
+    <%- include('../partials/footer') %> 
+  </body>
+</html>

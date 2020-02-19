@@ -25,6 +25,11 @@ var parser = multer({
   })
 });
 
+
+
+
+
+
 /* CREATION AND CONNECTION ADMIN */
 router.post('/create-admin', function(req, res, next){
 	newAdmin = new AdminModel({
@@ -61,6 +66,11 @@ router.post('/login', async function(req, res, next){
 	}
 
 })
+
+
+
+
+
 
 /* ACTIONS PART: DISPLAY, CREATION, DELETING AND UPDATING */
 
@@ -115,33 +125,81 @@ router.get('/update-action', async function(req, res, next){
 	res.render('./dashboard/actions-update', {action})
 })
 
-router.post('/update-action', parser.array('images'), function(req, res, next){
-  console;log(req.files)
-  console.log(req.body);
-// 	try {
-// 	if (req.body.description === " ") {
-// 		console.log("hello =====>")
-// 		update = await ActionModel.updateOne(
-// 			{_id: req.body.id},
-// 			{place: req.body.place,
-// 			title: req.body.title,
-// 			period: req.body.period}
-// 		);
-// 	} else {
-// 		update = await ActionModel.updateOne(
-// 			{_id: req.body.id},
-// 			{place: req.body.place,
-// 			title: req.body.title,
-// 			period: req.body.period,
-// 			description: req.body.description}
-// 		) ; 
-// 	}
-// 	res.redirect('/dashboard/actions');
-// }catch(error){
-// 	console.log(error);
-// };
+router.post('/update-action', parser.array('images'), async function(req, res, next){
+	try {
+	if (req.body.description === " ") {
+		console.log("hello =====>")
+		update = await ActionModel.updateOne(
+			{_id: req.body.id},
+			{place: req.body.place,
+			title: req.body.title,
+			period: req.body.period}
+		);
+	} else {
+		update = await ActionModel.updateOne(
+			{_id: req.body.id},
+			{place: req.body.place,
+			title: req.body.title,
+			period: req.body.period,
+			description: req.body.description}
+		) ; 
+	}
+	res.redirect('/dashboard/actions');
+}catch(error){
+	console.log(error);
+};
 
 });
+
+router.get('/update-action-gallery', async function(req, res){
+  action = await ActionModel.findById(req.query.id)
+  gallery = action.gallery
+
+  res.render('./dashboard/update-action-gallery', {action, gallery})
+})
+
+router.get('/delete-photo-action', async function(req, res){
+    actionGallery = []
+    action = await ActionModel.findById(req.query.action)
+    actionGallery = action.gallery
+    actionGallery.splice(req.query.index, 1)
+    update = await ActionModel.updateOne(
+      {_id: req.query.action},
+      {gallery: actionGallery})
+
+    action = await ActionModel.findById(req.query.action)
+    gallery = action.gallery
+  
+    res.render('./dashboard/update-action-gallery', {action, gallery})
+})
+
+router.post('/add-photo-action',  parser.array('images'), async function(req, res){
+    let actionGallery = []
+  console.log(req.files, req.files.length)
+
+    action = await ActionModel.findById(req.body.action)
+    actionGallery = action.gallery
+    
+  for (i=0; i< req.files.length; i++){
+    console.log(req.files[i].secure_url)
+    actionGallery.push(req.files[i].secure_url)
+  }
+  console.log(actionGallery)
+
+      update = await ActionModel.updateOne(
+        {_id: req.body.action},
+        {gallery: actionGallery}
+      )
+      action = await ActionModel.findById(req.body.action)
+      gallery = action.gallery
+    console.log(action)
+  
+    res.render('./dashboard/update-action-gallery', {action, gallery})
+
+})
+
+
+
 
 /* SHOWS PART: DISPLAY, CREATION, DELETING AND UPDATING */
 
@@ -152,17 +210,22 @@ router.get('/shows', async function(req, res, next){
 	res.render('./dashboard/shows', {allShows})
 });
 
-router.post('/create-show', function(req, res, next){
-	console.log("REQ.BODY", req.body)
+router.post('/create-show', parser.array('images'), function(req, res, next){
+  console.log("REQ.BODY", req.files)
+  let backGallery = []
+  for (i=0; i< req.files.length; i++){
+      backGallery.push(req.files[i].secure_url)
+  }
+  console.log(backGallery)
 
 	newShow = new ShowModel({
-		photo: req.body.photo,
+		photo: req.files[0].secure_url,
 		place: req.body.place.toUpperCase(),
 		city: req.body.city,
 		title: req.body.title,
 		period: req.body.period,
 		partners: req.body.partners,
-		gallery: req.body.gallery,
+		gallery: backGallery,
 		description: req.body.description,
 	})
 
@@ -217,15 +280,6 @@ router.post('/update-show', async function(req, res, next){
 };
 
 });
-
-
-router.post('/upload', parser.array('images'),function(req, res, next){
-  console.log("============================\n", req.files)
-  
-res.json("done")
-});
-  
-
 
 
 
