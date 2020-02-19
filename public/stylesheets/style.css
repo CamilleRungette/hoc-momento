@@ -609,3 +609,7 @@ font-size: 1.3em;
 .input-photos{
   background-color: rgb(206, 206, 206);
 }
+
+.import-gallery{
+  font-size: 30%;
+}
