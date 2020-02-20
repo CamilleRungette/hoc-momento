@@ -3,8 +3,7 @@ var router = express.Router();
 var ActionModel = require('../models/cultural_actions')
 var ShowModel = require('../models/shows')
 var MessageModel = require('../models/message')
-
-
+var NewsModel = require('../models/newsletter') 
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -59,7 +58,8 @@ router.post('/contact', function(req, res){
     name: req.body.name,
     email: req.body.email,
     organisation: req.body.organisation,
-    content: req.body.content
+    content: req.body.content,
+    read: false,
   })
 
   newMessage.save(function(err, message){
@@ -67,10 +67,35 @@ router.post('/contact', function(req, res){
       console.log("MESSAGE NOT SAVED", error);
     } else if (message){
       console.log("MESSAGE SAVED", message); 
+
+      const sgMail = require('@sendgrid/mail');
+      sgMail.setApiKey("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");
+      const msg = {
+        to: 'c.rungette@gmail.com',
+        from: req.body.email,
+        subject: 'Nouveau messages depuis le site Hoc Momento',
+        text: 'and easy to do anywhere, even with Node.js',
+        html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+      };
+      sgMail.send(msg);
     }
   })
 
   res.redirect('/contact')
 })
 
+router.post('/newsletter', function(req, res){
+  console.log(req.body);
+  email = new NewsModel({
+    email: req.body.email,
+  })
+
+  email.save(function(err, email){
+    console.log("EMAIL SAVED", email)
+  })
+  
+  res.redirect('contact')
+})
+
 module.exports = router;
+

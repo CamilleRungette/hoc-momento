@@ -391,38 +391,64 @@ router.post('/add-photo-show',  parser.array('images'), async function(req, res)
 
 /* MESSAGES PART */
 router.get('/messages', async function (req, res){
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {
 
-  allMessages = await MessageModel.find(function(err, messages){
-    console.log(messages)
-  })
+    allMessages = await MessageModel.find(function(err, messages){
+      console.log(messages)
+    })
+    res.render('./dashboard/messages', {allMessages})
 
-  res.render('./dashboard/messages', {allMessages})
+  }
 })
 
+router.get('/read-message', async function(req, res){
+  
+  update = await MessageModel.updateOne(
+    {_id: req.query.id},
+    {read: true}
+    )
+  res.redirect('/dashboard/messages')
+})
 
+router.get('/unread-message', async function(req, res){
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {
+
+    update = await MessageModel.updateOne(
+      {_id: req.query.id},
+      {read: false}
+      )
+    res.redirect('/dashboard/messages')
+  }
+})
 
 router.post('/create-person', function(req, res, next){
-	console.log(req.body)
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {
+    console.log(req.body)
+    newPerson = new PersonModel({
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
+      title: req.body.title,
+      desc: req.body.description,
+      email: req.body.email,
+      telephone: req.body.telephone
+    })
 
-	newPerson = new PersonModel({
-		first_name: req.body.first_name,
-		last_name: req.body.last_name,
-		title: req.body.title,
-		desc: req.body.description,
-		email: req.body.email,
-		telephone: req.body.telephone
-	})
-
-	newPerson.save(function(error, person){
-		if (error){
-				console.log("PERSON NOT SAVED:", error)
-				res.json({error})
-		} else if (person){
-				console.log("PERSON SAVED", person)
-				res.json({person})
-		}
-	})
-
+    newPerson.save(function(error, person){
+      if (error){
+          console.log("PERSON NOT SAVED:", error)
+          res.json({error})
+      } else if (person){
+          console.log("PERSON SAVED", person)
+          res.json({person})
+      }
+    })
+  }
 })
 
 

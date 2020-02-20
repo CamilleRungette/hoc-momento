@@ -392,6 +392,7 @@ label{
 
 .messages-title{
   margin-top: 2em;
+  margin-bottom: 2em;
   font-size: 3.4em;
 }
 
@@ -429,6 +430,51 @@ font-size: 1.3em;
 .delete-button{
   background-color: transparent;
   border: none;
+}
+
+.messages-container{
+  margin: auto;
+  width: 60%;
+}
+
+.message-container{
+  margin-bottom: 4em;
+}
+
+.message-header{
+  position: relative;
+}
+
+.card-date{
+  position: absolute;
+  right: 2em;
+}
+
+.message-text{
+  font-size: 113%;
+}
+
+.card-title{
+  padding-bottom: 0.7em;
+  border-bottom: 1px solid rgb(177, 177, 177);
+}
+
+.message-buttons{
+  padding-left: 4%;
+  padding-right: 4%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.read-card{
+  width: 80%;
+  height: 80%;
+  font-size: 80%;
+  margin: auto;
+}
+
+.card-title-read{
+  font-size: 100%;
 }
 
 
@@ -633,12 +679,13 @@ font-size: 1.3em;
 
 .contact-container{
   background-color: rgba(249, 176, 58, 0.3);
-  height: 65vh;
-  margin-bottom: 5%;
+  height: 60vh;
+  margin-bottom: 3%;
 }
 
 .input-contact{
   font-size: 1.2em !important;
+
 }
 
 .contact-image{
@@ -647,7 +694,7 @@ font-size: 1.3em;
 }
 
 .contact-front-container{
-  padding-top: 4%;
+  padding-top: 2%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -662,4 +709,36 @@ font-size: 1.3em;
   border: 2px solid transparent;
   border-radius: 10px;
   font-size: 1.4em;
+}
+
+.newsletter-container{
+  margin: auto;
+  margin-top: 2%;
+  height: 2.5em;
+  line-height: 2.5em;
+  margin-bottom: 3%;
+}
+
+.newsletter-button{
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  width: 10em;
+  height: 2em;
+  font-size: 1.4em;
+  border-radius: 10px;
+  margin-left: 3%;
+  padding-top: 0.1em;
+  border: none;
+}
+
+.newsletter-label{
+  font-size: 1.5em;
+  margin-right: 3%;
+}
+
+.newsletter-form{
+  display: flex;
+  width: 50%;
+  margin: auto;
 }

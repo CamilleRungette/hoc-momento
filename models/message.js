@@ -6,7 +6,8 @@ let messageSchema = mongoose.Schema({
   email: String,
   content: String,
   organisation: String,
+  read: Boolean,
 })
 
-const MessageModel = mongoose.model("persons", messageSchema);
+const MessageModel = mongoose.model("messages", messageSchema);
  module.exports = MessageModel;

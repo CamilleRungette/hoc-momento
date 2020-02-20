@@ -13,25 +13,36 @@
 
     <div class="messages-container">
       <% for(i=0; i<allMessages.length; i++){ %>
-      <div class="message-container">
-        <div class="card">
-          <h5 class="card-header">Featured</h5>
-          <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+        <% if (allMessages[i].read === false) {%> 
+          <div class="message-container">
+            <div class="card">
+              <div class="card-header bg-dark text-white message-header"><h5 >De <%= allMessages[i].name %> <span class="card-date"><%= allMessages[i].date.getDate()%>/ <%= allMessages[i].date.getMonth()%> / <%= allMessages[i].date.getFullYear()%> </span> </h5></div>
+              <div class="card-body">
+                <h5 class="card-title"> <span class="red font-weight-bold"><%= allMessages[i].organisation %> </span>- <%= allMessages[i].email %> </h5>
+                <p class="message-text"> <%= allMessages[i].content %> </p>
+                <div class="message-buttons"><a href="/dashboard/read-message?id=<%= allMessages[i].id%> " class="btn btn-dark">Marqué comme lu</a> <a href="mailto:<%= allMessages[i].email %> " class="btn btn-warning" >Répondre</a></div>
+              </div>
+            </div>
           </div>
-        </div>
-        <%= allMessages[i].name %>
-        <%= allMessages[i].organisation %>
-        <%= allMessages[i].content %>   
-      </div>
+        <% } else if (allMessages[i].read === true) {%> 
+          <div class="message-container">
+            <div class="card read-card">
+              <div class="card-header message-header"><h5 >De <%= allMessages[i].name %> <span class="card-date"><%= allMessages[i].date.getDate()%>/ <%= allMessages[i].date.getMonth()%> / <%= allMessages[i].date.getFullYear()%> </span> </h5></div>
+              <div class="card-body">
+                <h5 class="card-title card-title-read"> <span class="red"><%= allMessages[i].organisation %> </span>- <%= allMessages[i].email %> </h5>
+                <p class="message-text"> <%= allMessages[i].content %> </p>
+                <div class="message-buttons"><a href="/dashboard/unread-message?id=<%= allMessages[i].id%> " class="btn btn-outline-dark">Marqué comme non-lu</a> </div>
+              </div>
+            </div>
+          </div>
+        <% } %> 
       <% } %> 
 
     </div>
   
   </div>
   
+
   <%- include('../partials/footer')%>
 </body>
 </html>

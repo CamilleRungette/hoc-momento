@@ -9,9 +9,7 @@
   <%- include('./partials/navbar') %> 
       <h1 class="contact-title">NOUS CONTACTER</h1>
         <div class="contact-container">
-
           <div class="contact-front-container my-auto">
-
             <img src="/images/compagnie2.png" class="contact-image" />
 
             <form action="/contact" method="POST" class=" col-5 contact-form">
@@ -34,10 +32,18 @@
               <div class="mt-4">
                 <button class="contact-button">Envoyer</button>
               </div>
-
             </form>
           </div>
         </div>
+
+        <div class="newsletter-container">
+          <form class="newsletter-form" action="/newsletter" method="POST" >
+            <label class="newsletter-label">Newsletter:</label>
+            <input type="email" name="email" placeholder="exemple@exemple.com" class="form-control input-contact" />
+            <button class="newsletter-button" >Je m'inscris</button>
+          </form>
+        </div>
+
   <%- include('./partials/footer') %> 
   </body>
 </html>
