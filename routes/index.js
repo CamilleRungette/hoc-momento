@@ -69,7 +69,7 @@ router.post('/contact', function(req, res){
       console.log("MESSAGE SAVED", message); 
 
       const sgMail = require('@sendgrid/mail');
-      sgMail.setApiKey("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");
+      sgMail.setApiKey(process.env.SECRET_SENGRID_KEY);
       const msg = {
         to: 'c.rungette@gmail.com',
         from: req.body.email,
