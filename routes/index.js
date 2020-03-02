@@ -99,5 +99,10 @@ router.post('/newsletter', function(req, res){
   res.redirect('contact')
 })
 
+router.get('/agenda', function(req, res ){
+
+  res.render('agenda')
+})
+
 module.exports = router;
 
