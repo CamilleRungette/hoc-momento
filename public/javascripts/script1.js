@@ -1,5 +1,3 @@
-console.log("hello")
-
 //Homepage picture
 
 $(document).ready(function(){
@@ -10,7 +8,7 @@ $(document).ready(function(){
   })
 }) 
 
-
+/////////////////////////////////////////////////////////////////////////////:
 // Small carrousel from cultural-action
 
 let photos = document.getElementsByClassName("aaction-photo");
@@ -31,4 +29,42 @@ function changeIndexLeft(){
   let movingPhoto = photos[0]
   parent.insertBefore(movingPhoto, photos[photos.length-1])
 }
+
+////////////////////////////////////////////////////////////////////
+// Modal from cultural-action
+
+let trigger = document.getElementsByClassName("trigger");
+let modal = document.getElementById("made-modal")
+let closeButton = document.getElementById("close-button")
+let modalPhoto = document.getElementById("aaction-modal-photo")
+
+for (i=0; i< trigger.length; i++){
+  trigger[i].addEventListener("click", function(){
+    let src = this.getAttribute("src")
+      showModal(src)
+  } )
+}
+
+function showModal(src){  
+  modal.style.opacity = "1";
+  modal.style.zIndex = "1"
+  modal.style.transitionDuration ="0.5s"
+  modalPhoto.setAttribute('src', src)
+}
+
+closeButton.addEventListener("click", closeModal);
+function closeModal(){
+  modal.style.opacity = "0"
+  modal.style.zIndex = "-1"
+  modal.style.transitionDuration ="0.5s"
+}
+
+
+
+// modal.addEventListener("click", thisClose);
+// function thisClose(){
+//   this.style.opacity = "0"
+//   this.style.zIndex = "-1"
+//   this.style.transitionDuration ="0.5s"
+// }
 

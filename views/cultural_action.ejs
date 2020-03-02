@@ -9,20 +9,42 @@
   </head>
     <body>
       <%- include('./partials/navbar') %> 
-      <div class="aaction-container">
-          <h1 class="aaction-place"> <%= action.place %></h1>
-          <p class="aaction-desc"> <%= action.description %></p>
-      </div>
-      <div class="aaction-caroussel">
-        <i class="fas fa-caret-left fa-4x aaction-left-arrow" id="aaction-left-arrow"></i>
-          <div class="aaction-photos" id="aaction-photos">
-            <% for (let i=0; i< action.gallery.length; i++){ %>
-                <img src=<%= action.gallery[i] %> class="aaction-photo"  />
-           <% } %> 
+      <div class="aaction-big-container">
+        <div class="aaction-background">
+          <img src=<%= action.photo %>  class="aaction-banner-photo" />
+          <div class="aaction-banner">
+            <h1 class="aaction-place"> <%= action.place %></h1>
           </div>
-          <i class="fas fa-caret-right fa-4x aaction-right-arrow" id="aaction-right-arrow"></i>
-      </div>
-    <%- include('./partials/footer') %> 
+
+          <div class="aaction-container">
+              <p class="aaction-desc"> <%= action.description %></p>
+          </div>
+          
+          <div class="aaction-caroussel">
+            <i class="fas fa-caret-left fa-4x aaction-left-arrow" id="aaction-left-arrow"></i>
+              <div class="aaction-photos" id="aaction-photos">
+                <% for (let i=0; i< action.gallery.length; i++){ %>
+                    <img src=<%= action.gallery[i] %> class="aaction-photo trigger"  />
+              <% } %> 
+              </div>
+              <i class="fas fa-caret-right fa-4x aaction-right-arrow" id="aaction-right-arrow"></i>
+          </div>
+        </div>
+
+        <div class="aaction-container">
+          <div id="made-modal">
+            <span id="close-button">&times;</span>
+            <div class="modal-content">
+              <div class="mx-auto">
+                <img src="/images/firstpage.png" id="aaction-modal-photo" />
+              </div>
+            </div>
+            <i class="fas fa-caret-right fa-7x"></i>
+          </div>
+        </div>
+    </div>
+    <%- include('./partials/footer'); %> 
+
 
     <script src="/javascripts/script1.js" ></script>
   </body>

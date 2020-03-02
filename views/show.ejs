@@ -7,9 +7,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   </head>
     <body>
-      <%- include('./partials/navbar') %> 
+      <%- include('./partials/navbar') %>
+      <div class="aaction-big-container">
+      <img src=<%= show.photo %> class="aaction-banner-photo"  /> 
+      <div class="aaction-banner">
+        <h1 class="show-title"> <%= show.title %></h1>
+      </div>
+      
       <div class="aaction-container">
-          <h1 class="show-title"> <%= show.title %></h1>
           <p class=" aaction-desc"> <%= show.description %></p>
       </div>
       <div class="aaction-caroussel">
@@ -21,6 +26,7 @@
           </div>
           <i class="fas fa-caret-right fa-4x aaction-right-arrow" id="aaction-right-arrow"></i>
       </div>
+    </div>
       <%- include('./partials/footer') %> 
 
     <script src="/javascripts/script1.js" ></script>
