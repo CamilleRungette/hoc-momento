@@ -641,7 +641,6 @@ font-size: 1.3em;
   color: grey;
 }
 
-
 /* ==========================================
                     Shows
 =========================================== */
@@ -653,33 +652,47 @@ font-size: 1.3em;
   height: 92%;
   width: 90%;
   margin-top: 2em;
-  font-weight: bold;
-  opacity: 0;
+  opacity: 1;
+  padding-top: 4%;
 }
 
-.aactions-img:hover > .shows-hover{
+.shows-hover:hover{
   transition-duration: 500ms;
-  opacity: 1;
+  opacity: 1 !important;
 }
 
 .shows-place{
   font-size: 3.5em;
-  text-align: center;
+  text-align: right;
   letter-spacing: 2px;
+  font-weight: bold;
 }
+
 .shows-desc{
-  margin-top: 3.6em;
-  height: 5em;
+  margin-top:25% ;
+  height: 3em;
   width: 90%;
   white-space: nowrap;
   overflow: hidden;
-  font-size: 2.5em;
+  font-size: 2em;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
   text-overflow: ellipsis;
+  white-space: normal;
+}
+
+@media screen and (max-width: 1750px){
+  .shows-desc{
+    margin-top: 15%;
+  }
 }
 
 .shows-title{
-  text-align: center;
+  text-align: right;
   font-size: 1.8em;
+  font-weight: bold;
   padding-right: 25px;
   font-style: italic;
 }

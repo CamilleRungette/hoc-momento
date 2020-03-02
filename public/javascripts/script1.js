@@ -32,14 +32,3 @@ function changeIndexLeft(){
   parent.insertBefore(movingPhoto, photos[photos.length-1])
 }
 
-
-
-// let cards = document.getElementsByClassName("col-md-4")
-// let parent = document.getElementsByClassName("row")[1]
-// let bouton = document.querySelector("main").querySelectorAll("a")[1]
-
-// bouton.addEventListener("click", changeIndexCard);
-// function changeIndexCard(){
-// let movingCard = cards[cards.length-1]
-// parent.insertBefore(movingCard, cards[0])
-// }
