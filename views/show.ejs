@@ -3,17 +3,26 @@
   <head>
     <!-- <link href="https://fonts.googleapis.com/css?family=Assistant:300|Exo:200|Lato:300&display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css?family=Assistant:300|Exo:200|Lato:300&display=swap" rel="stylesheet"> -->
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   </head>
     <body>
       <%- include('./partials/navbar') %> 
-      <div class="container col-11">
-        <div class="col-10 mx-auto">
-          <h1 class="mt-5 show-title"> <%= show.title %></h1>
-          <p class=" mt-5 aaction-desc"> <%= show.description %></p>
-        </div>
-        <div class="aaction-photos my-5">
-        </div>
+      <div class="aaction-container">
+          <h1 class="show-title"> <%= show.title %></h1>
+          <p class=" aaction-desc"> <%= show.description %></p>
       </div>
-    <%- include('./partials/footer') %> 
+      <div class="aaction-caroussel">
+        <i class="fas fa-caret-left fa-4x aaction-left-arrow" id="aaction-left-arrow"></i>
+          <div class="aaction-photos" id="aaction-photos">
+            <% for (let i=0; i< show.gallery.length; i++){ %>
+                <img src=<%= show.gallery[i] %> class="aaction-photo"  />
+           <% } %> 
+          </div>
+          <i class="fas fa-caret-right fa-4x aaction-right-arrow" id="aaction-right-arrow"></i>
+      </div>
+      <%- include('./partials/footer') %> 
+
+    <script src="/javascripts/script1.js" ></script>
   </body>
 </html>

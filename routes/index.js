@@ -29,6 +29,8 @@ router.get('/actions-culturelles', async function(req, res, next){
 router.get('/action-culturelle', async function(req, res, next){
   
   action = await ActionModel.findOne({_id: req.query.id})
+  console.log(action);
+  
 
   res.render('cultural_action', {action})
 })

@@ -501,7 +501,7 @@ font-size: 1.3em;
   background-image: url(/images/culturelle.png);
   background-size: cover;
   width: 46%;  
-  min-width: 40em;
+  min-width: 37em;
   height: 33em;
   padding-top: 2em;
 } 
@@ -572,19 +572,75 @@ font-size: 1.3em;
   left: 5%;
 }
 
+.aaction-container{
+  padding-top: 5%;
+  width: 80%;
+  margin: auto;
+  margin-bottom: 5%;
+}
+
+.aaction-place{
+  font-size: 400%;
+  font-weight: bold !important;
+  margin-bottom: 3%;
+}
+
 .aaction-desc{
-  /* font-family: 'Exo', sans-serif; */
-  font-family: 'Assistant', sans-serif;
-  font-size: 2em;
+  font-size: 165%;
   letter-spacing: 1.2px;
 }
 
-.aaction-photos{
+.aaction-caroussel{
+  margin-bottom: 5%;
   height: 10em;
-  background-color: rgba(175, 175, 175, 0.2);
   border-top: 1px black solid;
   border-bottom: 1px black solid;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
 }
+
+.aaction-photos{
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  margin: auto;
+  overflow: hidden;
+}
+
+.aaction-photo{
+  transition-duration: .5s;
+  cursor: pointer;
+  height: 8em;
+  margin-top: 1%;
+  margin-bottom: 5%;
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+.aaction-photo:hover{
+  height: 8.5em;
+  transition-duration: .5s;
+}
+
+.aaction-right-arrow{
+  margin-right: 1%;
+  cursor: pointer;
+}
+
+.aaction-right-arrow:hover{
+  color: grey ;
+}
+
+.aaction-left-arrow{
+  margin-left: 1%;
+  cursor: pointer;
+}
+
+.aaction-left-arrow:hover{
+  color: grey;
+}
+
 
 /* ==========================================
                     Shows
@@ -641,6 +697,7 @@ font-size: 1.3em;
   height: 101vh;
   width: 100vw;
   margin: -10px;
+  cursor: pointer;
 }
 
   /* ==========================================
