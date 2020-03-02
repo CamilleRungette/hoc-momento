@@ -5,10 +5,9 @@
   </head>
   <body>
     <%- include('./partials/navbar') %> 
-    <div class="container col-10 ">
-      <div class="d-flex flex-wrap justify-content-between mt-5">
+    <div class="made-container aactions-container">
         <% for (i=0; i< shows.length; i++) {%>
-          <div class="aactions-img mb-5">
+          <div class="aactions-img">
             <div class="shows-hover m-auto">
               <a href="/spectacle?id=<%=shows[i].id %>" class="white link-white">
               <p class="shows-place pt-4"><em><%= shows[i].title %> </em></p>
@@ -18,8 +17,6 @@
             </div>
           </div>
         <% } %> 
-      </div>
-    
     </div>
     <%- include('./partials/footer') %> 
   </body>

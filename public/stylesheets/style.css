@@ -122,9 +122,16 @@ body {
   position: absolute;
   bottom: 4%;
   left: 2%;
-  height: 40%;
+  height: 35%;
+  width: 70%;
   background-color: rgba(249, 176, 58, 0.6);
   padding: 1em;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
 }
 
 .home-title{
@@ -134,29 +141,26 @@ body {
   text-align: right;
   margin-right: 2%;
   margin-top: 2%;
+  
 }
 
 .home-text{
-  font-size: 5em;
+  font-size: 450%;
   color: white;
   font-weight: bold;
+  display: block;
 }
 
-@media screen and (max-width: 1530px){
-  .home-text{
-    font-size: 4.4em;
-  }
 
-  .home-frame{
-    height: 36%;
-  }
-}
 @media screen and (max-width: 1250px){
   .home-text{
-    font-size: 4em;
+    font-size: 350%;
+  }
+  .home-frame{
+    height: 28%;
   }
 }
-@media screen and (max-width: 1050px){
+/* @media screen and (max-width: 1050px){
   .home-text{
     font-size: 3.5em;
   }
@@ -166,7 +170,7 @@ body {
     font-size: 2.5em;
   }
 }
-
+ */
 #carrousselImg .img_carrous img {
   margin-left: 0;
   width: 100%;
@@ -261,7 +265,6 @@ body {
   font-size: 1.2em;
   max-width: 98%;
   line-height: 1.8em;
-
 }
 
 .company-text-photo{
@@ -270,7 +273,7 @@ body {
 }
 
 .company-title{
-  margin-left: 50%;
+  margin-left: 53%;
 }
 
 @media screen and (min-width: 1610px){
@@ -307,8 +310,10 @@ body {
 /* ==========================================
               Générique
   =========================================== */
-  .container{
+  .made-container{
     min-height: 80vh;
+    width: 80%;
+    margin: auto;
   }
 
   .yellow {
@@ -482,15 +487,47 @@ font-size: 1.3em;
             Cultural Actions / Shows
 =========================================== */
 
+.aactions-container{
+  display: flex;
+  justify-content: space-between;
+  padding-top: 5%;
+  flex-wrap: wrap;
+}
+
 .aactions-img{
+  margin-left: 1%;
+  margin-right: 1%;
+  margin-bottom: 5%;
   background-image: url(/images/culturelle.png);
   background-size: cover;
-  width: 48%;  
-  height: 30em;
+  width: 46%;  
+  min-width: 40em;
+  height: 33em;
   padding-top: 2em;
 } 
 
+@media screen and (max-width: 1700px){
+  .aactions-img{
+    width: 65%;
+    margin: auto;
+    margin-bottom: 8%;
+  }
+}
+
+@media screen and (max-width: 1420px){
+  .aactions-period{
+    transition-duration: .8s;
+    margin-top: -4%;
+  }
+  .aactions-title{
+    transition-duration: .8s;
+    margin-top: -3%;
+  }
+}
+
+
 .aactions-hover{
+  position: relative;
   transition-duration: 500ms;
   background-color: rgba(249, 176, 58, 0.6);
   height: 92%;
@@ -506,7 +543,7 @@ font-size: 1.3em;
 }
 
 .aactions-place{
-  font-size: 3.5em;
+  font-size: 350%;
   text-align: center;
   letter-spacing: 2px;
 }
@@ -530,6 +567,9 @@ font-size: 1.3em;
   height: 8em;
   width: 90%;
   margin: auto;
+  position: absolute;
+  bottom: 10%;
+  left: 5%;
 }
 
 .aaction-desc{
