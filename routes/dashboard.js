@@ -4,6 +4,7 @@ var AdminModel = require ('../models/admin')
 var ActionModel = require('../models/cultural_actions')
 var ShowModel = require('../models/shows')
 var MessageModel = require('../models/message')
+var EventModel = require('../models/event')
 var multer  = require('multer')
 var cloudinary = require('cloudinary')
 var cloudinaryStorage = require('multer-storage-cloudinary');
@@ -358,7 +359,7 @@ router.get('/delete-photo-show', async function(req, res){
   }
 })
 
-router.post('/add-photo-show',  parser.array('images'), async function(req, res){
+router.post('/add-photo-show',  parser.array('images'), async function(req, res,next){
   if(!req.session.admin){
     res.redirect('/dashboard/login')
   } else {
@@ -449,6 +450,38 @@ router.post('/create-person', function(req, res, next){
       }
     })
   }
+})
+
+
+/* AGENDA PART */
+router.get('/agenda', async function(req,res){
+
+  allEvents = await EventModel.find(function(error, events){
+    console.log(events);
+    
+  })
+
+  res.render('dashboard/agenda', {allEvents})
+})
+
+router.post('/create-event', parser.single('image'), async function(req,res){
+    newEvent = new EventModel({
+      title: req.body.title,
+      place: req.body.place,
+      photo: req.file.secure_url,
+      period: req.body.period,
+      description: req.body.description,
+      city: req.body.city, 
+      type: req.body.type,
+      date: req.body.date
+    })
+
+    newEvent.save(function(error, event){
+      console.log("EVENT SAVED:", event);
+    })
+
+    console.log(newEvent);  
+  res.redirect('/dashboard/agenda')
 })
 
 

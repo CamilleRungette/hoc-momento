@@ -259,10 +259,14 @@ body {
 /* ==========================================
               Compagnie
   =========================================== */
+.company-container{
+  padding-top: 10%;
+}
 
 .company-text{
+  padding-top: 3%;
   font-size: 1.2em;
-  max-width: 98%;
+  max-width: 95%;
   line-height: 1.8em;
 }
 
@@ -275,9 +279,9 @@ body {
   margin-left: 53%;
 }
 
-@media screen and (min-width: 1610px){
+@media screen and (min-width: 1500px){
   .img-company1{
-    width: 49%;
+    width: 43%;
   }
   .company-text-photo{
     width: 44%;
@@ -285,15 +289,15 @@ body {
   }
 }
 
-@media screen and (max-width: 1610px){
+@media screen and (max-width: 1500px){
   .company-text-photo{
-    width: 90%;
+    width: 80%;
   }
   .company-text{
-    width: 90%;
+    width: 80%;
   }
   .img-company1{
-    width: 100%;
+    width: 80%;
     margin-bottom: 3em;
   }
   .first-word{
@@ -349,6 +353,14 @@ body {
 
   .black:hover{
     color: black;
+  }
+
+  .grey{
+    color: rgb(122, 122, 122);
+  }
+
+  .grey:hover{
+    color: rgb(122, 122, 122);
   }
 
   .link-white:hover{
@@ -410,6 +422,11 @@ font-size: 1.3em;
 
 .actions-list{
   font-size: 1.13em;
+  margin-top: 5%;
+}
+
+.form-dashboard{
+  margin-bottom: 10%;
 }
 
 .action-item{
@@ -484,6 +501,22 @@ font-size: 1.3em;
 
 .card-title-read{
   font-size: 100%;
+}
+
+.made-form{
+  border: none;
+  border-bottom: 1px grey solid;
+  border-radius: 0%;
+  width: 100%;
+}
+
+.made-form:focus{
+  outline: transparent;
+}
+
+.exemple{
+  font-size: 80%;
+  font-style: italic;
 }
 
 
@@ -586,19 +619,32 @@ font-size: 1.3em;
 
 .aaction-banner-photo{
   width: 100%;
-  height: 17em;
+  height: 20em;
   object-fit: cover;
 }
+
 
 .aaction-banner{
   background-color: rgba(255, 255, 255, 0.5);
   width: 100%;
-  height: 17em;
+  height: 20em;
   position: absolute;
   top: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.aaction-banner-shows{
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 100%;
+  height: 20em;
+  position: absolute;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
 }
 
 
@@ -919,4 +965,92 @@ font-size: 1.3em;
   display: flex;
   width: 50%;
   margin: auto;
+}
+
+
+/* ==========================================
+                    Contact
+=========================================== */
+
+.futur-event{
+  margin-top: 5%;
+  margin-bottom: 5%;
+  background-color: #c32527;
+  color: #fff;
+  font-size: 200%;
+  border-radius: 20px 20px 0% 0;
+  padding-left: 5%;
+}
+
+.past-event{
+  margin-top: 5%;
+  margin-bottom: 5%;
+  background-color: rgb(249, 176, 58);
+  color: #fff;
+  font-size: 200%;
+  border-radius: 20px 20px 0% 0;
+  padding-left: 5%;
+ 
+}
+
+.event-card{
+  width: 70%;
+  margin: auto;
+  display: flex;
+  position: relative;
+  margin-bottom: 5%;  
+  transition-duration: .5s;
+}
+
+.event-card:hover > .card-event-photo{
+  /* box-shadow: 10px 10px 10px grey; */
+  width: 52%;
+  transition-duration: .5s;
+}
+
+.event-card:hover > .card-event-infos{
+  width: 48%;
+  transition-duration: .5s;
+} 
+
+.card-event-photo{
+  width: 50%;
+  text-align: center;
+  transition-duration: .5s;
+}
+
+.event-photo{
+  width: 100%;
+}
+
+.card-event-infos{
+  width: 50%;
+  margin-left: 5%;
+  margin-top: 3%;
+  transition-duration: .5s;
+}
+
+.card-event-title{
+  font-size: 220%;
+  margin-bottom: 5%;
+}
+
+.card-event-place{
+  border-top: 1px solid #D7D7D7;
+  font-weight: bold;
+  padding-top: 1%;
+}
+
+.card-event-desc{
+  border-top: 1px solid #D7D7D7;
+  padding-top: 1%;
+}
+
+.bold{
+  font-weight: bold;
+}
+
+.card-event-period{
+  font-size: 120%;
+  font-weight: bold;
 }

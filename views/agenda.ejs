@@ -4,12 +4,61 @@
     <meta charset='utf-8'>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel='stylesheet' type='text/css' media='screen' href='/stylesheets/style.css'>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
   </head>
 
   <body>
     <%- include('./partials/navbar'); %> 
-      <div class=" made-container">
+      <div class="aaction-big-container">
+        <img src="/images/compagnie1.png"  class="aaction-banner-photo" />
+        <div class="aaction-banner-shows">
+          <h1 class="aaction-place white ">AGENDA</h1>
+        </div>
+        <div class="made-container">
+          <div class="futur-event">Événements à venir</div>
 
+          <% for (let i=0; i< futurEvents.length; i++) { %>  
+            <div class="event-card">
+              <div class="card-event-photo">
+                <img src=<%= futurEvents[i].photo %> class="event-photo" /> 
+              </div>
+              <div class="card-event-infos">
+                <p class="card-event-period"> <i class="fas fa-caret-right"></i> <%= futurEvents[i].period %> </p>
+                <% if (futurEvents[i].type == "Action Culturelle") { %> 
+                <h5 class="card-event-title red"><%= futurEvents[i].title %></h5>
+                <% } else{%>
+                  <h5 class="card-event-title yellow"><%= futurEvents[i].title %></h5>
+                <% } %> 
+                <h6 class="card-event-place"><span class="grey">Lieux :</span> <%= futurEvents[i].place %> - <%= futurEvents[i].city %>  </h6>
+                <h6 class="card-event-desc"><span class="grey bold">Description:</span> <%= futurEvents[i].description %>  </h6>
+                <h6 class="card-event-desc"><span class="grey bold"><%= futurEvents[i].type %></span></h6>
+              </div>
+            </div>
+          <% } %> 
+
+          <div class="past-event">Événements passés</div>
+
+          <% for (let i=0; i< pastEvents.length; i++) { %>  
+            <div class="event-card">
+              <div class="card-event-photo">
+                <img src=<%= pastEvents[i].photo %> class="event-photo" /> 
+              </div>
+              <div class="card-event-infos">
+                <p class="card-event-period"> <i class="fas fa-caret-right"></i> <%= pastEvents[i].period %> </p>
+                <% if (pastEvents[i].type === "Action Culturelle") { %> 
+                <h5 class="card-event-title red"><%= pastEvents[i].title %></h5>
+                <% } else{%>
+                  <h5 class="card-event-title yellow"><%= pastEvents[i].title %></h5>
+                <% } %> 
+                <h6 class="card-event-place"><span class="grey">Lieux :</span> <%= pastEvents[i].place %> - <%= pastEvents[i].city %>  </h6>
+                <h6 class="card-event-desc"><span class="grey bold">Description:</span> <%= pastEvents[i].description %>  </h6>
+                <h6 class="card-event-desc"><span class="grey bold"><%= pastEvents[i].type %></span></h6>
+              </div>
+            </div>
+          <% } %> 
+            
+        </div>
       </div>
     <%- include('./partials/footer'); %> 
   </body>

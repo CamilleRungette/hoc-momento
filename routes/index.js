@@ -4,6 +4,7 @@ var ActionModel = require('../models/cultural_actions')
 var ShowModel = require('../models/shows')
 var MessageModel = require('../models/message')
 var NewsModel = require('../models/newsletter') 
+var EventModel = require('../models/event')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -99,9 +100,26 @@ router.post('/newsletter', function(req, res){
   res.redirect('contact')
 })
 
-router.get('/agenda', function(req, res ){
+router.get('/agenda', async function(req, res ){
+  allEvents = await EventModel.find(function(error, events){
+    console.log("OK");
+  })
+  let futurEvents = [];
+  let pastEvents = [];
+  let currentDate = new Date
 
-  res.render('agenda')
+  for (i=0; i< allEvents.length; i++){
+    if(allEvents[i].date >= currentDate){
+      futurEvents.push(allEvents[i])
+    }else{
+      pastEvents.push(allEvents[i])
+    }
+  }
+
+  console.log("FUTUR:", futurEvents);
+  console.log("PAST:", pastEvents);
+  
+  res.render('agenda', {futurEvents, pastEvents})
 })
 
 module.exports = router;
