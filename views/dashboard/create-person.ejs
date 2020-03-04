@@ -1,0 +1,44 @@
+<form action="/dashboard/create-person" method="POST" class="col-8 border p-3 form-dashboard mx-auto" enctype="multipart/form-data">
+  <div class="form-group d-flex">
+    <div class="fifty">
+      <label>Prénom</label>
+      <input type="text" class="made-form" name="first_name">
+    </div >
+    <div class="fifty">
+      <label>Nom</label>
+      <input type="text" class="made-form" name="last_name">
+    </div>
+  </div>
+
+  <div class="form-group d-flex">
+    <div class="fifty">
+      <label>Email</label>
+      <input type="text" class="made-form" name="email" >
+    </div>
+    <div class="fifty">
+      <label>Rôle</label>
+      <input type="text" class="made-form" name="title">
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <div class="hundred">
+    <label>Description</label>
+    <textarea class="made-form" name="description"></textarea>
+  </div>
+  </div> 
+
+  <div class="form-group d-flex">
+    <div class="fifty">
+      <label>Photo</label><br/>
+      <input type="file" name="image"/>
+    </div> 
+  </div> 
+    
+  <div class="hundred text-center mt-3">
+    <button class="btn btn-warning action-button text-white"> Créer</button>
+  </div>
+
+</form>
+
+

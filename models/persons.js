@@ -6,7 +6,8 @@ let personSchema = mongoose.Schema({
   title: String,
   description: String,
   email: String,
-  telephone: String
+  telephone: String,
+  photo: String,
 })
 
 const PersonModel = mongoose.model("persons", personSchema);

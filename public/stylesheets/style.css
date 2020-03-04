@@ -429,6 +429,7 @@ label{
 
 .action-title{
   font-size: 400%;
+  font-weight: bold;
 }
 
 .messages-title{
@@ -670,7 +671,6 @@ font-size: 1.3em;
   display: flex;
   align-items: center;
   justify-content: center;
-
 }
 
 
