@@ -59,12 +59,9 @@ function closeModal(){
   modal.style.transitionDuration ="0.5s"
 }
 
-
-
 // modal.addEventListener("click", thisClose);
 // function thisClose(){
 //   this.style.opacity = "0"
 //   this.style.zIndex = "-1"
 //   this.style.transitionDuration ="0.5s"
 // }
-
