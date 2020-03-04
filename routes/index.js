@@ -5,6 +5,7 @@ var ShowModel = require('../models/shows')
 var MessageModel = require('../models/message')
 var NewsModel = require('../models/newsletter') 
 var EventModel = require('../models/event')
+var PersonModel = require('../models/persons')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -122,5 +123,12 @@ router.get('/agenda', async function(req, res ){
   res.render('agenda', {futurEvents, pastEvents})
 })
 
+router.get('/equipe', async function(req, res){
+  allPersons = await PersonModel.find(function(error, persons){
+    console.log(persons);
+  })
+  
+  res.render('team', {allPersons})
+})
 module.exports = router;
 

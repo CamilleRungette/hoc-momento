@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+  </head>
+  <body>
+    <%- include('./partials/navbar') %> 
+    <div class="aaction-big-container">
+      <img src="/images/gallery/_MG_0275.jpg"  class="aaction-banner-photo" />
+      <div class="aaction-banner-shows">
+        <h1 class="aaction-place white ">L'ÉQUIPE</h1>
+      </div>
+      
+      <div class="made-container aactions-container">
+        <% for (let i=0; i<allPersons.length ; i++){ %>
+          <div class="team-big-card">
+            <div class="team-card" id="team-card<%=i%>">
+              <img src=<%= allPersons[i].photo %> class="team-img" id="team-img<%=i%>" />   
+              <div class="team-infos">
+                <p class="team-name"><%= allPersons[i].first_name %> <%= allPersons[i].last_name %></p>
+                <p class="team-title"><%= allPersons[i].title %> </p>
+                <p class="team-desc"><%= allPersons[i].description %> </p>
+                <p><i class="fas fa-envelope"></i> <%= allPersons[i].email %> </p>
+              </div>       
+            </div>
+          </div>
+        <% } %> 
+      </div>
+
+      <%- include('./partials/footer') %> 
+      <script src="/javascripts/script2.js"></script>
+  </body>
+</html>
