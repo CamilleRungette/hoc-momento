@@ -516,22 +516,22 @@ router.post('/delete-event', async function(req, res){
 
 router.get('/update-event', async function(req,res){
   console.log(req.query);
-  // if(!req.session.admin){
-  //   res.redirect('/dashboard/login')
-  // } else {  
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {  
     event = await EventModel.findById(req.query.id)
     console.log("L'EVENT =============>", event)
 
     res.render('./dashboard/event-update', {event})
-  // }
+  }
 
 })
 
 router.post('/update-event', async function (req, res){
   console.log(req.body);
-  // if(!req.session.admin){
-  //   res.redirect('/dashboard/login')
-  // } else {
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {
     try {
     if (req.body.description === " ") {
       console.log("hello =====>")
@@ -556,7 +556,7 @@ router.post('/update-event', async function (req, res){
     }catch(error){
       console.log(error);
     };
-  // }
+  }
 
 })
 
