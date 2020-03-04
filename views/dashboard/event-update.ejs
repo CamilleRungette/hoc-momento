@@ -1,0 +1,77 @@
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel='stylesheet' type='text/css' media='screen' href='/stylesheets/style.css'>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">  
+  </head>
+  <body>
+    <%- include('../partials/navbarAdmin') %> 
+    <div class="made-container update-container">
+      <h2 class="text-center action-title mb-5">Modifier l'événement : <%= event.title %></h2>
+
+      <form action="/dashboard/update-event" class="col-10 mx-auto mt-5" method="POST">
+        <input type="hidden" name="id" value="<%= event.id %>" />
+        <div class="form-group d-flex">
+          <div class="fifty">
+            <label>Lieu</label>
+            <input type="text" class="made-form" value="<%= event.place %>" name="place">
+          </div>
+          <div class="fifty">
+            <label>Ville</label>
+            <input type="text" class="made-form" value="<%= event.city %> " />
+          </div>
+        </div>
+        <div class="form-group d-flex">
+          <div class="fifty" >
+            <label>Titre</label>
+            <input type="text" class="made-form" value="<%= event.title %>" name="title">
+          </div>
+          <div class="fifty">
+            <label>Période</label>
+            <input type="text" class="made-form" value="<%= event.period %>" name="period">
+          </div>
+        </div>
+        <div class="form-group d-flex">
+          <div class="fifty d-flex">
+            <div class="fifty">
+              <label>Date de début</label>
+              <input type="date" class="made-form" />
+            </div>
+            <div class="fifty">
+              <label>Date de fin</label>
+              <input type="date" class="made-form" />
+            </div>
+          </div>
+          <div class="fifty mt-3">
+            <div class="update-input">
+              <% if (event.type === "Action Culturelle") {%> 
+              <input class="form-check-input" type="radio" name="type" value="Action Culturelle" checked >
+              <% } else { %>
+                <input class="form-check-input" type="radio" name="type" value="Action Culturelle" >
+              <% } %>
+              <label class="form-check-label text-center">Action culturelle</label>
+            </div>
+            <div  class="update-input">
+              <% if (event.type === "Spectacle") {%> 
+              <input class="form-check-input " type="radio" name="type" value="Spectacle" checked>
+              <%} else {%>
+                <input class="form-check-input " type="radio" name="type" value="Spectacle">
+              <% } %>  
+              <label class="form-check-label">Spectacle</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group hundred">
+          <label>Description</label>
+          <textarea class="made-form" value="<%= event.description %>" name="description"> </textarea>
+        </div>
+        <div class="hundred text-center">
+          <button class="btn btn-warning action-button text-white"> Modifier</button>
+        </div>
+      </form>
+
+    </div>
+    <%- include('../partials/footer') %> 
+  </body>
+</html>

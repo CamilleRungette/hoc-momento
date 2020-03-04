@@ -20,7 +20,33 @@
 
     <div class="separator col-12"></div>
 
-    
+    <div class="actions-list col-10 mx-auto">
+      <% for (i=0; i< allEvents.length; i++){ %>
+        <div class="d-flex action-item ">
+          <div class="col-2">
+            <div class="red"><%= allEvents[i].title%></div> <br/>
+            <div><%= allEvents[i].period%></div>
+            <div> <%= allEvents[i].city  %>  </div> <br/>
+            <div><%= allEvents[i].place  %>  </div>
+            <div><%= allEvents[i].type %> </div>
+          </div>
+          <div class="col-6 description-list"><%= allEvents[i].description%></div>
+          <div class="col-3"> <img src="<%=allEvents[i].photo %>" class="photo-list"  /> </div>
+          <div class="m-auto icon-column">
+            <form action="/dashboard/delete-event" method="POST">
+              <input type="hidden" name="id" value="<%= allEvents[i].id%>"   />
+              <button class="fas fa-trash-alt fa-2x red delete-button"></button>
+            </form>
+            <a href="/dashboard/update-action-gallery?id=<%= allEvents[i].id%>" title="Gallerie photo"><i class="fas fa-camera fa-2x mt-1 ml-1 black"></i></a> 
+            <a href="/dashboard/update-event?id=<%= allEvents[i].id %>" title="Modifier l'événement"><i class="far fa-edit fa-2x ml-1 yellow"></i></a>
+          </div>
+        </div>
+      <br/> <br/>
+    <div class="separator col-12 my-5"></div>
+
+      <%}%>
+    </div>
+
 
 
     </div>

@@ -1,40 +1,40 @@
 <form action="/dashboard/create-event" method="POST" class="col-8 border p-3 form-dashboard mx-auto" enctype="multipart/form-data">
   <div class="form-group d-flex">
-    <div class="col-6">
+    <div class="fifty">
       <label>Titre</label>
       <input type="text" class="made-form" placeholder="Montjoie! Saint-Denis, ..." name="title">
     </div >
-    <div class="col-6">
+    <div class="fifty">
       <label>Période</label>
       <input type="text" class="made-form" placeholder="Septembre - Février 2020 ..." name="period">
     </div>
   </div>
 
   <div class="form-group d-flex">
-    <div class="col-6">
+    <div class="fifty">
       <label>Lieu</label>
       <input type="text" class="made-form" placeholder="Acc.mie Fratellini,  ..." name="place">
     </div>
-    <div class="col-6">
+    <div class="fifty">
       <label>Ville</label>
       <input type="text" class="made-form" placeholder="Saint-Denis" name="city" >
     </div>
   </div>
   
   <div class="form-group">
-    <div class="col-12">
+    <div class="hundred">
     <label>Description</label>
     <textarea class="made-form" placeholder="Montjoie ! Saint-Denis ! est une œuvre théâtrale in situ ..." name="description"></textarea>
   </div>
   </div> 
 
   <div class="form-group d-flex">
-    <div class="col-4 ">
+    <div class="fifty">
       <label>Photo principale</label><br/>
       <input type="file" name="image"/>
     </div>  
     
-    <div class="form-check col-4 m-auto">
+    <div class="form-check fiftym-auto">
       <input class="form-check-input" type="radio" name="type" value="Action Culturelle">
       <label class="form-check-label text-center">
        Action culturelle
@@ -45,16 +45,23 @@
         Spectacle
       </label>
     </div>
-    <div class= "col-4 m-auto">
+
+  </div>
+  <div class="hundred d-flex">
+    <div class="fifty">
       <label>Date de début</label>
-      <input type="date" name="date" />
+      <input type="date" class="made-form" />
+    </div>
+    <div class="fifty">
+      <label>Date de fin</label>
+      <input type="date" class="made-form" />
     </div>
   </div>
 
-
-  <div class="button-container">
-    <button type="submit" class="btn btn-warning text-white action-button">Créer </button>
+  <div class="hundred text-center mt-3">
+    <button class="btn btn-warning action-button text-white"> Créer</button>
   </div>
-  </form>
+
+</form>
 
 

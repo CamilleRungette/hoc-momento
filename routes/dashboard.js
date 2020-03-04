@@ -455,16 +455,33 @@ router.post('/create-person', function(req, res, next){
 
 /* AGENDA PART */
 router.get('/agenda', async function(req,res){
-
+  // if(!req.session.admin){
+  //   res.redirect('/dashboard/login')
+  // } else {
   allEvents = await EventModel.find(function(error, events){
     console.log(events);
-    
   })
 
-  res.render('dashboard/agenda', {allEvents})
+  let futurEvents = [];
+  let pastEvents = [];
+  let currentDate = new Date
+
+  for (i=0; i< allEvents.length; i++){
+    if(allEvents[i].date >= currentDate){
+      futurEvents.push(allEvents[i])
+    }else{
+      pastEvents.push(allEvents[i])
+    }
+  }
+  res.render('dashboard/agenda', {allEvents, futurEvents, pastEvents})
+// }
 })
 
 router.post('/create-event', parser.single('image'), async function(req,res){
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {
+
     newEvent = new EventModel({
       title: req.body.title,
       place: req.body.place,
@@ -482,9 +499,65 @@ router.post('/create-event', parser.single('image'), async function(req,res){
 
     console.log(newEvent);  
   res.redirect('/dashboard/agenda')
+  }
 })
 
+router.post('/delete-event', async function(req, res){
+  console.log(req.body);
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {
+    event = await EventModel.deleteOne({_id: req.body.id})
+    console.log(`Event DELETED ============`)
+    res.redirect('/dashboard/agenda')
+  }
+  
+})
 
+router.get('/update-event', async function(req,res){
+  console.log(req.query);
+  // if(!req.session.admin){
+  //   res.redirect('/dashboard/login')
+  // } else {  
+    event = await EventModel.findById(req.query.id)
+    console.log("L'EVENT =============>", event)
 
+    res.render('./dashboard/event-update', {event})
+  // }
+
+})
+
+router.post('/update-event', async function (req, res){
+  console.log(req.body);
+  // if(!req.session.admin){
+  //   res.redirect('/dashboard/login')
+  // } else {
+    try {
+    if (req.body.description === " ") {
+      console.log("hello =====>")
+      update = await EventModel.updateOne(
+        {_id: req.body.id},
+        {place: req.body.place,
+        title: req.body.title,
+        period: req.body.period,
+        type: req.body.type,}
+      );
+    } else {
+      update = await EventModel.updateOne(
+        {_id: req.body.id},
+        {place: req.body.place,
+        title: req.body.title,
+        period: req.body.period,
+        type: req.body.type,
+        description: req.body.description}
+      ) ; 
+    }
+    res.redirect('/dashboard/agenda');
+    }catch(error){
+      console.log(error);
+    };
+  // }
+
+})
 
 module.exports = router;
