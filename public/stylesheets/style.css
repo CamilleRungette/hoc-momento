@@ -532,7 +532,7 @@ font-size: 1.3em;
 
 .made-form{
   border: none;
-  border-bottom: 1px grey solid;
+  border-bottom: 1px rgb(184, 184, 184) solid;
   border-radius: 0%;
   width: 100%;
   color: rgb(124, 124, 124);
@@ -676,6 +676,7 @@ font-size: 1.3em;
   display: flex;
   align-items: center;
   justify-content: center;
+
 }
 
 
@@ -923,79 +924,79 @@ font-size: 1.3em;
 /* ==========================================
                     Contact
 =========================================== */
-
-.contact-title{
-  margin-top: 4%;
-  margin-bottom: 4%;
-  margin-left: 23%;
-  font-weight: bold;
-  font-size: 400%;
-}
-
-.contact-container{
-  background-color: rgba(249, 176, 58, 0.3);
-  height: 60vh;
-  margin-bottom: 3%;
-}
-
 .input-contact{
+  margin-top: 4%;
   font-size: 1.2em !important;
-
-}
-
-.contact-image{
-  border-radius: 50%;
-  width: 50%;
 }
 
 .contact-front-container{
-  padding-top: 2%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 60%;
+  width: 40%;
   margin: auto;
 }
 
-.contact-button{
+.contact-form{
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+
+.contact-button-div{
   width: 100%;
-  background-color: black;
-  color: #fff;
+  text-align: center;
+}
+
+.contact-button{
+  transition-duration: .3s;
+  margin-top: 4%;
+  width: 30%;
+  background-color: rgb(182, 36, 39);
+  color: white;
   border: 2px solid transparent;
   border-radius: 10px;
   font-size: 1.4em;
 }
 
+.contact-button:hover{
+  transition-duration: .3s;
+  background-color: rgb(161, 33, 35);
+}
+
 .newsletter-container{
   margin: auto;
-  margin-top: 2%;
-  height: 2.5em;
-  line-height: 2.5em;
+  margin-top: 18%;
   margin-bottom: 3%;
 }
 
 .newsletter-button{
-  background-color: black;
-  color: #fff;
+  transition-duration: .3s;
+  background-color: white;
+  color:black;
   text-align: center;
   width: 10em;
   height: 2em;
   font-size: 1.4em;
   border-radius: 10px;
   margin-left: 3%;
+  margin-top: 4%;
   padding-top: 0.1em;
-  border: none;
+  border: 2px solid rgb(39, 39, 39);
+}
+
+.newsletter-button:hover{
+  transition-duration: .3s;
+  background-color: rgb(36, 36, 36);
+  color: #fff;
 }
 
 .newsletter-label{
   font-size: 1.5em;
   margin-right: 3%;
+  margin-top: 5%;
 }
 
 .newsletter-form{
+  height: 3em;
   display: flex;
-  width: 50%;
-  margin: auto;
+  align-items: center;
 }
 
 

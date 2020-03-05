@@ -7,35 +7,35 @@
   </head>
   <body>
   <%- include('./partials/navbar') %> 
-      <h1 class="contact-title">NOUS CONTACTER</h1>
-        <div class="contact-container">
-          <div class="contact-front-container my-auto">
-            <img src="/images/compagnie2.png" class="contact-image" />
+  <div class="aaction-big-container">
+    <img src="/images/gallery/_MG_0224.jpg"  class="aaction-banner-photo" />
+    <div class="aaction-banner-shows">
+      <h1 class="aaction-place white ">NOUS CONTACTER</h1>
+    </div>
+      <div class="made-container contact-front-container">
 
-            <form action="/contact" method="POST" class=" col-5 contact-form">
-              <div>
-                <input type="text" name="name" placeholder="Nom" class="form-control input-contact" />
-              </div>
-
-              <div class="mt-4">
-                <input type="email" name="email" placeholder="Email" class="form-control input-contact" />
-              </div>
-
-              <div class="mt-4">
-                <input type="text" name="organisation" placeholder="Organisation" class="form-control input-contact" />
-              </div>
-
-              <div class="mt-4">
-                <textarea name="content" placeholder="Message" class="form-control input-contact"></textarea>
-              </div>
-
-              <div class="mt-4">
-                <button class="contact-button">Envoyer</button>
-              </div>
-            </form>
+        <form action="/contact" method="POST" class="contact-form">
+          <div class="form-group">
+            <input type="text" name="name" placeholder="Nom" class="made-form input-contact" />
           </div>
-        </div>
 
+          <div class="form-group">
+            <input type="email" name="email" placeholder="Email" class="made-form input-contact" />
+          </div>
+
+          <div class="form-group">
+            <input type="text" name="organisation" placeholder="Organisation" class="made-form input-contact" />
+          </div>
+
+          <div class="form-group">
+            <textarea name="content" placeholder="Message" class="made-form input-contact"></textarea>
+          </div>
+
+          <div class="contact-button-div">
+            <button class="contact-button">Envoyer</button>
+          </div>
+        </form>
+        
         <div class="newsletter-container">
           <form class="newsletter-form" action="/newsletter" method="POST" >
             <label class="newsletter-label">Newsletter:</label>
@@ -43,7 +43,8 @@
             <button class="newsletter-button" >Je m'inscris</button>
           </form>
         </div>
-
+      </div>
+  </div>
   <%- include('./partials/footer') %> 
   </body>
 </html>
