@@ -20,11 +20,11 @@
     <%- include('./create-partners') %> 
 
     <div class="separator col-12"></div>
-      <div class="partner-container">
-        <% for (let i= 0; i<allPartners.length; i++){ %>
+      <div class="partner-container relative">
+        <% for ( let i= 0; i<allPartners.length; i++){ %>
           <div class="partner-card">
             <div class="partner-photo-div">
-              <img src=<%= allPartners[i].photo %> class="partner-photo"  />
+              <img src=<%= allPartners[i].photo %> class="partner-photo" id="partner-photo"/>
             </div>
             <div class="partner-infos">
               <p class="partner-name"><%= allPartners[i].name %> </p>
@@ -33,8 +33,22 @@
                   <input type="hidden" value="<%= allPartners[i].id %>" name="partner"/>
                   <button class="fas fa-trash-alt partner-icon delete-button transparent"></button>
                 </form>
-                <i class="fas fa-edit partner-icon"></i>
             </div>
+            </div>
+          </div>
+
+          <div id="made-modal2">
+            <span id="close-button">&times;</span>
+            <div class="modal-content">
+              <div class="mx-auto">
+                <form action="/dashboard/update-partner" method="POST"  enctype="multipart/form-data">
+                  <div class="form-control add-picture">
+                    <div class="event-update-photo">  
+                      <img src="/images/logo.png" class="event-photo"/>
+                    </div>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
         <% } %> 
@@ -43,5 +57,7 @@
   </div >
 
   <%- include('../partials/footer')%>
+  <script src="/javascripts/script4.js" ></script>
+
 </body>
 </html>

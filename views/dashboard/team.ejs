@@ -35,7 +35,7 @@
               <input type="hidden" name="id" value="<%= allPersons[i].id%>"   />
               <button class="fas fa-trash-alt fa-2x red delete-button"></button>
             </form>
-            <i class="fas fa-camera fa-2x mt-1 ml-1 black trigger"></i>
+            <i class="fas fa-camera fa-2x mt-1 ml-1 black" onclick="showModal2('<%= allPersons[i].photo %>')"></i>
             <a href="/dashboard/update-person?id=<%= allPersons[i].id %>" title="Modifier la personne"><i class="far fa-edit fa-2x ml-1 yellow"></i></a>
           </div>
         </div>
@@ -50,7 +50,7 @@
             <form action="/dashboard/update-person-photo" method="POST"  enctype="multipart/form-data">
               <div class="form-control add-picture">
                 <div class="event-update-photo">  
-                  <img src="<%= allPersons[i].photo %>" class="event-photo"/>
+                  <img src="/images/logo.png" class="event-photo"/>
                 </div>
                 <label>Choisir une photo</label> <br/>
                 <input type="file" name="image" class="input-photos"  />

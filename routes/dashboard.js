@@ -687,4 +687,11 @@ router.post('/delete-partner', async function(req,res){
   res.redirect('/dashboard/partners')
 })
 
+router.post('/update-partner', parser.single('image'), async function(req, res){
+  console.log(req.body);
+  
+
+  res.redirect('/dashboard/partners')
+})
+
 module.exports = router;

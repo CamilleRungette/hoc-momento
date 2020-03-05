@@ -404,6 +404,12 @@ body {
   margin-right: 1%;
   }
 
+  .sixty{
+    width: 58%;
+    margin-left: 1%;
+    margin-right: 1%;
+    }  
+
   .fifty{
     margin-left: 1%;
     width: 48%;
@@ -788,7 +794,6 @@ font-size: 1.3em;
 #made-modal2{
   position: absolute;
   background-color: rgba(0, 0, 0, 0.85);
-  height: 38vh;
   width: 100%;
   margin: auto;
   position: absolute;
@@ -1252,4 +1257,8 @@ font-size: 1.3em;
 .partner-name{
   text-align: center;
   margin-top: 2%;
+}
+
+.partner-form{
+  margin-top: 3%;
 }
