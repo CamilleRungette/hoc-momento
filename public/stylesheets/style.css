@@ -60,6 +60,10 @@ body {
   height: 105vh;
 }
 
+.home-carroussel1{
+  height: 90vh;
+}
+
 .carroussel > *:nth-child(1) {
   transform: translateX(-100%);
   visibility: hidden;
@@ -107,8 +111,16 @@ body {
   flex: 0 0 100%;
 }
 
+#carrousselImg .img_carrous1 {
+  flex: 0 0 60%;
+}
+
 .img_carrous {
   width: 100%;
+}
+
+.img_carrous1{
+  width: 80%;
 }
 
 .img1{
@@ -123,8 +135,8 @@ body {
   position: absolute;
   bottom: 4%;
   left: 2%;
-  height: 35%;
-  width: 70%;
+  height: 28%;
+  width: 60%;
   background-color: rgba(249, 176, 58, 0.6);
   padding: 1em;
   -webkit-box-orient: vertical;
@@ -137,16 +149,16 @@ body {
 
 .home-title{
   font-size: 4em;
-  color: #fbb03b;
+  color: white;
   font-weight: bold;
   text-align: right;
   margin-right: 2%;
   margin-top: 2%;
-  
+  z-index: 3;
 }
 
 .home-text{
-  font-size: 450%;
+  font-size: 350%;
   color: white;
   font-weight: bold;
 }
@@ -160,21 +172,17 @@ body {
     height: 28%;
   }
 }
-/* @media screen and (max-width: 1050px){
-  .home-text{
-    font-size: 3.5em;
-  }
-}
-@media screen and (max-width: 700px){
-  .home-text{
-    font-size: 2.5em;
-  }
-}
- */
+
 #carrousselImg .img_carrous img {
   margin-left: 0;
   width: 100%;
 }
+
+#carrousselImg .img_carrous1 img {
+  margin-left: 0;
+  width: 100%;
+}
+
 .arrow {
   cursor: pointer;
   height: 4rem;
@@ -570,12 +578,12 @@ font-size: 1.3em;
   background-image: url(/images/culturelle.png);
   background-size: cover;
   width: 46%;  
-  min-width: 37em;
+  /* min-width: 37em; */
   height: 33em;
   padding-top: 2em;
 } 
 
-@media screen and (max-width: 1700px){
+@media screen and (max-width: 1500px){
   .aactions-img{
     width: 65%;
     margin: auto;
@@ -583,7 +591,7 @@ font-size: 1.3em;
   }
 }
 
-@media screen and (max-width: 1420px){
+@media screen and (max-width: 1740px){
   .aactions-period{
     transition-duration: .8s;
     margin-top: -4%;
