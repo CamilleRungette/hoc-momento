@@ -5,6 +5,7 @@
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel='stylesheet' type='text/css' media='screen' href='/stylesheets/style.css'>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
   <%- include('../partials/navbarAdmin') %> 
@@ -20,7 +21,7 @@
 
       <div class="separator col-12"></div>
 
-      <div class="actions-list col-10 mx-auto">
+      <div class="actions-list col-10 mx-auto relative" id="actions-list">
         <% for (i=0; i< allEvents.length; i++){ %>
           <div class="d-flex action-item ">
             <div class="col-2">
@@ -37,18 +38,41 @@
                 <input type="hidden" name="id" value="<%= allEvents[i].id%>"   />
                 <button class="fas fa-trash-alt fa-2x red delete-button"></button>
               </form>
-              <!-- <i class="fas fa-camera fa-2x mt-1 ml-1 black trigger2"></i> -->
+              <i class="fas fa-camera fa-2x mt-1 ml-1 black trigger"></i>
               <a href="/dashboard/update-event?id=<%= allEvents[i].id %>" title="Modifier l'événement"><i class="far fa-edit fa-2x ml-1 yellow"></i></a>
             </div>
           </div>
         <br/> <br/>
         <div class="separator col-12 my-5"></div>
+    
+
+          <div id="made-modal2">
+            <span id="close-button">&times;</span>
+            <div class="modal-content">
+              <div class="mx-auto">
+                <form action="/dashboard/update-event-photo" method="POST"  enctype="multipart/form-data">
+                  <div class="form-control add-picture">
+                    <div class="event-update-photo">  
+                      <img src="<%= allEvents[i].photo %>" class="event-photo"/>
+                    </div>
+                    <label>Choisir une photo</label> <br/>
+                    <input type="file" name="image" class="input-photos"  />
+                    <input type="hidden" name="event" value="<%=allEvents[i].id%>" class="import-gallery" />
+                    <button class="btn btn-outline-success"> <i class="far fa-check-circle fa-2x"></i></button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
         <%}%>
       </div>
     </div>
 
+
   </div >
 
   <%- include('../partials/footer')%>
+  <script src="/javascripts/script4.js" ></script>
+
 </body>
 </html>

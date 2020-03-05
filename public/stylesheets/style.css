@@ -415,6 +415,15 @@ body {
     height: 6em;
   }
 
+  .event-update-photo{
+    width: 30%;
+    margin: auto;
+  }
+
+  .event-photo{
+    height: 100%;
+  }
+
   /* ==========================================
               Login
   =========================================== */
@@ -457,7 +466,7 @@ font-size: 1.3em;
 
 .actions-list{
   font-size: 1.13em;
-  margin-top: 5%;
+  padding-top: 5%;
 }
 
 .form-dashboard{
@@ -771,6 +780,20 @@ font-size: 1.3em;
   z-index: -1;
   opacity: 0;
 }
+
+#made-modal2{
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.85);
+  height: 38vh;
+  width: 100%;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left:0;
+  z-index: -1;
+  opacity: 0;
+}
+
 
 #close-button{
   font-size: 4em;

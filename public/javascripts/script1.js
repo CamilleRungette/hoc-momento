@@ -34,9 +34,13 @@ function changeIndexLeft(){
 // Modal from cultural-action
 
 let trigger = document.getElementsByClassName("trigger");
+let trigger1 = document.getElementsByClassName("trigger2")
 let modal = document.getElementById("made-modal")
 let closeButton = document.getElementById("close-button")
 let modalPhoto = document.getElementById("aaction-modal-photo")
+
+console.log(trigger1);
+
 
 for (i=0; i< trigger.length; i++){
   trigger[i].addEventListener("click", function(){

@@ -6,6 +6,7 @@ var ShowModel = require('../models/shows')
 var MessageModel = require('../models/message')
 var EventModel = require('../models/event')
 var PersonModel = require('../models/persons')
+var PersonModel = require('../models/partners')
 var multer  = require('multer')
 var cloudinary = require('cloudinary')
 var cloudinaryStorage = require('multer-storage-cloudinary');
@@ -37,15 +38,15 @@ router.post('/create-admin', function(req, res, next){
 		password: req.body.password
   })
   
-	newAdmin.save(function(error, admin){
-							if (error){
-									console.log("ADMIN NOT SAVED:", error)
-									res.json({error})
-							} else if (admin){
-									console.log("ADMIN SAVED", admin)
-									res.json({admin})
-							}
-						})
+	// newAdmin.save(function(error, admin){
+  //   if (error){
+  //       console.log("ADMIN NOT SAVED:", error)
+  //       res.json({error})
+  //   } else if (admin){
+  //       console.log("ADMIN SAVED", admin)
+  //       res.json({admin})
+  //   }
+  // })
 })
 
 router.get('/login', function(req, res, next){
@@ -429,108 +430,13 @@ router.get('/unread-message', async function(req, res){
 
 
 
-/* PERSON PART */
-router.get('/team', async function(req, res){
-  allPersons = await PersonModel.find(function(error, persons){
-    console.log(persons);
-  })
-
-  res.render('./dashboard/team', {allPersons})
-})
-
-router.post('/create-person', parser.single('image'), function(req, res, next){
-  // if(!req.session.admin){
-  //   res.redirect('/dashboard/login')
-  // } else {
-    console.log(req.body)
-    console.log(req.file);
-    
-    newPerson = new PersonModel({
-      first_name: req.body.first_name,
-      last_name: req.body.last_name,
-      title: req.body.title,
-      description: req.body.description,
-      email: req.body.email,
-      telephone: req.body.telephone,
-      photo: req.file.secure_url,
-    })
-
-    newPerson.save(function(error, person){
-      if (error){
-          console.log("PERSON NOT SAVED:", error)
-          res.render('./dashboard/team')
-      } else if (person){
-          console.log("PERSON SAVED", person)
-          res.redirect('/dashboard/team')
-      }
-    })
-  // }
-})
-
-router.post('/delete-person', async function(req, res){
-  console.log(req.body);
-  if(!req.session.admin){
-    res.redirect('/dashboard/login')
-  } else {
-    event = await PersonModel.deleteOne({_id: req.body.id})
-    console.log(`Event DELETED ============`)
-    res.redirect('/dashboard/team')
-  }  
-})
-
-router.get('/update-person', async function(req, res){
-  // if(!req.session.admin){
-  //   res.redirect('/dashboard/login')
-  // } else {  
-    person = await PersonModel.findById(req.query.id)
-    console.log("LA PERSONNE =============>", person)
-
-    res.render('./dashboard/person-update', {person})
-  // }
-
-})
-
-router.post('/update-person', async function(req, res){
-  console.log(req.body);
-  if(!req.session.admin){
-    res.redirect('/dashboard/login')
-  } else {
-    try {
-    if (req.body.description === " ") {
-      console.log("hello =====>")
-      update = await PersonModel.updateOne(
-        {_id: req.body.id},
-        {first_name: req.body.first_name,
-        last_name: req.body.last_name,
-        title: req.body.title,
-        email: req.body.email,}
-      );
-    } else {
-      update = await EventModel.updateOne(
-        {_id: req.body.id},
-        {first_name: req.body.first_name,
-          last_name: req.body.last_name,
-          title: req.body.title,
-          email: req.body.email,
-          description: req.body.description}
-      ) ; 
-    }
-    res.redirect('/dashboard/team');
-    }catch(error){
-      console.log(error);
-    }; 
-}
-})
-
-
-
 /* AGENDA PART */
 router.get('/agenda', async function(req,res){
   // if(!req.session.admin){
   //   res.redirect('/dashboard/login')
   // } else {
   allEvents = await EventModel.find(function(error, events){
-    console.log(events);
+    console.log("ok");
   })
 
   let futurEvents = [];
@@ -630,5 +536,124 @@ router.post('/update-event', async function (req, res){
   }
 
 })
+
+router.post('/update-event-photo',  parser.single('image'), async function(req, res){
+  console.log(req.body.event);
+  console.log(req.file);
+  
+  update = await EventModel.updateOne(
+    { _id: req.body.event},
+    {photo: req.file.secure_url})
+
+  res.redirect('/dashboard/agenda')
+})
+
+
+
+
+/* PERSON PART */
+router.get('/team', async function(req, res){
+  allPersons = await PersonModel.find(function(error, persons){
+    console.log(persons);
+  })
+
+  res.render('./dashboard/team', {allPersons})
+})
+
+router.post('/create-person', parser.single('image'), function(req, res, next){
+  // if(!req.session.admin){
+  //   res.redirect('/dashboard/login')
+  // } else {
+    console.log(req.body)
+    console.log(req.file);
+    
+    newPerson = new PersonModel({
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
+      title: req.body.title,
+      description: req.body.description,
+      email: req.body.email,
+      telephone: req.body.telephone,
+      photo: req.file.secure_url,
+    })
+
+    newPerson.save(function(error, person){
+      if (error){
+          console.log("PERSON NOT SAVED:", error)
+          res.render('./dashboard/team')
+      } else if (person){
+          console.log("PERSON SAVED", person)
+          res.redirect('/dashboard/team')
+      }
+    })
+  // }
+})
+
+router.post('/delete-person', async function(req, res){
+  console.log(req.body);
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {
+    event = await PersonModel.deleteOne({_id: req.body.id})
+    console.log(`Event DELETED ============`)
+    res.redirect('/dashboard/team')
+  }  
+})
+
+router.get('/update-person', async function(req, res){
+  // if(!req.session.admin){
+  //   res.redirect('/dashboard/login')
+  // } else {  
+    person = await PersonModel.findById(req.query.id)
+    console.log("LA PERSONNE =============>", person)
+
+    res.render('./dashboard/person-update', {person})
+  // }
+
+})
+
+router.post('/update-person', async function(req, res){
+  console.log(req.body);
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {
+    try {
+    if (req.body.description === " ") {
+      console.log("hello =====>")
+      update = await PersonModel.updateOne(
+        {_id: req.body.id},
+        {first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        title: req.body.title,
+        email: req.body.email,}
+      );
+    } else {
+      update = await EventModel.updateOne(
+        {_id: req.body.id},
+        {first_name: req.body.first_name,
+          last_name: req.body.last_name,
+          title: req.body.title,
+          email: req.body.email,
+          description: req.body.description}
+      ) ; 
+    }
+    res.redirect('/dashboard/team');
+    }catch(error){
+      console.log(error);
+    }; 
+}
+})
+
+router.post('/update-person-photo',  parser.single('image'), async function(req, res){
+  console.log(req.body.event);
+  console.log(req.file);
+  
+  update = await PersonModel.updateOne(
+    { _id: req.body.person},
+    {photo: req.file.secure_url})
+
+  res.redirect('/dashboard/team')
+})
+
 
 module.exports = router;
