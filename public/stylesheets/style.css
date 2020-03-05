@@ -372,6 +372,10 @@ body {
     color: rgb(122, 122, 122);
   }
 
+  .transparent{
+    color: transparent;
+  }
+
   .link-white:hover{
   text-decoration: none;
   }
@@ -1173,4 +1177,79 @@ font-size: 1.3em;
   padding-right: 2%;
   padding-left: 2%;
   font-size: 140%;
+}
+
+
+
+
+/* ==========================================
+                    Partner
+=========================================== */
+.partner-container{
+  margin: auto;
+  width: 80%;
+  display: flex;
+  margin-top: 5%;
+  margin-bottom: 10%;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-left: 2.5%;
+}
+
+.partner-card{
+  margin-left: 3%;
+  margin-right: 3%;
+  min-width: 9em;
+  position: relative;
+  width: 13%;
+  height: 14em;
+  margin-top: 5%;
+}
+
+.partner-photo-div{
+  display: flex;
+  align-items: center;
+  height: 14em;
+}
+
+.partner-photo{
+  width: 100%;
+}
+
+.partner-infos{
+  font-size: 130%;
+  color: transparent;
+  height: 60%;
+}
+
+.partner-card:hover > .partner-infos{
+  transition-duration: .5s;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: rgb(238, 238, 238);
+  position: absolute;
+  top: 50%;
+}
+
+.partner-card:hover button{
+  color: rgb(238, 238, 238);
+}
+
+.partner-icons{
+  display: flex;
+  justify-content: space-around;
+}
+
+.partner-icon{
+  font-size: 180%;
+}
+
+.partner-icon:hover{
+  transition-duration: .3s;
+  font-size: 190%;
+}
+
+.partner-name{
+  text-align: center;
+  margin-top: 2%;
 }

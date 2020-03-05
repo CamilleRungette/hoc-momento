@@ -6,7 +6,7 @@ var ShowModel = require('../models/shows')
 var MessageModel = require('../models/message')
 var EventModel = require('../models/event')
 var PersonModel = require('../models/persons')
-var PersonModel = require('../models/partners')
+var PartnerModel = require('../models/partners')
 var multer  = require('multer')
 var cloudinary = require('cloudinary')
 var cloudinaryStorage = require('multer-storage-cloudinary');
@@ -553,9 +553,7 @@ router.post('/update-event-photo',  parser.single('image'), async function(req, 
 
 /* PERSON PART */
 router.get('/team', async function(req, res){
-  allPersons = await PersonModel.find(function(error, persons){
-    console.log(persons);
-  })
+  allPersons = await PersonModel.find();
 
   res.render('./dashboard/team', {allPersons})
 })
@@ -644,7 +642,7 @@ router.post('/update-person', async function(req, res){
 }
 })
 
-router.post('/update-person-photo',  parser.single('image'), async function(req, res){
+router.post('/update-person-photo', parser.single('image'), async function(req, res){
   console.log(req.body.event);
   console.log(req.file);
   
@@ -655,5 +653,38 @@ router.post('/update-person-photo',  parser.single('image'), async function(req,
   res.redirect('/dashboard/team')
 })
 
+
+
+/* PARTNERS PART */
+router.get('/partners', async function(req, res ){
+  allPartners = await PartnerModel.find();
+  
+  res.render('./dashboard/partners', {allPartners})
+})
+
+router.post('/create-partner', parser.single('image'), function (req, res){
+  newPartner = new PartnerModel({
+    name: req.body.name,
+    link: req.body.link,
+    photo: req.file.secure_url
+  })
+
+  newPartner.save(function(error, partner){
+    console.log("PARTNER SAVED", partner);
+    
+  })
+
+  res.redirect('/dashboard/partners')
+})
+
+router.post('/delete-partner', async function(req,res){
+  console.log(req.body);
+
+  PartnerModel.deleteOne({_id: req.body.partner}, function(error, partner){
+    console.log("OK");
+  })
+
+  res.redirect('/dashboard/partners')
+})
 
 module.exports = router;
