@@ -11,11 +11,11 @@ console.log(card1);
 
 img1.addEventListener("mouseover", getBigger1);
 function getBigger1(){
-  img1.style.height = "120%"
+  img1.style.height = "150%"
   card2.style.width = "25%"
   card3.style.width ="25%"
-  img2.style.height = "85%"
-  img3.style.height = "85%"
+  img2.style.height = "75%"
+  img3.style.height = "75%"
 
   img1.style.transitionDuration = ".8s"
   img2.style.transitionDuration = ".5s"
@@ -35,11 +35,11 @@ function getSmaller1(){
 
 img2.addEventListener("mouseover", getBigger2);
 function getBigger2(){
-  img2.style.height = "120%"
+  img2.style.height = "150%"
   card1.style.width = "25%"
   card3.style.width ="25%"
-  img1.style.height = "85%"
-  img3.style.height = "85%"
+  img1.style.height = "75%"
+  img3.style.height = "75%"
 
   img2.style.transitionDuration = ".8s"
   img1.style.transitionDuration = ".5s"
@@ -59,11 +59,11 @@ function getSmaller2(){
 
 img3.addEventListener("mouseover", getBigger3);
 function getBigger3(){
-  img3.style.height = "120%"
+  img3.style.height = "150%"
   card1.style.width = "25%"
   card2.style.width ="25%"
-  img1.style.height = "85%"
-  img2.style.height = "85%"
+  img1.style.height = "75%"
+  img2.style.height = "75%"
 
   img3.style.transitionDuration = ".8s"
   img1.style.transitionDuration = ".5s"

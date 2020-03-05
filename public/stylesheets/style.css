@@ -315,7 +315,7 @@ body {
               Générique
   =========================================== */
   .made-container{
-    min-height: 75vh;
+    min-height: 80vh;
     width: 80%;
     margin: auto;
   }
@@ -400,6 +400,11 @@ body {
 
   .bouton{
     margin: auto;
+  }
+
+  .footer{
+    background-color: rgb(42, 42, 42); 
+    height: 6em;
   }
 
   /* ==========================================
@@ -556,7 +561,6 @@ font-size: 1.3em;
   justify-content: space-between;
   padding-top: 5%;
   flex-wrap: wrap;
-  margin-bottom: 5%;
 }
 
 .aactions-img{
@@ -1086,6 +1090,14 @@ font-size: 1.3em;
 /* ==========================================
                     Team
 =========================================== */
+.team-container{
+  min-height: 90vh;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10%;
+  flex-wrap: wrap;
+}
+
 .team-big-card{
   height: 50em;
 }
@@ -1103,18 +1115,16 @@ font-size: 1.3em;
 .team-img:hover + .team-infos{
   transition-duration: 2s;
   opacity: 1;
-  /* display: block; */
 }
 
 .team-infos{
   margin: auto;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.8);
   position: absolute;
   width: 333%;
-  top: 95%;
+  top: 100%;
   color: #fff;
   opacity: 0;
-  /* display: none; */
 }
 
 .team-name{
