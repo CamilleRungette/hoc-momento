@@ -6,6 +6,7 @@ var MessageModel = require('../models/message')
 var NewsModel = require('../models/newsletter') 
 var EventModel = require('../models/event')
 var PersonModel = require('../models/persons')
+var PartnerModel = require('../models/partners')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -130,5 +131,15 @@ router.get('/equipe', async function(req, res){
   
   res.render('team', {allPersons})
 })
+
+router.get('/partenaires', async function(req, res){
+  allPartners = await PartnerModel.find(function(error, partners){
+    console.log(partners);
+  })
+
+  res.render('partners', {allPartners})
+})
+
+
 module.exports = router;
 

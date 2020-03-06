@@ -605,7 +605,6 @@ font-size: 1.3em;
   background-image: url(/images/culturelle.png);
   background-size: cover;
   width: 46%;  
-  /* min-width: 37em; */
   height: 33em;
   padding-top: 2em;
 } 
@@ -668,12 +667,30 @@ font-size: 1.3em;
 
 .aactions-logo{
   background-color: rgba(255, 255, 255, 0.5);
-  height: 8em;
+  height: 6em;
   width: 90%;
   margin: auto;
   position: absolute;
   bottom: 10%;
   left: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.logo-partner-container{
+  width: 20%;
+  min-width: 20%;
+  height: 5.6em;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+}
+
+.logo-partner{
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
 }
 
 .aaction-container{
@@ -711,7 +728,6 @@ font-size: 1.3em;
   display: flex;
   align-items: center;
   justify-content: center;
-
 }
 
 
@@ -1162,7 +1178,7 @@ font-size: 1.3em;
   height: 100%;
 }
 .team-img:hover + .team-infos{
-  transition-duration: 2s;
+  transition-duration: 1.5s;
   opacity: 1;
 }
 
@@ -1198,6 +1214,7 @@ font-size: 1.3em;
 /* ==========================================
                     Partner
 =========================================== */
+
 .partner-container{
   margin: auto;
   width: 80%;
@@ -1270,4 +1287,35 @@ font-size: 1.3em;
 
 .partner-form{
   margin-top: 3%;
+}
+
+
+/* ==========================================
+                    Partner - user
+=========================================== */
+
+.paartner-title{
+  text-align: center;
+  margin-top: 5%;
+  font-size: 300%;
+}
+
+.paartners-logo-container{
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10%;
+}
+
+.paartner-logo-div{
+  width: 18%;
+  height: 10em;
+  margin-left: 1%;
+  margin-right: 1%;  
+  margin-bottom: 5%;
+}
+
+.paartner-logo{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }

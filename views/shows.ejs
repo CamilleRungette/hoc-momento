@@ -7,15 +7,13 @@
     <%- include('./partials/navbar') %> 
     <div class="made-container aactions-container">
         <% for (i=0; i< shows.length; i++) {%>
-          <div class="aactions-img">
+          <a href="/spectacle?id=<%=shows[i].id %>" class="white link-white aactions-img">
             <div class="shows-hover m-auto">
-              <a href="/spectacle?id=<%=shows[i].id %>" class="white link-white">
               <p class="shows-place pt-4"><em><%= shows[i].title %> </em></p>
               <p class="shows-title"> <%= shows[i].place %> - <%= shows[i].period %> </p>
               <p class="shows-desc mx-auto"> <%= shows[i].description %> </p>
-              </a>
             </div>
-          </div>
+          </a>
         <% } %> 
     </div>
     <%- include('./partials/footer') %> 

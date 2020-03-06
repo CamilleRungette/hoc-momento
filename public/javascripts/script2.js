@@ -18,10 +18,10 @@ function getBigger1(){
   img3.style.height = "75%"
 
   img1.style.transitionDuration = ".8s"
-  img2.style.transitionDuration = ".5s"
-  card2.style.transitionDuration = ".5s"
-  card3.style.transitionDuration = ".5s"
-  img3.style.transitionDuration = ".5s"
+  img2.style.transitionDuration = ".7s"
+  card2.style.transitionDuration = ".7s"
+  card3.style.transitionDuration = ".7s"
+  img3.style.transitionDuration = ".7s"
 }
 
 img1.addEventListener("mouseout", getSmaller1);
@@ -42,10 +42,10 @@ function getBigger2(){
   img3.style.height = "75%"
 
   img2.style.transitionDuration = ".8s"
-  img1.style.transitionDuration = ".5s"
-  card2.style.transitionDuration = ".5s"
-  card3.style.transitionDuration = ".5s"
-  img3.style.transitionDuration = ".5s"
+  img1.style.transitionDuration = ".7s"
+  card2.style.transitionDuration = ".7s"
+  card3.style.transitionDuration = ".7s"
+  img3.style.transitionDuration = ".7s"
 }
 
 img2.addEventListener("mouseout", getSmaller2);
@@ -66,10 +66,10 @@ function getBigger3(){
   img2.style.height = "75%"
 
   img3.style.transitionDuration = ".8s"
-  img1.style.transitionDuration = ".5s"
-  card2.style.transitionDuration = ".5s"
-  card1.style.transitionDuration = ".5s"
-  img2.style.transitionDuration = ".5s"
+  img1.style.transitionDuration = ".7s"
+  card2.style.transitionDuration = ".7s"
+  card1.style.transitionDuration = ".7s"
+  img2.style.transitionDuration = ".7s"
 }
 
 img3.addEventListener("mouseout", getSmaller3);

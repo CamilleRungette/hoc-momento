@@ -50,7 +50,7 @@
       <div class="partners-scroll">
       <% for (let i=0; i < allPartners.length; i++) {%> 
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="<%=allPartners[i].id%>" name="partners_id">
+          <input class="form-check-input" type="checkbox" value="<%= allPartners[i].photo %>" name="partners_id">
           <label class="form-check-label">
             <%= allPartners[i].name  %>
           </label>

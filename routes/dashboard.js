@@ -96,7 +96,7 @@ router.post('/create-action', parser.array('images'), async function(req, res, n
     let backGallery = []    
     for (i=0; i< req.files.length; i++){
         backGallery.push(req.files[i].secure_url)
-    }
+    }    
 
     let partnersArray = [];
     if (typeof req.body.partners_id == "string"){
@@ -104,6 +104,8 @@ router.post('/create-action', parser.array('images'), async function(req, res, n
     } else {
       partnersArray = req.body.partners_id
     }
+
+
 
     newAction = new ActionModel({
       photo: req.files[0].secure_url, 
