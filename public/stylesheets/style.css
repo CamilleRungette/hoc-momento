@@ -1224,7 +1224,7 @@ font-size: 1.3em;
 .partner-infos{
   font-size: 130%;
   color: transparent;
-  height: 60%;
+  padding-bottom: 1%;
 }
 
 .partner-card:hover > .partner-infos{
@@ -1234,6 +1234,7 @@ font-size: 1.3em;
   color: rgb(238, 238, 238);
   position: absolute;
   top: 50%;
+  padding-bottom: 0%;
 }
 
 .partner-card:hover button{

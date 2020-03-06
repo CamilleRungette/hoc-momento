@@ -75,21 +75,21 @@ router.post('/login', async function(req, res, next){
 
 router.get('/actions', async function(req, res, next) {
   console.log("session:", req.session.admin)
-  if(!req.session.admin){
-    res.redirect('/dashboard/login')
-  } else {
+  // if(!req.session.admin){
+  //   res.redirect('/dashboard/login')
+  // } else {
     allActions = await ActionModel.find(function(err, actions){
       console.log("")
     })
     res.render('./dashboard/actions', {allActions});
-  }
+  // }
 
 });
 
 router.post('/create-action', parser.array('images'), function(req, res, next){
-  if(!req.session.admin){
-    res.redirect('/dashboard/login')
-  } else {
+  // if(!req.session.admin){
+  //   res.redirect('/dashboard/login')
+  // } else {
     console.log("======================", req.files.length)
     let backGallery = []
     for (i=0; i< req.files.length; i++){
@@ -117,7 +117,7 @@ router.post('/create-action', parser.array('images'), function(req, res, next){
         res.redirect('/dashboard/actions')
       }
     })
-  }
+  // }
 });
 
 router.post('/delete-action', async function(req, res, next){
