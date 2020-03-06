@@ -487,6 +487,14 @@ font-size: 1.3em;
   height:10.3em
 }
 
+.partners-scroll{
+  padding: 1%;
+  border: 1px solid rgb(167, 167, 167);
+  border-radius: 5px;
+  height: 7em;
+  overflow: auto;
+}
+
 .photo-list{
   height: 10em;
 }

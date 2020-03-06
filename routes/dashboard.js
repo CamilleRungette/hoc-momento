@@ -78,74 +78,82 @@ router.get('/actions', async function(req, res, next) {
   // if(!req.session.admin){
   //   res.redirect('/dashboard/login')
   // } else {
-    allActions = await ActionModel.find(function(err, actions){
-      console.log("")
-    })
-    res.render('./dashboard/actions', {allActions});
+    allActions = await ActionModel.find();
+
+    allPartners = await PartnerModel.find();
+
+    res.render('./dashboard/actions', {allActions, allPartners});
   // }
 
 });
 
-router.post('/create-action', parser.array('images'), function(req, res, next){
+router.post('/create-action', parser.array('images'), async function(req, res, next){
   // if(!req.session.admin){
   //   res.redirect('/dashboard/login')
   // } else {
-    console.log("======================", req.files.length)
-    let backGallery = []
+
+  // Creating photo gallery
+    let backGallery = []    
     for (i=0; i< req.files.length; i++){
         backGallery.push(req.files[i].secure_url)
     }
-  console.log("BACK GALLERY =============>", backGallery)
+
+    let partnersArray = [];
+    if (typeof req.body.partners_id == "string"){
+      partnersArray.push(req.body.partners_id)
+    } else {
+      partnersArray = req.body.partners_id
+    }
 
     newAction = new ActionModel({
       photo: req.files[0].secure_url, 
       place: req.body.place.toUpperCase(), 
       title: req.body.title, 
       period: req.body.period.toUpperCase(), 
-      partners: req.body.partners, 
+      partners_id: partnersArray, 
       gallery: backGallery,
       description: req.body.description,
       city: req.body.city
     })
-
+        
     newAction.save(function(error, action){
       if (error){
           console.log("ACTION NOT SAVED:", error)
           res.render('./dashboard/actions', {problem: error})
       } else if (action){
           console.log("ACTION SAVED", action)
-        res.redirect('/dashboard/actions')
+          res.redirect('/dashboard/actions')
       }
     })
-  // }
+    // }
 });
 
 router.post('/delete-action', async function(req, res, next){
-  if(!req.session.admin){
-    res.redirect('/dashboard/login')
-  } else {
+  // if(!req.session.admin){
+  //   res.redirect('/dashboard/login')
+  // } else {
     action = await ActionModel.deleteOne({_id: req.body.id})
     console.log(`${action.title} DELETED ============`)
 
     res.redirect('/dashboard/actions')
-  }
+  // }
 });
 
 router.get('/update-action', async function(req, res, next){
-  if(!req.session.admin){
-    res.redirect('/dashboard/login')
-  } else {
+  // if(!req.session.admin){
+  //   res.redirect('/dashboard/login')
+  // } else {
     action = await ActionModel.findById(req.query.id)
     console.log("L'ACTION =============>", action)
 
     res.render('./dashboard/actions-update', {action})
-  }
+  // }
 })
 
 router.post('/update-action', parser.array('images'), async function(req, res, next){
-  if(!req.session.admin){
-    res.redirect('/dashboard/login')
-  } else {
+  // if(!req.session.admin){
+  //   res.redirect('/dashboard/login')
+  // } else {
     try {
     if (req.body.description === " ") {
       console.log("hello =====>")
@@ -168,7 +176,7 @@ router.post('/update-action', parser.array('images'), async function(req, res, n
     }catch(error){
     console.log(error);
     };
-  }
+  // }
 });
 
 router.get('/update-action-gallery', async function(req, res){

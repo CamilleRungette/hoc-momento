@@ -5,7 +5,7 @@ let actionSchema = mongoose.Schema({
     place: String, 
     title: String, 
     period: String, 
-    partners: [String], 
+    partners_id: [String], 
     gallery: [String],
     description: String,
     city: String,
