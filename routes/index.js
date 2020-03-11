@@ -13,8 +13,20 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Hoc Momento' });
 });
 
-router.get('/accueil', function(req, res, next){
-  res.render('home')
+router.get('/accueil', async function(req, res, next){
+  allEvents = await EventModel.find(function(error, events){
+    console.log("OK");
+  })
+  let futurEvents = [];
+  let currentDate = new Date
+
+  for (i=0; i< allEvents.length; i++){
+    if(allEvents[i].date >= currentDate){
+      futurEvents.push(allEvents[i])
+    }
+  }
+
+  res.render('home', {events: futurEvents})
 })
  
 router.get('/compagnie', function(req, res, next){

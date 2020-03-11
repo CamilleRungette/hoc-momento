@@ -20,12 +20,13 @@
             <div class="paartners-logo-container">
               <% for (let i=0; i< allPartners.length; i++) {%>
                 <div class="paartner-logo-div">
+                  <a href="<%= allPartners[i].link %>" target="_blank">
                   <img src="<%= allPartners[i].photo%>" class="paartner-logo"  />
+                  </a>
                 </div>
               <% } %> 
             </div>
         </div>
       </div> 
-    <%- include('./partials/footer'); %> 
   </body>
 </html>

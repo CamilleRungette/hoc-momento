@@ -8,6 +8,7 @@
     <div class="made-container aactions-container">
         <% for (i=0; i< actions.length; i++) {%>
           <a href="/action-culturelle?id=<%=actions[i].id %>" class="aactions-img white link-white">
+              <img src="<%= actions[i].photo %>" class="big-img" />
               <div class="aactions-hover m-auto">
                 <p class="aactions-place pt-4"><%= actions[i].place %> </p>
                 <p class="aactions-title"> <%= actions[i].title %></p>
@@ -19,10 +20,10 @@
                       </div>
                     <% } %> 
               </div>
-            </div>
+              </div>
           </a>
-        <% } %>     
-    </div>
-    <%- include('./partials/footer') %> 
+          <% } %>     
+        </div>
   </body>
 </html>
+

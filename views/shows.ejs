@@ -8,6 +8,7 @@
     <div class="made-container aactions-container">
         <% for (i=0; i< shows.length; i++) {%>
           <a href="/spectacle?id=<%=shows[i].id %>" class="white link-white aactions-img">
+            <img src="<%= shows[i].photo %>" class="big-img" />
             <div class="shows-hover m-auto">
               <p class="shows-place pt-4"><em><%= shows[i].title %> </em></p>
               <p class="shows-title"> <%= shows[i].place %> - <%= shows[i].period %> </p>
