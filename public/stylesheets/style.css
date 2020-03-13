@@ -1398,42 +1398,42 @@ font-size: 1.3em;
 =========================================== */
 .team-container{
   min-height: 90vh;
-  display: flex;
-  justify-content: space-between;
   margin-top: 10%;
-  flex-wrap: wrap;
 }
 
 .team-big-card{
-  height: 50em;
-  z-index: 3;
+  height: 30em;
+  margin-bottom: 5%;
 }
 
-.team-card{
-  position: relative;
-  width: 30%;
-  height: 30em;
+.team-card-left{
   text-align: center;
+  display: flex;
+}
+
+.team-card-right{
+  text-align: center;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row-reverse;
 }
 
 .team-img{
   height: 100%;
   cursor: pointer;
-  z-index: 0;
 }
-.team-img:hover + .team-infos{
-  transition-duration: 1.5s;
+
+.right{
+  margin-left: auto;
+  margin-right: 0;
 }
 
 .team-infos{
-  margin: auto;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.8);
-  position: absolute;
-  width: 333%;
-  top: 100%;
   color: #fff;
+  width: 60%;
   opacity: 0;
-  z-index: -1;
 }
 
 .team-name{
