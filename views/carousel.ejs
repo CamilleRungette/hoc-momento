@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  </head>
+
+<body>
+  <div class="max-container">
+    <div class="slider-overflow">
+      <div class="slider-outer">
+        <div class="slider">
+          <% for (let i=0; i< action.gallery.length; i++) {%> 
+          <div class="slide">
+            <img src="<%= action.gallery[i] %>" class="img_carrous" />
+          </div>
+        <% } %> 
+        </div>
+      </div>
+      <button class="next">Next</button>
+      <button class="prev">Prev</button>
+    </div>
+  </div>
+<script src="/javascripts/script3.js" ></script>
+</body>
+</html>

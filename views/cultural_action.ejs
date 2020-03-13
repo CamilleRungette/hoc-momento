@@ -1,50 +1,42 @@
-<!DOCTYPE html>
+<!DOCTYPE >
 <html>
   <head>
-    <!-- <link href="https://fonts.googleapis.com/css?family=Assistant:300|Exo:200|Lato:300&display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css?family=Assistant:300|Exo:200|Lato:300&display=swap" rel="stylesheet"> -->
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   </head>
-  </head>
-    <body>
-      <%- include('./partials/navbar') %> 
-      <div class="aaction-big-container">
-        <div class="aaction-background">
-          <img src=<%= action.photo %>  class="aaction-banner-photo" />
-          <div class="aaction-banner">
-            <h1 class="aaction-place"> <%= action.place %></h1>
-          </div>
-
-          <div class="aaction-container">
-              <p class="aaction-desc"> <%= action.description %></p>
-          </div>
-          
-          <div class="aaction-caroussel">
-            <i class="fas fa-caret-left fa-4x aaction-left-arrow" id="aaction-left-arrow"></i>
-              <div class="aaction-photos" id="aaction-photos">
-                <% for (let i=0; i< action.gallery.length; i++){ %>
-                    <img src=<%= action.gallery[i] %> class="aaction-photo trigger"  />
-              <% } %> 
-              </div>
-              <i class="fas fa-caret-right fa-4x aaction-right-arrow" id="aaction-right-arrow"></i>
-          </div>
+  <body>
+    <%- include('./partials/navbar') %> 
+      <div class="relative">
+        <img src=<%= action.photo %>  class="aaction-banner-photo" />
+        <div class="aaction-banner">
+          <h1 class="aaction-place"> <%= action.place %></h1>
         </div>
+      </div>
 
         <div class="aaction-container">
-          <div id="made-modal">
-            <span id="close-button">&times;</span>
-            <div class="modal-content">
-              <div class="mx-auto">
-                <img src="/images/firstpage.png" id="aaction-modal-photo" />
+          <p class="aaction-desc"> <%= action.description %></p>
+        </div>
+
+          <div class="max-container">
+            <div class="slider-overflow">
+              <div class="slider-outer">
+                <div class="slider">
+                  <% for (let i=0; i< action.gallery.length; i++) {%> 
+                    <div class="slide">
+                      <img src="<%= action.gallery[i] %>" class="slide-content" />
+                    </div>
+                    <% } %> 
+                  </div>
+                </div>
+              <div class="aaction-arrow-div">
+                <i class="fas fa-long-arrow-alt-left fa-4x aaction-left-arrow next" id="aaction-left-arrow"></i>
+                <a href="/gallerie-action-culturelle?id=<%= action.id %>"> <button class="gallery-button"> Gallerie </button></a>
+                <i class="fas fa-long-arrow-alt-right fa-4x aaction-right-arrow prev" id="aaction-right-arrow"></i>
               </div>
             </div>
           </div>
-        </div>
-    </div>
-  
 
-    <script src="/javascripts/script1.js" ></script>
-    <script src="/javascripts/script3.js" ></script>
-  </body>
+  <script src="/javascripts/script3.js" ></script>
+</body>
 </html>

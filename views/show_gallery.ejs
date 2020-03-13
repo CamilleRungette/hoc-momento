@@ -1,0 +1,23 @@
+<!DOCTYPE >
+<html>
+  <head>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  </head>
+
+  <body>
+    <%- include('./partials/navbar') %>
+    <div class="gallery-container">
+      <a href="/show?id=<%= show.id %>" class="return-button">Retour</a> 
+      <div class="masonry-container">
+        <div class="masonry">
+          <% for (let i=0; i< show.gallery.length; i++) {%> 
+          <div class="item">
+            <img src="<%= show.gallery[i]%>" alt="<%= show.title %>">
+          </div>
+        <% } %> 
+        </div>
+      </div>
+    </div>
+</body>
+</html>

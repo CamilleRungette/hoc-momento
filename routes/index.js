@@ -13,6 +13,13 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Hoc Momento' });
 });
 
+router.get('/carrousel', async function(req, res){
+  action = await ActionModel.findOne({_id: req.query.id})
+  console.log(action);
+  
+  res.render('carousel', {action})
+})
+
 router.get('/accueil', async function(req, res, next){
   allEvents = await EventModel.find(function(error, events){
     console.log("OK");
@@ -50,6 +57,11 @@ router.get('/action-culturelle', async function(req, res, next){
   res.render('cultural_action', {action})
 })
 
+router.get('/gallerie-action-culturelle', async function(req, res){
+  action = await ActionModel.findById(req.query.id)
+  res.render('cultural_action_gallery', {action})
+})
+
 router.get('/spectacles', async function(req, res, next){
   shows = await ShowModel.find(function(err, shows){
     console.log(shows)
@@ -61,6 +73,11 @@ router.get('/spectacle', async function(req, res, next){
   show = await ShowModel.findOne({_id: req.query.id})
 
   res.render('show', {show})
+})
+
+router.get('/gallerie-spectacle', async function (req, res){
+  show = await ShowModel.findById(req.query.id)
+  res.render('show_gallery', {show})  
 })
 
 router.get('/contact', function(req, res){
