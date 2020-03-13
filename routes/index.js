@@ -9,16 +9,16 @@ var PersonModel = require('../models/persons')
 var PartnerModel = require('../models/partners')
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Hoc Momento' });
-});
+// router.get('/', function(req, res, next) {
+//   res.render('index', { title: 'Hoc Momento' });
+// });
 
-router.get('/carrousel', async function(req, res){
-  action = await ActionModel.findOne({_id: req.query.id})
-  console.log(action);
+// router.get('/carrousel', async function(req, res){
+//   action = await ActionModel.findOne({_id: req.query.id})
+//   console.log(action);
   
-  res.render('carousel', {action})
-})
+//   res.render('carousel', {action})
+// })
 
 router.get('/accueil', async function(req, res, next){
   allEvents = await EventModel.find(function(error, events){
