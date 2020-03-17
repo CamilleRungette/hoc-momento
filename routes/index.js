@@ -9,9 +9,9 @@ var PersonModel = require('../models/persons')
 var PartnerModel = require('../models/partners')
 
 /* GET home page. */
-// router.get('/', function(req, res, next) {
-//   res.render('index', { title: 'Hoc Momento' });
-// });
+router.get('/', function(req, res, next) {
+  res.redirect('/accueil');
+});
 
 // router.get('/carrousel', async function(req, res){
 //   action = await ActionModel.findOne({_id: req.query.id})
