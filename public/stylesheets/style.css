@@ -349,23 +349,36 @@ body {
 
 .company-text{
   padding-top: 3%;
+  padding-bottom: 2%;
   font-size: 1.2em;
-  max-width: 95%;
+  max-width: 90%;
   line-height: 1.8em;
+  margin: auto;
+  text-align: justify;
 }
 
 .company-text-photo{
   font-size: 1.2em;
-  line-height: 1.8em;
+  line-height: 2em;
+  text-align: justify;
 }
 
-.company-title{
-  margin-left: 53%;
+.company1{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;;
+}
+
+.company2{
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 @media screen and (min-width: 1500px){
   .img-company1{
-    width: 43%;
+    width: 40%;
   }
   .company-text-photo{
     width: 44%;
@@ -386,9 +399,6 @@ body {
   }
   .first-word{
     margin-left: 1em;
-  }
-  .company-title{
-    margin-left: auto;
   }
 }
 
