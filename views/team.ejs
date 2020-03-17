@@ -16,7 +16,7 @@
         <% for (let i=0; i<allPersons.length ; i++){ %>
           <% if (i%2 === 0) {%> 
           <div class="team-big-card team-card-left" id="team-card<%=i%>">
-              <img src=<%= allPersons[i].photo %> class="team-img" id="team-img<%=i%>" />   
+              <img src=<%= allPersons[i].photo %> class="team-img" id="team-img<%=i%>" title="Clique !" />   
               <div class="team-infos">
                 <p class="team-name"><%= allPersons[i].first_name %> <%= allPersons[i].last_name %></p>
                 <p class="team-title"><%= allPersons[i].title %> </p>
@@ -26,7 +26,7 @@
           </div>
         <% } else {%>
           <div class="team-big-card team-card-right" id="team-card<%=i%>">
-              <img src=<%= allPersons[i].photo %> class="team-img" id="team-img<%=i%>" />   
+              <img src=<%= allPersons[i].photo %> class="team-img" id="team-img<%=i%>" title="Clique !" />   
               <div class="team-infos">
                 <p class="team-name"><%= allPersons[i].first_name %> <%= allPersons[i].last_name %></p>
                 <p class="team-title"><%= allPersons[i].title %> </p>

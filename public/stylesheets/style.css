@@ -416,7 +416,11 @@ body {
   }
 
   .home-container{
-    height: 85vh;
+    min-height: 70vh;
+    width: 80%;
+    margin: auto;
+    display: flex;
+    align-items: center;
   }
 
   .login-container{
@@ -544,7 +548,6 @@ body {
   }
 
   .home-text{
-    padding-top: 8%;
     width: 80%;
     margin: auto;
     font-size: 400%;
@@ -968,6 +971,9 @@ font-size: 1.3em;
   background-color:rgb(182, 36, 39)
 }
 
+.gallery-button:focus{
+  outline: none;
+}
 
 /* #made-modal{
   position: absolute;
@@ -1029,13 +1035,11 @@ font-size: 1.3em;
   height: 90%;
   width: 90%;
   opacity: 0;
-  padding-top: 4%;
   position: absolute;
   top: 5%;
   left:5%;
   font-weight: bold;
   opacity: 0;
-
 }
 
 .shows-hover:hover{
@@ -1051,16 +1055,17 @@ font-size: 1.3em;
 }
 
 .shows-desc{
-  margin-top:25% ;
-  height: 3em;
+  margin-top: 23%;
+  margin-left: 2%;
+  height: 2.3em;
   width: 90%;
+  overflow: hidden;
   white-space: nowrap;
   overflow: hidden;
   font-size: 2em;
   -webkit-box-orient: vertical;
   display: -webkit-box;
   -webkit-line-clamp: 2;
-  overflow: hidden;
   text-overflow: ellipsis;
   white-space: normal;
 }
@@ -1367,20 +1372,21 @@ font-size: 1.3em;
 .card-event-infos{
   width: 50%;
   margin-left: 5%;
-  margin-top: 3%;
   transition-duration: .5s;
   padding: 1%;
 }
 
 .card-event-title{
   font-size: 220%;
-  margin-bottom: 5%;
+  margin-bottom: -2%;
 }
 
 .card-event-place{
   border-top: 1px solid #D7D7D7;
   font-weight: bold;
   padding-top: 1%;
+  font-size: 100%;
+  margin-bottom: -5%;
 }
 
 .card-event-desc{
@@ -1388,10 +1394,12 @@ font-size: 1.3em;
   padding-top: 1%;
   -webkit-box-orient: vertical;
   display: -webkit-box;
-  -webkit-line-clamp: 5;
+  -webkit-line-clamp: 4;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: normal;
+  font-size: 90%;
+  margin-bottom: -5%;
 }
 
 .bold{
@@ -1401,6 +1409,7 @@ font-size: 1.3em;
 .card-event-period{
   font-size: 120%;
   font-weight: bold;
+  margin-bottom: -5%;
 }
 
 
