@@ -2,29 +2,29 @@
 <html>
   <head>
     <link rel='stylesheet' href='/stylesheets/style.css' />
-
   </head>
   <body>
     <%- include('./partials/navbar') %> 
     <div class="made-container aactions-container">
-        <% for (i=0; i< actions.length; i++) {%>
-          <a href="/action-culturelle?id=<%=actions[i].id %>" class="aactions-img white link-white">
-              <img src="<%= actions[i].photo %>" class="big-img" alt="Hoc Momento et <%= actions[i].place %> " />
-              <div class="aactions-hover m-auto">
-                <p class="aactions-place pt-4"><%= actions[i].place %> </p>
-                <p class="aactions-title"> <%= actions[i].title %></p>
-                <p class="aactions-period"> <%= actions[i].period %> </p>
-                <div class="aactions-logo">
-                    <% for (let j=0; j< actions[i].partners_id.length; j++) {%>
-                      <div class="logo-partner-container">
-                        <img src="<%= actions[i].partners_id[j] %>" class="logo-partner" alt="Partnenaire d'Hoc Momento" /> 
-                      </div>
-                    <% } %> 
-              </div>
-              </div>
-          </a>
-          <% } %>     
-        </div>
+      <% for (i=0; i< actions.length; i++) {%>
+        <a href="/action-culturelle?id=<%=actions[i].id %>" class="aactions-img white link-white">
+            <img src="<%= actions[i].photo %>" class="big-img" alt="Hoc Momento et <%= actions[i].place %> " />
+            <div class="aactions-hover m-auto">
+              <p class="aactions-place pt-4"><%= actions[i].place %> </p>
+              <p class="aactions-title"> <%= actions[i].title %></p>
+              <p class="aactions-period"> <%= actions[i].period %> </p>
+              <div class="aactions-logo">
+                <% for (let j=0; j< actions[i].partners_id.length; j++) {%>
+                  <div class="logo-partner-container">
+                    <img src="<%= actions[i].partners_id[j] %>" class="logo-partner" alt="Partnenaire d'Hoc Momento" /> 
+                  </div>
+                <% } %> 
+            </div>
+            </div>
+        </a>
+      <% } %>     
+    </div>
+    <%- include('./partials/footer'); %> 
   </body>
 </html>
 

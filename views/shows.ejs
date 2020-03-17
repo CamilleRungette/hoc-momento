@@ -4,6 +4,7 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
+    <div class="aaction-big-container">
     <%- include('./partials/navbar') %> 
     <div class="made-container aactions-container">
         <% for (i=0; i< shows.length; i++) {%>
@@ -16,6 +17,8 @@
             </div>
           </a>
         <% } %> 
+    </div>
+    <%- include('./partials/footer'); %> 
     </div>
   </body>
 </html>

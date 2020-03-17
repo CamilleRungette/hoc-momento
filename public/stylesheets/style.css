@@ -4,6 +4,7 @@ body {
   width: 100vw;
   overflow-x: hidden;
   margin-left: -0.5%;
+  margin-bottom: 0;
 }
 
 .logo {
@@ -411,6 +412,7 @@ body {
     min-height: 80vh;
     width: 80%;
     margin: auto;
+    margin-bottom: 5%;
   }
 
   .home-container{
@@ -529,8 +531,7 @@ body {
     background-color: rgb(42, 42, 42); 
     height: 6em;
     width: 100%;
-    position: absolute;
-    bottom: 0;
+    margin-top: auto;
   }
 
   .event-update-photo{
