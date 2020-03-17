@@ -1,0 +1,37 @@
+<div class="relative">
+            <div class="titre-carroussel">
+              <% for(let i=0; i < 4; i++){ 
+                let t = i+1%>
+                <p><%=trad['titre'+t] %></p>
+                <% } %>
+            </div>
+            <ul class="carroussel rooms">
+              <% for(let i=0; i < 4; i++){ 
+                let t = i+1%>
+              <li id="maison-carroussel<%=i+1 %>">
+                <div>
+                  <figure class="defilement_img">
+                    <img src="media/images/divers/chambre-<%=i+1 %>.jpg" alt="Chambres du clos tellier" />
+                  </figure>
+                  <div class="description_chambre parallaxe">
+                    <h3><%=trad['titre'+t] %></h3>
+                    <p><%=trad['p6'+t] %></p>
+                    <p><%=trad['p7'+t] %><br />
+                      <br />
+                      <%=trad['p8'+t] %></p>
+                    <button class="btn-2 <%=trad['classBouton'+t] %>" href="<%=trad['urlBouton'+t] %>"><span><%=trad['bouton'+t] %></span></button>
+                  </div>
+                 
+                </div>
+              </li>
+              <% } %>
+            </ul>
+            <div class=" arrow prev">
+              <div class="arrow-top"></div>
+              <div class="arrow-bottom"></div>
+            </div>
+            <div class="arrow next">
+              <div class="arrow-top"></div>
+              <div class="arrow-bottom"></div>
+            </div>
+          </div>
