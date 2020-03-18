@@ -67,7 +67,7 @@ body {
   font-size: 350%;
 }
 
-@media screen and (max-width: 1500px){
+/* @media screen and (max-width: 1500px){
 
   .home-icon{
     display: block;
@@ -76,7 +76,7 @@ body {
   .nav-links{
     display: none;
   }
-}
+} */
 
 .nav-link{
   text-decoration: none;
