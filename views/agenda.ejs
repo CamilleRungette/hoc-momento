@@ -10,7 +10,7 @@
   <body>
     <%- include('./partials/navbar'); %> 
       <div class="aaction-big-container">
-        <img src="/images/compagnie1.png"  class="aaction-banner-photo" />
+        <img src="/images/compagnie1.png"  class="aaction-banner-photo" alt="Bannière Compagnie Hoc Momento" />
         <div class="aaction-banner-shows">
           <h1 class="aaction-place white ">AGENDA</h1>
         </div>
@@ -20,7 +20,7 @@
           <% for (let i=0; i< futurEvents.length; i++) { %>  
             <div class="event-card">
               <div class="card-event-photo">
-                <img src=<%= futurEvents[i].photo %> class="event-photo" /> 
+                <img src=<%= futurEvents[i].photo %> class="event-photo" alt="<%= futurEvents[i].title %>" /> 
               </div>
               <div class="card-event-infos">
                 <p class="card-event-period"> <i class="fas fa-caret-right"></i> <%= futurEvents[i].period %> </p>
@@ -41,7 +41,7 @@
           <% for (let i=0; i< pastEvents.length; i++) { %>  
             <div class="event-card">
               <div class="card-event-photo">
-                <img src=<%= pastEvents[i].photo %> class="event-photo" /> 
+                <img src=<%= pastEvents[i].photo %> class="event-photo" alt="<%= pastEvents[i].title %>" /> 
               </div>
               <div class="card-event-infos">
                 <p class="card-event-period"> <i class="fas fa-caret-right"></i> <%= pastEvents[i].period %> </p>

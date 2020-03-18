@@ -52,8 +52,26 @@ body {
   text-decoration: none;
 }
 
+.nav-link-drop{
+  text-decoration: none;
+  margin-left: 8%;
+}
+
+.nav-link-drop:hover{
+  text-decoration: underline;
+}
+
+.li-dropdown{
+  margin-left: -25%;
+}
+
+.li-dropdown:hover{
+  background-color: rgb(250, 250, 250);
+}
+
 .home-icon{
-  display: none;
+  display: flex;
+  position: relative;
 }
 
 .dropdown{
@@ -67,16 +85,37 @@ body {
   font-size: 350%;
 }
 
-/* @media screen and (max-width: 1500px){
+.dropdown-menu{
+  background-color: white;
+  border: 1px gray solid;
+  border-radius: 5px;
+  z-index: 5;
+  position: absolute;
+  width: 8em;
+  right: 120%;
+  list-style-type: none;
+  font-size: 120%;
+  line-height: 1.8em;
+  text-align: left;
+  padding-top: 20%;
+  padding-bottom: 20%;
+  display: none;
+}
 
-  .home-icon{
+.display-menu{
+  display: none;
+}
+
+@media screen and (max-width: 1500px){
+
+  .display-menu{
     display: block;
     margin-right: 4%;
   }
   .nav-links{
     display: none;
   }
-} */
+}
 
 .nav-link{
   text-decoration: none;
@@ -409,12 +448,8 @@ body {
 }
 
 .company-text{
-  padding-top: 3%;
-  padding-bottom: 2%;
   font-size: 1.2em;
-  max-width: 90%;
-  line-height: 1.8em;
-  margin: auto;
+  line-height: 2em;
   text-align: justify;
 }
 
@@ -426,40 +461,48 @@ body {
 
 .company1{
   display: flex;
-  justify-content: space-evenly;
-  align-items: center;;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .company2{
   display: flex;
   flex-direction: row-reverse;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
 }
 
 @media screen and (min-width: 1500px){
   .img-company1{
-    width: 40%;
+    width: 50%;
   }
   .company-text-photo{
-    width: 44%;
+    width: 45%;
     margin-left: 2px;
   }
 }
 
 @media screen and (max-width: 1500px){
+  .company1{
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .company2{
+    display: flex;
+    flex-direction: column;
+  }
   .company-text-photo{
     width: 80%;
+    margin-bottom: 4%;
   }
   .company-text{
     width: 80%;
+    margin: auto;
+    margin-bottom: 4%;
   }
   .img-company1{
-    width: 80%;
-    margin-bottom: 3em;
-  }
-  .first-word{
-    margin-left: 1em;
+    width: 70%;
+    margin-bottom: 4%;
   }
 }
 

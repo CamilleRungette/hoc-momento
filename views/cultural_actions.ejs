@@ -13,13 +13,13 @@
               <p class="aactions-place"><%= actions[i].place %> </p>
               <p class="aactions-title"> <%= actions[i].title %></p>
               <p class="aactions-period"> <%= actions[i].period %> </p>
-              <div class="aactions-logo">
-                <% for (let j=0; j< actions[i].partners_id.length; j++) {%>
-                  <div class="logo-partner-container">
-                    <img src="<%= actions[i].partners_id[j] %>" class="logo-partner" alt="Partnenaire d'Hoc Momento" /> 
-                  </div>
-                <% } %> 
-            </div>
+                <div class="aactions-logo">
+                  <% for (let j=0; j< actions[i].partners_id.length; j++) {%>
+                    <div class="logo-partner-container">
+                      <img src="<%= actions[i].partners_id[j] %>" class="logo-partner" alt="Partnenaire d'Hoc Momento" /> 
+                    </div>
+                  <% } %> 
+                </div>
             </div>
         </a>
       <% } %>     

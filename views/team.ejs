@@ -15,7 +15,7 @@
       <div class="made-container team-container">
         <% for (let i=0; i<allPersons.length ; i++){ %>
           <div class="team-big-card team-card-left" id="team-card<%=i%>">
-              <img src=<%= allPersons[i].photo %> class="team-img" id="team-img<%=i%>" title="Clique !" />   
+              <img src=<%= allPersons[i].photo %> class="team-img" id="team-img<%=i%>" title="Clique !" alt="<%= allPersons[i].first_name %> <%= allPersons[i].last_name %>, <%= allPersons[i].title %> dans la compagnie Hoc Momento." />   
               <div class="team-infos">
                 <p class="team-name"><%= allPersons[i].first_name %> <%= allPersons[i].last_name %></p>
                 <p class="team-title"><%= allPersons[i].title %> </p>

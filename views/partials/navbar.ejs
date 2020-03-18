@@ -3,13 +3,24 @@
 <head>
   <meta charset='utf-8'>
   <link rel='stylesheet' type='text/css' media='screen' href='/stylesheets/style.css'>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 </head>
 <body>
     <div class="hand-nav">      
       <a href="/accueil"><img src="/images/logo.png" class="logo" alt="Logo d'Hoc Momento "/></a>
-      <div class="home-icon">
-        <i class="fas fa-ellipsis-h dropdown red"></i>
+      <div class="display-menu">
+        <div class="home-icon">
+          <ul class="dropdown-menu close" id="dropdown-menu">
+            <li class="li-dropdown"><a href="/compagnie" class="nav-link-drop black">Compagnie</a> </li>
+            <li class="li-dropdown"><a href="/actions-culturelles" class="nav-link-drop black">Actions Culturelles</a> </li>
+            <li class="li-dropdown"><a href="/spectacles" class="nav-link-drop black">Spectales</a> </li>
+            <li class="li-dropdown"><a href="/agenda" class="nav-link-drop black">Agenda</a> </li>
+            <li class="li-dropdown"><a href="/equipe" class="nav-link-drop black ">Equipe</a> </li>
+            <li class="li-dropdown"><a href="/partenaires" class="nav-link-drop black ">Partenaires</a> </li>
+            <li class="li-dropdown"><a href="/contact" class="nav-link-drop black ">Contact</a> </li>
+          </ul>
+          <i class="fas fa-ellipsis-h dropdown red" id="icon"></i>
+        </div>
       </div>
       <div class="nav-links">
         <a href="/compagnie" class="nav-link yellow">COMPAGNIE</a>
@@ -22,4 +33,5 @@
       </div>
     </div>
 </body>
+<script src="/javascripts/script1.js"></script>
 </html>

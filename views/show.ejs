@@ -8,7 +8,7 @@
   <body>
     <%- include('./partials/navbar') %> 
       <div class="relative">
-        <img src=<%= show.photo %>  class="aaction-banner-photo" />
+        <img src=<%= show.photo %>  class="aaction-banner-photo" alt="Bannière de <%= show.title %> " />
         <div class="aaction-banner">
           <h1 class="aaction-place"> <%= show.title %></h1>
         </div>
@@ -24,7 +24,7 @@
                 <div class="slider">
                   <% for (let i=0; i< show.gallery.length; i++) {%> 
                     <div class="slide">
-                      <img src="<%= show.gallery[i] %>" class="slide-content" />
+                      <img src="<%= show.gallery[i] %>" class="slide-content" alt="<%= show.title %>, spectacle d'Hoc Momento " />
                     </div>
                     <% } %> 
                   </div>
