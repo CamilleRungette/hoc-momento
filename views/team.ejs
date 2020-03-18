@@ -21,7 +21,7 @@
                 <p class="team-name"><%= allPersons[i].first_name %> <%= allPersons[i].last_name %></p>
                 <p class="team-title"><%= allPersons[i].title %> </p>
                 <p class="team-desc"><%= allPersons[i].description %> </p>
-                <p><i class="fas fa-envelope"></i> <%= allPersons[i].email %> </p>
+                <a href="mailto:<%= allPersons[i].email %>" class="white no-deco"><i class="fas fa-envelope"></i> <%= allPersons[i].email %> </a>
             </div>
           </div>
         <% } %> 

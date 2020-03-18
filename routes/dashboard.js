@@ -70,27 +70,33 @@ router.post('/login', async function(req, res, next){
 
 })
 
+router.get('/logout', function(req,res){
+  req.session.admin = null
+  console.log("cocou");
+  
+  res.redirect('/dashboard/login')
+})
 
 /* ACTIONS PART: DISPLAY, CREATION, DELETING AND UPDATING */
 
 router.get('/actions', async function(req, res, next) {
   console.log("session:", req.session.admin)
-  // if(!req.session.admin){
-  //   res.redirect('/dashboard/login')
-  // } else {
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {
     allActions = await ActionModel.find();
 
     allPartners = await PartnerModel.find();
 
     res.render('./dashboard/actions', {allActions, allPartners});
-  // }
+  }
 
 });
 
 router.post('/create-action', parser.array('images'), async function(req, res, next){
-  // if(!req.session.admin){
-  //   res.redirect('/dashboard/login')
-  // } else {
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {
 
   // Creating photo gallery
     let backGallery = []    
@@ -127,35 +133,35 @@ router.post('/create-action', parser.array('images'), async function(req, res, n
           res.redirect('/dashboard/actions')
       }
     })
-    // }
+    }
 });
 
 router.post('/delete-action', async function(req, res, next){
-  // if(!req.session.admin){
-  //   res.redirect('/dashboard/login')
-  // } else {
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {
     action = await ActionModel.deleteOne({_id: req.body.id})
     console.log(`${action.title} DELETED ============`)
 
     res.redirect('/dashboard/actions')
-  // }
+  }
 });
 
 router.get('/update-action', async function(req, res, next){
-  // if(!req.session.admin){
-  //   res.redirect('/dashboard/login')
-  // } else {
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {
     action = await ActionModel.findById(req.query.id)
     console.log("L'ACTION =============>", action)
 
     res.render('./dashboard/actions-update', {action})
-  // }
+  }
 })
 
 router.post('/update-action', parser.array('images'), async function(req, res, next){
-  // if(!req.session.admin){
-  //   res.redirect('/dashboard/login')
-  // } else {
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {
     try {
     if (req.body.description === " ") {
       console.log("hello =====>")
@@ -178,7 +184,7 @@ router.post('/update-action', parser.array('images'), async function(req, res, n
     }catch(error){
     console.log(error);
     };
-  // }
+  }
 });
 
 router.get('/update-action-gallery', async function(req, res){
@@ -442,9 +448,9 @@ router.get('/unread-message', async function(req, res){
 
 /* AGENDA PART */
 router.get('/agenda', async function(req,res){
-  // if(!req.session.admin){
-  //   res.redirect('/dashboard/login')
-  // } else {
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {
   allEvents = await EventModel.find(function(error, events){
     console.log("ok");
   })
@@ -461,7 +467,7 @@ router.get('/agenda', async function(req,res){
     }
   }
   res.render('dashboard/agenda', {allEvents, futurEvents, pastEvents})
-// }
+}
 })
 
 router.post('/create-event', parser.single('image'), async function(req,res){
@@ -569,9 +575,9 @@ router.get('/team', async function(req, res){
 })
 
 router.post('/create-person', parser.single('image'), function(req, res, next){
-  // if(!req.session.admin){
-  //   res.redirect('/dashboard/login')
-  // } else {
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {
     console.log(req.body)
     console.log(req.file);
     
@@ -594,7 +600,7 @@ router.post('/create-person', parser.single('image'), function(req, res, next){
           res.redirect('/dashboard/team')
       }
     })
-  // }
+  }
 })
 
 router.post('/delete-person', async function(req, res){
@@ -609,14 +615,14 @@ router.post('/delete-person', async function(req, res){
 })
 
 router.get('/update-person', async function(req, res){
-  // if(!req.session.admin){
-  //   res.redirect('/dashboard/login')
-  // } else {  
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {  
     person = await PersonModel.findById(req.query.id)
     console.log("LA PERSONNE =============>", person)
 
     res.render('./dashboard/person-update', {person})
-  // }
+  }
 
 })
 

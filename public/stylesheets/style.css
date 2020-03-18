@@ -21,7 +21,7 @@ body {
   background-color:rgba(31, 30, 30, 0.95);
   border-bottom: white 3px solid;
   height: 7.5em;
-  padding: 1.6em;
+  padding: .7em;
   padding-left: 3%;
   display: flex;
   align-items: center;
@@ -104,6 +104,11 @@ body {
 
 .display-menu{
   display: none;
+}
+
+.fa-sign-out-alt{
+  font-size: 150%;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 1500px){
@@ -585,6 +590,14 @@ body {
 
   .link-white:hover{
   text-decoration: none;
+  }
+
+  .no-deco {
+    text-decoration: none;
+  }
+
+  .no-deco:hover{
+    text-decoration: underline;
   }
  
   .separator{
