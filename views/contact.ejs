@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/stylesheets/style.css'>
+    <title>Hoc Momento - Contact</title>
+  </head>
+  <body>
+  <%- include('./partials/navbar') %> 
+  <div class="aaction-big-container">
+    <img src="/images/gallery/_MG_0224.jpg"  class="aaction-banner-photo" />
+    <div class="aaction-banner-shows">
+      <h1 class="aaction-place white ">NOUS CONTACTER</h1>
+    </div>
+      <div class="made-container contact-front-container">
+
+        <form action="/contact" method="POST" class="contact-form">
+          <div class="form-group">
+            <input type="text" name="name" placeholder="Nom" class="made-form input-contact" />
+          </div>
+
+          <div class="form-group">
+            <input type="email" name="email" placeholder="Email" class="made-form input-contact" />
+          </div>
+
+          <div class="form-group">
+            <input type="text" name="organisation" placeholder="Organisation" class="made-form input-contact" />
+          </div>
+
+          <div class="form-group">
+            <textarea name="content" placeholder="Message" class="made-form input-contact"></textarea>
+          </div>
+
+          <div class="contact-button-div">
+            <button class="contact-button">Envoyer</button>
+          </div>
+        </form>
+        
+        <div class="newsletter-container">
+          <form class="newsletter-form" action="/newsletter" method="POST" >
+            <label class="newsletter-label">Newsletter:</label>
+            <input type="email" name="email" placeholder="exemple@exemple.com" class="form-control input-contact" />
+            <button class="newsletter-button" >Je m'inscris</button>
+          </form>
+        </div>
+      </div>
+  </div>
+  <%- include('./partials/footer') %>
+  </body>
+</html>

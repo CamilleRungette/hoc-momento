@@ -1,3 +1,5 @@
+require('dotenv/config')
+
 var express = require('express');
 var router = express.Router();
 var ActionModel = require('../models/cultural_actions')
@@ -13,13 +15,6 @@ router.get('/', function(req, res, next) {
   res.redirect('/accueil');
 });
 
-// router.get('/carrousel', async function(req, res){
-//   action = await ActionModel.findOne({_id: req.query.id})
-//   console.log(action);
-  
-//   res.render('carousel', {action})
-// })
-
 router.get('/accueil', async function(req, res, next){
   allEvents = await EventModel.find(function(error, events){
     console.log("OK");
@@ -32,7 +27,6 @@ router.get('/accueil', async function(req, res, next){
       futurEvents.push(allEvents[i])
     }
   }
-
   res.render('home', {events: futurEvents})
 })
  
@@ -71,7 +65,6 @@ router.get('/spectacles', async function(req, res, next){
 
 router.get('/spectacle', async function(req, res, next){
   show = await ShowModel.findOne({_id: req.query.id})
-
   res.render('show', {show})
 })
 
@@ -81,7 +74,6 @@ router.get('/gallerie-spectacle', async function (req, res){
 })
 
 router.get('/contact', function(req, res){
-
   res.render('contact')
 })
 
@@ -96,6 +88,7 @@ router.post('/contact', function(req, res){
     read: false,
   })
 
+  try{
   newMessage.save(function(err, message){
     if (err){
       console.log("MESSAGE NOT SAVED", error);
@@ -114,6 +107,10 @@ router.post('/contact', function(req, res){
       sgMail.send(msg);
     }
   })
+}catch(error){
+  console.log(error);
+  
+}
 
   res.redirect('/contact')
 })
