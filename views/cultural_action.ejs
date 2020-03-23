@@ -4,39 +4,55 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.5/jquery.bxslider.js"></script>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.5/jquery.bxslider.css" rel="stylesheet" />
     <title>Hoc Momento - Action culturelle, <%= action.place %> </title>
   </head>
   <body>
     <%- include('./partials/navbar') %> 
-      <div class="relative">
-        <img src=<%= action.photo %>  class="aaction-banner-photo" alt="Hoc Momento et <%= action.place %> " />
-        <div class="aaction-banner">
-          <h1 class="aaction-place"> <%= action.place %></h1>
-        </div>
+    <div class="relative">
+      <img src=<%= action.photo %> class="aaction-banner-photo" alt="Hoc Momento et <%= action.place %> " />
+      <div class="aaction-banner">
+        <h1 class="aaction-place"> <%= action.place %></h1>
       </div>
-
+    </div>
+    
+    <div class="relative">
         <div class="aaction-container">
           <p class="aaction-desc"> <%= action.description %></p>
         </div>
 
-          <div class="max-container">
-            <div class="slider-overflow">
-              <div class="slider-outer">
-                <div class="slider">
-                  <% for (let i=0; i< action.gallery.length; i++) {%> 
-                    <div class="slide">
-                      <img src="<%= action.gallery[i] %>" class="slide-content" alt="Gallerie de l'action culturelle d'Hoc Momento à <%= action.place %> " />
-                    </div>
-                    <% } %> 
-                  </div>
+      <div class="max-container">
+            <div class="slider">
+              <% for (let i=0; i< action.gallery.length; i++) {%> 
+                <div class="slide">
+                  <img src="<%= action.gallery[i] %>" class="slide-content" alt="Gallerie de l'action culturelle d'Hoc Momento à <%= action.place %> " />
                 </div>
-              <div class="aaction-arrow-div">
-                <i class="fas fa-long-arrow-alt-left fa-4x aaction-left-arrow next" id="aaction-left-arrow"></i>
-                <a href="/gallerie-action-culturelle?id=<%= action.id %>"> <button class="gallery-button"> Gallerie </button></a>
-                <i class="fas fa-long-arrow-alt-right fa-4x aaction-right-arrow prev" id="aaction-right-arrow"></i>
-              </div>
+              <% } %> 
             </div>
+          <div class="aaction-arrow-div">
+            <a> <button class="gallery-button" id="gallery-button"> Gallerie </button></a>
           </div>
+      </div>
+
+      <div class="aaction-modal" id="aaction-modal">
+        <div class="relative">
+          <i class="fas fa-times" id="close-icon"></i>
+          <div id="wrap-carroussel">
+            <ul class="carroussel">
+            <% for (let i=0; i< action.gallery.length ; i++) {%>
+              <li><img src="<%= action.gallery[i] %>" class="aaction-modal-photo"></li>
+              <% } %> 
+            </ul>
+          </div>
+        </div>
+      </div>    
+
+
+    </div>
+
   <%- include('./partials/footer') %>
   <script src="/javascripts/script3.js" ></script>
 </body>
