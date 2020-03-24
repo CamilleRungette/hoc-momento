@@ -188,14 +188,14 @@ router.post('/update-action', parser.array('images'), async function(req, res, n
 });
 
 router.get('/update-action-gallery', async function(req, res){
-  if(!req.session.admin){
-    res.redirect('/dashboard/login')
-  } else {
+  // if(!req.session.admin){
+  //   res.redirect('/dashboard/login')
+  // } else {
     action = await ActionModel.findById(req.query.id)
     gallery = action.gallery
 
     res.render('./dashboard/update-action-gallery', {action, gallery})
-  }
+  // }
 })
 
 router.get('/delete-photo-action', async function(req, res){
