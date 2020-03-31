@@ -154,6 +154,7 @@ header nav a > span:hover{
 .nav-link{
   text-decoration: none;
   color: rgb(51, 51, 51);
+  line-height:1.4em;
 }
 
 .nav-link:hover{
@@ -360,6 +361,10 @@ header nav a > span:hover{
     color: rgb(122, 122, 122);
   }
 
+  .italic{
+    font-style: italic;
+  }
+
   .shadow-black{
     text-shadow: 3px 3px #000
   }
@@ -435,6 +440,10 @@ header nav a > span:hover{
     object-fit: cover;
   }
 
+  .alinea{
+    margin-left: 3%;
+  }
+
   /* ==========================================
               Login
   =========================================== */
@@ -491,6 +500,10 @@ font-size: 1.3em;
 
 .action-item{
   height:10.3em
+}
+
+.fa-plus{
+  margin-right: 15%;
 }
 
 .partners-scroll{
@@ -583,6 +596,10 @@ font-size: 1.3em;
   outline: transparent;
 }
 
+.link-div{
+  margin-top: 1%;
+}
+
 .exemple{
   font-size: 80%;
   font-style: italic;
@@ -596,6 +613,32 @@ font-size: 1.3em;
   /* ==========================================
             Cultural Actions / Shows
 =========================================== */
+.aactions-banner{
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 100%;
+  height: 73vh;
+  position: absolute;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.aactions-banner-photo{
+  background-image: url(/images/cultural-action.jpg);
+  background-size: cover;
+  width: 100%;
+  height: 70vh;
+  min-height: 30em;
+  object-fit: cover;
+  background-attachment: fixed;
+  top: 30em;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+.aactions-banner-title{
+  font-size: 600%;
+}
 
 .aactions-container{
   display: flex;
@@ -636,17 +679,17 @@ font-size: 1.3em;
 
 .aactions-hover{
   position: absolute;
-  top: 5%;
+  top: 15%;
   left:5%;
   transition-duration: 700ms;
   background-color: rgba(249, 176, 58, 0.3);
-  height: 90%;
+  height: 70%;
   width: 90%;
   font-weight: bold;
 }
 .aactions-img:hover > .aactions-hover{
   transition-duration: 700ms;
-  background-color: rgba(249, 176, 58, 0.6);
+  background-color: rgba(249, 176, 58, 0.7);
 }
 .aactions-place{
   font-size: 350%;
@@ -654,15 +697,15 @@ font-size: 1.3em;
   letter-spacing: 2px;
 }
 .aactions-title{
-  text-align: right;
+  text-align: center;
   font-size: 2.6em;
   padding-right: 25px;
   font-style: italic;
 }
 .aactions-period{
-  text-align: right;
+  text-align: center;
   padding-right: 25px;
-  font-size: 1.5em;
+  font-size: 2em;
   font-style: italic;
 }
 
@@ -670,21 +713,16 @@ font-size: 1.3em;
   background-color: rgba(255, 255, 255, 0.5);
   height: 6em;
   width: 90%;
-  margin: auto;
-  position: absolute;
-  bottom: 10%;
-  left: 5%;
+  /* margin: auto; */
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  overflow: hidden;
+  /* align-items: center; */
 }
 .logo-partner-container{
   width: 20%;
   min-width: 20%;
   height: 5.6em;
-  margin-left: 2.5%;
-  margin-right: 2.5%;
+  /* margin-left: 2.5%;
+  margin-right: 2.5%; */
 }
 .logo-partner{
   height: 100%;
@@ -692,9 +730,23 @@ font-size: 1.3em;
   object-fit: contain;
 }
 
+.aactions-text{
+  width: 60%;
+  text-align: justify;
+  margin: auto;
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+.aactions-desc{
+  font-size: 130%;
+  line-height: 1.5em;
+}
+
 .aaction-container{
+  padding-top: 5%;
   padding-bottom: 5%;
   width: 60%;
+  min-height: 70vh;;
   margin: auto;
 }
 .aaction-banner-photo{
@@ -729,11 +781,10 @@ font-size: 1.3em;
 }
 
 .aaction-desc{
-  padding-top: 10%;
-  font-size: 165%;
-  letter-spacing: 1.2px;
+  font-size: 130%;
+  letter-spacing: 1px;
   text-align: justify;
-  line-height: 1.6em;
+  line-height: 1.3em;
 }
 
 .max-container{
@@ -792,7 +843,7 @@ font-size: 1.3em;
 .aaction-arrow-div{
   display: flex;
   justify-content: center;
-  margin-top: 2%;
+  margin-bottom: 2%;
 }
 
 .aaction-big-container{
@@ -936,8 +987,10 @@ font-size: 1.3em;
 =========================================== */
 
 .container-gallery{
+  padding-top: 5%;
   width: 80%;
   margin: auto;
+  min-height: 80vh;
 }
 
 .photos-gallery{

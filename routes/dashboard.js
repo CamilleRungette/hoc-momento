@@ -7,6 +7,7 @@ var MessageModel = require('../models/message')
 var EventModel = require('../models/event')
 var PersonModel = require('../models/persons')
 var PartnerModel = require('../models/partners')
+var ArticleModel = require('../models/articles')
 var multer  = require('multer')
 var cloudinary = require('cloudinary')
 var cloudinaryStorage = require('multer-storage-cloudinary');
@@ -84,6 +85,8 @@ router.get('/actions', async function(req, res, next) {
   if(!req.session.admin){
     res.redirect('/dashboard/login')
   } else {
+    console.log(req.session.admin);
+
     allActions = await ActionModel.find();
 
     allPartners = await PartnerModel.find();
@@ -97,7 +100,8 @@ router.post('/create-action', parser.array('images'), async function(req, res, n
   if(!req.session.admin){
     res.redirect('/dashboard/login')
   } else {
-
+    
+try{
   // Creating photo gallery
     let backGallery = []    
     for (i=0; i< req.files.length; i++){
@@ -110,29 +114,55 @@ router.post('/create-action', parser.array('images'), async function(req, res, n
     } else {
       partnersArray = req.body.partners_id
     }
-
-
-
+    
     newAction = new ActionModel({
-      photo: req.files[0].secure_url, 
       place: req.body.place.toUpperCase(), 
       title: req.body.title, 
       period: req.body.period.toUpperCase(), 
       partners_id: partnersArray, 
+      photo: req.files[0].secure_url, 
       gallery: backGallery,
       description: req.body.description,
-      city: req.body.city
+      city: req.body.city,
     })
-        
+
+    console.log("=========================>", req.body.link, req.body.link.length);
+    
+
+    if (req.body.link.length < 50){
+      for (let i=0; i< req.body.link.length; i++){      
+        newArticle = new ArticleModel({
+          action_id: newAction._id,
+          url: req.body.link[i],
+          name: req.body.nameLink[i]
+        })      
+        newArticle.save(function(error, article){
+          console.log("ARTICLE SAVED", error, article);    
+        })
+      }  
+    } else{      
+      newArticle = new ArticleModel({
+        action_id: newAction._id,
+        url: req.body.link,
+        name: req.body.nameLink
+      })      
+      newArticle.save(function(error, article){
+        console.log("ARTICLE SAVED", error, article);    
+      })
+    }  
+
     newAction.save(function(error, action){
       if (error){
           console.log("ACTION NOT SAVED:", error)
           res.render('./dashboard/actions', {problem: error})
       } else if (action){
-          console.log("ACTION SAVED", action)
+          console.log("ACTION SAVED", action);   
           res.redirect('/dashboard/actions')
       }
     })
+  }catch(error){
+    console.log(error);
+  }
     }
 });
 
@@ -169,6 +199,7 @@ router.post('/update-action', parser.array('images'), async function(req, res, n
         {_id: req.body.id},
         {place: req.body.place,
         title: req.body.title,
+        city: req.body.city,
         period: req.body.period}
       );
     } else {
@@ -176,6 +207,7 @@ router.post('/update-action', parser.array('images'), async function(req, res, n
         {_id: req.body.id},
         {place: req.body.place,
         title: req.body.title,
+        city: req.body.city,
         period: req.body.period,
         description: req.body.description}
       ) ; 
@@ -188,14 +220,14 @@ router.post('/update-action', parser.array('images'), async function(req, res, n
 });
 
 router.get('/update-action-gallery', async function(req, res){
-  // if(!req.session.admin){
-  //   res.redirect('/dashboard/login')
-  // } else {
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {
     action = await ActionModel.findById(req.query.id)
     gallery = action.gallery
 
     res.render('./dashboard/update-action-gallery', {action, gallery})
-  // }
+  }
 })
 
 router.get('/delete-photo-action', async function(req, res){
