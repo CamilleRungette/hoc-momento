@@ -83,9 +83,9 @@ router.get('/logout', function(req,res){
 
 router.get('/actions', async function(req, res, next) {
   console.log("session:", req.session.admin)
-  if(!req.session.admin){
-    res.redirect('/dashboard/login')
-  } else {
+  // if(!req.session.admin){
+  //   res.redirect('/dashboard/login')
+  // } else {
     console.log(req.session.admin);
 
     allActions = await ActionModel.find();
@@ -93,8 +93,7 @@ router.get('/actions', async function(req, res, next) {
     allSupports = await SupportModel.find();
 
     res.render('./dashboard/actions', {allActions, allPartners, allSupports});
-  }
-
+  // }
 });
 
 router.post('/create-action', parser.array('images'), async function(req, res, next){
@@ -109,6 +108,7 @@ try{
         backGallery.push(req.files[i].secure_url)
     }    
 
+    // Creating array to deal the case of one entry (string and not table)
     let partnersArray = [];
     if (typeof req.body.partners_id == "string"){
       partnersArray.push(req.body.partners_id)
@@ -123,9 +123,7 @@ try{
       supportArray = req.body.support_id
     }
 
-    console.log("===================SUPPORT ARRAY", supportArray);
-    
-    
+  //Creating the action    
     newAction = new ActionModel({
       place: req.body.place.toUpperCase(), 
       title: req.body.title, 
@@ -137,32 +135,28 @@ try{
       description: req.body.description,
       city: req.body.city,
     })
-    
-  console.log("========================= NEW ACTION", newAction);
-  
-
-    if (req.body.link.length < 50){
-      for (let i=0; i< req.body.link.length; i++){      
-        newArticle = new ArticleModel({
-          action_id: newAction._id,
-          url: req.body.link[i],
-          name: req.body.nameLink[i]
-        })      
-        newArticle.save(function(error, article){
-          console.log("ARTICLE SAVED", error);    
-        })
-      }  
-    } else{      
+   
+  //Creaing array for the links
+    let linkArray = [];
+    if (typeof req.body.link == "string"){
+      linkArray.push({link: req.body.link, name: req.body.nameLink})
+    } else {
+      for (let i=0; i< req.body.link.length; i++){
+        linkArray.push({link: req.body.link[i], name: req.body.nameLink[i]})
+      }
+    }  
+    for (let i=0; i< linkArray.length; i++){      
       newArticle = new ArticleModel({
         action_id: newAction._id,
-        url: req.body.link,
-        name: req.body.nameLink
-      })      
+        url: linkArray[i].link,
+        name: linkArray[i].name
+      })  
+        
       newArticle.save(function(error, article){
         console.log("ARTICLE SAVED", error);    
       })
     }  
-
+    // Save the action ad redirect
     newAction.save(function(error, action){
       if (error){
           console.log("ACTION NOT SAVED:", error)
@@ -190,20 +184,20 @@ router.post('/delete-action', async function(req, res, next){
 });
 
 router.get('/update-action', async function(req, res, next){
-  if(!req.session.admin){
-    res.redirect('/dashboard/login')
-  } else {
+  // if(!req.session.admin){
+  //   res.redirect('/dashboard/login')
+  // } else {
     action = await ActionModel.findById(req.query.id)
     console.log("L'ACTION =============>", action)
 
     res.render('./dashboard/actions-update', {action})
-  }
+  // }
 })
 
 router.post('/update-action', parser.array('images'), async function(req, res, next){
-  if(!req.session.admin){
-    res.redirect('/dashboard/login')
-  } else {
+  // if(!req.session.admin){
+  //   res.redirect('/dashboard/login')
+  // } else {
     try {
     if (req.body.description === " ") {
       console.log("hello =====>")
@@ -228,7 +222,7 @@ router.post('/update-action', parser.array('images'), async function(req, res, n
     }catch(error){
     console.log(error);
     };
-  }
+  // }
 });
 
 router.get('/update-action-gallery', async function(req, res){

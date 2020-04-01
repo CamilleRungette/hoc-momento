@@ -10,6 +10,7 @@ var EventModel = require('../models/event')
 var PersonModel = require('../models/persons')
 var PartnerModel = require('../models/partners')
 var ArticleModel = require('../models/articles')
+var SupportModel = require('../models/support')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -160,8 +161,11 @@ router.get('/partenaires', async function(req, res){
   allPartners = await PartnerModel.find(function(error, partners){
     console.log(partners);
   })
+  allSupports = await SupportModel.find(function(error, supports){
+    console.log(supports);
+  })
 
-  res.render('partners', {allPartners})
+  res.render('partners', {allPartners, allSupports})
 })
 
 

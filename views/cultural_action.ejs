@@ -5,9 +5,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.5/jquery.bxslider.js"></script>
-
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.5/jquery.bxslider.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.5/jquery.bxslider.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.5/jquery.bxslider.css" rel="stylesheet" />
     <title>Hoc Momento - Action culturelle, <%= action.place %> </title>
   </head>
   <body>
@@ -22,13 +21,19 @@
     <div class="relative">
       <div class="aaction-container">
         <p><%- action.description %> </p>
-          
+
+      <div class="space"></div>
+
+      <% if (articles.length != 0 ) {%> 
         <p class="aaction-link-div"> <span class="bold">Liens articles: </span><br>
             <% for (let i=0; i< articles.length; i++) {%>
               <a href="<%= articles[i].url %>" class="black aaction-link" target="_blank"><%- articles[i].name %> </a>
             <% } %> 
         </p>
         
+        <div class="space"></div>
+        <% } %> 
+
       <div class="aaction-partners-div">
         <p class="aaction-link-div partner-title"> <span class="bold">Soutiens :</span><br/>
           <div class="aactions-logo">

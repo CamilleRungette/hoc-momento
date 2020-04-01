@@ -16,6 +16,19 @@
         </div>
         <div class="made-container">
           <h3 class="paartner-title">Nous remercions chaleureusement :</h3>
+          
+          <h3 class="paartner-title">Nos soutiens</h3>
+          <div class="paartners-logo-container">
+            <% for (let i=0; i< allSupports.length; i++) {%>
+              <div class="paartner-logo-div">
+                <a href="<%= allSupports[i].link %>" target="_blank">
+                <img src="<%= allSupports[i].photo%>" class="paartner-logo"  />
+                </a>
+              </div>
+            <% } %> 
+          </div>
+
+          <h3 class="paartner-title">Nos partenaires</h3>
             <div class="paartners-logo-container">
               <% for (let i=0; i< allPartners.length; i++) {%>
                 <div class="paartner-logo-div">
