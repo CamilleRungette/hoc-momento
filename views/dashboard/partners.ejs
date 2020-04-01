@@ -14,10 +14,11 @@
 
     <img src="/images/partners.jpeg"  class="aaction-banner-photo" />
     <div class="aaction-banner-shows">
-      <h1 class="action-title white">PARTENAIRES</h1>
+      <h1 class="action-title white">PARTENAIRES & SOUTIENS</h1>
     </div>
 
     <div class="cultural-actions">
+      <h3 class="partner-title">Partenaires</h3>
     <%- include('./create-partners') %> 
 
     <div class="separator col-12"></div>
@@ -41,6 +42,36 @@
       </div>
     </div>
   </div >
+
+  <div class="separator col-12"></div>
+
+  <h3 class="partner-title">Soutiens</h3>
+  <%- include('./create-support') %> 
+
+    <div class="separator col-12"></div>
+      <div class="partner-container relative">
+        <% for ( let i= 0; i<allSupports.length; i++){ %>
+          <div class="partner-card">
+            <div class="partner-photo-div">
+              <img src=<%= allSupports[i].photo %> class="partner-photo" id="partner-photo"/>
+            </div>
+            <div class="partner-infos">
+              <p class="partner-name"><%= allSupports[i].name %> </p>
+              <div class="partner-icons">
+                <form action="/dashboard/delete-support" method="POST" >
+                  <input type="hidden" value="<%= allSupports[i].id %>" name="support"/>
+                  <button class="fas fa-trash-alt partner-icon delete-button transparent"></button>
+                </form>
+            </div>
+            </div>
+          </div>
+        <% } %> 
+      </div>
+    </div>
+  </div >
+
+
+
   <%- include('../partials/footer') %>
 </body>
 </html>

@@ -8,6 +8,7 @@ var EventModel = require('../models/event')
 var PersonModel = require('../models/persons')
 var PartnerModel = require('../models/partners')
 var ArticleModel = require('../models/articles')
+var SupportModel = require('../models/support')
 var multer  = require('multer')
 var cloudinary = require('cloudinary')
 var cloudinaryStorage = require('multer-storage-cloudinary');
@@ -88,10 +89,10 @@ router.get('/actions', async function(req, res, next) {
     console.log(req.session.admin);
 
     allActions = await ActionModel.find();
-
     allPartners = await PartnerModel.find();
+    allSupports = await SupportModel.find();
 
-    res.render('./dashboard/actions', {allActions, allPartners});
+    res.render('./dashboard/actions', {allActions, allPartners, allSupports});
   }
 
 });
@@ -114,20 +115,31 @@ try{
     } else {
       partnersArray = req.body.partners_id
     }
+
+    let supportArray = [];
+    if (typeof req.body.support == "string"){
+      supportArray.push(req.body.support_id)
+    } else {
+      supportArray = req.body.support_id
+    }
+
+    console.log("===================SUPPORT ARRAY", supportArray);
+    
     
     newAction = new ActionModel({
       place: req.body.place.toUpperCase(), 
       title: req.body.title, 
       period: req.body.period.toUpperCase(), 
       partners_id: partnersArray, 
+      support_id: supportArray,
       photo: req.files[0].secure_url, 
       gallery: backGallery,
       description: req.body.description,
       city: req.body.city,
     })
-
-    console.log("=========================>", req.body.link, req.body.link.length);
     
+  console.log("========================= NEW ACTION", newAction);
+  
 
     if (req.body.link.length < 50){
       for (let i=0; i< req.body.link.length; i++){      
@@ -137,7 +149,7 @@ try{
           name: req.body.nameLink[i]
         })      
         newArticle.save(function(error, article){
-          console.log("ARTICLE SAVED", error, article);    
+          console.log("ARTICLE SAVED", error);    
         })
       }  
     } else{      
@@ -147,7 +159,7 @@ try{
         name: req.body.nameLink
       })      
       newArticle.save(function(error, article){
-        console.log("ARTICLE SAVED", error, article);    
+        console.log("ARTICLE SAVED", error);    
       })
     }  
 
@@ -601,9 +613,12 @@ router.post('/update-event-photo',  parser.single('image'), async function(req, 
 
 /* PERSON PART */
 router.get('/team', async function(req, res){
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {
   allPersons = await PersonModel.find();
-
   res.render('./dashboard/team', {allPersons})
+  }
 })
 
 router.post('/create-person', parser.single('image'), function(req, res, next){
@@ -705,9 +720,13 @@ router.post('/update-person-photo', parser.single('image'), async function(req, 
 
 /* PARTNERS PART */
 router.get('/partners', async function(req, res ){
-  allPartners = await PartnerModel.find();
-  
-  res.render('./dashboard/partners', {allPartners})
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {
+    allPartners = await PartnerModel.find();
+    allSupports = await SupportModel.find()
+    res.render('./dashboard/partners', {allPartners, allSupports})
+  }
 })
 
 router.post('/create-partner', parser.single('image'), function (req, res){
@@ -718,16 +737,13 @@ router.post('/create-partner', parser.single('image'), function (req, res){
   })
 
   newPartner.save(function(error, partner){
-    console.log("PARTNER SAVED", partner);
-    
+    console.log("PARTNER SAVED", partner);  
   })
 
   res.redirect('/dashboard/partners')
 })
 
 router.post('/delete-partner', async function(req,res){
-  console.log(req.body);
-
   PartnerModel.deleteOne({_id: req.body.partner}, function(error, partner){
     console.log("OK");
   })
@@ -741,5 +757,28 @@ router.post('/update-partner', parser.single('image'), async function(req, res){
 
   res.redirect('/dashboard/partners')
 })
+
+router.post('/create-support', parser.single('image'), function (req, res){
+  newSupport = new SupportModel({
+    name: req.body.name,
+    link: req.body.link,
+    photo: req.file.secure_url
+  })
+
+  newSupport.save(function(error, support){
+    console.log("PARTNER SAVED", support); 
+  })
+
+  res.redirect('/dashboard/partners')
+})
+
+router.post('/delete-support', async function(req,res){
+  SupportModel.deleteOne({_id: req.body.support}, function(error, support){
+    console.log("OK");
+  })
+
+  res.redirect('/dashboard/partners')
+})
+
 
 module.exports = router;

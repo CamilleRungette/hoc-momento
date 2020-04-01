@@ -9,6 +9,7 @@ var NewsModel = require('../models/newsletter')
 var EventModel = require('../models/event')
 var PersonModel = require('../models/persons')
 var PartnerModel = require('../models/partners')
+var ArticleModel = require('../models/articles')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -38,17 +39,14 @@ router.get('/actions-culturelles', async function(req, res, next){
   actions = await ActionModel.find(function(err, actions){
     console.log("action")
   })
-
   res.render('cultural_actions', {actions})
 })
 
 router.get('/action-culturelle', async function(req, res, next){
-  
   action = await ActionModel.findOne({_id: req.query.id})
-  console.log(action);
-  
-
-  res.render('cultural_action', {action})
+  articles = await ArticleModel.find({action_id: req.query.id})
+  console.log("articles", action);
+  res.render('cultural_action', {action, articles})
 })
 
 router.get('/gallerie-action-culturelle', async function(req, res){

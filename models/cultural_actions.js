@@ -6,6 +6,7 @@ let actionSchema = mongoose.Schema({
     title: String, 
     period: String, 
     partners_id: [String], 
+    support_id: [String],
     gallery: [String],
     description: String,
     city: String,

@@ -20,57 +20,37 @@
     </div>
     
     <div class="relative">
-        <div class="aaction-container">
-          <p class="aactions-desc">
-            En 2017, la compagnie est accueillie en résidence tri-annuelle par le pôle <em>Arts et
-            Société</em> de Mains d'Œuvres, afin de mener des actions culturelles au sein de la friche <em>Espace Imaginaire</em>. </p>
-          <p class="aactions-desc">Autour de cette action territoriale à Saint-Denis, la compagnie développe des partenaires récurrents
-            avec l’Université Paris 8, la MSH Paris Nord, le Lycée Angela Davis, la Maison de quartier de la Plaine,
-            le Campus Condorcet, les Centres de loisirs du Lendit, le Médiathèques Ulysses et Don Quichotte et
-            diverses associations.
-            Réalisations autour du projet <em>“Montjoie! Saint-Denis!”</em> :</p>
-            <ul class="aactions-desc">
-              <li>Des cours de dramaturgie et de mise en scène à l’Université Paris 8 et la création de <span class="italic">“Et si
-              c’était une Ville”</span> avec 60 étudiants de licence Théâtre et apprentis de l’Académie Fratellini
-              présentée à la Semaine des Arts de Paris 8 (Mars 2018)</li>
-              <li> Création du spectacle <em>“Montjoie ! Saint-Denis !”</em></li>
-              <li> Des ateliers de pratique théâtrale à l’Espace Imaginaire à destination des habitants, des
-              étudiants, des amateurs ...</li>
-              <li> Des ateliers de construction de décor avec l’association Déchets d’Arts (Juin 2018)</li>
-              <li> Des ateliers de pratique théâtrale au Centre de Loisirs du Lendit auprès des enfants (2018-
-              2019)</li>
-              <li> Des ateliers de pratique théâtrale au Lycée Angela Davis, auprès de 3 classes de seconde,
-              générales et technologiques, dans le cadre d’une EAC (programme régional, 2019-2020)
-              <li> Des ateliers de construction de lanternes avec l’association Les Poussières auprès des
-              enfants, des lycéens et des habitants (Mai 2019)</li>
-              <li> Une journée d’étude autour des liens entre théâtre et territoire, à la MSH Paris Nord (Juin
-              2019)</li>
-              <li> Des ateliers de théâtre forum auprès des collégiens du Collège Garcia Lorca</li>
-              <li> Une création partagée avec les jeunes du quartier à l’Espace Imaginaire, soutenue par la
-              Maison de quartier de la Plaine (Projet <em>“Culture et lien social”</em>, DRAC, Été 2020)</li>
-            </ul>
-            <p class="aactions-desc">
-            Toutes ces actions tissent un maillage territorial de plus en plus serré au sein de ce quartier en pleine
-            mutation. Elles se construisent autour de la création et de la reprise du spectacle <em>“Montjoie! Saint-
-            Denis!”</em>, joué 15 fois à l’Espace Imaginaire et repris à l’Académie Fratellini. </p>
-            
-            <p class="aactions-desc"> <span class="bold">Lien article: </span><br>
-              <a href="http://www.scielo.br/scielo.php?script=sci_arttext&pid=S2237-26602020000200205&lng=en&nrm=iso&tlng=pt" target="_blank" class="yellow">Un regard sur <em>“Montjoie! Saint-Denis!</em></a><br/><br/>
-
-            <span class="bold">Soutiens :</span><br/>
-            Ville de Saint-Denis - Ministère (contrat de ville) - Conversatoire - Mains d’Œuvres - MSH - Paris 8 - Région Ile de France - DRAC
-            <br/> <br/>
-            <span class="bold">Partenaires:</span> <br/> 
-            <div class="aactions-logo">
-              <% for (let i=0; i< action.partners_id.length; i++) {%>
-                <div class="logo-partner-container">
-                  <img src="<%= action.partners_id[i] %>" class="logo-partner" alt="Partnenaire d'Hoc Momento" /> 
-                </div>
+      <div class="aaction-container">
+        <p><%- action.description %> </p>
+          
+        <p class="aaction-link-div"> <span class="bold">Liens articles: </span><br>
+            <% for (let i=0; i< articles.length; i++) {%>
+              <a href="<%= articles[i].url %>" class="black aaction-link" target="_blank"><%- articles[i].name %> </a>
+            <% } %> 
+        </p>
+        
+      <div class="aaction-partners-div">
+        <p class="aaction-link-div partner-title"> <span class="bold">Soutiens :</span><br/>
+          <div class="aactions-logo">
+            <% for (let i=0; i<action.support_id.length; i++) {%>
+              <div class="logo-partner-container">
+                <img src="<%= action.support_id[i] %>" class="logo-partner" alt="Soutiens d'Hoc Momento" />
+              </div>
               <% } %> 
             </div>
-            <!-- Maison de quartier de la Plaine - Espace imaginaire - Les Poussières - Mémoire Vivante de la Plaine - Déchets d’Arts - Théâtre de la Belle Étoile - Médiathèques de Plaine Commune -->
-          </p>
-        </div>
+          </p> 
+
+        <p class="aaction-link-div partner-title"> <span class="bold">Partnenaires:</span><br/>
+          <div class="aactions-logo">
+            <% for (let i=0; i< action.partners_id.length; i++) {%>
+              <div class="logo-partner-container">
+                <img src="<%= action.partners_id[i] %>" class="logo-partner" alt="Partnenaire d'Hoc Momento" /> 
+              </div>
+            <% } %> 
+          </div>
+        </p>
+      </div>
+    </div>
 
       <div class="max-container">
         <div class="aaction-arrow-div">
