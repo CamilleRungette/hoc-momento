@@ -9,56 +9,38 @@
 
   <body>
     <%- include('./partials/navbar'); %> 
-      <div class="aaction-big-container">
-        <img src="/images/compagnie1.png"  class="aaction-banner-photo" alt="Bannière Compagnie Hoc Momento" />
-        <div class="aaction-banner-shows">
-          <h1 class="aaction-place white ">AGENDA</h1>
-        </div>
-        <div class="made-container">
-          <div class="futur-event">Événements à venir</div>
+      <div class="relative">
+        <div class="agenda-banner-photo"></div>
+        <div class="banner">
+          <h1 class="banner-title white">AGENDA</h1>
+          <div class="arroow down">
+            <div class="arrow-top"></div>
+            <div class="arrow-bottom"></div>
+          </div>
+      </div>
+      </div>
 
-          <% for (let i=0; i< futurEvents.length; i++) { %>  
-            <div class="event-card">
-              <div class="card-event-photo">
-                <img src=<%= futurEvents[i].photo %> class="event-photo" alt="<%= futurEvents[i].title %>" /> 
-              </div>
-              <div class="card-event-infos">
-                <p class="card-event-period"> <i class="fas fa-caret-right"></i> <%= futurEvents[i].period %> </p>
-                <% if (futurEvents[i].type == "Action Culturelle") { %> 
-                <h5 class="card-event-title red"><%= futurEvents[i].title %></h5>
-                <% } else{%>
-                  <h5 class="card-event-title yellow"><%= futurEvents[i].title %></h5>
-                <% } %> 
-                <h6 class="card-event-place"><span class="grey">Lieux :</span> <%= futurEvents[i].place %> - <%= futurEvents[i].city %>  </h6>
-                <h6 class="card-event-desc"><span class="grey bold">Description:</span> <%= futurEvents[i].description %>  </h6>
-                <h6 class="card-event-desc"><span class="grey bold"><%= futurEvents[i].type %></span></h6>
-              </div>
+<br/> <br/>
+      <div class="made-container">
+        <div class="futur-event">Événements à venir</div>
+
+        <% for (let i=0; i< futurEvents.length; i++) { %>  
+          <div class="event-card">
+            <div class="card-event-photo">
+              <img src=<%= futurEvents[i].photo %> class="event-photo" alt="<%= futurEvents[i].title %>" /> 
             </div>
-          <% } %> 
-
-          <div class="past-event">Événements passés</div>
-
-          <% for (let i=0; i< pastEvents.length; i++) { %>  
-            <div class="event-card">
-              <div class="card-event-photo">
-                <img src=<%= pastEvents[i].photo %> class="event-photo" alt="<%= pastEvents[i].title %>" /> 
-              </div>
-              <div class="card-event-infos">
-                <p class="card-event-period"> <i class="fas fa-caret-right"></i> <%= pastEvents[i].period %> </p>
-                <% if (pastEvents[i].type === "Action Culturelle") { %> 
-                <h5 class="card-event-title red"><%= pastEvents[i].title %></h5>
-                <% } else{%>
-                  <h5 class="card-event-title yellow"><%= pastEvents[i].title %></h5>
-                <% } %> 
-                <h6 class="card-event-place"><span class="grey">Lieux :</span> <%= pastEvents[i].place %> - <%= pastEvents[i].city %>  </h6>
-                <h6 class="card-event-desc"><span class="grey bold">Description:</span> <%= pastEvents[i].description %>  </h6>
-                <h6 class="card-event-desc"><span class="grey bold"><%= pastEvents[i].type %></span></h6>
-              </div>
+            <div class="card-event-infos">
+              <p class="card-event-period"> <i class="fas fa-caret-right"></i> <%= futurEvents[i].period %> </p>
+              <h5 class="card-event-title yellow"><%= futurEvents[i].title %></h5>
+              <h6 class="card-event-place"><span class="grey">Lieux :</span> <%= futurEvents[i].place %> - <%= futurEvents[i].city %>  </h6>
+              <h6 class="card-event-desc"><span class="grey bold">Description:</span> <%= futurEvents[i].description %>  </h6>
+              <h6 class="card-event-desc"><span class="grey bold"><%= futurEvents[i].type %></span></h6>
             </div>
-          <% } %> 
-            
-        </div>
+          </div>
+        <% } %> 
+          
       </div>
       <%- include('./partials/footer') %> 
+
   </body>
 </html>

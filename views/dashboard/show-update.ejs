@@ -26,7 +26,19 @@
         </div>
         <div class="form-group">
           <label>Description</label>
-          <textarea class="made-form" value="<%= show.description %>" name="description"> </textarea>
+          <textarea class="made-form" value="<%= show.description %>" name="description"> <%= show.description %> </textarea>
+        </div>
+        <label>Liens Articles</label>
+        <div class="form-group" id="linkField">
+          <div class=" col-12 d-flex link-div">
+            <div class="col-5">
+              <input type="text" class="made-form" placeholder="Nom de l'article" name="nameLink"/>
+            </div> 
+            <div class="col-6">
+              <input type="text" class="made-form" placeholder="Lien" name="link"/>
+            </div>
+            <i class="fas fa-plus" id="addField"></i>
+          </div>
         </div>
         <div class="button-container mt-5">
           <button type="submit" class="btn btn-warning text-white action-button">Modifier </button>
@@ -34,5 +46,6 @@
       </form>
     </div>
     <%- include('../partials/footer') %>
+    <script src="/javascripts/script5.js"></script>
   </body>
 </html>

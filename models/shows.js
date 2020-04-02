@@ -5,8 +5,9 @@ let showSchema = mongoose.Schema({
     place: String, 
     title: String, 
     period: String, 
-    partners: [String], 
     gallery: [String],
+    partners: [String], 
+    supports: [String],
     description: String,
     city: String,
 });

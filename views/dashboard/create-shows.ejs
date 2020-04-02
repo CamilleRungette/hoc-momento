@@ -1,6 +1,3 @@
-
-
-
 <form action="/dashboard/create-show" method="POST" class="col-8 border p-3 form-dashboard mx-auto" enctype="multipart/form-data">
   <div class="form-group d-flex">
     <div class="col-6">
@@ -24,10 +21,23 @@
     </div>
   </div>
   
-  <div class="form-group">
+  <div class="form-group col-12">
     <label>Description</label>
     <textarea class="made-form" placeholder="Montjoie ! Saint-Denis ! est une œuvre théâtrale in situ ..." name="description"></textarea>
   </div> 
+
+  <label class="col-12">Liens Articles</label>
+  <div class="form-group" id="linkField">
+    <div class="col-12 d-flex link-div">
+      <div class="col-5">
+        <input type="text" class="made-form" placeholder="Nom de l'article" name="nameLink"/>
+      </div> 
+      <div class="col-6">
+        <input type="text" class="made-form" placeholder="Lien" name="link"/>
+      </div>
+      <i class="fas fa-plus" id="addField"></i>
+    </div>
+  </div>
 
   <div class="form-group d-flex">
     <div class="col-6 ">
@@ -40,10 +50,42 @@
     </div>
   </div>
 
+  <div class="form-group d-flex">
+    <div class="fifty">
+      <label>Partenaires</label>
+      <div class="partners-scroll">
+      <% for (let i=0; i < allPartners.length; i++) {%> 
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="<%= allPartners[i].photo %>" name="partners_id">
+          <label class="form-check-label">
+            <%= allPartners[i].name  %>
+          </label>
+        </div>
+      <% } %> 
+      </div>
+    </div>
+
+    <div class="fifty">
+      <label>Soutiens</label>
+      <div class="partners-scroll">
+      <% for (let i=0; i < allSupports.length; i++) {%> 
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="<%= allSupports[i].photo %>" name="support_id">
+          <label class="form-check-label">
+            <%= allSupports[i].name  %>
+          </label>
+        </div>
+      <% } %> 
+      </div>
+    </div>
+
+  </div>
 
   <div class="button-container">
     <button type="submit" class="btn btn-warning text-white action-button">Créer </button>
   </div>
   </form>
+
+  <script src="/javascripts/script5.js"></script>
 
 

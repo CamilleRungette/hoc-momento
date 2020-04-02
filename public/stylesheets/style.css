@@ -4,8 +4,9 @@ body {
   width: 100vw;
   height: 100%;
   overflow-x: hidden;
-  margin-left: -0.5%;
   margin-bottom: 0;
+  margin-left: -.5%;
+  min-height: 85vh;
 }
 
 .logo {
@@ -207,17 +208,17 @@ header nav a > span:hover{
 
 .home-banner{
   background-color: rgba(0, 0, 0, 0.3);
-  width: 100%;
+  width: 101%;
   height: 83vh;
   position: absolute;
-  top: 0;
+  top: 7.5em;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .home-banner-photo{
-  background-image: url(/images/_MG_0250.jpg);
+  background-image: url(/images/home-banner.jpg);
   background-size: cover;
   width: 100%;
   height: 80vh;
@@ -504,23 +505,70 @@ header nav a > span:hover{
   }
 
 
-   /* ==========================================
-              Dashboard
-  =========================================== */
-
+   /* ==================================================================
+                            Dashboard
+  ====================================================================== */
+/* =============================COMMON============================= */
 .dashboard-container{
-    position: relative;
-    min-height: 85vh;
-  }
- 
+  position: relative;
+  min-height: 85vh;
+}
+
+.form-dashboard{
+  margin-bottom: 10%;
+}
+.made-form{
+  border: none;
+  border-bottom: 1px rgb(184, 184, 184) solid;
+  border-radius: 0%;
+  width: 100%;
+  color: rgb(124, 124, 124);
+}
+.made-form:focus{
+  outline: transparent;
+}
 label{
   font-size: 1.2em;
 }
 
-.action-title{
-  font-size: 400%;
-  font-weight: bold;
+/* =============================ACTIONS============================= */
+.fa-question-circle:active{
+  font-size: 90%;
 }
+.legend-div{
+  border: 1px rgb(172, 172, 172) solid;
+  background-color: rgb(240, 240, 240);
+  border-radius: 10px;
+  width: 40%;
+  padding: 1%;
+  position: absolute;
+  top: -17em;
+  left: 9em;
+  opacity: 0;
+  z-index: -1;
+}
+
+.link-div{
+  margin-top: 1%;
+}
+
+.partners-scroll{
+  padding: 1%;
+  border: 1px solid rgb(167, 167, 167);
+  border-radius: 5px;
+  height: 9em;
+  overflow: auto;
+}
+
+.cultural-actions{
+  margin-top:5em;
+}
+/* =============================SHOWS============================= */
+
+/* =============================MESSAGES============================= */
+
+/* =============================PARTNERS============================= */
+
 
 .messages-title{
   margin-top: 2em;
@@ -537,9 +585,7 @@ font-size: 1.3em;
   padding-top: 5%;
 }
 
-.form-dashboard{
-  margin-bottom: 10%;
-}
+
 
 .action-item{
   height:10.3em
@@ -549,13 +595,7 @@ font-size: 1.3em;
   margin-right: 15%;
 }
 
-.partners-scroll{
-  padding: 1%;
-  border: 1px solid rgb(167, 167, 167);
-  border-radius: 5px;
-  height: 9em;
-  overflow: auto;
-}
+
 
 .photo-list{
   height: 10em;
@@ -570,10 +610,6 @@ font-size: 1.3em;
 
 .description-list{ 
   overflow: auto;
-}
-
-.cultural-actions{
-  margin-top:5em;
 }
 
 .delete-button{
@@ -627,38 +663,7 @@ font-size: 1.3em;
   font-size: 100%;
 }
 
-.made-form{
-  border: none;
-  border-bottom: 1px rgb(184, 184, 184) solid;
-  border-radius: 0%;
-  width: 100%;
-  color: rgb(124, 124, 124);
-}
 
-.made-form:focus{
-  outline: transparent;
-}
-
-.fa-question-circle:active{
-  font-size: 90%;
-}
-
-.legend-div{
-  border: 1px rgb(172, 172, 172) solid;
-  background-color: rgb(240, 240, 240);
-  border-radius: 10px;
-  width: 40%;
-  padding: 1%;
-  position: absolute;
-  top: -17em;
-  left: 9em;
-  opacity: 0;
-  z-index: -1;
-}
-
-.link-div{
-  margin-top: 1%;
-}
 
 .exemple{
   font-size: 80%;
@@ -698,9 +703,8 @@ font-size: 1.3em;
   background-repeat: no-repeat;
   z-index: 1;
 }
-
 .shows-banner-photo{
-  background-image: url(/images/cultural-action.jpg);
+  background-image: url(/images/spectacle1.jpg);
   background-size: cover;
   width: 100%;
   height: 70vh;
@@ -710,6 +714,97 @@ font-size: 1.3em;
   top: 30em;
   background-repeat: no-repeat;
   z-index: 1;
+}
+.agenda-banner-photo{
+  background-image: url(/images/agenda.jpg);
+  background-size: cover;
+  width: 100%;
+  height: 70vh;
+  min-height: 30em;
+  object-fit: cover;
+  background-attachment: fixed;
+  top: 30em;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+.partner-banner-photo{
+  background-image: url(/images/partners.jpg);
+  background-size: cover;
+  width: 100%;
+  height: 70vh;
+  min-height: 30em;
+  object-fit: cover;
+  background-attachment: fixed;
+  top: 30em;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+.company-banner-photo{
+  background-image: url(/images/company.jpg);
+  background-size: cover;
+  width: 100%;
+  height: 70vh;
+  min-height: 30em;
+  object-fit: cover;
+  background-attachment: fixed;
+  top: 30em;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+.team-banner-photo{
+  background-image: url(/images/compagnie1.png);
+  background-size: cover;
+  width: 100%;
+  height: 70vh;
+  min-height: 30em;
+  object-fit: cover;
+  background-attachment: fixed;
+  top: 30em;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+
+.contact-banner{
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 100%;
+  height: 53vh;
+  position: absolute;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.contact-banner-photo{
+  background-image: url(/images/contact.jpg);
+  background-size: cover;
+  width: 100%;
+  height: 50vh;
+  min-height: 30em;
+  object-fit: cover;
+  background-attachment: fixed;
+  top: 30em;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+
+.small-banner-photo{
+  width: 100%;
+  height: 20em;
+  object-fit: cover;
+}
+.small-banner{
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 100%;
+  height: 20em;
+  position: absolute;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.small-banner-title{
+  font-size: 400%;
+  font-weight: bold;
 }
 
 
@@ -793,21 +888,6 @@ font-size: 1.3em;
 }
 
 /* =============================ACTION============================= */
-.aaction-banner-photo{
-  width: 100%;
-  height: 20em;
-  object-fit: cover;
-}
-.aaction-banner{
-  background-color: rgba(255, 255, 255, 0.5);
-  width: 100%;
-  height: 20em;
-  position: absolute;
-  top: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 .aaction-place{
   font-size: 600%;
   font-weight: bold !important;
@@ -817,7 +897,6 @@ font-size: 1.3em;
   padding-top: 5%;
   padding-bottom: 5%;
   width: 62%;
-  min-height: 70vh;;
   margin: auto;
 }
 .aaction-desc{
@@ -935,7 +1014,7 @@ font-size: 1.3em;
 }
 
 .aaction-modal{
-  height: 102.5%;
+  height: 100%;
   position: absolute;
   top:0;
   background-color:rgba(0, 0, 0, 0.8);
@@ -957,7 +1036,6 @@ font-size: 1.3em;
 }
 #wrap-carroussel{
   margin: auto;
-  margin-top: 80%;
   max-width: 1200px;
   width: 100%;
   display:block;
@@ -979,8 +1057,6 @@ font-size: 1.3em;
   align-items: center;
   justify-content: center;
 }
-
-
 
 /*=============================SHOWS============================= */
 .shows-hover{
@@ -1275,14 +1351,14 @@ opacity: 1;
 .futur-event{
   margin-top: 5%;
   margin-bottom: 5%;
-  background-color: #c32527;
+  background-color: rgb(249, 176, 58);
   color: #fff;
   font-size: 200%;
   border-radius: 20px 20px 0% 0;
   padding-left: 5%;
 }
 
-.past-event{
+/* .past-event{
   margin-top: 5%;
   margin-bottom: 5%;
   background-color: rgb(249, 176, 58);
@@ -1290,8 +1366,7 @@ opacity: 1;
   font-size: 200%;
   border-radius: 20px 20px 0% 0;
   padding-left: 5%;
- 
-}
+} */
 
 .event-card{
   width: 70%;
@@ -1316,6 +1391,7 @@ opacity: 1;
 
 .card-event-photo{
   width: 50%;
+  max-height: 20em;
   text-align: center;
   transition-duration: .5s;
 }
@@ -1348,11 +1424,11 @@ opacity: 1;
 .card-event-desc{
   border-top: 1px solid #D7D7D7;
   padding-top: 1%;
-  -webkit-box-orient: vertical;
+  /* -webkit-box-orient: vertical;
   display: -webkit-box;
   -webkit-line-clamp: 4;
   overflow: hidden;
-  text-overflow: ellipsis;
+  text-overflow: ellipsis; */
   white-space: normal;
   font-size: 90%;
   margin-bottom: -5%;

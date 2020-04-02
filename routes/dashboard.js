@@ -247,7 +247,6 @@ router.post('/update-action', parser.array('images'), async function(req, res, n
   // }
 });
 
-
 router.get('/update-action-gallery', async function(req, res){
   if(!req.session.admin){
     res.redirect('/dashboard/login')
@@ -312,37 +311,74 @@ router.post('/add-photo-action',  parser.array('images'), async function(req, re
 /* SHOWS PART: DISPLAY, CREATION, DELETING AND UPDATING */
 
 router.get('/shows', async function(req, res, next){
-  if(!req.session.admin){
-    res.redirect('/dashboard/login')
-  } else {
-    allShows = await ShowModel.find(function(err, shows){
-      console.log("VOILA========+++>")
-    })
+  // if(!req.session.admin){
+  //   res.redirect('/dashboard/login')
+  // } else {
+    allShows = await ShowModel.find();
+    allPartners = await PartnerModel.find();
+    allSupports = await SupportModel.find();
+
     res.render('./dashboard/shows', {allShows})
-  }
+  // }
 });
 
 router.post('/create-show', parser.array('images'), function(req, res, next){
-  if(!req.session.admin){
-    res.redirect('/dashboard/login')
-  } else {
-    console.log("REQ.BODY", req.files)
+  // if(!req.session.admin){
+  //   res.redirect('/dashboard/login')
+  // } else {
+try{    
     let backGallery = []
     for (i=0; i< req.files.length; i++){
         backGallery.push(req.files[i].secure_url)
     }
-    console.log(backGallery)
+    // Creating array to deal the case of one entry (string and not table)
+    let partnersArray = [];
+    if (typeof req.body.partners_id == "string"){
+      partnersArray.push(req.body.partners_id)
+    } else {
+      partnersArray = req.body.partners_id
+    }
+
+    let supportArray = [];
+    if (typeof req.body.support == "string"){
+      supportArray.push(req.body.support_id)
+    } else {
+      supportArray = req.body.support_id
+    }
 
     newShow = new ShowModel({
-      photo: req.files[0].secure_url,
       place: req.body.place.toUpperCase(),
       city: req.body.city,
       title: req.body.title,
       period: req.body.period,
       partners: req.body.partners,
+      photo: req.files[0].secure_url,
       gallery: backGallery,
+      partners: partnersArray, 
+      supports: supportArray,
       description: req.body.description,
     })
+
+      //Creaing array for the links
+      let linkArray = [];
+      if (typeof req.body.link == "string"){
+        linkArray.push({link: req.body.link, name: req.body.nameLink})
+      } else {
+        for (let i=0; i< req.body.link.length; i++){
+          linkArray.push({link: req.body.link[i], name: req.body.nameLink[i]})
+        }
+      }  
+      for (let i=0; i< linkArray.length; i++){      
+        newArticle = new ArticleModel({
+          show_id: newShow._id,
+          url: linkArray[i].link,
+          name: linkArray[i].name
+        })  
+          
+        newArticle.save(function(error, article){
+          console.log("ARTICLE SAVED", article, error);    
+        })
+      }  
 
     newShow.save(function(error, show){
       if (error){
@@ -353,7 +389,11 @@ router.post('/create-show', parser.array('images'), function(req, res, next){
         res.redirect('/dashboard/shows')
       }
     })
+  }catch(error){
+    console.log(error);
+    
   }
+  // }
 });
 
 router.post('/delete-show', async function(req, res, next){
@@ -368,20 +408,20 @@ router.post('/delete-show', async function(req, res, next){
 });
 
 router.get('/update-show', async function(req, res, next){
-  if(!req.session.admin){
-    res.redirect('/dashboard/login')
-  } else {  
+  // if(!req.session.admin){
+  //   res.redirect('/dashboard/login')
+  // } else {  
     show = await ShowModel.findById(req.query.id)
     console.log("LE SHOW =============>", show)
 
     res.render('./dashboard/show-update', {show})
-  }
+  // }
 })
 
 router.post('/update-show', async function(req, res, next){
-  if(!req.session.admin){
-    res.redirect('/dashboard/login')
-  } else {
+  // if(!req.session.admin){
+  //   res.redirect('/dashboard/login')
+  // } else {
     console.log(req.body);
     try {
     if (req.body.description === " ") {
@@ -405,7 +445,7 @@ router.post('/update-show', async function(req, res, next){
     }catch(error){
       console.log(error);
     };
-  }
+  // }
 });
 
 router.get('/update-show-gallery', async function(req, res){

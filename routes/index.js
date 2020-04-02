@@ -146,7 +146,7 @@ router.get('/agenda', async function(req, res ){
   console.log("FUTUR:", futurEvents);
   console.log("PAST:", pastEvents);
   
-  res.render('agenda', {futurEvents, pastEvents})
+  res.render('agenda', {futurEvents})
 })
 
 router.get('/equipe', async function(req, res){
