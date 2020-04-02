@@ -6,8 +6,23 @@
     <title>Hoc Momento - Spectacles</title>
   </head>
   <body>
-    <div class="aaction-big-container">
     <%- include('./partials/navbar') %> 
+      <div class="relative">
+        <div class="shows-banner-photo"></div>
+        <div class="banner">
+          <h1 class="banner-title white">SPECTACLES</h1>
+          <div class="arroow down">
+            <div class="arrow-top"></div>
+            <div class="arrow-bottom"></div>
+          </div>
+        </div>
+
+        <div class="aactions-text">
+          <p class="aactions-desc">
+            DESCRIPION DES SPECTACLES
+          </p>
+        </div>
+
     <div class="made-container aactions-container">
         <% for (i=0; i< shows.length; i++) {%>
           <a href="/spectacle?id=<%=shows[i].id %>" class="white link-white aactions-img">
@@ -20,7 +35,7 @@
           </a>
         <% } %> 
     </div>
-    <%- include('./partials/footer'); %> 
-    </div>
+  </div>
+  <%- include('./partials/footer'); %> 
   </body>
 </html>

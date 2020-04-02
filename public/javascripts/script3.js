@@ -7,7 +7,7 @@ let close = document.getElementById('close-icon')
 
 gallery.addEventListener('click', function(){
   modal.style.transitionDuration = ".7s"
-  modal.style.zIndex = "2"
+  modal.style.zIndex = "1"
   modal.style.opacity = "1"
 })
 

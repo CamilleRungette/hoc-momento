@@ -34,10 +34,9 @@
           <textarea class="made-form" value="<%=action.description%>" placeholder="coucou" name="description"> <%= action.description %> </textarea>
         </div>
         <label>Liens Articles</label>
-        <% for () %> 
         <div class="form-group" id="linkField">
-          <div class="col-12 d-flex link-div">
-            <div class="col-6">
+          <div class=" col-12 d-flex link-div">
+            <div class="col-5">
               <input type="text" class="made-form" placeholder="Nom de l'article" name="nameLink"/>
             </div> 
             <div class="col-6">
@@ -47,10 +46,12 @@
           </div>
         </div>
         <div class="button-container mt-5">
+          <a href="/dashboard/actions" ><button class="btn btn-secondary text-white action-button">Annuler</button></a>
           <button type="submit" class="btn btn-warning text-white action-button">Modifier </button>
         </div>
       </form>
     </div>
     <%- include('../partials/footer') %>
+    <script src="/javascripts/script5.js"></script>
   </body>
 </html>

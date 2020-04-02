@@ -187,10 +187,12 @@ router.get('/update-action', async function(req, res, next){
   // if(!req.session.admin){
   //   res.redirect('/dashboard/login')
   // } else {
+    console.log(req.query);
+    
     action = await ActionModel.findById(req.query.id)
-    console.log("L'ACTION =============>", action)
+    articles = await ArticleModel.find({action_id: req.query.id})
 
-    res.render('./dashboard/actions-update', {action})
+    res.render('./dashboard/actions-update', {action, articles})
   // }
 })
 
@@ -199,16 +201,37 @@ router.post('/update-action', parser.array('images'), async function(req, res, n
   //   res.redirect('/dashboard/login')
   // } else {
     try {
-    if (req.body.description === " ") {
-      console.log("hello =====>")
-      update = await ActionModel.updateOne(
-        {_id: req.body.id},
-        {place: req.body.place,
-        title: req.body.title,
-        city: req.body.city,
-        period: req.body.period}
-      );
-    } else {
+      console.log("$$$$$$$$$$$$$$$$$$$$$$", req.body.link);
+
+      //Creating array for the links
+        // if link hs been added
+      if(req.body.link != ""){
+        let linkArray = [];
+        // if there's just one link
+        if (typeof req.body.link == "string"){
+          linkArray.push({link: req.body.link, name: req.body.nameLink})
+        //if there's more than one
+        } else {
+          for (let i=0; i< req.body.link.length; i++){
+            linkArray.push({link: req.body.link[i], name: req.body.nameLink[i]})
+          }
+        }  
+        console.log("LINK ARRAAAAAAAAAAAAAAAAAAAAAAAAY", linkArray);
+        
+        for (let i=0; i< linkArray.length; i++){      
+          newArticle = new ArticleModel({
+            action_id: req.body.id,
+            url: linkArray[i].link,
+            name: linkArray[i].name
+          })  
+          console.log(newArticle);
+          
+            newArticle.save(function(error, article){
+              console.log("ARTICLE SAVED", error);    
+            })
+          } 
+      } 
+        
       update = await ActionModel.updateOne(
         {_id: req.body.id},
         {place: req.body.place,
@@ -217,13 +240,13 @@ router.post('/update-action', parser.array('images'), async function(req, res, n
         period: req.body.period,
         description: req.body.description}
       ) ; 
-    }
-    res.redirect('/dashboard/actions');
+      res.redirect('/dashboard/actions');
     }catch(error){
     console.log(error);
     };
   // }
 });
+
 
 router.get('/update-action-gallery', async function(req, res){
   if(!req.session.admin){

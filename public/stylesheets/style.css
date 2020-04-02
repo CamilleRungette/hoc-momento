@@ -2,6 +2,7 @@ body {
   font: 14px;
   font-family: "Lato", sans-serif;
   width: 100vw;
+  height: 100%;
   overflow-x: hidden;
   margin-left: -0.5%;
   margin-bottom: 0;
@@ -353,6 +354,10 @@ header nav a > span:hover{
     color: black;
   }
 
+  .link:hover{
+    text-decoration: none;
+  }
+
   .grey{
     color: rgb(122, 122, 122);
   }
@@ -413,16 +418,49 @@ header nav a > span:hover{
   margin-left: 1%;
   margin-right: 1%;
   }
-
+  .ninety{
+    width: 88%;
+    margin-left: 1%;
+    margin-right: 1%;  
+  }
+  .eighty{
+    width: 78%;
+    margin-left: 1%;
+    margin-right: 1%;  
+  }
+  .seventy{   
+    width: 68%;
+    margin-left: 1%;
+    margin-right: 1%;  
+}
   .sixty{
     width: 58%;
     margin-left: 1%;
     margin-right: 1%;
     }  
-
   .fifty{
     margin-left: 1%;
     width: 48%;
+    margin-right: 1%;
+  }
+  .forty{
+    width: 38%;
+    margin-left: 1%;
+    margin-right: 1%;  
+  }
+  .thirty{
+    width: 28%;
+    margin-left: 1%;
+    margin-right: 1%;
+  }
+  .twenty{
+    width: 18%;
+    margin-left: 1%;
+    margin-right: 1%;
+  }
+  .ten{
+    width: 8%;
+    margin-left: 1%;
     margin-right: 1%;
   }
 
@@ -631,11 +669,10 @@ font-size: 1.3em;
   margin-top: 5%;
 }
 
-
-  /* ==========================================
-            Cultural Actions / Shows
-=========================================== */
-.aactions-banner{
+  /* =========================================================
+                          Banner
+============================================================ */
+.banner{
   background-color: rgba(0, 0, 0, 0.3);
   width: 100%;
   height: 73vh;
@@ -644,6 +681,9 @@ font-size: 1.3em;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.banner-title{
+  font-size: 600%;
 }
 
 .aactions-banner-photo{
@@ -658,8 +698,35 @@ font-size: 1.3em;
   background-repeat: no-repeat;
   z-index: 1;
 }
-.aactions-banner-title{
-  font-size: 600%;
+
+.shows-banner-photo{
+  background-image: url(/images/cultural-action.jpg);
+  background-size: cover;
+  width: 100%;
+  height: 70vh;
+  min-height: 30em;
+  object-fit: cover;
+  background-attachment: fixed;
+  top: 30em;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+
+
+  /* =========================================================
+                    Cultural Actions / Shows
+============================================================ */
+/* =============================ACTIONS============================= */
+.aactions-text{
+  width: 60%;
+  text-align: justify;
+  margin: auto;
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+.aactions-desc{
+  font-size: 130%;
+  line-height: 1.5em;
 }
 
 .aactions-container{
@@ -668,7 +735,6 @@ font-size: 1.3em;
   flex-wrap: wrap;
   margin-top: 5%;
 }
-
 .aactions-img{
   position: relative;
   margin-left: 1%;
@@ -677,8 +743,6 @@ font-size: 1.3em;
   width: 46%;  
   height: 33em;
 }
-
-
 @media screen and (max-width: 1500px){
   .aactions-img{
     width: 65%;
@@ -686,19 +750,6 @@ font-size: 1.3em;
     margin-bottom: 8%;
   }
 }
-
-@media screen and (max-width: 1740px){
-  .aactions-period{
-    transition-duration: .8s;
-    margin-top: -4%;
-  }
-  .aactions-title{
-    transition-duration: .8s;
-    margin-top: -3%;
-  }
-}
-
-
 .aactions-hover{
   position: absolute;
   top: 15%;
@@ -730,8 +781,64 @@ font-size: 1.3em;
   font-size: 2em;
   font-style: italic;
 }
+@media screen and (max-width: 1740px){
+  .aactions-period{
+    transition-duration: .8s;
+    margin-top: -4%;
+  }
+  .aactions-title{
+    transition-duration: .8s;
+    margin-top: -3%;
+  }
+}
 
-.aactions-logo{
+/* =============================ACTION============================= */
+.aaction-banner-photo{
+  width: 100%;
+  height: 20em;
+  object-fit: cover;
+}
+.aaction-banner{
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 100%;
+  height: 20em;
+  position: absolute;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.aaction-place{
+  font-size: 600%;
+  font-weight: bold !important;
+}
+
+.aaction-container{
+  padding-top: 5%;
+  padding-bottom: 5%;
+  width: 62%;
+  min-height: 70vh;;
+  margin: auto;
+}
+.aaction-desc{
+  font-size: 130%;
+  letter-spacing: 1px;
+  text-align: justify;
+  line-height: 1.3em;
+}
+
+.aaction-link-div{
+  font-size: 130%;
+  line-height: 1.5em;
+}
+.aaction-link{
+  font-size: 90%;
+}
+
+.aaction-partners-div{
+  margin: auto;
+}
+.aaction-logo{
   width: 90%;
   display: flex;
   justify-content: space-between;
@@ -750,77 +857,7 @@ font-size: 1.3em;
   object-fit: contain;
 }
 
-.aactions-text{
-  width: 60%;
-  text-align: justify;
-  margin: auto;
-  margin-top: 10%;
-  margin-bottom: 10%;
-}
-.aactions-desc{
-  font-size: 130%;
-  line-height: 1.5em;
-}
-
-.aaction-container{
-  padding-top: 5%;
-  padding-bottom: 5%;
-  width: 62%;
-  min-height: 70vh;;
-  margin: auto;
-}
-.aaction-banner-photo{
-  width: 100%;
-  height: 20em;
-  object-fit: cover;
-}
-.aaction-banner{
-  background-color: rgba(255, 255, 255, 0.5);
-  width: 100%;
-  height: 20em;
-  position: absolute;
-  top: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.aaction-banner-shows{
-  background-color: rgba(0, 0, 0, 0.3);
-  width: 100%;
-  height: 20em;
-  position: absolute;
-  top: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.aaction-place{
-  font-size: 600%;
-  font-weight: bold !important;
-}
-
-.aaction-desc{
-  font-size: 130%;
-  letter-spacing: 1px;
-  text-align: justify;
-  line-height: 1.3em;
-}
-
-.aaction-link-div{
-  font-size: 130%;
-  line-height: 1.5em;
-}
-.aaction-link{
-  font-size: 90%;
-}
-
-.aaction-partners-div{
-  /* background-color: coral; */
-  margin: auto;
-}
-
-.max-container{
+.slider-container{
   position: relative;
   width: 75%;
   padding: 0px 15px;
@@ -828,7 +865,32 @@ font-size: 1.3em;
   margin-bottom: 3%;
   margin-top: 5%;
 }
-
+.aaction-gallery-div{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2%;
+}
+  .gallery-button{
+    transition-duration: .3s;
+    margin-top: 4%;
+    text-align: center;
+    margin: auto;
+    width: 150% !important;
+    color: rgb(182, 36, 39);
+    background-color: white;
+    border: 2px solid rgb(182, 36, 39);
+    border-radius: 10px;
+    font-size: 1.4em;
+    padding: 3%;
+    cursor: pointer;
+  }
+  .gallery-button:hover{
+    color: #fff;
+    background-color:rgb(182, 36, 39)
+  }
+  .gallery-button:focus{
+    outline: none;
+  }
 .slider {
   position: relative;
   width: max-content;
@@ -846,13 +908,11 @@ font-size: 1.3em;
   box-shadow: inset 0 0 5px grey; 
   border-radius: 10px;
 }
- 
 /* Handle */
 .slider::-webkit-scrollbar-thumb {
   background: rgb(163, 163, 163); 
   border-radius: 10px;
 }
-
 /* Handle on hover */
 .slider::-webkit-scrollbar-thumb:hover {
   background: #777777; 
@@ -874,50 +934,30 @@ font-size: 1.3em;
   padding-bottom: 8%;
 }
 
-.aaction-arrow-div{
-  display: flex;
-  justify-content: center;
-  margin-bottom: 2%;
-}
-
-.aaction-big-container{
-  position: relative;
-}
-.gallery-button{
-  transition-duration: .3s;
-  margin-top: 4%;
-  text-align: center;
-  margin: auto;
-  width: 150% !important;
-  color: rgb(182, 36, 39);
-  background-color: white;
-  border: 2px solid rgb(182, 36, 39);
-  border-radius: 10px;
-  font-size: 1.4em;
-  padding: 3%;
-  cursor: pointer;
-}
-.gallery-button:hover{
-  color: #fff;
-  background-color:rgb(182, 36, 39)
-}
-.gallery-button:focus{
-  outline: none;
-}
-
-
 .aaction-modal{
+  height: 102.5%;
   position: absolute;
-  top: -3%;
-  /* bottom: -10%; */
+  top:0;
   background-color:rgba(0, 0, 0, 0.8);
-  width: 90vw;
+  width:100%;
   z-index: -1;
   opacity: 0;
 }
+#close-icon{
+  transition-duration: .4s;
+  position: absolute;
+  right: 5%;
+  top: 0;
+  color: #FFF;
+  cursor: pointer;
+  font-size: 300%;
+}
+#close-icon:active{
+  font-size: 240%;
+}
 #wrap-carroussel{
   margin: auto;
-  padding-top: 8%;
+  margin-top: 80%;
   max-width: 1200px;
   width: 100%;
   display:block;
@@ -926,26 +966,23 @@ font-size: 1.3em;
   max-height: 700px;
   margin: auto;
 }
-#close-icon{
-  transition-duration: .4s;
+
+
+
+.aaction-banner-shows{
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 100%;
+  height: 20em;
   position: absolute;
-  right: 5%;
-  top: 8%;
-  color: #FFF;
-  cursor: pointer;
-  font-size: 300%;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-#close-icon:hover{
-  font-size: 320%;
-}
-#close-icon:active{
-  font-size: 290%;
-}
-/* ==========================================
-                    Shows
-=========================================== */
 
 
+
+/*=============================SHOWS============================= */
 .shows-hover{
   transition-duration: 500ms;
   background-color: rgba(195, 37, 39, 0.3);

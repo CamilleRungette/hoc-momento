@@ -20,14 +20,14 @@
     
     <div class="relative">
       <div class="aaction-container">
-        <p><%- action.description %> </p>
+        <div><%- action.description %></div>
 
       <div class="space"></div>
 
       <% if (articles.length != 0 ) {%> 
         <p class="aaction-link-div"> <span class="bold">Liens articles: </span><br>
             <% for (let i=0; i< articles.length; i++) {%>
-              <a href="<%= articles[i].url %>" class="black aaction-link" target="_blank"><%- articles[i].name %> </a>
+              <a href="<%= articles[i].url %>" class="black aaction-link" target="_blank"><%- articles[i].name %> </a><br/>
             <% } %> 
         </p>
         
@@ -36,7 +36,7 @@
 
       <div class="aaction-partners-div">
         <p class="aaction-link-div partner-title"> <span class="bold">Soutiens :</span><br/>
-          <div class="aactions-logo">
+          <div class="aaction-logo">
             <% for (let i=0; i<action.support_id.length; i++) {%>
               <div class="logo-partner-container">
                 <img src="<%= action.support_id[i] %>" class="logo-partner" alt="Soutiens d'Hoc Momento" />
@@ -46,7 +46,7 @@
           </p> 
 
         <p class="aaction-link-div partner-title"> <span class="bold">Partnenaires:</span><br/>
-          <div class="aactions-logo">
+          <div class="aaction-logo">
             <% for (let i=0; i< action.partners_id.length; i++) {%>
               <div class="logo-partner-container">
                 <img src="<%= action.partners_id[i] %>" class="logo-partner" alt="Partnenaire d'Hoc Momento" /> 
@@ -57,17 +57,17 @@
       </div>
     </div>
 
-      <div class="max-container">
-        <div class="aaction-arrow-div">
+      <div class="slider-container">
+        <div class="aaction-gallery-div">
           <a> <button class="gallery-button" id="gallery-button"> Gallerie </button></a>
         </div>
-            <div class="slider">
-              <% for (let i=0; i< action.gallery.length; i++) {%> 
-                <div class="slide">
-                  <img src="<%= action.gallery[i] %>" class="slide-content" alt="Gallerie de l'action culturelle d'Hoc Momento à <%= action.place %> " />
-                </div>
-              <% } %> 
+        <div class="slider">
+          <% for (let i=0; i< action.gallery.length; i++) {%> 
+            <div class="slide">
+              <img src="<%= action.gallery[i] %>" class="slide-content" alt="Gallerie de l'action culturelle d'Hoc Momento à <%= action.place %> " />
             </div>
+          <% } %> 
+        </div>
       </div>
 
       <div class="aaction-modal" id="aaction-modal">
@@ -75,15 +75,13 @@
           <i class="fas fa-times" id="close-icon"></i>
           <div id="wrap-carroussel">
             <ul class="carroussel">
-            <% for (let i=0; i< action.gallery.length ; i++) {%>
+              <% for (let i=0; i< action.gallery.length ; i++) {%>
               <li><img src="<%= action.gallery[i] %>" class="aaction-modal-photo"></li>
               <% } %> 
             </ul>
           </div>
         </div>
-      </div>    
-
-
+      </div>     
     </div>
 
   <%- include('./partials/footer') %>
