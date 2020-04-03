@@ -5,10 +5,24 @@
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel='stylesheet' type='text/css' media='screen' href='/stylesheets/style.css'>
 </head>
-<body>
+  <header>
     <div class="hand-nav-admin">
       <a href="/accueil"><img src="/images/logo.png" class="logo" /></a>
-      
+      <div class="display-menu">
+        <div class="home-icon">
+          <ul class="dropdown-menu-admin close" id="dropdown-menu">
+            <li class="li-dropdown"><a href="/dashboard/actions" class="nav-link-drop black">Actions Culturelles</a> </li>
+            <li class="li-dropdown"><a href="/dashboard/shows" class="nav-link-drop black">Spectales</a> </li>
+            <li class="li-dropdown"><a href="/dashboard/messages" class="nav-link-drop black">Messages</a> </li>
+            <li class="li-dropdown"><a href="/dashboard/agenda" class="nav-link-drop black">Agenda</a> </li>
+            <li class="li-dropdown"><a href="/dashboard/team" class="nav-link-drop black ">Equipe</a> </li>
+            <li class="li-dropdown"><a href="/dashboard/partners" class="nav-link-drop black ">Partenaires</a> </li>
+            <li class=""><a href="/dashboard/logout" class="nav-link-drop"><button class="logout-button">Se déconnecter</button></a> </li>
+          </ul>
+          <i class="fas fa-ellipsis-h dropdown white" id="icon"></i>
+        </div>
+      </div>
+
       <div class="nav-links col-7 font-weight-bold">
         <a href="/dashboard/actions" class="white">ACTIONS CULTURELLES</a>
         <a href="/dashboard/shows" class="white">SPECTACLES</a>
@@ -20,5 +34,8 @@
       </div>
       
     </div>
+  </header>
+<body>
 </body>
+<script src="/javascripts/script1.js"></script>
 </html>

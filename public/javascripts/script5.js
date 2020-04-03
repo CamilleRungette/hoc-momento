@@ -39,6 +39,7 @@ plus.addEventListener('click', function(){
 // Showing the legend in action form
 
 let questionMark = document.getElementById('questionMark')
+if (questionMark){
 let legend = document.getElementById('legend')
 
 questionMark.addEventListener('click', function(){
@@ -53,4 +54,58 @@ questionMark.addEventListener('click', function(){
     legend.classList.remove("open")
     legend.classList.add("close")  
   }
+})
+}
+
+
+// Adding period input in show form
+
+let plusPeriod = document.getElementById('addPeriodField');
+let periodField = document.getElementById('periodField');
+let placeField = document.getElementById('placeField');
+
+
+plusPeriod.addEventListener('click', function(){
+  let bigDiv = document.createElement('div');  
+
+  let input1 = document.createElement('input')
+    input1.setAttribute('type', 'text');
+    input1.setAttribute('class', 'made-form col-11');
+    input1.setAttribute('placeholder', "Septembre - Février 2020 ...");
+    input1.setAttribute('name', 'period');
+
+  bigDiv.appendChild(input1)
+  periodField.insertBefore(bigDiv, periodField.firstElementChild)
+
+  console.log("NOUVELLE PERIODE");
+  let bigDiv1 = document.createElement('div');  
+    bigDiv1.setAttribute('class', "d-flex");
+
+    
+  let lilDiv1 = document.createElement('div')
+    lilDiv1.setAttribute('class', "col-6")
+
+  let input2 = document.createElement('input')
+    input2.setAttribute('type', 'text');
+    input2.setAttribute('class', 'made-form');
+    input2.setAttribute('placeholder', "Acc.mie Fratellini ...");
+    input2.setAttribute('name', 'place');
+
+  lilDiv1.appendChild(input2)
+
+  let lilDiv2 = document.createElement('div')
+    lilDiv2.setAttribute('class', "col-6")
+
+  let input3 = document.createElement('input')
+    input3.setAttribute('type', 'text');
+    input3.setAttribute('class', 'made-form col-11');
+    input3.setAttribute('placeholder', "Saint-Denis, ...");
+    input3.setAttribute('name', 'city');
+
+  lilDiv2.appendChild(input3)
+
+    bigDiv1.appendChild(lilDiv1)
+    bigDiv1.appendChild(lilDiv2)
+
+    placeField.insertBefore(bigDiv1, placeField.firstElementChild )
 })

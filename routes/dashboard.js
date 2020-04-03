@@ -346,11 +346,32 @@ try{
       supportArray = req.body.support_id
     }
 
+    let periodArray = [];
+    if (typeof req.body.support == "string"){
+      periodArray.push(req.body.period)
+    } else {
+      periodArray = req.body.period
+    }
+
+    let placeArray = [];
+    if (typeof req.body.support == "string"){
+      placeArray.push(req.body.place);
+    } else {
+      placeArray = req.body.place
+    }
+
+    let cityArray = [];
+    if (typeof req.body.support == "string"){
+      cityArray.push(req.body.city)
+    } else {
+      cityArray = req.body.city
+    }
+
     newShow = new ShowModel({
-      place: req.body.place.toUpperCase(),
-      city: req.body.city,
+      place: placeArray,
+      city: cityArray,
       title: req.body.title,
-      period: req.body.period,
+      period: periodArray,
       partners: req.body.partners,
       photo: req.files[0].secure_url,
       gallery: backGallery,
@@ -358,8 +379,10 @@ try{
       supports: supportArray,
       description: req.body.description,
     })
+    console.log(newShow);
+    
 
-      //Creaing array for the links
+      //Cretaing array for the links
       let linkArray = [];
       if (typeof req.body.link == "string"){
         linkArray.push({link: req.body.link, name: req.body.nameLink})

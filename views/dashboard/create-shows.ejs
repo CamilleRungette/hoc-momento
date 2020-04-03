@@ -6,18 +6,29 @@
     </div >
     <div class="col-6">
       <label>Période</label>
-      <input type="text" class="made-form" placeholder="Septembre - Février 2020 ..." name="period">
+      <div id="periodField">
+        <div class="d-flex">
+          <input type="text" class="made-form col-11" placeholder="Septembre - Février 2020 ..." name="period" > 
+          <i class="fas fa-plus col-1" id="addPeriodField"></i>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div class="form-group d-flex">
-    <div class="col-6">
-      <label>Lieu</label>
-      <input type="text" class="made-form" placeholder="Acc.mie Fratellini,  ..." name="place">
+  <div class="form-group">
+    <div class="d-flex">
+      <label class="col-6">Lieu</label>
+      <label class="col-6">Ville</label>
     </div>
-    <div class="col-6">
-      <label>Ville</label>
-      <input type="text" class="made-form" placeholder="Saint-Denis" name="city" >
+    <div class="col-12" id="placeField">
+      <div class="d-flex">
+        <div class="col-6">
+          <input type="text" class="made-form" placeholder="Acc.mie Fratellini,  ..." name="place">
+        </div>
+        <div class="col-6 d-flex">
+          <input type="text" class="made-form col-11" placeholder="Saint-Denis" name="city" >
+        </div>
+      </div>
     </div>
   </div>
   
