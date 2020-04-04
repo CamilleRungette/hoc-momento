@@ -83,9 +83,9 @@ router.get('/logout', function(req,res){
 
 router.get('/actions', async function(req, res, next) {
   console.log("session:", req.session.admin)
-  // if(!req.session.admin){
-  //   res.redirect('/dashboard/login')
-  // } else {
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {
     console.log(req.session.admin);
 
     allActions = await ActionModel.find();
@@ -93,7 +93,7 @@ router.get('/actions', async function(req, res, next) {
     allSupports = await SupportModel.find();
 
     res.render('./dashboard/actions', {allActions, allPartners, allSupports});
-  // }
+  }
 });
 
 router.post('/create-action', parser.array('images'), async function(req, res, next){
@@ -184,27 +184,27 @@ router.post('/delete-action', async function(req, res, next){
 });
 
 router.get('/update-action', async function(req, res, next){
-  // if(!req.session.admin){
-  //   res.redirect('/dashboard/login')
-  // } else {
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {
     console.log(req.query);
     
     action = await ActionModel.findById(req.query.id)
     articles = await ArticleModel.find({action_id: req.query.id})
 
     res.render('./dashboard/actions-update', {action, articles})
-  // }
+  }
 })
 
 router.post('/update-action', parser.array('images'), async function(req, res, next){
-  // if(!req.session.admin){
-  //   res.redirect('/dashboard/login')
-  // } else {
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {
     try {
       console.log("$$$$$$$$$$$$$$$$$$$$$$", req.body.link);
 
       //Creating array for the links
-        // if link hs been added
+        // if link has been added
       if(req.body.link != ""){
         let linkArray = [];
         // if there's just one link
@@ -244,7 +244,7 @@ router.post('/update-action', parser.array('images'), async function(req, res, n
     }catch(error){
     console.log(error);
     };
-  // }
+  }
 });
 
 router.get('/update-action-gallery', async function(req, res){
@@ -311,21 +311,21 @@ router.post('/add-photo-action',  parser.array('images'), async function(req, re
 /* SHOWS PART: DISPLAY, CREATION, DELETING AND UPDATING */
 
 router.get('/shows', async function(req, res, next){
-  // if(!req.session.admin){
-  //   res.redirect('/dashboard/login')
-  // } else {
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {
     allShows = await ShowModel.find();
     allPartners = await PartnerModel.find();
     allSupports = await SupportModel.find();
 
     res.render('./dashboard/shows', {allShows})
-  // }
+  }
 });
 
 router.post('/create-show', parser.array('images'), function(req, res, next){
-  // if(!req.session.admin){
-  //   res.redirect('/dashboard/login')
-  // } else {
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {
 try{    
     let backGallery = []
     for (i=0; i< req.files.length; i++){
@@ -416,7 +416,7 @@ try{
     console.log(error);
     
   }
-  // }
+  }
 });
 
 router.post('/delete-show', async function(req, res, next){
@@ -431,20 +431,20 @@ router.post('/delete-show', async function(req, res, next){
 });
 
 router.get('/update-show', async function(req, res, next){
-  // if(!req.session.admin){
-  //   res.redirect('/dashboard/login')
-  // } else {  
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {  
     show = await ShowModel.findById(req.query.id)
     console.log("LE SHOW =============>", show)
 
     res.render('./dashboard/show-update', {show})
-  // }
+  }
 })
 
 router.post('/update-show', async function(req, res, next){
-  // if(!req.session.admin){
-  //   res.redirect('/dashboard/login')
-  // } else {
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {
     console.log(req.body);
     try {
     if (req.body.description === " ") {
@@ -468,7 +468,7 @@ router.post('/update-show', async function(req, res, next){
     }catch(error){
       console.log(error);
     };
-  // }
+  }
 });
 
 router.get('/update-show-gallery', async function(req, res){
