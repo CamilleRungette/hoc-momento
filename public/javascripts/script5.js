@@ -1,4 +1,5 @@
-// Adding article input in form
+////////////////////////////////////////////////////////////////
+///////// Adding article input in form
 
 let plus = document.getElementById('addField');
 let linkField = document.getElementById('linkField');
@@ -8,8 +9,32 @@ plus.addEventListener('click', function(){
   let bigDiv = document.createElement('div');  
     bigDiv.setAttribute('class', "col-12 d-flex link-div");
 
+// Selection div :
+  let lilDiv3 =  document.createElement('div')
+    lilDiv3.setAttribute('class', "col-2")
+
+  let selectDiv = document.createElement('select');
+    selectDiv.setAttribute('name', "type");
+  let optionPdf = document.createElement('option');
+    optionPdf.setAttribute('value', 'pdf');
+    optionPdf.textContent = "PDF";
+  selectDiv.appendChild(optionPdf);
+
+  let optionArticle = document.createElement('option');
+    optionArticle.setAttribute('value', 'article');
+    optionArticle.textContent = "Article";
+  selectDiv.appendChild(optionArticle); 
+  
+  let optionVideo = document.createElement('option');
+    optionVideo.setAttribute('value', 'video');
+    optionVideo.textContent = "Vidéo";
+  selectDiv.appendChild(optionVideo);
+
+  lilDiv3.appendChild(selectDiv)
+
+// Name of the link input
   let lilDiv1 = document.createElement('div')
-    lilDiv1.setAttribute('class', "col-5")
+    lilDiv1.setAttribute('class', "col-4")
 
   let input1 = document.createElement('input')
     input1.setAttribute('type', 'text');
@@ -19,8 +44,9 @@ plus.addEventListener('click', function(){
 
   lilDiv1.appendChild(input1)
 
+// Link input
   let lilDiv2 = document.createElement('div')
-    lilDiv2.setAttribute('class', "col-6")
+    lilDiv2.setAttribute('class', "col-5")
 
   let input2 = document.createElement('input')
     input2.setAttribute('type', 'text');
@@ -30,13 +56,15 @@ plus.addEventListener('click', function(){
 
   lilDiv2.appendChild(input2)
 
-    bigDiv.appendChild(lilDiv1)
-    bigDiv.appendChild(lilDiv2)
+    bigDiv.appendChild(lilDiv3);
+    bigDiv.appendChild(lilDiv1);
+    bigDiv.appendChild(lilDiv2);
 
   linkField.insertBefore(bigDiv, linkField.firstElementChild )
 })
 
-// Showing the legend in action form
+///////////////////////////////////////////////////////////////
+///////////// Showing the legend in action form
 
 let questionMark = document.getElementById('questionMark')
 if (questionMark){
@@ -57,8 +85,8 @@ questionMark.addEventListener('click', function(){
 })
 }
 
-
-// Adding period input in show form
+//////////////////////////////////////////////////////////////////
+//////////// Adding period input in show form
 
 let plusPeriod = document.getElementById('addPeriodField');
 let periodField = document.getElementById('periodField');

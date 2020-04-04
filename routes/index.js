@@ -40,6 +40,7 @@ router.get('/actions-culturelles', async function(req, res, next){
   actions = await ActionModel.find(function(err, actions){
     console.log("action")
   })
+  actions.reverse();
   res.render('cultural_actions', {actions})
 })
 

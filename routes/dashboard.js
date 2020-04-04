@@ -83,80 +83,90 @@ router.get('/logout', function(req,res){
 
 router.get('/actions', async function(req, res, next) {
   console.log("session:", req.session.admin)
-  if(!req.session.admin){
-    res.redirect('/dashboard/login')
-  } else {
+  // if(!req.session.admin){
+  //   res.redirect('/dashboard/login')
+  // } else {
     console.log(req.session.admin);
 
     allActions = await ActionModel.find();
     allPartners = await PartnerModel.find();
     allSupports = await SupportModel.find();
-
-    res.render('./dashboard/actions', {allActions, allPartners, allSupports});
-  }
+    allArticles = await ArticleModel.find();        
+      
+    res.render('./dashboard/actions', {allActions, allPartners, allSupports, allArticles});
+  // }
 });
 
 router.post('/create-action', parser.array('images'), async function(req, res, next){
-  if(!req.session.admin){
-    res.redirect('/dashboard/login')
-  } else {
+  // if(!req.session.admin){
+  //   res.redirect('/dashboard/login')
+  // } else {
     
 try{
-  // Creating photo gallery
+  
+  ///////////////////////// Creating photo gallery
     let backGallery = []    
     for (i=0; i< req.files.length; i++){
         backGallery.push(req.files[i].secure_url)
     }    
 
-    // Creating array to deal the case of one entry (string and not table)
+    /////////////////////// Creating array to deal the case of one entry (string and not table)
     let partnersArray = [];
     if (typeof req.body.partners_id == "string"){
-      partnersArray.push(req.body.partners_id)
-    } else {
-      partnersArray = req.body.partners_id
+      partner = await PartnerModel.findOne({_id: req.body.partners_id})
+      partnersArray.push({id: partner._id, name: partner.name, link: partner.link, photo: partner.photo})
+    } else if (typeof req.body.partners_id == "object") {
+      for (let i=0; i < req.body.partners_id.length; i++){
+        partner = await PartnerModel.findOne({_id: req.body.partners_id[i]})
+        partnersArray.push({id: partner._id, name: partner.name, link: partner.link, photo: partner.photo})
+      }      
     }
-
+    
     let supportArray = [];
-    if (typeof req.body.support == "string"){
-      supportArray.push(req.body.support_id)
-    } else {
-      supportArray = req.body.support_id
+    if (typeof req.body.support_id == "string"){
+      support = await SupportModel.findOne({_id: req.body.support_id})
+      supportArray.push({id: support._id, name: support.name, link: support.link, photo: support.photo})
+    } else if (typeof req.body.support_id == "object"){
+      for (let i=0; i < req.body.support_id.length; i++){
+        support = await SupportModel.findOne({_id: req.body.support_id[i]})
+        supportArray.push({id: support._id, name: support.name, link: support.link, photo: support.photo})  
+      }      
     }
 
-  //Creating the action    
+    ////////////////////////////// Creating array for the links
+    let linkArray = [];
+    if(req.body.link != "") {
+      console.log("IN THE FIRST IF");
+      if (typeof req.body.link == "string"){
+        console.log("IN THE STRING SECTION");
+        linkArray.push({type: req.body.type, link: req.body.link, name: req.body.nameLink})
+      } else {
+        console.log("IN THE ELSE SECTION");
+        for (let i=0; i< req.body.link.length; i++){
+          linkArray.push({type: req.body.type[i], link: req.body.link[i], name: req.body.nameLink[i]})
+        }
+      } 
+      console.log(linkArray); 
+    }
+
+
+  //////////////////////// Creating the action    
     newAction = new ActionModel({
       place: req.body.place.toUpperCase(), 
       title: req.body.title, 
       period: req.body.period.toUpperCase(), 
-      partners_id: partnersArray, 
-      support_id: supportArray,
-      photo: req.files[0].secure_url, 
-      gallery: backGallery,
+      partners: partnersArray, 
+      support: supportArray,
+      links: linkArray,
+      // photo: req.files[0].secure_url, 
+      // gallery: backGallery,
       description: req.body.description,
       city: req.body.city,
     })
-   
-  //Creaing array for the links
-    let linkArray = [];
-    if (typeof req.body.link == "string"){
-      linkArray.push({link: req.body.link, name: req.body.nameLink})
-    } else {
-      for (let i=0; i< req.body.link.length; i++){
-        linkArray.push({link: req.body.link[i], name: req.body.nameLink[i]})
-      }
-    }  
-    for (let i=0; i< linkArray.length; i++){      
-      newArticle = new ArticleModel({
-        action_id: newAction._id,
-        url: linkArray[i].link,
-        name: linkArray[i].name
-      })  
-        
-      newArticle.save(function(error, article){
-        console.log("ARTICLE SAVED", error);    
-      })
-    }  
-    // Save the action ad redirect
+     
+    console.log(newAction);
+    
+    ///////////////////// Save the action and redirect
     newAction.save(function(error, action){
       if (error){
           console.log("ACTION NOT SAVED:", error)
@@ -169,7 +179,7 @@ try{
   }catch(error){
     console.log(error);
   }
-    }
+    // }
 });
 
 router.post('/delete-action', async function(req, res, next){
@@ -184,24 +194,26 @@ router.post('/delete-action', async function(req, res, next){
 });
 
 router.get('/update-action', async function(req, res, next){
-  if(!req.session.admin){
-    res.redirect('/dashboard/login')
-  } else {
+  // if(!req.session.admin){
+  //   res.redirect('/dashboard/login')
+  // } else {
     console.log(req.query);
     
     action = await ActionModel.findById(req.query.id)
     articles = await ArticleModel.find({action_id: req.query.id})
 
     res.render('./dashboard/actions-update', {action, articles})
-  }
+  // }
 })
 
-router.post('/update-action', parser.array('images'), async function(req, res, next){
-  if(!req.session.admin){
-    res.redirect('/dashboard/login')
-  } else {
+router.post('/update-action', parser.single('image'), async function(req, res, next){
+  // if(!req.session.admin){
+  //   res.redirect('/dashboard/login')
+  // } else {
     try {
-      console.log("$$$$$$$$$$$$$$$$$$$$$$", req.body.link);
+      let thisAction = await ActionModel.findOne({_id: req.body.id})
+      console.log(thisAction);
+      
 
       //Creating array for the links
         // if link has been added
@@ -231,6 +243,13 @@ router.post('/update-action', parser.array('images'), async function(req, res, n
             })
           } 
       } 
+
+      let photo;
+      if (req.file != undefined){
+        photo = req.file.secure_url
+      } else {
+        photo = thisAction.photo
+      }
         
       update = await ActionModel.updateOne(
         {_id: req.body.id},
@@ -238,13 +257,14 @@ router.post('/update-action', parser.array('images'), async function(req, res, n
         title: req.body.title,
         city: req.body.city,
         period: req.body.period,
-        description: req.body.description}
+        description: req.body.description,
+        photo: photo}
       ) ; 
       res.redirect('/dashboard/actions');
     }catch(error){
     console.log(error);
     };
-  }
+  // }
 });
 
 router.get('/update-action-gallery', async function(req, res){
@@ -546,8 +566,7 @@ router.get('/messages', async function (req, res){
   }
 })
 
-router.get('/read-message', async function(req, res){
-  
+router.get('/read-message', async function(req, res){ 
   update = await MessageModel.updateOne(
     {_id: req.query.id},
     {read: true}

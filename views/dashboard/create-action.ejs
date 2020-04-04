@@ -49,10 +49,17 @@
   <label class="col-12">Liens Articles</label>
   <div class="form-group" id="linkField">
     <div class="col-12 d-flex link-div">
-      <div class="col-5">
+      <div class="col-2">
+        <select name="type">
+          <option value="pdf">PDF</option>
+          <option value="article">Article</option>
+          <option value="video">Vidéo</option>
+        </select>
+      </div>
+      <div class="col-4">
         <input type="text" class="made-form" placeholder="Nom de l'article" name="nameLink"/>
       </div> 
-      <div class="col-6">
+      <div class="col-5">
         <input type="text" class="made-form" placeholder="Lien" name="link"/>
       </div>
       <i class="fas fa-plus" id="addField"></i>
@@ -77,7 +84,7 @@
       <div class="partners-scroll">
       <% for (let i=0; i < allPartners.length; i++) {%> 
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="<%= allPartners[i].photo %>" name="partners_id">
+          <input class="form-check-input" type="checkbox" value="<%= allPartners[i].id %>" name="partners_id">
           <label class="form-check-label">
             <%= allPartners[i].name  %>
           </label>
@@ -91,7 +98,7 @@
       <div class="partners-scroll">
       <% for (let i=0; i < allSupports.length; i++) {%> 
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="<%= allSupports[i].photo %>" name="support_id">
+          <input class="form-check-input" type="checkbox" value="<%= allSupports[i].id %>" name="support_id">
           <label class="form-check-label">
             <%= allSupports[i].name  %>
           </label>
