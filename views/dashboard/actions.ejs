@@ -29,7 +29,11 @@
             <div class="red"><%= allActions[i].place%></div> <br/>
             <div><%= allActions[i].period%></div>
             <div> <%= allActions[i].city  %>  </div> <br/>
-            <div><%= allActions[i].title  %>  </div>
+            <div><%= allActions[i].title  %>  </div> <br/>
+            <div>LIENS :</div>
+            <% for ( j=0; j< allActions[i].links.length; j++) {%>       
+                <a href="<%= allActions[i].links[j].link %>" class="black"><%- allActions[i].links[j].name %></a> <br/>
+            <% } %> 
           </div>
           <div class="forty-five description-list"><%= allActions[i].description%></div>
           <div class="thirty"> <img src="<%=allActions[i].photo %>" class="photo-list"  /> </div>

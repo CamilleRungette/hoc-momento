@@ -98,9 +98,9 @@ router.get('/actions', async function(req, res, next) {
 });
 
 router.post('/create-action', parser.array('images'), async function(req, res, next){
-  // if(!req.session.admin){
-  //   res.redirect('/dashboard/login')
-  // } else {
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {
     
 try{
   
@@ -158,8 +158,8 @@ try{
       partners: partnersArray, 
       support: supportArray,
       links: linkArray,
-      // photo: req.files[0].secure_url, 
-      // gallery: backGallery,
+      photo: req.files[0].secure_url, 
+      gallery: backGallery,
       description: req.body.description,
       city: req.body.city,
     })
@@ -179,7 +179,7 @@ try{
   }catch(error){
     console.log(error);
   }
-    // }
+    }
 });
 
 router.post('/delete-action', async function(req, res, next){
@@ -212,37 +212,26 @@ router.post('/update-action', parser.single('image'), async function(req, res, n
   // } else {
     try {
       let thisAction = await ActionModel.findOne({_id: req.body.id})
-      console.log(thisAction);
       
-
-      //Creating array for the links
-        // if link has been added
-      if(req.body.link != ""){
-        let linkArray = [];
-        // if there's just one link
+      let linkArray = [];
+      if (thisAction.links){
+      linkArray = thisAction.links;
+      }
+      
+      if(req.body.link != "") {
+        console.log("IN THE FIRST IF");
         if (typeof req.body.link == "string"){
-          linkArray.push({link: req.body.link, name: req.body.nameLink})
-        //if there's more than one
+          console.log("IN THE STRING SECTION");
+          linkArray.push({type: req.body.type, link: req.body.link, name: req.body.nameLink})
         } else {
+          console.log("IN THE ELSE SECTION");
           for (let i=0; i< req.body.link.length; i++){
-            linkArray.push({link: req.body.link[i], name: req.body.nameLink[i]})
+            linkArray.push({type: req.body.type[i], link: req.body.link[i], name: req.body.nameLink[i]})
           }
-        }  
-        console.log("LINK ARRAAAAAAAAAAAAAAAAAAAAAAAAY", linkArray);
-        
-        for (let i=0; i< linkArray.length; i++){      
-          newArticle = new ArticleModel({
-            action_id: req.body.id,
-            url: linkArray[i].link,
-            name: linkArray[i].name
-          })  
-          console.log(newArticle);
-          
-            newArticle.save(function(error, article){
-              console.log("ARTICLE SAVED", error);    
-            })
-          } 
-      } 
+        } 
+        console.log(linkArray); 
+      }
+  
 
       let photo;
       if (req.file != undefined){
@@ -258,8 +247,12 @@ router.post('/update-action', parser.single('image'), async function(req, res, n
         city: req.body.city,
         period: req.body.period,
         description: req.body.description,
-        photo: photo}
+        photo: photo,
+        links: linkArray}
       ) ; 
+
+      console.log(thisAction);
+      
       res.redirect('/dashboard/actions');
     }catch(error){
     console.log(error);

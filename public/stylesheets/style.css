@@ -559,6 +559,10 @@ header nav a > span:hover{
     border-radius: 5px;
   }
 
+  .none-style-list{
+    list-style: none;
+  }
+
   /* ==========================================
               Login
   =========================================== */
