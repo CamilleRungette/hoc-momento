@@ -196,13 +196,12 @@ router.post('/delete-action', async function(req, res, next){
 router.get('/update-action', async function(req, res, next){
   // if(!req.session.admin){
   //   res.redirect('/dashboard/login')
-  // } else {
-    console.log(req.query);
-    
+  // } else {    
     action = await ActionModel.findById(req.query.id)
-    articles = await ArticleModel.find({action_id: req.query.id})
+    allPartners = await PartnerModel.find();
+    allSupports = await SupportModel.find();
 
-    res.render('./dashboard/actions-update', {action, articles})
+    res.render('./dashboard/actions-update', {action, allSupports, allPartners})
   // }
 })
 
@@ -213,6 +212,7 @@ router.post('/update-action', parser.single('image'), async function(req, res, n
     try {
       let thisAction = await ActionModel.findOne({_id: req.body.id})
       
+      ///////// Processing of the links
       let linkArray = [];
       if (thisAction.links){
       linkArray = thisAction.links;
@@ -229,17 +229,50 @@ router.post('/update-action', parser.single('image'), async function(req, res, n
             linkArray.push({type: req.body.type[i], link: req.body.link[i], name: req.body.nameLink[i]})
           }
         } 
-        console.log(linkArray); 
       }
-  
 
+      
+      ///////  Processing of the main picture
       let photo;
       if (req.file != undefined){
         photo = req.file.secure_url
       } else {
         photo = thisAction.photo
       }
-        
+      
+
+      //////// Processing of the supports & partners
+      let supportArray = [];
+      if (req.body.support_id){
+        if (typeof req.body.support_id == "string"){
+          support = await SupportModel.findOne({_id: req.body.support_id})
+          supportArray.push({id: support._id, name: support.name, link: support.link, photo: support.photo})
+        } else if (typeof req.body.support_id == "object"){
+          for (let i=0; i < req.body.support_id.length; i++){
+            support = await SupportModel.findOne({_id: req.body.support_id[i]})
+            supportArray.push({id: support._id, name: support.name, link: support.link, photo: support.photo})  
+          }      
+        }
+      } else {
+        supportArray = thisAction.support
+      }
+
+      let partnersArray = [];
+      if (req.body.partners_id){
+        if (typeof req.body.partners_id == "string"){
+          partner = await PartnerModel.findOne({_id: req.body.partners_id})
+          partnersArray.push({id: partner._id, name: partner.name, link: partner.link, photo: partner.photo})
+        } else if (typeof req.body.partners_id == "object") {
+          for (let i=0; i < req.body.partners_id.length; i++){
+            partner = await PartnerModel.findOne({_id: req.body.partners_id[i]})
+            partnersArray.push({id: partner._id, name: partner.name, link: partner.link, photo: partner.photo})
+          }      
+        }
+      } else {
+        partnersArray = thisAction.partners
+      }
+      
+      
       update = await ActionModel.updateOne(
         {_id: req.body.id},
         {place: req.body.place,
@@ -248,10 +281,10 @@ router.post('/update-action', parser.single('image'), async function(req, res, n
         period: req.body.period,
         description: req.body.description,
         photo: photo,
-        links: linkArray}
-      ) ; 
-
-      console.log(thisAction);
+        links: linkArray,
+        support: supportArray,
+        partners: partnersArray
+      }) 
       
       res.redirect('/dashboard/actions');
     }catch(error){
@@ -324,41 +357,68 @@ router.post('/add-photo-action',  parser.array('images'), async function(req, re
 /* SHOWS PART: DISPLAY, CREATION, DELETING AND UPDATING */
 
 router.get('/shows', async function(req, res, next){
-  if(!req.session.admin){
-    res.redirect('/dashboard/login')
-  } else {
+  // if(!req.session.admin){
+  //   res.redirect('/dashboard/login')
+  // } else {
     allShows = await ShowModel.find();
     allPartners = await PartnerModel.find();
     allSupports = await SupportModel.find();
+    console.log(allShows);
+    
 
     res.render('./dashboard/shows', {allShows})
-  }
+  // }
 });
 
-router.post('/create-show', parser.array('images'), function(req, res, next){
-  if(!req.session.admin){
-    res.redirect('/dashboard/login')
-  } else {
+router.post('/create-show', parser.array('images'), async function(req, res, next){
+  // if(!req.session.admin){
+  //   res.redirect('/dashboard/login')
+  // } else {
 try{    
     let backGallery = []
     for (i=0; i< req.files.length; i++){
         backGallery.push(req.files[i].secure_url)
     }
-    // Creating array to deal the case of one entry (string and not table)
+
+    /////////////////////// Creating array to deal the case of one entry (string and not table)
     let partnersArray = [];
     if (typeof req.body.partners_id == "string"){
-      partnersArray.push(req.body.partners_id)
-    } else {
-      partnersArray = req.body.partners_id
+      partner = await PartnerModel.findOne({_id: req.body.partners_id})
+      partnersArray.push({id: partner._id, name: partner.name, link: partner.link, photo: partner.photo})
+    } else if (typeof req.body.partners_id == "object") {
+      for (let i=0; i < req.body.partners_id.length; i++){
+        partner = await PartnerModel.findOne({_id: req.body.partners_id[i]})
+        partnersArray.push({id: partner._id, name: partner.name, link: partner.link, photo: partner.photo})
+      }      
     }
-
+    
     let supportArray = [];
-    if (typeof req.body.support == "string"){
-      supportArray.push(req.body.support_id)
-    } else {
-      supportArray = req.body.support_id
+    if (typeof req.body.support_id == "string"){
+      support = await SupportModel.findOne({_id: req.body.support_id})
+      supportArray.push({id: support._id, name: support.name, link: support.link, photo: support.photo})
+    } else if (typeof req.body.support_id == "object"){
+      for (let i=0; i < req.body.support_id.length; i++){
+        support = await SupportModel.findOne({_id: req.body.support_id[i]})
+        supportArray.push({id: support._id, name: support.name, link: support.link, photo: support.photo})  
+      }      
     }
 
+     ////////////////////////////// Creating array for the LINKS
+     let linkArray = [];
+     if(req.body.link != "") {
+       console.log("IN THE FIRST IF");
+       if (typeof req.body.link == "string"){
+         console.log("IN THE STRING SECTION");
+         linkArray.push({type: req.body.type, link: req.body.link, name: req.body.nameLink})
+       } else {
+         console.log("IN THE ELSE SECTION");
+         for (let i=0; i< req.body.link.length; i++){
+           linkArray.push({type: req.body.type[i], link: req.body.link[i], name: req.body.nameLink[i]})
+         }
+       } 
+     }
+
+    ///////////////////////////// Creating array for THE PLACE PERIOD AND CITY
     let periodArray = [];
     if (typeof req.body.support == "string"){
       periodArray.push(req.body.period)
@@ -386,35 +446,14 @@ try{
       title: req.body.title,
       period: periodArray,
       partners: req.body.partners,
-      photo: req.files[0].secure_url,
-      gallery: backGallery,
+      // photo: req.files[0].secure_url,
+      // gallery: backGallery,
       partners: partnersArray, 
       supports: supportArray,
       description: req.body.description,
+      links: linkArray
     })
-    console.log(newShow);
-    
-
-      //Cretaing array for the links
-      let linkArray = [];
-      if (typeof req.body.link == "string"){
-        linkArray.push({link: req.body.link, name: req.body.nameLink})
-      } else {
-        for (let i=0; i< req.body.link.length; i++){
-          linkArray.push({link: req.body.link[i], name: req.body.nameLink[i]})
-        }
-      }  
-      for (let i=0; i< linkArray.length; i++){      
-        newArticle = new ArticleModel({
-          show_id: newShow._id,
-          url: linkArray[i].link,
-          name: linkArray[i].name
-        })  
-          
-        newArticle.save(function(error, article){
-          console.log("ARTICLE SAVED", article, error);    
-        })
-      }  
+    console.log(newShow); 
 
     newShow.save(function(error, show){
       if (error){
@@ -429,35 +468,35 @@ try{
     console.log(error);
     
   }
-  }
+  // }
 });
 
 router.post('/delete-show', async function(req, res, next){
-  if(!req.session.admin){
-    res.redirect('/dashboard/login')
-  } else {
+  // if(!req.session.admin){
+  //   res.redirect('/dashboard/login')
+  // } else {
     show = await ShowModel.deleteOne({_id: req.body.id})
     console.log(`SHOW DELETED ============`)
 
     res.redirect('/dashboard/shows')
-  }
+  // }
 });
 
 router.get('/update-show', async function(req, res, next){
-  if(!req.session.admin){
-    res.redirect('/dashboard/login')
-  } else {  
+  // if(!req.session.admin){
+  //   res.redirect('/dashboard/login')
+  // } else {  
     show = await ShowModel.findById(req.query.id)
     console.log("LE SHOW =============>", show)
 
     res.render('./dashboard/show-update', {show})
-  }
+  // }
 })
 
 router.post('/update-show', async function(req, res, next){
-  if(!req.session.admin){
-    res.redirect('/dashboard/login')
-  } else {
+  // if(!req.session.admin){
+  //   res.redirect('/dashboard/login')
+  // } else {
     console.log(req.body);
     try {
     if (req.body.description === " ") {
@@ -481,7 +520,7 @@ router.post('/update-show', async function(req, res, next){
     }catch(error){
       console.log(error);
     };
-  }
+  // }
 });
 
 router.get('/update-show-gallery', async function(req, res){

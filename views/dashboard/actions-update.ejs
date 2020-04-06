@@ -29,9 +29,24 @@
           <label>Période</label>
           <input type="text" class="made-form" value="<%= action.period %>" name="period">
         </div>
-        <div class="form-group">
-          <label>Description</label>
+        <div class="form-group relative">
+          <label>Description <i class="far fa-question-circle" id="questionMark"></i></label>
           <textarea class="made-form" value="<%=action.description%>" name="description"> <%= action.description %> </textarea>
+          <div class="legend-div close" id="legend">
+            <ul class="legend"> 
+              <li>Paragraphe: &lt;p class="aactions-desc"&gt; Texte &lt;/p&gt;</li>
+              <li>Retour à la ligne: &lt;br/&gt;</li>
+              <li>Sauter une la ligne: &lt;br/&gt;&lt;br/&gt;</li>
+              <li>Liste:  <br/>
+                &lt;ul class="aactions-desc"&gt; <br/>
+                &lt;li&gt; Ligne1 &lt;/li&gt; <br/>
+                &lt;li&gt; Ligne2 &lt;/li&gt;<br/>
+                &lt;li&gt; ... &lt;/li&gt;<br/>
+                &lt;/ul&gt; </li>
+              <li>Italic: &lt;em&gt; <em> Italic </em> &lt;/em&gt; </li>
+              <li>Gras:  &lt;strong&gt;<span class="bold"> En gras </span> &lt;/strong&gt;</li>
+            </ul>
+          </div>
         </div>
         <label>Liens</label>
         <div class="form-group" id="linkField">
@@ -64,6 +79,37 @@
         <div class="form-group">
           <label>Photo principale</label><br/>
           <input type="file" name="image"/>
+        </div>
+
+        <div class="form-group d-flex">
+          <div class="fifty">
+            <label>Partenaires</label>
+            <div class="partners-scroll">
+            <% for (let i=0; i < allPartners.length; i++) {%> 
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="<%= allPartners[i].id %>" name="partners_id">
+                <label class="form-check-label">
+                  <%= allPartners[i].name  %>
+                </label>
+              </div>
+            <% } %> 
+            </div>
+          </div>
+      
+          <div class="fifty">
+            <label>Soutiens</label>
+            <div class="partners-scroll">
+            <% for (let i=0; i < allSupports.length; i++) {%> 
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="<%= allSupports[i].id %>" name="support_id">
+                <label class="form-check-label">
+                  <%= allSupports[i].name  %>
+                </label>
+              </div>
+            <% } %> 
+            </div>
+          </div>
+      
         </div>
         <div class="button-container mt-5">
           <a href="/dashboard/actions" ><button class="btn btn-secondary text-white action-button">Annuler</button></a>

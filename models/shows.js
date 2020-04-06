@@ -1,15 +1,16 @@
 const mongoose = require('./db');
 
 let showSchema = mongoose.Schema({
-    photo: String, 
-    place: [String], 
-    title: String, 
-    period: [String], 
-    gallery: [String],
-    partners: [String], 
-    supports: [String],
-    description: String,
-    city: [String],
+  title: String, 
+  place: [String], 
+  period: [String], 
+  city: [String],
+  description: String,
+  partners: Array, 
+  supports: Array,
+  links: Array,
+  photo: String, 
+  gallery: [String],
 });
 
 const ShowModel = mongoose.model("shows", showSchema);

@@ -983,12 +983,15 @@ font-size: 1.3em;
   line-height: 1.3em;
 }
 
-.aaction-link-div{
+.aaction-link-title{
+  font-size: 150%;
+}
+.aaction-link-subtitle{
   font-size: 130%;
-  line-height: 1.5em;
+  margin-bottom: -1%;
 }
 .aaction-link{
-  font-size: 90%;
+  font-size: 120%;
 }
 
 .aaction-partners-div{

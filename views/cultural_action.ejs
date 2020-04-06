@@ -24,36 +24,54 @@
 
       <div class="space"></div>
 
-      <% if (articles.length != 0 ) {%> 
-        <p class="aaction-link-div"> <span class="bold">Liens articles: </span><br>
-            <% for (let i=0; i< articles.length; i++) {%>
-              <a href="<%= articles[i].url %>" class="black aaction-link" target="_blank"><%- articles[i].name %> </a><br/>
-            <% } %> 
-        </p>
-        
-        <div class="space"></div>
+      <% if (action.links.length != 0 ) {%> 
+        <h5 class="aaction-link-title">Liens: </h5>
+        <% if (articles.length!=0) {%>
+          <h5 class="alinea aaction-link-subtitle">Articles: </h5>
+          <ul>
+            <% for (let i=0; i<articles.length; i++) {%>
+              <li class="aaction-link"><a href="<%= articles[i].link %>" class="black">  <%- articles[i].name %> </a></li>
+            <% } %>  
+          </ul>
         <% } %> 
-
+        <% if (videos.length!=0) {%>
+          <h5 class="alinea aaction-link-subtitle">Vidéos: </h5>
+          <ul>
+            <% for (let i=0; i<videos.length; i++) {%>
+              <li class="aaction-link"><a href="<%= videos[i].link %>" class="black">  <%- videos[i].name %> </a></li>
+            <% } %>  
+          </ul>
+        <% } %> 
+        <% if (pdf.length!=0) {%>
+          <h5 class="alinea aaction-link-subtitle">Vidéos: </h5>
+          <ul>
+            <% for (let i=0; i<pdf.length; i++) {%>
+              <li class="aaction-link"><a href="<%= pdf[i].link %>" class="black">  <%- pdf[i].name %> </a></li>
+            <% } %>  
+          </ul>
+        <% } %> 
+      <% } %> 
+          <br/><br/>
+          
       <div class="aaction-partners-div">
-        <p class="aaction-link-div partner-title"> <span class="bold">Soutiens :</span><br/>
-          <div class="aaction-logo">
-            <% for (let i=0; i<action.support_id.length; i++) {%>
-              <div class="logo-partner-container">
-                <img src="<%= action.support_id[i] %>" class="logo-partner" alt="Soutiens d'Hoc Momento" />
-              </div>
-              <% } %> 
+        <h5 class="aaction-link-title">Soutiens: </h5>
+        <div class="aaction-logo">
+          <% for (let i=0; i<action.support.length; i++) {%>
+            <div class="logo-partner-container">
+              <a href="<%= action.support[i].link %> "><img src="<%= action.support[i].photo %>" class="logo-partner" alt="Soutiens d'Hoc Momento, <%= action.support[i].name %>" title=" <%= action.support[i].name %>" /></a>
             </div>
-          </p> 
-
-        <p class="aaction-link-div partner-title"> <span class="bold">Partnenaires:</span><br/>
-          <div class="aaction-logo">
-            <% for (let i=0; i< action.partners_id.length; i++) {%>
-              <div class="logo-partner-container">
-                <img src="<%= action.partners_id[i] %>" class="logo-partner" alt="Partnenaire d'Hoc Momento" /> 
-              </div>
-            <% } %> 
-          </div>
-        </p>
+          <% } %> 
+        </div>
+      </div>
+      <div class="aaction-partners-div">
+        <h5 class="aaction-link-title">Partenaires: </h5>
+        <div class="aaction-logo">
+          <% for (let i=0; i<action.partners.length; i++) {%>
+            <div class="logo-partner-container">
+              <a href="<%= action.partners[i].link %> "><img src="<%= action.partners[i].photo %>" class="logo-partner" alt="Soutiens d'Hoc Momento, <%= action.partners[i].name %>" title=" <%= action.partners[i].name %>" /></a>
+            </div>
+          <% } %> 
+        </div>
       </div>
     </div>
 

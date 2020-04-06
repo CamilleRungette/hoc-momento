@@ -46,9 +46,19 @@ router.get('/actions-culturelles', async function(req, res, next){
 
 router.get('/action-culturelle', async function(req, res, next){
   action = await ActionModel.findOne({_id: req.query.id})
-  articles = await ArticleModel.find({action_id: req.query.id})
-  console.log("articles", action);
-  res.render('cultural_action', {action, articles})
+  let articles = [];
+  let videos = []; 
+  let pdf = [];
+  for (let i=0; i< action.links.length; i++){
+    if (action.links[i].type === 'article'){
+      articles.push(action.links[i]);
+    } else if (action.links[i].type === 'video'){
+      videos.push(action.links[i]);
+    }else if (action.links[i].type === 'pdf'){
+      pdf.push(action.links[i]);
+    }
+  }
+  res.render('cultural_action', {action, articles, videos, pdf})
 })
 
 router.get('/gallerie-action-culturelle', async function(req, res){

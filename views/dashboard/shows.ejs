@@ -26,11 +26,12 @@
       <% for (i=0; i< allShows.length; i++){ %>
         <div class="d-flex action-item ">
           <div class="col-2">
-            <div class="red"><%= allShows[i].place%></div> <br/>
-            <div><%= allShows[i].period%></div>
-            <div> <%= allShows[i].city  %>  </div> <br/>
-            <div><%= allShows[i].title  %>  </div>
-          </div>
+            <div class="red"><%= allShows[i].title %></div> <br/>
+              <% for (let j=0; j< allShows[i].period.length; j++) {%>
+                  <div><%= allShows[i].period[j] %></div>
+                  <div><%= allShows[i].place[j] %>, <%= allShows[i].city[j] %>  </div> <br/>
+              <% } %>
+           </div>
           <div class="col-6 description-list"><%= allShows[i].description%></div>
           <div class="col-3"> <img src="<%= allShows[i].photo %>" class="photo-list"  /> </div>
           <div class="m-auto icon-column">
@@ -44,7 +45,6 @@
         </div>
       <br/> <br/>
       <div class="separator col-12 my-5"></div>
-
       <%}%>
     </div>
     </div>
