@@ -1,3 +1,6 @@
+////////////////////////////////////////////////////:
+////////////////Effet photo sur page equipe
+
 let photo = document.getElementsByClassName('team-img')
 let infos = document.getElementsByClassName('team-infos')
 

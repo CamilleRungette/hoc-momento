@@ -24,19 +24,40 @@
 
       <div class="actions-list col-10 mx-auto">
       <% for (i=0; i< allActions.length; i++){ %>
-        <div class="d-flex action-item ">
+        <div class="d-flex action-item items">
           <div class="fifteen">
-            <div class="red"><%= allActions[i].place%></div> <br/>
+            <h5 class="red"><%= allActions[i].place%></h5> <br/>
             <div><%= allActions[i].period%></div>
             <div> <%= allActions[i].city  %>  </div> <br/>
             <div><%= allActions[i].title  %>  </div> <br/>
-            <div>LIENS :</div>
-            <% for ( j=0; j< allActions[i].links.length; j++) {%>       
-                <a href="<%= allActions[i].links[j].link %>" class="black"><%- allActions[i].links[j].name %></a> <br/>
+            <div> <span class="red">LIENS :</span><br/>
+            <% for (j=0; j< allActions[i].links.length; j++) {%>       
+                <a href="<%= allActions[i].links[j].link %>" class="black"><%- allActions[i].links[j].name %>(<%= allActions[i].links[j].type %>) </a> <br/>
             <% } %> 
+          </div> <br/>
+          <div>
+            <span class="red">SOUTIENS: </span><br/>
+            <ul>
+            <% for (let k=0; k < allActions[i].support.length; k++) {%>
+              <li><%= allActions[i].support[k].name %> </li>
+            <% } %> 
+            </ul>
           </div>
-          <div class="forty-five description-list"><%= allActions[i].description%></div>
+          <br/>
+          <div>
+            <span class="red">PARTENAIRES: </span><br/>
+            <ul>
+            <% for (let k=0; k < allActions[i].partners.length; k++) {%>
+              <li><%= allActions[i].partners[k].name %> </li>
+            <% } %> 
+            </ul>
+          </div> 
+          </div>
+
+          <div class="forty-five"><%= allActions[i].description%></div>
+
           <div class="thirty"> <img src="<%=allActions[i].photo %>" class="photo-list"  /> </div>
+
           <div class="ten icon-column">
             <form action="/dashboard/delete-action" method="POST">
               <input type="hidden" name="id" value="<%= allActions[i].id%>"   />
@@ -44,6 +65,8 @@
             </form>
             <a href="/dashboard/update-action-gallery?id=<%= allActions[i].id%>" title="Gallerie photo"><i class="fas fa-camera fa-2x mt-1 ml-1 black"></i></a> 
             <a href="/dashboard/update-action?id=<%= allActions[i].id %>" title="Modifier l'action"><i class="far fa-edit fa-2x ml-1 yellow"></i></a>
+            <i class="fas fa-arrow-down fa-2x grey increase" title="Agrandir"></i>
+            <i class="fas fa-arrow-up fa-2x grey decrease" title="Rétrécir"></i>
           </div>
         </div>
       <br/> <br/>
@@ -55,5 +78,6 @@
     </div>
   </div >
   <%- include('../partials/footer') %>
+  <script src="/javascripts/script4.js"></script>
 </body>
 </html>

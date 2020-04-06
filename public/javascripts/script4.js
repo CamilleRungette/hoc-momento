@@ -1,31 +1,25 @@
+//////////////////////////////////////////////////////////////////
+//////////// Show item in dashboard
 
+let arrowDown = document.getElementsByClassName('increase'); 
+let items = document.getElementsByClassName('items');
+let arrowUp = document.getElementsByClassName('decrease');
 
-let trigger = document.getElementsByClassName("trigger");
-let modal = document.getElementById("made-modal2")
-let closeButton = document.getElementById("close-button")
-let photo = document.getElementsByClassName('event-photo')
-let id = document.getElementsByClassName('id')
-
-
-
-for (i=0; i< trigger.length; i++){
-  trigger[i].addEventListener("click", showModal )
+for (i=0; i < arrowDown.length; i++){
+  arrowDown[i].addEventListener("click", function(){
+    this.parentNode.parentNode.classList.remove("action-item");
+    this.nextElementSibling.style.opacity = "1";
+    this.style.opacity = "0";
+    this.style.display = "none";
+  })
 }
 
-closeButton.addEventListener("click", closeModal);
-function closeModal(){
-  modal.style.opacity = "0"
-  modal.style.zIndex = "-1"
-  modal.style.transitionDuration ="0.5s"
-}
 
-function showModal(src, id, name, link){
-  console.log(link);
-  
-
-  photo[0].setAttribute("src", src)
-
-  modal.style.opacity = "1";
-  modal.style.zIndex = "1"
-  modal.style.transitionDuration ="0.5s"
+for (i=0; i < arrowUp.length; i++){
+  arrowUp[i].addEventListener("click", function(){
+    this.parentNode.parentNode.classList.add("action-item");
+    this.previousElementSibling.style.display = "block";
+    this.previousElementSibling.style.opacity = "1";
+    this.style.opacity = "0";
+  })
 }

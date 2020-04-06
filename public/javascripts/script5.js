@@ -137,3 +137,5 @@ plusPeriod.addEventListener('click', function(){
 
     placeField.insertBefore(bigDiv1, placeField.firstElementChild )
 })
+
+

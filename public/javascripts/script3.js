@@ -1,5 +1,5 @@
 
-//===================================================== //
+////////// Modal et carrousel pour les gallerie photos
 
 let gallery = document.getElementById('gallery-button')
 let modal = document.getElementById('aaction-modal')

@@ -324,6 +324,10 @@ header nav a > span:hover{
     margin: auto;
     margin-bottom: 5%;
   }
+
+  i{
+    cursor: pointer;
+  }
   
   .relative{
     position: relative;
@@ -417,7 +421,6 @@ header nav a > span:hover{
     border-top: 1px solid rgb(184, 184, 184);
     margin: auto;
     width: 90vw;
-    margin-bottom: 5%;
   }
 
   .space{
@@ -606,6 +609,12 @@ label{
   font-size: 1.2em;
 }
 
+.decrease{
+  opacity: 0;
+}
+.increase{
+  display: block;
+}
 /* =============================ACTIONS============================= */
 .fa-question-circle:active{
   font-size: 90%;
@@ -661,7 +670,8 @@ font-size: 1.3em;
 }
 
 .action-item{
-  max-height:15em
+  max-height:12em;
+  overflow: auto;
 }
 
 .fa-plus{
@@ -673,14 +683,10 @@ font-size: 1.3em;
 }
 
 .icon-column{
-  height: 10em;
+  height: 12em;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-}
-
-.description-list{ 
-  overflow: auto;
 }
 
 .delete-button{
