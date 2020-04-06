@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////////////////
-///////// Adding article input in form
+///////// Adding article Periodin form
 
 let plus = document.getElementById('addField');
 let linkField = document.getElementById('linkField');
@@ -139,3 +139,34 @@ plusPeriod.addEventListener('click', function(){
 })
 
 
+//////////////////////////////////////////////////////////////////
+//////////// Deleting a performance
+
+let minus = document.getElementsByClassName('fa-minus');
+
+for (let i=0; i< minus.length; i++){
+  minus[i].addEventListener('click', function(){
+    let period = this.parentNode.getAttribute("data-period");  
+    let place = this.parentNode.getAttribute("data-place");
+    let city = this.parentNode.getAttribute("data-city");
+
+    let inputPeriod = document.createElement('input');
+      inputPeriod.setAttribute('type', 'hidden');
+      inputPeriod.setAttribute('value', period);
+      inputPeriod.setAttribute('name', 'deletePeriod');
+    let inputPlace = document.createElement('input');
+      inputPlace.setAttribute('type', 'hidden');
+      inputPlace.setAttribute('value', place);
+      inputPlace.setAttribute('name', 'deletePlace');
+    let inputCity = document.createElement('input');
+      inputCity.setAttribute('type', 'hidden');
+      inputCity.setAttribute('value', city);
+      inputCity.setAttribute('name', 'deleteCity');
+
+    this.parentNode.parentNode.appendChild(inputPeriod)
+    this.parentNode.parentNode.appendChild(inputCity)
+    this.parentNode.parentNode.appendChild(inputPlace)
+    
+    this.parentNode.remove()
+  })
+}

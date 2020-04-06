@@ -673,6 +673,9 @@ font-size: 1.3em;
   max-height:12em;
   overflow: auto;
 }
+.action-place-update{
+  font-size: 110%;
+}
 
 .fa-plus{
   margin-right: 15%;

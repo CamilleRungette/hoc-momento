@@ -499,24 +499,25 @@ router.post('/update-show', async function(req, res, next){
   // } else {
     console.log(req.body);
     try {
-    if (req.body.description === " ") {
-      console.log("hello =====>")
-      update = await ShowModel.updateOne(
-        {_id: req.body.id},
-        {place: req.body.place,
-        title: req.body.title,
-        period: req.body.period}
-      );
-    } else {
-      update = await ShowModel.updateOne(
-        {_id: req.body.id},
-        {place: req.body.place,
-        title: req.body.title,
-        period: req.body.period,
-        description: req.body.description}
-      ) ; 
-    }
-    res.redirect('/dashboard/shows');
+      thisShow = await ShowModel.findById(req.body.id)
+      let cityArray = thisShow.city;
+      let periodArray = thisShow.period;
+      let placeArray = thisShow.place
+
+      if (typeof req.body.deleteCity == "string"){
+        
+      
+      }
+
+    //   update = await ShowModel.updateOne(
+    //     {_id: req.body.id},
+    //     {place: req.body.place,
+    //     title: req.body.title,
+    //     period: req.body.period,
+    //     description: req.body.description
+    //   }); 
+
+    // res.redirect('/dashboard/shows');
     }catch(error){
       console.log(error);
     };

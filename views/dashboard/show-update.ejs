@@ -9,22 +9,54 @@
     <%- include('../partials/navbarAdmin') %> 
     <div class="made-container update-container">
       <h2 class="text-center action-title mb-5">Modifier le spectacle : <%= show.title %></h2>
-
       <form action="/dashboard/update-show" class="col-8 border  p-3 mx-auto" method="POST">
         <input type="hidden" name="id" value="<%= show.id %>" />
-        <div class="form-group">
-          <label>Lieu</label>
-          <input type="text" class="made-form" value="<%= show.place %>" name="place">
+        <div class="form-group d-flex">
+          <div class="col-6">
+            <label>Titre</label>
+              <input type="text" class="made-form" value="<%= show.title %>" name="title">
+          </div >
+          <div class="col-6">
+            <label>Période</label>
+            <div id="periodField">
+              <div class="d-flex">
+                <input type="text" class="made-form col-11" name="period" > 
+                <i class="fas fa-plus col-1" id="addPeriodField" title="Ajouter une représentation"></i>
+              </div>
+            </div>
+          </div>
         </div>
+      
         <div class="form-group">
-          <label>Titre</label>
-          <input type="text" class="made-form" value="<%= show.title %>" name="title">
+          <div>
+            <div class="d-flex">
+              <label class="col-6">Lieu</label>
+              <label class="col-6">Ville</label>
+            </div>
+            <div class="col-12" id="placeField">
+              <div class="d-flex">
+                <div class="col-6">
+                  <input type="text" class="made-form" name="place">
+                </div>
+                <div class="col-6 d-flex">
+                  <input type="text" class="made-form col-11" name="city" >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 mt-4">
+            <label>Représentations:</label>
+            <% for (let i=0; i<show.period.length;i++) {%>
+                <div class="action-place-update">
+                  <div data-period="<%= show.period[i] %>" data-place="<%= show.place[i] %>" data-city="<%= show.city[i] %>"><%= show.period[i] %>: <%= show.place[i] %>, <%= show.city[i] %> 
+                  <i class="fas fa-minus alinea" title="supprimer une représentation"></i></div>
+                </div>
+            <% } %>  
+          </div>
         </div>
-        <div class="form-group">
-          <label>Période</label>
-          <input type="text" class="made-form" value="<%= show.period %>" name="period">
-        </div>
-        <div class="form-group">
+
+
+        <div class="form-group col-12">
           <label>Description <i class="far fa-question-circle" id="questionMark"></i></label>
           <textarea class="made-form" value="<%= show.description %>" name="description"> <%= show.description %> </textarea>
           <div class="legend-div close" id="legend">

@@ -31,6 +31,35 @@
                   <div><%= allShows[i].period[j] %></div>
                   <div><%= allShows[i].place[j] %>, <%= allShows[i].city[j] %>  </div> <br/>
               <% } %>
+              <% if (allShows[i].links) {%> 
+              <div> <span class="red">LIENS :</span><br/>
+                <% for (j=0; j< allShows[i].links.length; j++) {%>       
+                    <a href="<%= allShows[i].links[j].link %>" class="black"><%- allShows[i].links[j].name %>(<%= allShows[i].links[j].type %>) </a> <br/>
+                <% } %> 
+              <% } %> 
+              </div> <br/>
+              <div>
+                <span class="red">SOUTIENS: </span><br/>
+                <% if (allShows[i].supports) {%> 
+                  <ul>
+                  <% for (let k=0; k < allShows[i].supports.length; k++) {%>
+                    <li><%= allShows[i].supports[k].name %> </li>
+                  <% } %> 
+                  </ul>
+                <% } %> 
+              </div>
+              <br/>
+              <div>
+                <span class="red">PARTENAIRES: </span><br/>
+                <% if (allShows[i].partners) {%> 
+                  <ul>
+                  <% for (let k=0; k < allShows[i].partners.length; k++) {%>
+                    <li><%= allShows[i].partners[k].name %> </li>
+                  <% } %> 
+                  </ul>
+                <% } %> 
+              </div> 
+
            </div>
           <div class="col-6 description-list"><%= allShows[i].description%></div>
           <div class="col-3"> <img src="<%= allShows[i].photo %>" class="photo-list"  /> </div>
@@ -41,6 +70,8 @@
             </form>
             <a href="/dashboard/update-show-gallery?id=<%= allShows[i].id%>" title="Gallerie photo"><i class="fas fa-camera fa-2x mt-1 ml-1 black"></i></a>  
             <a href="/dashboard/update-show?id=<%= allShows[i].id %> " ><i class="far fa-edit fa-2x ml-1 yellow"></i></a>
+            <i class="fas fa-arrow-down fa-2x grey increase" title="Agrandir"></i>
+            <i class="fas fa-arrow-up fa-2x grey decrease" title="Rétrécir"></i>
           </div>
         </div>
       <br/> <br/>
@@ -50,5 +81,6 @@
     </div>
   </div>
   <%- include('../partials/footer') %>
+  <script src="/javascripts/script4.js"></script>
 </body>
 </html>
