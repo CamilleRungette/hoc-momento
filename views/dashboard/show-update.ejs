@@ -9,7 +9,7 @@
     <%- include('../partials/navbarAdmin') %> 
     <div class="made-container update-container">
       <h2 class="text-center action-title mb-5">Modifier le spectacle : <%= show.title %></h2>
-      <form action="/dashboard/update-show" class="col-8 border  p-3 mx-auto" method="POST">
+      <form action="/dashboard/update-show" class="col-8 border  p-3 mx-auto" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="id" value="<%= show.id %>" />
         <div class="form-group d-flex">
           <div class="col-6">
@@ -49,7 +49,7 @@
             <% for (let i=0; i<show.period.length;i++) {%>
                 <div class="action-place-update">
                   <div data-period="<%= show.period[i] %>" data-place="<%= show.place[i] %>" data-city="<%= show.city[i] %>"><%= show.period[i] %>: <%= show.place[i] %>, <%= show.city[i] %> 
-                  <i class="fas fa-minus alinea" title="supprimer une représentation"></i></div>
+                  <i class="fas fa-minus delete-perf alinea" title="Supprimer une représentation"></i></div>
                 </div>
             <% } %>  
           </div>
@@ -75,18 +75,71 @@
             </ul>
           </div>
         </div>
-        <label>Liens Articles</label>
+        <label>Liens</label>
         <div class="form-group" id="linkField">
-          <div class=" col-12 d-flex link-div">
-            <div class="col-5">
+          <% for (let i=0; i<show.links.length; i++) {%>
+            <div class="inputDiv">
+              <div class="col-12 d-flex link-div">
+                <div class="col-2"><%= show.links[i].type %>  </div>
+                <div class="col-4"> <a href="<%= show.links[i].link %>"><%- show.links[i].name  %></a> </div>
+                <div class=" col-5" data-link="<%= show.links[i].link %>"><%= show.links[i].link %></div>
+                <i class="fas fa-minus delete-link"></i> 
+              </div>
+            </div>
+          <% } %>  
+          <div class="col-12 d-flex link-div">
+            <div class="col-2">
+              <select name="type">
+                <option value="pdf">PDF</option>
+                <option value="article">Article</option>
+                <option value="video">Vidéo</option>
+              </select>
+            </div>
+            <div class="col-4">
               <input type="text" class="made-form" placeholder="Nom de l'article" name="nameLink"/>
             </div> 
-            <div class="col-6">
+            <div class="col-5">
               <input type="text" class="made-form" placeholder="Lien" name="link"/>
             </div>
-            <i class="fas fa-plus" id="addField"></i>
+            <div class="col-1"><i class="fas fa-plus" id="addField"></i></div>
           </div>
         </div>
+
+        <div class="form-group">
+          <label>Photo principale</label><br/>
+          <input type="file" name="image"/>
+        </div>
+
+        <div class="form-group d-flex">
+          <div class="fifty">
+            <label>Partenaires</label>
+            <div class="partners-scroll">
+            <% for (let i=0; i < allPartners.length; i++) {%> 
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="<%= allPartners[i].id %>" name="partners_id">
+                <label class="form-check-label">
+                  <%= allPartners[i].name  %>
+                </label>
+              </div>
+            <% } %> 
+            </div>
+          </div>
+      
+          <div class="fifty">
+            <label>Soutiens</label>
+            <div class="partners-scroll">
+            <% for (let i=0; i < allSupports.length; i++) {%> 
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="<%= allSupports[i].id %>" name="support_id">
+                <label class="form-check-label">
+                  <%= allSupports[i].name  %>
+                </label>
+              </div>
+            <% } %> 
+            </div>
+          </div>
+        </div>
+
         <div class="button-container mt-5">
           <button type="submit" class="btn btn-warning text-white action-button">Modifier </button>
         </div>

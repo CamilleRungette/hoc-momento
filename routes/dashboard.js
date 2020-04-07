@@ -210,9 +210,12 @@ router.post('/update-action', parser.single('image'), async function(req, res, n
   //   res.redirect('/dashboard/login')
   // } else {
     try {
+
+      console.log(req.body);
+      
       let thisAction = await ActionModel.findOne({_id: req.body.id})
       
-      ///////// Processing of the links
+  ///////// Processing of the links
       let linkArray = [];
       if (thisAction.links){
       linkArray = thisAction.links;
@@ -229,8 +232,41 @@ router.post('/update-action', parser.single('image'), async function(req, res, n
             linkArray.push({type: req.body.type[i], link: req.body.link[i], name: req.body.nameLink[i]})
           }
         } 
+        update = await ActionModel.updateOne(
+          {_id: req.body.id},
+          {links: linkArray})
+
       }
 
+
+        ///////////// DELETE THE LINKS
+
+        let deleteLinkArray = thisAction.links
+
+        if(typeof req.body.deleteLink == 'object'){
+          for (let i=0; i< deleteLinkArray.length; i++){
+            for (let j=0; j<req.body.deleteLink.length; j++){
+              if (deleteLinkArray[i].link == req.body.deleteLink[j]){
+                deleteLinkArray.splice(i, 1)
+                }
+              }
+            }
+        update = await ActionModel.updateOne(
+          {_id: req.body.id},
+          {links: deleteLinkArray}
+        )
+
+        } else if (typeof req.body.deleteLink == 'string'){
+        for (let i=0; i< deleteLinkArray.length; i++){
+          if (deleteLinkArray[i].link == req.body.deleteLink){
+            deleteLinkArray.splice(i, 1)
+          }
+        }
+        update = await ActionModel.updateOne(
+          {_id: req.body.id},
+          {links: deleteLinkArray}
+        )
+      }
       
       ///////  Processing of the main picture
       let photo;
@@ -241,7 +277,7 @@ router.post('/update-action', parser.single('image'), async function(req, res, n
       }
       
 
-      //////// Processing of the supports & partners
+  //////// Processing of the supports & partners
       let supportArray = [];
       if (req.body.support_id){
         if (typeof req.body.support_id == "string"){
@@ -487,37 +523,150 @@ router.get('/update-show', async function(req, res, next){
   //   res.redirect('/dashboard/login')
   // } else {  
     show = await ShowModel.findById(req.query.id)
-    console.log("LE SHOW =============>", show)
+    allPartners = await PartnerModel.find();
+    allSupports = await SupportModel.find();
 
-    res.render('./dashboard/show-update', {show})
+    res.render('./dashboard/show-update', {show, allSupports, allPartners})
   // }
 })
 
-router.post('/update-show', async function(req, res, next){
+router.post('/update-show', parser.single('image'), async function(req, res, next){
   // if(!req.session.admin){
   //   res.redirect('/dashboard/login')
   // } else {
-    console.log(req.body);
     try {
+      console.log(req.body);
+      
       thisShow = await ShowModel.findById(req.body.id)
+//////////////// UPDATE OF THE PERFORMANCES
       let cityArray = thisShow.city;
       let periodArray = thisShow.period;
       let placeArray = thisShow.place
+    if(typeof req.body.deleteCity == 'object'){
+     for (let i=0; i< cityArray.length; i++){
+       for (let j=0; j<req.body.deleteCity.length; j++){
+        if (cityArray[i] == req.body.deleteCity[j]){
+          cityArray.splice(i, 1);
+          periodArray.splice(i, 1);
+          placeArray.splice(i, 1);
+            }
+          }
+        }
+    } else if (typeof req.body.deleteCity === 'string'){
+      for (let i=0; i< cityArray.length; i++){
+        if (cityArray[i] == req.body.deleteCity){
+          cityArray.splice(i, 1);
+          periodArray.splice(i, 1);
+          placeArray.splice(i, 1);
+        }
+      }
+    }
 
-      if (typeof req.body.deleteCity == "string"){
-        
-      
+//////////////// UPDATE OF SUPPORTS AND PARTNERS
+
+    let supportArray = [];
+    if (req.body.support_id){
+      if (typeof req.body.support_id == "string"){
+        support = await SupportModel.findOne({_id: req.body.support_id})
+        supportArray.push({id: support._id, name: support.name, link: support.link, photo: support.photo})
+      } else if (typeof req.body.support_id == "object"){
+        for (let i=0; i < req.body.support_id.length; i++){
+          support = await SupportModel.findOne({_id: req.body.support_id[i]})
+          supportArray.push({id: support._id, name: support.name, link: support.link, photo: support.photo})  
+        }      
+      }
+    } else {
+      supportArray = thisShow.supports
+    }
+
+    let partnersArray = [];
+    if (req.body.partners_id){
+      if (typeof req.body.partners_id == "string"){
+        partner = await PartnerModel.findOne({_id: req.body.partners_id})
+        partnersArray.push({id: partner._id, name: partner.name, link: partner.link, photo: partner.photo})
+      } else if (typeof req.body.partners_id == "object") {
+        for (let i=0; i < req.body.partners_id.length; i++){
+          partner = await PartnerModel.findOne({_id: req.body.partners_id[i]})
+          partnersArray.push({id: partner._id, name: partner.name, link: partner.link, photo: partner.photo})
+        }      
+      }
+    } else {
+      partnersArray = thisShow.partners
+    }
+
+/////////////////// UPDATE MAIN PICTURE
+      let photo;
+      if (req.file != undefined){
+        photo = req.file.secure_url
+      } else {
+        photo = thisShow.photo
       }
 
-    //   update = await ShowModel.updateOne(
-    //     {_id: req.body.id},
-    //     {place: req.body.place,
-    //     title: req.body.title,
-    //     period: req.body.period,
-    //     description: req.body.description
-    //   }); 
+/////////////// ADD THE LINKS
+    let linkArray = [];
+      if (thisShow.links){
+      linkArray = thisShow.links;
+      }
+      
+      if(req.body.link != "") {
+        if (typeof req.body.link == "string"){
+          linkArray.push({type: req.body.type, link: req.body.link, name: req.body.nameLink})
+        } else {
+          for (let i=0; i< req.body.link.length; i++){
+            linkArray.push({type: req.body.type[i], link: req.body.link[i], name: req.body.nameLink[i]})
+          }
+        } 
+        update = await ShowModel.updateOne(
+          {_id: req.body.id},
+          {links: linkArray}
+        )
+      }
 
-    // res.redirect('/dashboard/shows');
+  
+  ///////////// DELETE THE LINKS
+
+  let deleteLinkArray = thisShow.links
+
+      if(typeof req.body.deleteLink == 'object'){
+        for (let i=0; i< deleteLinkArray.length; i++){
+          for (let j=0; j<req.body.deleteLink.length; j++){
+            if (deleteLinkArray[i].link == req.body.deleteLink[j]){
+              deleteLinkArray.splice(i, 1)
+              }
+            }
+          }
+      update = await ShowModel.updateOne(
+        {_id: req.body.id},
+        {links: deleteLinkArray}
+      )
+  
+      } else if (typeof req.body.deleteLink == 'string'){
+      for (let i=0; i< deleteLinkArray.length; i++){
+        if (deleteLinkArray[i].link == req.body.deleteLink){
+          deleteLinkArray.splice(i, 1)
+        }
+      }
+      update = await ShowModel.updateOne(
+        {_id: req.body.id},
+        {links: deleteLinkArray}
+      )
+    }
+      
+      update = await ShowModel.updateOne(
+        {_id: req.body.id},
+        {place: req.body.place,
+        title: req.body.title,
+        period: req.body.period,
+        description: req.body.description,
+        place: placeArray,
+        city: cityArray, 
+        period: periodArray,
+        partners: partnersArray,
+        supports: supportArray,
+        photo: photo,
+      }); 
+
+    res.redirect('/dashboard/shows');
     }catch(error){
       console.log(error);
     };

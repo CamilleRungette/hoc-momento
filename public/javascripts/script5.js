@@ -92,57 +92,57 @@ let plusPeriod = document.getElementById('addPeriodField');
 let periodField = document.getElementById('periodField');
 let placeField = document.getElementById('placeField');
 
+if (plusPeriod){
+  plusPeriod.addEventListener('click', function(){
+    let bigDiv = document.createElement('div');  
 
-plusPeriod.addEventListener('click', function(){
-  let bigDiv = document.createElement('div');  
+    let input1 = document.createElement('input')
+      input1.setAttribute('type', 'text');
+      input1.setAttribute('class', 'made-form col-11');
+      input1.setAttribute('placeholder', "Septembre - Février 2020 ...");
+      input1.setAttribute('name', 'period');
 
-  let input1 = document.createElement('input')
-    input1.setAttribute('type', 'text');
-    input1.setAttribute('class', 'made-form col-11');
-    input1.setAttribute('placeholder', "Septembre - Février 2020 ...");
-    input1.setAttribute('name', 'period');
+    bigDiv.appendChild(input1)
+    periodField.insertBefore(bigDiv, periodField.firstElementChild)
 
-  bigDiv.appendChild(input1)
-  periodField.insertBefore(bigDiv, periodField.firstElementChild)
+    console.log("NOUVELLE PERIODE");
+    let bigDiv1 = document.createElement('div');  
+      bigDiv1.setAttribute('class', "d-flex");
 
-  console.log("NOUVELLE PERIODE");
-  let bigDiv1 = document.createElement('div');  
-    bigDiv1.setAttribute('class', "d-flex");
+      
+    let lilDiv1 = document.createElement('div')
+      lilDiv1.setAttribute('class', "col-6")
 
-    
-  let lilDiv1 = document.createElement('div')
-    lilDiv1.setAttribute('class', "col-6")
+    let input2 = document.createElement('input')
+      input2.setAttribute('type', 'text');
+      input2.setAttribute('class', 'made-form');
+      input2.setAttribute('placeholder', "Acc.mie Fratellini ...");
+      input2.setAttribute('name', 'place');
 
-  let input2 = document.createElement('input')
-    input2.setAttribute('type', 'text');
-    input2.setAttribute('class', 'made-form');
-    input2.setAttribute('placeholder', "Acc.mie Fratellini ...");
-    input2.setAttribute('name', 'place');
+    lilDiv1.appendChild(input2)
 
-  lilDiv1.appendChild(input2)
+    let lilDiv2 = document.createElement('div')
+      lilDiv2.setAttribute('class', "col-6")
 
-  let lilDiv2 = document.createElement('div')
-    lilDiv2.setAttribute('class', "col-6")
+    let input3 = document.createElement('input')
+      input3.setAttribute('type', 'text');
+      input3.setAttribute('class', 'made-form col-11');
+      input3.setAttribute('placeholder', "Saint-Denis, ...");
+      input3.setAttribute('name', 'city');
 
-  let input3 = document.createElement('input')
-    input3.setAttribute('type', 'text');
-    input3.setAttribute('class', 'made-form col-11');
-    input3.setAttribute('placeholder', "Saint-Denis, ...");
-    input3.setAttribute('name', 'city');
+    lilDiv2.appendChild(input3)
 
-  lilDiv2.appendChild(input3)
+      bigDiv1.appendChild(lilDiv1)
+      bigDiv1.appendChild(lilDiv2)
 
-    bigDiv1.appendChild(lilDiv1)
-    bigDiv1.appendChild(lilDiv2)
-
-    placeField.insertBefore(bigDiv1, placeField.firstElementChild )
-})
-
+      placeField.insertBefore(bigDiv1, placeField.firstElementChild )
+  })
+}
 
 //////////////////////////////////////////////////////////////////
 //////////// Deleting a performance
 
-let minus = document.getElementsByClassName('fa-minus');
+let minus = document.getElementsByClassName('delete-perf');
 
 for (let i=0; i< minus.length; i++){
   minus[i].addEventListener('click', function(){
@@ -168,5 +168,27 @@ for (let i=0; i< minus.length; i++){
     this.parentNode.parentNode.appendChild(inputPlace)
     
     this.parentNode.remove()
+  })
+}
+
+//////////////////////////////////////////////////////////////////
+//////////// Deleting a link
+
+let minusLink = document.getElementsByClassName('delete-link');
+let bigDiv = document.getElementsByClassName('inputDiv');
+
+for (let i=0; i<minusLink.length; i++){
+  minusLink[i].addEventListener('click', function(){
+    let link = this.previousElementSibling.getAttribute('data-link');
+    
+    let input = document.createElement('input');
+      input.setAttribute('type', 'hidden');
+      input.setAttribute('value', link);
+      input.setAttribute('name', 'deleteLink');
+
+    this.parentNode.remove()
+
+    bigDiv[i].appendChild(input);
+    console.log(bigDiv[i]);
   })
 }
