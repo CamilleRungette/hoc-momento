@@ -83,9 +83,9 @@ router.get('/logout', function(req,res){
 
 router.get('/actions', async function(req, res, next) {
   console.log("session:", req.session.admin)
-  // if(!req.session.admin){
-  //   res.redirect('/dashboard/login')
-  // } else {
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {
     console.log(req.session.admin);
 
     allActions = await ActionModel.find();
@@ -94,7 +94,7 @@ router.get('/actions', async function(req, res, next) {
     allArticles = await ArticleModel.find();        
       
     res.render('./dashboard/actions', {allActions, allPartners, allSupports, allArticles});
-  // }
+  }
 });
 
 router.post('/create-action', parser.array('images'), async function(req, res, next){
@@ -194,21 +194,21 @@ router.post('/delete-action', async function(req, res, next){
 });
 
 router.get('/update-action', async function(req, res, next){
-  // if(!req.session.admin){
-  //   res.redirect('/dashboard/login')
-  // } else {    
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {    
     action = await ActionModel.findById(req.query.id)
     allPartners = await PartnerModel.find();
     allSupports = await SupportModel.find();
 
     res.render('./dashboard/actions-update', {action, allSupports, allPartners})
-  // }
+  }
 })
 
 router.post('/update-action', parser.single('image'), async function(req, res, next){
-  // if(!req.session.admin){
-  //   res.redirect('/dashboard/login')
-  // } else {
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {
     try {
 
       console.log(req.body);
@@ -326,7 +326,7 @@ router.post('/update-action', parser.single('image'), async function(req, res, n
     }catch(error){
     console.log(error);
     };
-  // }
+  }
 });
 
 router.get('/update-action-gallery', async function(req, res){
@@ -393,9 +393,9 @@ router.post('/add-photo-action',  parser.array('images'), async function(req, re
 /* SHOWS PART: DISPLAY, CREATION, DELETING AND UPDATING */
 
 router.get('/shows', async function(req, res, next){
-  // if(!req.session.admin){
-  //   res.redirect('/dashboard/login')
-  // } else {
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {
     allShows = await ShowModel.find();
     allPartners = await PartnerModel.find();
     allSupports = await SupportModel.find();
@@ -403,13 +403,13 @@ router.get('/shows', async function(req, res, next){
     
 
     res.render('./dashboard/shows', {allShows})
-  // }
+  }
 });
 
 router.post('/create-show', parser.array('images'), async function(req, res, next){
-  // if(!req.session.admin){
-  //   res.redirect('/dashboard/login')
-  // } else {
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {
 try{    
     let backGallery = []
     for (i=0; i< req.files.length; i++){
@@ -504,36 +504,36 @@ try{
     console.log(error);
     
   }
-  // }
+  }
 });
 
 router.post('/delete-show', async function(req, res, next){
-  // if(!req.session.admin){
-  //   res.redirect('/dashboard/login')
-  // } else {
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {
     show = await ShowModel.deleteOne({_id: req.body.id})
     console.log(`SHOW DELETED ============`)
 
     res.redirect('/dashboard/shows')
-  // }
+  }
 });
 
 router.get('/update-show', async function(req, res, next){
-  // if(!req.session.admin){
-  //   res.redirect('/dashboard/login')
-  // } else {  
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {  
     show = await ShowModel.findById(req.query.id)
     allPartners = await PartnerModel.find();
     allSupports = await SupportModel.find();
 
     res.render('./dashboard/show-update', {show, allSupports, allPartners})
-  // }
+  }
 })
 
 router.post('/update-show', parser.single('image'), async function(req, res, next){
-  // if(!req.session.admin){
-  //   res.redirect('/dashboard/login')
-  // } else {
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {
     try {
       console.log(req.body);
       
@@ -706,7 +706,7 @@ router.post('/update-show', parser.single('image'), async function(req, res, nex
     }catch(error){
       console.log(error);
     };
-  // }
+  }
 });
 
 router.get('/update-show-gallery', async function(req, res){
