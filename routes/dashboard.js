@@ -66,10 +66,10 @@ router.post('/login', async function(req, res, next){
     console.log(req.session.admin)
 		res.redirect('/dashboard/actions')
 	} else {
+    let error = "adresse e-mail ou mot de passe incorrect"
 		console.log("NOT OK")
-		res.redirect('/dashboard/login')
+		res.json({error})
 	}
-
 })
 
 router.get('/logout', function(req,res){

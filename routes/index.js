@@ -70,6 +70,7 @@ router.get('/spectacles', async function(req, res, next){
   shows = await ShowModel.find(function(err, shows){
     console.log(shows)
   })
+  shows.reverse();
   res.render('shows', {shows})
 })
 
