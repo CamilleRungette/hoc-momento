@@ -16,10 +16,9 @@
   <%- include('../partials/navbarAdmin') %> 
 
   <div class="dashboard-container mx-auto">
-
-    <img src="/images/_MG_0261.jpg"  class="aaction-banner-photo" />
-    <div class="aaction-banner">
-      <h1 class="action-title">ÉQUIPE</h1>
+    <img src="/images/spectacle1.jpg"  class="small-banner-photo" />
+    <div class="small-banner">
+      <h1 class="small-banner-title black">ÉQUIPE</h1>
     </div>
 
     <div class="cultural-actions">
@@ -36,41 +35,21 @@
           </div>
           <div class="col-5 description-list"><%= allPersons[i].description%></div>
           <div class="col-3"> <img src="<%=allPersons[i].photo %>" class="photo-list"  /> </div>
-          <div class="m-auto icon-column">
+          <div class="m-auto icon-column-agenda">
             <form action="/dashboard/delete-person" method="POST">
               <input type="hidden" name="id" value="<%= allPersons[i].id%>"   />
-              <button class="fas fa-trash-alt fa-2x red delete-button"></button>
+              <button class="fas fa-trash-alt fa-2x red delete-button" title="Supprimer la personne"></button>
             </form>
-            <i class="fas fa-camera fa-2x mt-1 ml-1 black" onclick="showModal2('<%= allPersons[i].photo %>')"></i>
             <a href="/dashboard/update-person?id=<%= allPersons[i].id %>" title="Modifier la personne"><i class="far fa-edit fa-2x ml-1 yellow"></i></a>
           </div>
         </div>
       <br/> <br/>
       <div class="separator col-12 my-5"></div>
-
-
-      <div id="made-modal2">
-        <span id="close-button">&times;</span>
-        <div class="modal-content">
-          <div class="mx-auto">
-            <form action="/dashboard/update-person-photo" method="POST"  enctype="multipart/form-data">
-              <div class="form-control add-picture">
-                <div class="event-update-photo">  
-                  <img src="/images/logo.png" class="event-photo"/>
-                </div>
-                <label>Choisir une photo</label> <br/>
-                <input type="file" name="image" class="input-photos"  />
-                <input type="hidden" name="person" value="<%=allPersons[i].id%>" class="import-gallery" />
-                <button class="btn btn-outline-success"> <i class="far fa-check-circle fa-2x"></i></button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
       <%}%>
     </div>
     </div>
   </div >
+  
   <%- include('../partials/footer') %>
 </body>
 </html>

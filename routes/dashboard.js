@@ -914,37 +914,23 @@ router.post('/update-event', parser.single('image'), async function (req, res){
 
 })
 
-router.post('/update-event-photo',  parser.single('image'), async function(req, res){
-  console.log(req.body.event);
-  console.log(req.file);
-  
-  update = await EventModel.updateOne(
-    { _id: req.body.event},
-    {photo: req.file.secure_url})
-
-  res.redirect('/dashboard/agenda')
-})
-
-
 
 
 /* PERSON PART */
 router.get('/team', async function(req, res){
-  if(!req.session.admin){
-    res.redirect('/dashboard/login')
-  } else {
+  // if(!req.session.admin){
+  //   res.redirect('/dashboard/login')
+  // } else {
   allPersons = await PersonModel.find();
   res.render('./dashboard/team', {allPersons})
-  }
+  // }
 })
 
 router.post('/create-person', parser.single('image'), function(req, res, next){
-  if(!req.session.admin){
-    res.redirect('/dashboard/login')
-  } else {
-    console.log(req.body)
-    console.log(req.file);
-    
+  // if(!req.session.admin){
+  //   res.redirect('/dashboard/login')
+  // } else {
+
     newPerson = new PersonModel({
       first_name: req.body.first_name,
       last_name: req.body.last_name,
@@ -964,75 +950,62 @@ router.post('/create-person', parser.single('image'), function(req, res, next){
           res.redirect('/dashboard/team')
       }
     })
-  }
+  // }
 })
 
 router.post('/delete-person', async function(req, res){
   console.log(req.body);
-  if(!req.session.admin){
-    res.redirect('/dashboard/login')
-  } else {
+  // if(!req.session.admin){
+  //   res.redirect('/dashboard/login')
+  // } else {
     event = await PersonModel.deleteOne({_id: req.body.id})
     console.log(`Event DELETED ============`)
     res.redirect('/dashboard/team')
-  }  
+  // }  
 })
 
 router.get('/update-person', async function(req, res){
-  if(!req.session.admin){
-    res.redirect('/dashboard/login')
-  } else {  
+  // if(!req.session.admin){
+  //   res.redirect('/dashboard/login')
+  // } else {  
     person = await PersonModel.findById(req.query.id)
     console.log("LA PERSONNE =============>", person)
 
-    res.render('./dashboard/person-update', {person})
-  }
-
+    res.render('./dashboard/update-person', {person})
+  // }
 })
 
-router.post('/update-person', async function(req, res){
-  console.log(req.body);
-  if(!req.session.admin){
-    res.redirect('/dashboard/login')
-  } else {
+router.post('/update-person', parser.single('image'), async function(req, res){
+  console.log(req.file);
+  // if(!req.session.admin){
+  //   res.redirect('/dashboard/login')
+  // } else {
     try {
-    if (req.body.description === " ") {
-      console.log("hello =====>")
+      let thisPerson = await PersonModel.findById(req.body.id)
+      let photo = thisPerson.photo;
+      if (req.file){
+        photo = req.file.secure_url
+      }
+
+      console.log(photo);
+      
+
       update = await PersonModel.updateOne(
-        {_id: req.body.id},
-        {first_name: req.body.first_name,
-        last_name: req.body.last_name,
-        title: req.body.title,
-        email: req.body.email,}
-      );
-    } else {
-      update = await EventModel.updateOne(
         {_id: req.body.id},
         {first_name: req.body.first_name,
           last_name: req.body.last_name,
           title: req.body.title,
           email: req.body.email,
-          description: req.body.description}
+          description: req.body.description,
+          photo: photo}
       ) ; 
-    }
+
     res.redirect('/dashboard/team');
     }catch(error){
       console.log(error);
     }; 
-}
+// }
 })
-
-router.post('/update-person-photo', parser.single('image'), async function(req, res){
-  console.log(req.body.event);
-  console.log(req.file);
-  
-  update = await PersonModel.updateOne(
-    { _id: req.body.person},
-    {photo: req.file.secure_url})
-
-  res.redirect('/dashboard/team')
-})
-
 
 
 /* PARTNERS PART */

@@ -15,7 +15,7 @@
     <div class="made-container update-container">
       <h2 class="text-center action-title mb-5">Modifier de profil de :<br/> <%= person.first_name %></h2>
 
-      <form action="/dashboard/update-person" class="col-10 mx-auto mt-5" method="POST">
+      <form action="/dashboard/update-person" class="col-10 mx-auto mt-5" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="id" value="<%= person.id %>" />
         <div class="form-group d-flex">
           <div class="fifty">
@@ -40,13 +40,19 @@
 
         <div class="form-group hundred">
           <label>Description</label>
-          <textarea class="made-form" value="<%= person.description %>" name="description"> </textarea>
+          <textarea class="made-form" value="<%= person.description %>" name="description"><%= person.description %>s </textarea>
         </div>
+
+        <div class="fifty">
+          <label>Photo principale</label><br/>
+          <input type="file" name="image"/>
+        </div> 
+
         <div class="hundred text-center">
           <button class="btn btn-warning action-button text-white"> Modifier</button>
         </div>
       </form>
-      <%- include('../partials/footer') %>
     </div>
+    <%- include('../partials/footer') %>
   </body>
 </html>
