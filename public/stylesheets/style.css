@@ -431,10 +431,6 @@ header nav a > span:hover{
     text-align: center;
   } 
 
-  .update-input{
-    margin-left: 40%;
-  }
-
   .hundred{
   width: 98%;
   margin-left: 1%;
@@ -687,6 +683,12 @@ font-size: 1.3em;
 
 .icon-column{
   height: 12em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.icon-column-agenda{
+  height: 10em;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;

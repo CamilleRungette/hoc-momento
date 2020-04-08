@@ -5,11 +5,11 @@ let eventSchema = mongoose.Schema({
     place: String, 
     title: String, 
     period: String, 
-    partners: [String], 
     description: String,
     city: String,
     type: String,
-    date: Date,
+    startDate: Date,
+    endDate: Date
 });
 
 const eventModel = mongoose.model("events", eventSchema);

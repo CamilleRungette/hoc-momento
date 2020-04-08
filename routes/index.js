@@ -156,19 +156,15 @@ router.get('/agenda', async function(req, res ){
     console.log("OK");
   })
   let futurEvents = [];
-  let pastEvents = [];
   let currentDate = new Date
 
   for (i=0; i< allEvents.length; i++){
-    if(allEvents[i].date >= currentDate){
+    if(allEvents[i].startDate >= currentDate){
       futurEvents.push(allEvents[i])
-    }else{
-      pastEvents.push(allEvents[i])
-    }
   }
+}
 
   console.log("FUTUR:", futurEvents);
-  console.log("PAST:", pastEvents);
   
   res.render('agenda', {futurEvents})
 })

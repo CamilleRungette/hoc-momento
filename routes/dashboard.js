@@ -201,7 +201,7 @@ router.get('/update-action', async function(req, res, next){
     allPartners = await PartnerModel.find();
     allSupports = await SupportModel.find();
 
-    res.render('./dashboard/actions-update', {action, allSupports, allPartners})
+    res.render('./dashboard/update-actions', {action, allSupports, allPartners})
   }
 })
 
@@ -526,7 +526,7 @@ router.get('/update-show', async function(req, res, next){
     allPartners = await PartnerModel.find();
     allSupports = await SupportModel.find();
 
-    res.render('./dashboard/show-update', {show, allSupports, allPartners})
+    res.render('./dashboard/update-show', {show, allSupports, allPartners})
   }
 })
 
@@ -809,9 +809,9 @@ router.get('/unread-message', async function(req, res){
 
 /* AGENDA PART */
 router.get('/agenda', async function(req,res){
-  if(!req.session.admin){
-    res.redirect('/dashboard/login')
-  } else {
+  // if(!req.session.admin){
+  //   res.redirect('/dashboard/login')
+  // } else {
   allEvents = await EventModel.find(function(error, events){
     console.log("ok");
   })
@@ -826,15 +826,16 @@ router.get('/agenda', async function(req,res){
     }else{
       pastEvents.push(allEvents[i])
     }
-  }
+  // }
   res.render('dashboard/agenda', {allEvents, futurEvents, pastEvents})
 }
 })
 
 router.post('/create-event', parser.single('image'), async function(req,res){
-  if(!req.session.admin){
-    res.redirect('/dashboard/login')
-  } else {
+  // if(!req.session.admin){
+  //   res.redirect('/dashboard/login')
+  // } else {
+console.log(req.body);
 
     newEvent = new EventModel({
       title: req.body.title,
@@ -844,73 +845,74 @@ router.post('/create-event', parser.single('image'), async function(req,res){
       description: req.body.description,
       city: req.body.city, 
       type: req.body.type,
-      date: req.body.date
+      startDate: req.body.startDate,
+      endDate: req.body.endDate
     })
+    console.log(newEvent);
+    
 
-    newEvent.save(function(error, event){
-      console.log("EVENT SAVED:", event);
-    })
+    // newEvent.save(function(error, event){
+    //   console.log("EVENT SAVED:", event);
+    // })
 
     console.log(newEvent);  
   res.redirect('/dashboard/agenda')
-  }
+  // }
 })
 
 router.post('/delete-event', async function(req, res){
   console.log(req.body);
-  if(!req.session.admin){
-    res.redirect('/dashboard/login')
-  } else {
+  // if(!req.session.admin){
+  //   res.redirect('/dashboard/login')
+  // } else {
     event = await EventModel.deleteOne({_id: req.body.id})
     console.log(`Event DELETED ============`)
     res.redirect('/dashboard/agenda')
-  }
-  
+  // }
 })
 
 router.get('/update-event', async function(req,res){
   console.log(req.query);
-  if(!req.session.admin){
-    res.redirect('/dashboard/login')
-  } else {  
+  // if(!req.session.admin){
+  //   res.redirect('/dashboard/login')
+  // } else {  
     event = await EventModel.findById(req.query.id)
-    console.log("L'EVENT =============>", event)
 
-    res.render('./dashboard/event-update', {event})
-  }
+    res.render('./dashboard/update-event', {event})
+  // }
 
 })
 
-router.post('/update-event', async function (req, res){
-  console.log(req.body);
-  if(!req.session.admin){
-    res.redirect('/dashboard/login')
-  } else {
+router.post('/update-event', parser.single('image'), async function (req, res){
+  console.log("coucou");
+  
+  // if(!req.session.admin){
+  //   res.redirect('/dashboard/login')
+  // } else {
     try {
-    if (req.body.description === " ") {
-      console.log("hello =====>")
-      update = await EventModel.updateOne(
-        {_id: req.body.id},
-        {place: req.body.place,
-        title: req.body.title,
-        period: req.body.period,
-        type: req.body.type,}
-      );
-    } else {
+      let thisEvent = await EventModel.findById(req.body.id)
+      let photo = thisEvent.photo
+      if (req.file){
+        photo = req.file.secure_url
+      }
+      
       update = await EventModel.updateOne(
         {_id: req.body.id},
         {place: req.body.place,
         title: req.body.title,
         period: req.body.period,
         type: req.body.type,
-        description: req.body.description}
-      ) ; 
-    }
+        description: req.body.description,
+        photo: photo, 
+        startDate: req.body.startDate,
+        endDate: req.body.endDate}
+      ); 
+
     res.redirect('/dashboard/agenda');
     }catch(error){
       console.log(error);
     };
-  }
+  // }
 
 })
 
