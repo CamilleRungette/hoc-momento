@@ -393,9 +393,9 @@ router.post('/add-photo-action',  parser.array('images'), async function(req, re
 /* SHOWS PART: DISPLAY, CREATION, DELETING AND UPDATING */
 
 router.get('/shows', async function(req, res, next){
-  if(!req.session.admin){
-    res.redirect('/dashboard/login')
-  } else {
+  // if(!req.session.admin){
+  //   res.redirect('/dashboard/login')
+  // } else {
     allShows = await ShowModel.find();
     allPartners = await PartnerModel.find();
     allSupports = await SupportModel.find();
@@ -403,7 +403,7 @@ router.get('/shows', async function(req, res, next){
     
 
     res.render('./dashboard/shows', {allShows})
-  }
+  // }
 });
 
 router.post('/create-show', parser.array('images'), async function(req, res, next){
@@ -772,16 +772,16 @@ router.post('/add-photo-show',  parser.array('images'), async function(req, res,
 
 /* MESSAGES PART */
 router.get('/messages', async function (req, res){
-  if(!req.session.admin){
-    res.redirect('/dashboard/login')
-  } else {
+  // if(!req.session.admin){
+  //   res.redirect('/dashboard/login')
+  // } else {
 
     allMessages = await MessageModel.find(function(err, messages){
       console.log(messages)
     })
     res.render('./dashboard/messages', {allMessages})
 
-  }
+  // }
 })
 
 router.get('/read-message', async function(req, res){ 
