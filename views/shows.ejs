@@ -28,9 +28,13 @@
           <a href="/spectacle?id=<%=shows[i].id %>" class="white link-white aactions-img">
             <img src="<%= shows[i].photo %>" class="big-img" alt="Hoc Momento et <%= shows[i].title %> "/>
             <div class="shows-hover">
-              <p class="shows-place"><em><%= shows[i].title %> </em></p>
-              <p class="shows-title"> <%= shows[i].place %> - <%= shows[i].period %> </p>
-              <p class="shows-desc"> <%= shows[i].description %> </p>
+              <p class="aactions-place"><%= shows[i].title %></p>
+              <% for (let j=0; j< shows[i].place.length; j++) {%>
+                <div class="shows-period">
+                 <%= shows[i].place[j] %> - <%= shows[i].city[j] %><br/> 
+                  <%= shows[i].period[j] %>
+              </div>
+              <% } %>  
             </div>
           </a>
         <% } %> 

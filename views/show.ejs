@@ -20,11 +20,82 @@
     
     <div class="relative">
       <div class="aaction-container">
-        <div> <p class="aactions-desc"></p><%- show.description %></div>
+        <div><%- show.description %></div>
 
       <div class="space"></div>
-    </div>
 
+      <% if (show.links.length != 0 ) {%> 
+        <h5 class="aaction-link-title">Liens: </h5>
+        <% if (articles.length!=0) {%>
+          <h5 class="alinea aaction-link-subtitle">Articles: </h5>
+          <ul>
+            <% for (let i=0; i<articles.length; i++) {%>
+              <li class="aaction-link"><a href="<%= articles[i].link %>" class="black">  <%- articles[i].name %> </a></li>
+            <% } %>  
+          </ul>
+        <% } %> 
+        <% if (videos.length!=0) {%>
+          <h5 class="alinea aaction-link-subtitle">Vidéos: </h5>
+          <ul>
+            <% for (let i=0; i<videos.length; i++) {%>
+              <li class="aaction-link"><a href="<%= videos[i].link %>" class="black">  <%- videos[i].name %> </a></li>
+            <% } %>  
+          </ul>
+        <% } %> 
+        <% if (pdf.length!=0) {%>
+          <h5 class="alinea aaction-link-subtitle">Vidéos: </h5>
+          <ul>
+            <% for (let i=0; i<pdf.length; i++) {%>
+              <li class="aaction-link"><a href="<%= pdf[i].link %>" class="black">  <%- pdf[i].name %> </a></li>
+            <% } %>  
+          </ul>
+        <% } %> 
+      <% } %> 
+          <br/><br/>
+
+          <div class="aaction-partners-div">
+            <h5 class="aaction-link-title">Soutiens: </h5>
+              <div 
+              <% if (show.supports.length == 2) {%> 
+                class="aaction-logo-2"
+              <% } else{ %>
+                class="aaction-logo"
+             <% } %> 
+                > 
+              <% for (let i=0; i<show.supports.length; i++) {%>         
+                <div
+                <% if (show.supports.length == 2) {%> 
+                  class="logo-partner-container-2"
+                <% } else{ %>
+                  class="logo-partner-container"
+               <% } %>>
+                  <a href="<%= show.supports[i].link %> "><img src="<%= show.supports[i].photo %>" class="logo-partner" alt="Soutiens d'Hoc Momento, <%= show.supports[i].name %>" title=" <%= show.supports[i].name %>" /></a>
+                </div>
+              <% } %> 
+            </div>
+          </div>
+          <div class="aaction-partners-div">
+            <h5 class="aaction-link-title">Partenaires: </h5>
+            <div 
+            <% if (show.supports.length == 2) {%> 
+              class="aaction-logo-2"
+            <% } else{ %>
+              class="aaction-logo"
+           <% } %> >
+              <% for (let i=0; i<show.partners.length; i++) {%>
+                <div 
+                <% if (show.partners.length == 2) {%> 
+                  class="logo-partner-container-2"
+                <% } else{ %>
+                  class="logo-partner-container"
+               <% } %>>
+                  <a href="<%= show.partners[i].link %> "><img src="<%= show.partners[i].photo %>" class="logo-partner" alt="Soutiens d'Hoc Momento, <%= show.partners[i].name %>" title=" <%= show.partners[i].name %>" /></a>
+                </div>
+              <% } %> 
+            </div>
+          </div>
+        
+      </div>
 
       <div class="slider-container">
         <div class="aaction-gallery-div">
@@ -50,8 +121,9 @@
             </ul>
           </div>
         </div>
-      </div>     
+      </div>   
 
+    </div>
   <%- include('./partials/footer') %>
   <script src="/javascripts/script3.js" ></script>
 </body>

@@ -75,7 +75,19 @@ router.get('/spectacles', async function(req, res, next){
 
 router.get('/spectacle', async function(req, res, next){
   show = await ShowModel.findOne({_id: req.query.id})
-  res.render('show', {show})
+  let articles = [];
+  let videos = []; 
+  let pdf = [];
+  for (let i=0; i< show.links.length; i++){
+    if (show.links[i].type === 'article'){
+      articles.push(show.links[i]);
+    } else if (show.links[i].type === 'video'){
+      videos.push(show.links[i]);
+    }else if (show.links[i].type === 'pdf'){
+      pdf.push(show.links[i]);
+    }
+  }
+  res.render('show', {show, articles, videos, pdf})
 })
 
 router.get('/gallerie-spectacle', async function (req, res){

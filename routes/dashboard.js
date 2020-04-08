@@ -538,10 +538,11 @@ router.post('/update-show', parser.single('image'), async function(req, res, nex
       console.log(req.body);
       
       thisShow = await ShowModel.findById(req.body.id)
-//////////////// UPDATE OF THE PERFORMANCES
+//////////////// DELETE OF THE PERFORMANCES
       let cityArray = thisShow.city;
       let periodArray = thisShow.period;
       let placeArray = thisShow.place
+      
     if(typeof req.body.deleteCity == 'object'){
      for (let i=0; i< cityArray.length; i++){
        for (let j=0; j<req.body.deleteCity.length; j++){
@@ -552,6 +553,11 @@ router.post('/update-show', parser.single('image'), async function(req, res, nex
             }
           }
         }
+      update = await ShowModel.updateOne(
+        {_id: req.body.id},
+        {city: cityArray,
+        place: placeArray,
+        period: periodArray})
     } else if (typeof req.body.deleteCity === 'string'){
       for (let i=0; i< cityArray.length; i++){
         if (cityArray[i] == req.body.deleteCity){
@@ -560,10 +566,45 @@ router.post('/update-show', parser.single('image'), async function(req, res, nex
           placeArray.splice(i, 1);
         }
       }
+      update = await ShowModel.updateOne(
+        {_id: req.body.id},
+        {city: cityArray,
+        place: placeArray,
+        period: periodArray})
     }
 
-//////////////// UPDATE OF SUPPORTS AND PARTNERS
+/////////////// ADD THE PERFORMANCES
+      let addCityArray = thisShow.city;
+      let addPeriodArray = thisShow.period;
+      let addPlaceArray = thisShow.place
 
+      console.log(addPlaceArray, addPeriodArray, addCityArray);
+
+      if(req.body.city != ""){
+      if(typeof req.body.city == 'object'){
+        for (let i=0; i< req.body.city.length; i++){
+          addCityArray.push(req.body.city[i])  
+          addPeriodArray.push(req.body.period[i])  
+          addPlaceArray.push(req.body.place[i])  
+        }
+      } else if (typeof req.body.city === 'string'){
+        addCityArray.push(req.body.city)  
+        addPeriodArray.push(req.body.period)  
+        addPlaceArray.push(req.body.place) 
+      } 
+
+        console.log(addCityArray)  
+        console.log(addPeriodArray)
+        console.log(addPlaceArray) 
+      update = await ShowModel.updateOne(
+        {_id: req.body.id},
+        {city: addCityArray,
+        place: addPlaceArray,
+        period: addPeriodArray})
+        }
+
+
+//////////////// UPDATE OF SUPPORTS AND PARTNERS
     let supportArray = [];
     if (req.body.support_id){
       if (typeof req.body.support_id == "string"){
@@ -654,13 +695,8 @@ router.post('/update-show', parser.single('image'), async function(req, res, nex
       
       update = await ShowModel.updateOne(
         {_id: req.body.id},
-        {place: req.body.place,
-        title: req.body.title,
-        period: req.body.period,
+        {title: req.body.title,
         description: req.body.description,
-        place: placeArray,
-        city: cityArray, 
-        period: periodArray,
         partners: partnersArray,
         supports: supportArray,
         photo: photo,

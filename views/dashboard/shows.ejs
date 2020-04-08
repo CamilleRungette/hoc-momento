@@ -29,8 +29,9 @@
             <div class="red"><%= allShows[i].title %></div> <br/>
               <% for (let j=0; j< allShows[i].period.length; j++) {%>
                   <div><%= allShows[i].period[j] %></div>
-                  <div><%= allShows[i].place[j] %>, <%= allShows[i].city[j] %>  </div> <br/>
+                  <div><%= allShows[i].place[j] %>, <%= allShows[i].city[j] %>  </div>
               <% } %>
+              <br/>
               <% if (allShows[i].links) {%> 
               <div> <span class="red">LIENS :</span><br/>
                 <% for (j=0; j< allShows[i].links.length; j++) {%>       

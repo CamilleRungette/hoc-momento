@@ -49,7 +49,7 @@
             <% for (let i=0; i<show.period.length;i++) {%>
                 <div class="action-place-update">
                   <div data-period="<%= show.period[i] %>" data-place="<%= show.place[i] %>" data-city="<%= show.city[i] %>"><%= show.period[i] %>: <%= show.place[i] %>, <%= show.city[i] %> 
-                  <i class="fas fa-minus delete-perf alinea" title="Supprimer une représentation"></i></div>
+                  <i class="fas fa-minus delete-perf alinea" title="Supprimer la représentation"></i></div>
                 </div>
             <% } %>  
           </div>
@@ -57,7 +57,7 @@
 
 
         <div class="form-group col-12">
-          <label>Description <i class="far fa-question-circle" id="questionMark"></i></label>
+          <label>Description <i class="far fa-question-circle" id="questionMark" title="Clique"></i></label>
           <textarea class="made-form" value="<%= show.description %>" name="description"> <%= show.description %> </textarea>
           <div class="legend-div close" id="legend">
             <ul class="legend"> 
@@ -112,7 +112,7 @@
 
         <div class="form-group d-flex">
           <div class="fifty">
-            <label>Partenaires</label>
+            <label>Partenaires <i class="far fa-question-circle" title="Si rien n'est cliqué, l'information initiale sera conservée"></i></label>
             <div class="partners-scroll">
             <% for (let i=0; i < allPartners.length; i++) {%> 
               <div class="form-check">
@@ -141,6 +141,7 @@
         </div>
 
         <div class="button-container mt-5">
+          <a href="/dashboard/shows" ><button class="btn btn-secondary text-white action-button">Annuler</button></a>
           <button type="submit" class="btn btn-warning text-white action-button">Modifier </button>
         </div>
       </form>
