@@ -393,9 +393,9 @@ router.post('/add-photo-action',  parser.array('images'), async function(req, re
 /* SHOWS PART: DISPLAY, CREATION, DELETING AND UPDATING */
 
 router.get('/shows', async function(req, res, next){
-  // if(!req.session.admin){
-  //   res.redirect('/dashboard/login')
-  // } else {
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {
     allShows = await ShowModel.find();
     allPartners = await PartnerModel.find();
     allSupports = await SupportModel.find();
@@ -403,7 +403,7 @@ router.get('/shows', async function(req, res, next){
     
 
     res.render('./dashboard/shows', {allShows})
-  // }
+  }
 });
 
 router.post('/create-show', parser.array('images'), async function(req, res, next){
@@ -772,16 +772,14 @@ router.post('/add-photo-show',  parser.array('images'), async function(req, res,
 
 /* MESSAGES PART */
 router.get('/messages', async function (req, res){
-  // if(!req.session.admin){
-  //   res.redirect('/dashboard/login')
-  // } else {
-
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {
     allMessages = await MessageModel.find(function(err, messages){
       console.log(messages)
     })
     res.render('./dashboard/messages', {allMessages})
-
-  // }
+  }
 })
 
 router.get('/read-message', async function(req, res){ 
@@ -809,9 +807,9 @@ router.get('/unread-message', async function(req, res){
 
 /* AGENDA PART */
 router.get('/agenda', async function(req,res){
-  // if(!req.session.admin){
-  //   res.redirect('/dashboard/login')
-  // } else {
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {
   allEvents = await EventModel.find(function(error, events){
     console.log("ok");
   })
@@ -826,15 +824,15 @@ router.get('/agenda', async function(req,res){
     }else{
       pastEvents.push(allEvents[i])
     }
-  // }
+  }
   res.render('dashboard/agenda', {allEvents, futurEvents, pastEvents})
 }
 })
 
 router.post('/create-event', parser.single('image'), async function(req,res){
-  // if(!req.session.admin){
-  //   res.redirect('/dashboard/login')
-  // } else {
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {
 console.log(req.body);
 
     newEvent = new EventModel({
@@ -851,44 +849,44 @@ console.log(req.body);
     console.log(newEvent);
     
 
-    // newEvent.save(function(error, event){
-    //   console.log("EVENT SAVED:", event);
-    // })
+    newEvent.save(function(error, event){
+      console.log("EVENT SAVED:", event);
+    })
 
     console.log(newEvent);  
   res.redirect('/dashboard/agenda')
-  // }
+  }
 })
 
 router.post('/delete-event', async function(req, res){
   console.log(req.body);
-  // if(!req.session.admin){
-  //   res.redirect('/dashboard/login')
-  // } else {
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {
     event = await EventModel.deleteOne({_id: req.body.id})
     console.log(`Event DELETED ============`)
     res.redirect('/dashboard/agenda')
-  // }
+  }
 })
 
 router.get('/update-event', async function(req,res){
   console.log(req.query);
-  // if(!req.session.admin){
-  //   res.redirect('/dashboard/login')
-  // } else {  
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {  
     event = await EventModel.findById(req.query.id)
 
     res.render('./dashboard/update-event', {event})
-  // }
+  }
 
 })
 
 router.post('/update-event', parser.single('image'), async function (req, res){
   console.log("coucou");
   
-  // if(!req.session.admin){
-  //   res.redirect('/dashboard/login')
-  // } else {
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {
     try {
       let thisEvent = await EventModel.findById(req.body.id)
       let photo = thisEvent.photo
@@ -912,7 +910,7 @@ router.post('/update-event', parser.single('image'), async function (req, res){
     }catch(error){
       console.log(error);
     };
-  // }
+  }
 
 })
 
