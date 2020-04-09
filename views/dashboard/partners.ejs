@@ -16,11 +16,11 @@
   <%- include('../partials/navbarAdmin') %> 
 
   <div class="dashboard-container mx-auto">
-
-    <img src="/images/partners.jpeg"  class="aaction-banner-photo" />
-    <div class="aaction-banner-shows">
-      <h1 class="action-title white">PARTENAIRES & SOUTIENS</h1>
+    <img src="/images/partners.jpg"  class="small-banner-photo" />
+    <div class="small-banner">
+      <h1 class="small-banner-title black">PARTENAIRES & SOUTIENS</h1>
     </div>
+
 
     <div class="cultural-actions">
       <h3 class="partner-title">Partenaires</h3>
@@ -36,22 +36,21 @@
             <div class="partner-infos">
               <p class="partner-name"><%= allPartners[i].name %> </p>
               <div class="partner-icons">
+                <a href="/dashboard/update-partner?id=<%= allPartners[i].id %> " class="delete-button white"><i class="far fa-edit fa-2x partner-icon delete-button"></i></a>
                 <form action="/dashboard/delete-partner" method="POST" >
                   <input type="hidden" value="<%= allPartners[i].id %>" name="partner"/>
-                  <button class="fas fa-trash-alt partner-icon delete-button transparent"></button>
+                  <button class="fas fa-trash-alt fa-2x partner-icon delete-button transparent"></button>
                 </form>
             </div>
             </div>
           </div>
         <% } %> 
       </div>
-    </div>
-  </div >
 
-  <div class="separator col-12"></div>
+    <div class="separator col-12"></div>
 
-  <h3 class="partner-title">Soutiens</h3>
-  <%- include('./create-support') %> 
+    <h3 class="partner-title top5">Soutiens</h3>
+    <%- include('./create-support') %> 
 
     <div class="separator col-12"></div>
       <div class="partner-container relative">
@@ -63,6 +62,7 @@
             <div class="partner-infos">
               <p class="partner-name"><%= allSupports[i].name %> </p>
               <div class="partner-icons">
+                <a href="/dashboard/update-support?id=<%= allSupports[i].id %> " class="delete-button white"><i class="far fa-edit fa-2x partner-icon delete-button"></i></a>
                 <form action="/dashboard/delete-support" method="POST" >
                   <input type="hidden" value="<%= allSupports[i].id %>" name="support"/>
                   <button class="fas fa-trash-alt partner-icon delete-button transparent"></button>
@@ -74,8 +74,7 @@
       </div>
     </div>
   </div >
-
-
+  <div class="space-partner"></div>
 
   <%- include('../partials/footer') %>
 </body>

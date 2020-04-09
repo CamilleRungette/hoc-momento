@@ -643,6 +643,8 @@ label{
 .cultural-actions{
   margin-top:5em;
 }
+
+
 /* =============================SHOWS============================= */
 
 /* =============================MESSAGES============================= */
@@ -889,6 +891,9 @@ font-size: 1.3em;
   font-weight: bold;
 }
 
+.space-partner{
+  height: 5em;
+}
 
   /* =========================================================
                     Cultural Actions / Shows
@@ -1561,6 +1566,15 @@ opacity: 1;
 /* ==========================================
                     Partner
 =========================================== */
+.partner-title{
+  text-align: center;
+  font-size: 200%;
+  margin-bottom: 5%;
+}
+
+.top5{
+  margin-top: 5%;
+}
 
 .partner-container{
   margin: auto;

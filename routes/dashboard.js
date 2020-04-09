@@ -1019,13 +1019,13 @@ router.post('/update-person', parser.single('image'), async function(req, res){
 
 /* PARTNERS PART */
 router.get('/partners', async function(req, res ){
-  if(!req.session.admin){
-    res.redirect('/dashboard/login')
-  } else {
+  // if(!req.session.admin){
+  //   res.redirect('/dashboard/login')
+  // } else {
     allPartners = await PartnerModel.find();
     allSupports = await SupportModel.find()
     res.render('./dashboard/partners', {allPartners, allSupports})
-  }
+  // }
 })
 
 router.post('/create-partner', parser.single('image'), function (req, res){
@@ -1050,9 +1050,24 @@ router.post('/delete-partner', async function(req,res){
   res.redirect('/dashboard/partners')
 })
 
+router.get('/update-partner', async function(req, res){
+  partner = await PartnerModel.findById(req.query.id)
+
+  res.render('./dashboard/update-partner', {partner})
+})
+
 router.post('/update-partner', parser.single('image'), async function(req, res){
-  console.log(req.body);
-  
+  let thisPartner = await PartnerModel.findById(req.body.id);
+  let photo = thisPartner.photo
+  if (req.file){
+    photo = req.file.secure_url
+  }
+
+  update = await PartnerModel.updateOne(
+    {_id: req.body.id},
+    {name: req.body.name,
+    link: req.body.link,
+    photo: photo})
 
   res.redirect('/dashboard/partners')
 })
@@ -1078,6 +1093,33 @@ router.post('/delete-support', async function(req,res){
 
   res.redirect('/dashboard/partners')
 })
+
+router.get('/update-support', async function(req, res){
+  support = await SupportModel.findById(req.query.id)
+
+  res.render('./dashboard/update-support', {support})
+})
+
+router.post('/update-support', parser.single('image'), async function(req, res){
+  let thisSupport = await SupportModel.findById(req.body.id);
+  let photo = thisSupport.photo
+  if (req.file){
+    photo = req.file.secure_url
+  }
+
+  update = await SupportModel.updateOne(
+    {_id: req.body.id},
+    {name: req.body.name,
+    link: req.body.link,
+    photo: photo})
+
+  res.redirect('/dashboard/partners')
+})
+
+
+
+
+
 
 
 module.exports = router;
