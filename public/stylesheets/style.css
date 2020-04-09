@@ -1420,16 +1420,6 @@ opacity: 1;
   padding-left: 5%;
 }
 
-/* .past-event{
-  margin-top: 5%;
-  margin-bottom: 5%;
-  background-color: rgb(249, 176, 58);
-  color: #fff;
-  font-size: 200%;
-  border-radius: 20px 20px 0% 0;
-  padding-left: 5%;
-} */
-
 .event-card{
   width: 70%;
   margin: auto;
@@ -1440,20 +1430,22 @@ opacity: 1;
 }
 
 .event-card:hover > .card-event-photo{
-  width: 54%;
+  width: 50%;
   transition-duration: .5s;
+  margin-right: -3%;
 }
 
 .event-card:hover > .card-event-infos{
-  width: 50%;
-  padding: 0%;
-  transform: translateX(.5em);
+  /* width: 50%;
+  padding: 0%; */
+  transform: translateX(.8em);
   transition-duration: .5s;
+
 } 
 
 .card-event-photo{
-  width: 50%;
-  max-height: 20em;
+  width: 47%;
+  max-height: 22em;
   text-align: center;
   transition-duration: .5s;
 }

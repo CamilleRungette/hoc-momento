@@ -35,7 +35,9 @@
               <div><%= allEvents[i].period%></div>
               <div> <%= allEvents[i].city  %>  </div> <br/>
               <div><%= allEvents[i].place  %>  </div>
-              <div><%= allEvents[i].type %> </div>
+              <div><%= allEvents[i].type %> </div> <br/>
+              <div> Du <%= allEvents[i].startDate.getDate() %>/<%= allEvents[i].startDate.getMonth()+1%>/<%= allEvents[i].startDate.getFullYear()%></div>
+              <div> Au <%= allEvents[i].endDate.getDate() %>/<%= allEvents[i].endDate.getMonth()+1%>/<%= allEvents[i].endDate.getFullYear()%></div>
             </div>
             <div class="col-6 description-list"><%= allEvents[i].description%></div>
             <div class="col-3"> <img src="<%=allEvents[i].photo %>" class="photo-list"  /> </div>

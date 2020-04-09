@@ -13,7 +13,7 @@
   <body>
     <%- include('../partials/navbarAdmin') %> 
     <div class="made-container update-container">
-      <h2 class="text-center action-title mb-5">Modifier de profil de :<br/> <%= person.first_name %></h2>
+      <h2 class="text-center action-title mb-5">Modifier de profil de :<br/> <%= person.first_name %> <%= person.last_name %> </h2>
 
       <form action="/dashboard/update-person" class="col-10 mx-auto mt-5" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="id" value="<%= person.id %>" />
@@ -49,6 +49,7 @@
         </div> 
 
         <div class="hundred text-center">
+          <a href="/dashboard/team" ><button class="btn btn-secondary text-white action-button">Annuler</button></a>
           <button class="btn btn-warning action-button text-white"> Modifier</button>
         </div>
       </form>

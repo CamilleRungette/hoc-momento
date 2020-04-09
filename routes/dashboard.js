@@ -893,6 +893,15 @@ router.post('/update-event', parser.single('image'), async function (req, res){
       if (req.file){
         photo = req.file.secure_url
       }
+
+      let startDate = thisEvent.startDate
+      let endDate = thisEvent.endDate
+      if(req.body.startDate){
+        startDate = req.body.startDate;
+      }
+      if (req.body.endDate){
+        endDate = req.body.endDate;
+      }
       
       update = await EventModel.updateOne(
         {_id: req.body.id},
@@ -902,8 +911,8 @@ router.post('/update-event', parser.single('image'), async function (req, res){
         type: req.body.type,
         description: req.body.description,
         photo: photo, 
-        startDate: req.body.startDate,
-        endDate: req.body.endDate}
+        startDate: startDate,
+        endDate: endDate}
       ); 
 
     res.redirect('/dashboard/agenda');
