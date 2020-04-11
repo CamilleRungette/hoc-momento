@@ -927,18 +927,18 @@ router.post('/update-event', parser.single('image'), async function (req, res){
 
 /* PERSON PART */
 router.get('/team', async function(req, res){
-  // if(!req.session.admin){
-  //   res.redirect('/dashboard/login')
-  // } else {
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {
   allPersons = await PersonModel.find();
   res.render('./dashboard/team', {allPersons})
-  // }
+  }
 })
 
 router.post('/create-person', parser.single('image'), function(req, res, next){
-  // if(!req.session.admin){
-  //   res.redirect('/dashboard/login')
-  // } else {
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {
 
     newPerson = new PersonModel({
       first_name: req.body.first_name,
@@ -959,36 +959,36 @@ router.post('/create-person', parser.single('image'), function(req, res, next){
           res.redirect('/dashboard/team')
       }
     })
-  // }
+  }
 })
 
 router.post('/delete-person', async function(req, res){
   console.log(req.body);
-  // if(!req.session.admin){
-  //   res.redirect('/dashboard/login')
-  // } else {
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {
     event = await PersonModel.deleteOne({_id: req.body.id})
     console.log(`Event DELETED ============`)
     res.redirect('/dashboard/team')
-  // }  
+  }  
 })
 
 router.get('/update-person', async function(req, res){
-  // if(!req.session.admin){
-  //   res.redirect('/dashboard/login')
-  // } else {  
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {  
     person = await PersonModel.findById(req.query.id)
     console.log("LA PERSONNE =============>", person)
 
     res.render('./dashboard/update-person', {person})
-  // }
+  }
 })
 
 router.post('/update-person', parser.single('image'), async function(req, res){
   console.log(req.file);
-  // if(!req.session.admin){
-  //   res.redirect('/dashboard/login')
-  // } else {
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {
     try {
       let thisPerson = await PersonModel.findById(req.body.id)
       let photo = thisPerson.photo;
@@ -1013,19 +1013,19 @@ router.post('/update-person', parser.single('image'), async function(req, res){
     }catch(error){
       console.log(error);
     }; 
-// }
+}
 })
 
 
 /* PARTNERS PART */
 router.get('/partners', async function(req, res ){
-  // if(!req.session.admin){
-  //   res.redirect('/dashboard/login')
-  // } else {
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {
     allPartners = await PartnerModel.find();
     allSupports = await SupportModel.find()
     res.render('./dashboard/partners', {allPartners, allSupports})
-  // }
+  }
 })
 
 router.post('/create-partner', parser.single('image'), function (req, res){
@@ -1051,12 +1051,21 @@ router.post('/delete-partner', async function(req,res){
 })
 
 router.get('/update-partner', async function(req, res){
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {
+
   partner = await PartnerModel.findById(req.query.id)
 
   res.render('./dashboard/update-partner', {partner})
+  }
 })
 
 router.post('/update-partner', parser.single('image'), async function(req, res){
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {
+
   let thisPartner = await PartnerModel.findById(req.body.id);
   let photo = thisPartner.photo
   if (req.file){
@@ -1070,37 +1079,57 @@ router.post('/update-partner', parser.single('image'), async function(req, res){
     photo: photo})
 
   res.redirect('/dashboard/partners')
+    }
 })
 
 router.post('/create-support', parser.single('image'), function (req, res){
-  newSupport = new SupportModel({
-    name: req.body.name,
-    link: req.body.link,
-    photo: req.file.secure_url
-  })
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {
 
-  newSupport.save(function(error, support){
-    console.log("PARTNER SAVED", support); 
-  })
+    newSupport = new SupportModel({
+      name: req.body.name,
+      link: req.body.link,
+      photo: req.file.secure_url
+    })
 
-  res.redirect('/dashboard/partners')
+    newSupport.save(function(error, support){
+      console.log("PARTNER SAVED", support); 
+    })
+
+    res.redirect('/dashboard/partners')
+  }
 })
 
 router.post('/delete-support', async function(req,res){
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {
+
   SupportModel.deleteOne({_id: req.body.support}, function(error, support){
     console.log("OK");
   })
 
   res.redirect('/dashboard/partners')
+  }
 })
 
 router.get('/update-support', async function(req, res){
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {
+
   support = await SupportModel.findById(req.query.id)
 
   res.render('./dashboard/update-support', {support})
+  }
 })
 
 router.post('/update-support', parser.single('image'), async function(req, res){
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {
+
   let thisSupport = await SupportModel.findById(req.body.id);
   let photo = thisSupport.photo
   if (req.file){
@@ -1114,6 +1143,7 @@ router.post('/update-support', parser.single('image'), async function(req, res){
     photo: photo})
 
   res.redirect('/dashboard/partners')
+    }
 })
 
 
