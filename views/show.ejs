@@ -22,6 +22,7 @@
         <h1 class="aaction-place"> <%= show.title %></h1>
       </div>
     </div>
+    <div class="relative">
     
     <div class="relative">
       <div class="aaction-container">
@@ -32,15 +33,23 @@
       <% if (show.links.length != 0 ) {%> 
         <h5 class="aaction-link-title">Liens: </h5>
         <% if (articles.length!=0) {%>
-          <h5 class="alinea aaction-link-subtitle">Articles: </h5>
+            <% if (articles.length  == 1) {%> 
+            <h5 class="alinea aaction-link-subtitle">Article: </h5>
+            <% }else if (articles.length > 1) {%>
+              <h5 class="alinea aaction-link-subtitle">Articles: </h5>
+            <% } %>           
           <ul>
-            <% for (let i=0; i<articles.length; i++) {%>
-              <li class="aaction-link"><a href="<%= articles[i].link %>" class="black">  <%- articles[i].name %> </a></li>
-            <% } %>  
-          </ul>
+          <% for (let i=0; i<articles.length; i++) {%>
+            <li class="aaction-link"><a href="<%= articles[i].link %>" class="black">  <%- articles[i].name %> </a></li>
+          <% } %>  
+        </ul>
         <% } %> 
         <% if (videos.length!=0) {%>
-          <h5 class="alinea aaction-link-subtitle">Vidéos: </h5>
+          <% if (videos.length  == 1) {%> 
+            <h5 class="alinea aaction-link-subtitle">Vidéo: </h5>
+            <% }else if (videos.length > 1) {%>
+              <h5 class="alinea aaction-link-subtitle">Vidéos: </h5>
+              <% } %>  
           <ul>
             <% for (let i=0; i<videos.length; i++) {%>
               <li class="aaction-link"><a href="<%= videos[i].link %>" class="black">  <%- videos[i].name %> </a></li>
@@ -48,7 +57,7 @@
           </ul>
         <% } %> 
         <% if (pdf.length!=0) {%>
-          <h5 class="alinea aaction-link-subtitle">Vidéos: </h5>
+          <h5 class="alinea aaction-link-subtitle">Pdf: </h5>
           <ul>
             <% for (let i=0; i<pdf.length; i++) {%>
               <li class="aaction-link"><a href="<%= pdf[i].link %>" class="black">  <%- pdf[i].name %> </a></li>
@@ -58,47 +67,30 @@
       <% } %> 
           <br/><br/>
 
-          <div class="aaction-partners-div">
-            <h5 class="aaction-link-title">Soutiens: </h5>
-              <div 
-              <% if (show.supports.length == 2) {%> 
-                class="aaction-logo-2"
-              <% } else{ %>
-                class="aaction-logo"
-             <% } %> 
-                > 
-              <% for (let i=0; i<show.supports.length; i++) {%>         
-                <div
-                <% if (show.supports.length == 2) {%> 
-                  class="logo-partner-container-2"
-                <% } else{ %>
-                  class="logo-partner-container"
-               <% } %>>
-                  <a href="<%= show.supports[i].link %> "><img src="<%= show.supports[i].photo %>" class="logo-partner" alt="Soutiens d'Hoc Momento, <%= show.supports[i].name %>" title=" <%= show.supports[i].name %>" /></a>
-                </div>
-              <% } %> 
+          <% if (show.supports.length !=0) {%> 
+            <div class="aaction-partners-div">
+              <h5 class="aaction-link-title">Soutiens: </h5>
+                <div class="aaction-logo"> 
+                <% for (let i=0; i<show.supports.length; i++) {%>         
+                  <div class="logo-partner-container">
+                    <a href="<%= show.supports[i].link %> " target="_blank" rel="noopener noreferrer"><img src="<%= show.supports[i].photo %>" class="logo-partner" alt="Soutiens d'Hoc Momento, <%= show.supports[i].name %>" title=" <%= show.supports[i].name %>" /></a>
+                  </div>
+                <% } %> 
+              </div>
             </div>
-          </div>
+          <% } %> 
+          <% if (show.partners.length !=0) {%> 
           <div class="aaction-partners-div">
             <h5 class="aaction-link-title">Partenaires: </h5>
-            <div 
-            <% if (show.supports.length == 2) {%> 
-              class="aaction-logo-2"
-            <% } else{ %>
-              class="aaction-logo"
-           <% } %> >
+            <div class="aaction-logo">
               <% for (let i=0; i<show.partners.length; i++) {%>
-                <div 
-                <% if (show.partners.length == 2) {%> 
-                  class="logo-partner-container-2"
-                <% } else{ %>
-                  class="logo-partner-container"
-               <% } %>>
-                  <a href="<%= show.partners[i].link %> "><img src="<%= show.partners[i].photo %>" class="logo-partner" alt="Soutiens d'Hoc Momento, <%= show.partners[i].name %>" title=" <%= show.partners[i].name %>" /></a>
+                <div class="logo-partner-container">
+                  <a href="<%= show.partners[i].link %> " target="_blank" rel="noopener noreferrer"><img src="<%= show.partners[i].photo %>" class="logo-partner" alt="Soutiens d'Hoc Momento, <%= show.partners[i].name %>" title=" <%= show.partners[i].name %>" /></a>
                 </div>
               <% } %> 
             </div>
           </div>
+        <% } %> 
         
       </div>
 
@@ -114,21 +106,26 @@
           <% } %> 
         </div>
       </div>
+    </div>
 
       <div class="aaction-modal" id="aaction-modal">
-        <div class="relative">
+        <div id="wrap-carroussel">
           <i class="fas fa-times" id="close-icon"></i>
-          <div id="wrap-carroussel">
-            <ul class="carroussel">
-              <% for (let i=0; i< show.gallery.length ; i++) {%>
-              <li><img src="<%= show.gallery[i] %>" class="aaction-modal-photo"></li>
-              <% } %> 
-            </ul>
-          </div>
+          <ul class="carroussel">
+            <% for (let i=0; i< show.gallery.length ; i++) {%>
+            <li class="li-modal"><img src="<%= show.gallery[i] %>" class="aaction-modal-photo"></li>
+            <% } %> 
+          </ul>
         </div>
       </div>   
-
+      
+    <div class="button-container mt-5">
+      <div class="space"></div>
+        <a href="/spectacles"><button class="pointer btn btn-secondary text-white action-button">Retour</button></a>
+      <div class="space"></div>
     </div>
+</div>
+
   <%- include('./partials/footer') %>
   <script src="/javascripts/script3.js" ></script>
 </body>

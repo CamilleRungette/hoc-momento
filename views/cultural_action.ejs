@@ -22,7 +22,7 @@
         <h1 class="aaction-place"> <%= action.place %></h1>
       </div>
     </div>
-    
+    <div class="relative">
     <div class="relative">
       <div class="aaction-container">
         <div><%- action.description %></div>
@@ -32,57 +32,69 @@
       <% if (action.links.length != 0 ) {%> 
         <h5 class="aaction-link-title">Liens: </h5>
         <% if (articles.length!=0) {%>
-          <h5 class="alinea aaction-link-subtitle">Articles: </h5>
+          <% if (articles.length  == 1) {%> 
+          <h5 class="alinea aaction-link-subtitle">Article: </h5>
+          <% }else if (articles.length > 1) {%>
+            <h5 class="alinea aaction-link-subtitle">Articles: </h5>
+          <% } %>  
           <ul>
             <% for (let i=0; i<articles.length; i++) {%>
-              <li class="aaction-link"><a href="<%= articles[i].link %>" class="black">  <%- articles[i].name %> </a></li>
+              <li class="aaction-link"><a href="<%= articles[i].link %>" class="black" target="_blank" rel="noopener noreferrer">  <%- articles[i].name %> </a></li>
             <% } %>  
           </ul>
         <% } %> 
         <% if (videos.length!=0) {%>
-          <h5 class="alinea aaction-link-subtitle">Vidéos: </h5>
+          <% if (videos.length  == 1) {%> 
+            <h5 class="alinea aaction-link-subtitle">Vidéo: </h5>
+            <% }else if (videos.length > 1) {%>
+              <h5 class="alinea aaction-link-subtitle">Vidéos: </h5>
+              <% } %>  
           <ul>
             <% for (let i=0; i<videos.length; i++) {%>
-              <li class="aaction-link"><a href="<%= videos[i].link %>" class="black">  <%- videos[i].name %> </a></li>
+              <li class="aaction-link"><a href="<%= videos[i].link %>" class="black" target="_blank" rel="noopener noreferrer">  <%- videos[i].name %> </a></li>
             <% } %>  
           </ul>
         <% } %> 
         <% if (pdf.length!=0) {%>
-          <h5 class="alinea aaction-link-subtitle">Vidéos: </h5>
+          <h5 class="alinea aaction-link-subtitle">Pdf: </h5>
           <ul>
             <% for (let i=0; i<pdf.length; i++) {%>
-              <li class="aaction-link"><a href="<%= pdf[i].link %>" class="black">  <%- pdf[i].name %> </a></li>
+              <li class="aaction-link"><a href="<%= pdf[i].link %>" class="black" target="_blank" rel="noopener noreferrer">  <%- pdf[i].name %> </a></li>
             <% } %>  
           </ul>
         <% } %> 
       <% } %> 
           <br/><br/>
-          
-      <div class="aaction-partners-div">
-        <h5 class="aaction-link-title">Soutiens: </h5>
-        <div class="aaction-logo">
-          <% for (let i=0; i<action.support.length; i++) {%>
-            <div class="logo-partner-container">
-              <a href="<%= action.support[i].link %> "><img src="<%= action.support[i].photo %>" class="logo-partner" alt="Soutiens d'Hoc Momento, <%= action.support[i].name %>" title=" <%= action.support[i].name %>" /></a>
-            </div>
-          <% } %> 
+      
+      <% if (action.support.length !=0) {%> 
+        <div class="aaction-partners-div">
+          <h5 class="aaction-link-title">Soutiens: </h5>
+          <div class="aaction-logo">
+            <% for (let i=0; i<action.support.length; i++) {%>
+              <div class="logo-partner-container">
+                <a href="<%= action.support[i].link %>" target="_blank" rel="noopener noreferrer" ><img src="<%= action.support[i].photo %>" class="logo-partner" alt="Soutiens d'Hoc Momento, <%= action.support[i].name %>" title=" <%= action.support[i].name %>" /></a>
+              </div>
+            <% } %> 
+          </div>
         </div>
-      </div>
-      <div class="aaction-partners-div">
-        <h5 class="aaction-link-title">Partenaires: </h5>
-        <div class="aaction-logo">
-          <% for (let i=0; i<action.partners.length; i++) {%>
-            <div class="logo-partner-container">
-              <a href="<%= action.partners[i].link %> "><img src="<%= action.partners[i].photo %>" class="logo-partner" alt="Soutiens d'Hoc Momento, <%= action.partners[i].name %>" title=" <%= action.partners[i].name %>" /></a>
-            </div>
-          <% } %> 
+      <% } %> 
+      <% if (action.partners.length !=0) {%> 
+        <div class="aaction-partners-div">
+          <h5 class="aaction-link-title">Partenaires: </h5>
+          <div class="aaction-logo">
+            <% for (let i=0; i<action.partners.length; i++) {%>
+              <div class="logo-partner-container">
+                <a href="<%= action.partners[i].link %>" target="_blank" rel="noopener noreferrer"><img src="<%= action.partners[i].photo %>" class="logo-partner" alt="Soutiens d'Hoc Momento, <%= action.partners[i].name %>" title=" <%= action.partners[i].name %>" /></a>
+              </div>
+            <% } %> 
+          </div>
         </div>
-      </div>
+      <% } %> 
     </div>
 
       <div class="slider-container">
         <div class="aaction-gallery-div">
-          <a> <button class="gallery-button" id="gallery-button"> Gallerie </button></a>
+          <a><button class="gallery-button" id="gallery-button"> Gallerie </button></a>
         </div>
         <div class="slider">
           <% for (let i=0; i< action.gallery.length; i++) {%> 
@@ -92,19 +104,25 @@
           <% } %> 
         </div>
       </div>
+    </div>
 
       <div class="aaction-modal" id="aaction-modal">
-        <div class="relative">
+        <div id="wrap-carroussel">
           <i class="fas fa-times" id="close-icon"></i>
-          <div id="wrap-carroussel">
             <ul class="carroussel">
               <% for (let i=0; i< action.gallery.length ; i++) {%>
               <li><img src="<%= action.gallery[i] %>" class="aaction-modal-photo"></li>
               <% } %> 
             </ul>
-          </div>
         </div>
-      </div>     
+      </div>  
+      
+      <div class="button-container mt-5">
+        <div class="space"></div>
+          <a href="/actions-culturelles"><button class="pointer btn btn-secondary text-white action-button">Retour</button></a>
+        <div class="space"></div>
+      </div>
+  
     </div>
 
   <%- include('./partials/footer') %>

@@ -23,4 +23,4 @@ $(document).ready(function(){
    infiniteLoop: true,
    hideControlOnEnd: true
  });
- });
+});

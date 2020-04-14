@@ -562,6 +562,25 @@ header nav a > span:hover{
     list-style: none;
   }
 
+  .pointer{
+    cursor: pointer;
+  }
+  .btn{
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    padding-left: 1%;
+    padding-right: 1%;
+    outline: none;
+  }
+  .btn-secondary{
+    color: white;
+    background-color: #5A6167;
+  }
+  .btn-secondary:hover{
+    background-color: rgb(70, 75, 80);
+  }
+
   /* ==========================================
               Login
   =========================================== */
@@ -836,7 +855,7 @@ font-size: 1.3em;
   z-index: 1;
 }
 .team-banner-photo{
-  background-image: url(/images/compagnie1.png);
+  background-image: url(/images/compagnie3.jg);
   background-size: cover;
   width: 100%;
   height: 70vh;
@@ -1037,6 +1056,7 @@ font-size: 1.3em;
   display: flex;
   justify-content: center;
   margin-bottom: 2%;
+  margin-right: 3%;
 }
   .gallery-button{
     transition-duration: .3s;
@@ -1103,19 +1123,22 @@ font-size: 1.3em;
 }
 
 .aaction-modal{
-  height: 40%;
-  padding-top: 5%;
+  height: 98%;
   position: absolute;
-  bottom: 0;
+  bottom: .5%;
   background-color:rgba(0, 0, 0, 0.8);
   width:100%;
   z-index: -1;
   opacity: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 3%;
 }
 #close-icon{
   transition-duration: .4s;
   position: absolute;
-  right: 5%;
+  right: -5%;
   top: 0;
   color: #FFF;
   cursor: pointer;
@@ -1125,14 +1148,18 @@ font-size: 1.3em;
   font-size: 240%;
 }
 #wrap-carroussel{
-  margin: auto;
   max-width: 1200px;
   width: 100%;
   display:block;
+  position: relative;
 }
 .aaction-modal-photo{
   max-height: 700px;
   margin: auto;
+}
+.carroussel{
+  display: flex;
+  align-items: center;
 }
 
 

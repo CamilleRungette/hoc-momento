@@ -24,7 +24,7 @@
 
         <div class="aactions-text">
           <p class="aactions-desc">
-            DESCRIPION DES SPECTACLES
+            DESCRIPTION DES SPECTACLES
           </p>
         </div>
 
@@ -36,7 +36,8 @@
               <p class="aactions-place"><%= shows[i].title %></p>
               <% for (let j=0; j< shows[i].place.length; j++) {%>
                 <div class="shows-period">
-                 <%= shows[i].place[j] %> - <%= shows[i].city[j] %><br/> 
+                 <%= shows[i].place[j] %> <br/>
+                  <%= shows[i].city[j] %><br/> 
                   <%= shows[i].period[j] %>
               </div>
               <% } %>  
