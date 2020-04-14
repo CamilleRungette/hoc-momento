@@ -14,7 +14,7 @@ The website was coded using express and EJS; i've used Mongo DB and Mongoose for
 
 ## Link
 For now it's on Heroku, soon it will be online with it's wn domain name.
---> [https://hoc-momento.herokuapp.com/](See the website)
+--> [See the website](https://hoc-momento.herokuapp.com/)
 
 
 ##### The webste is exclusively in French, it will be translated in Portuguese in the future
