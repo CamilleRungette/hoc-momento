@@ -5,8 +5,8 @@ body {
   height: 100%;
   overflow-x: hidden;
   margin-top: -.5%;
-  margin-left: -.5%;
   min-height: 85vh;
+  margin-left: -.5%;
 }
 
 .logo {
@@ -196,7 +196,11 @@ header nav a > span:hover{
   justify-content: space-evenly;
   align-items: center;
   width: 20%;
-
+}
+@media screen and (min-width: 100px) and (max-width: 600px){
+  .footer-icons{
+    width: 50%;
+  }
 }
 
 /* =================================================
@@ -316,20 +320,28 @@ header nav a > span:hover{
   }
 }
 
-@media screen and (min-device-width: 100px) and (max-device-width: 600px){
+@media screen and (min-width: 100px) and (max-width: 600px){
     .company-text-photo{
-      font-size: 140%;
+      font-size: 142%;
       width: 100%;
-      background-color: violet;
+      text-align: left;
+    }
+    .company-text{
+      font-size: 142%;
+      text-align: left;
+
     }
     .img-company1{
       width: 120%;
     }
-    .company-text{
-      font-size: 140%;
-    }
     .banner-title{
-      font-size: 500% !important;
+      font-size: 300% !important;
+    }
+    body{
+      margin-left: .3%;
+    }
+    .first-word{
+      margin-left: 10%;
     }
 }
 
@@ -873,6 +885,15 @@ font-size: 1.3em;
   top: 30em;
   background-repeat: no-repeat;
   z-index: 1;
+}
+@media screen and (min-width: 100px) and (max-width: 600px){
+  .company-banner-photo{
+    height: 50vh;
+    background-position: bottom;
+  }
+  .banner{
+    height: 63vh;
+  }
 }
 .team-banner-photo{
   background-image: url(/images/compagnie3.jg);
