@@ -322,10 +322,11 @@ header nav a > span:hover{
 
 @media screen and (min-width: 100px) and (max-width: 600px){
     .company-text-photo{
-      font-size: 130%;
+      font-size: 120%;
       width: 100%;
       text-align: left;
       line-height: 1.4em;
+      text-align: justify;
     }
     .company-text{
       font-size: 142%;
@@ -893,7 +894,7 @@ font-size: 1.3em;
     background-position: bottom;
   }
   .banner{
-    height: 63vh;
+    height: 73vh;
   }
 }
 .team-banner-photo{
