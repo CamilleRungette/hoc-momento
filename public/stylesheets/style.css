@@ -1712,8 +1712,19 @@ opacity: 1;
 =========================================== */
 
 @media screen and (min-width: 100px) and (max-width: 600px){
+  
+  .home-title{
+    font-size: 400%;
+  }
+  .home-text{
+    font-size: 220%;
+  }
+
   .footer-icons{
     width: 50%;
+  }
+  .home-banner-photo{
+    background-position: bottom;
   }
   .company-banner-photo{
     height: 50vh;
@@ -1915,5 +1926,9 @@ opacity: 1;
   }
   .contact-front-container{
     height: 70vh !important;
+  }
+
+  .footer{
+    margin-bottom: -2%;
   }
 }
