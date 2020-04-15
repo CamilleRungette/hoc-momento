@@ -1848,6 +1848,8 @@ opacity: 1;
   }
   .paartners-logo-container{
     margin-bottom: 35%;
+    margin: auto;
+    background-color: thistle;
   }
   .paartner-title{
     font-size: 200%;
@@ -1855,11 +1857,13 @@ opacity: 1;
   .first-title{
     margin-top: 25%;
   }
-  .paartner-logo-div{
-    width: 23%;
-    margin-left: 2%;
-    margin-right: 2%; 
-    margin: 2%; 
+  .paartners-logo-container{
+    text-align: justify;
   }
-
+  .paartner-logo-div{
+    width: 20%;
+    margin-left: 2%;
+    margin-right: 2%;
+  }
+  
 }
