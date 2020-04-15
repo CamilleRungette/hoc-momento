@@ -1772,5 +1772,36 @@ opacity: 1;
     font-size: 300%;
     margin-top: 5%;
   }
-  
+
+  .aaction-place{
+    font-size: 350%;
+    margin-left: 3%;
+  }
+  .aaction-container{
+    width: 90%;
+  }
+  .aaction-desc{
+    font-size: 120%;
+    width: 100%;
+    line-height: 1.4em;
+    text-align: justify;
+  }
+  #close-icon{
+    position: absolute;
+    right: 4%;
+    top: 8%;
+    z-index: 3;
+    font-size: 200%;
+  }
+  .logo-partner-container{
+    width: 20%;
+    height: 7.6em;
+    margin-right: 4%;
+  }
+  .logo-partner-container{
+    margin-bottom: 1.5%;
+  }
+  .aaction-link-title{
+    margin-bottom: -.5%;
+  }
 }
