@@ -1361,6 +1361,7 @@ opacity: 1;
 .input-contact{
   margin-top: 4%;
   font-size: 1.2em !important;
+  padding: 1%;
 }
 
 .contact-front-container{
@@ -1400,13 +1401,19 @@ opacity: 1;
   margin-bottom: 3%;
 }
 
+.newsletter-form{
+  height: 3em;
+  display: flex;
+  align-items: center;
+}
+
+
 .newsletter-button{
   transition-duration: .3s;
   background-color: white;
   color:black;
   text-align: center;
-  width: 10em;
-  height: 2em;
+  width: 30%;
   font-size: 1.4em;
   border-radius: 10px;
   margin-left: 3%;
@@ -1425,12 +1432,6 @@ opacity: 1;
   font-size: 1.5em;
   margin-right: 3%;
   margin-top: 5%;
-}
-
-.newsletter-form{
-  height: 3em;
-  display: flex;
-  align-items: center;
 }
 
 
@@ -1564,12 +1565,13 @@ opacity: 1;
 }
 
 .team-infos{
-  height:30em;
+  min-height:30em;
   background-color: rgba(0, 0, 0, 0.8);
   color: #fff;
   position: absolute;
   top: 0;
   opacity: 0;
+  z-index: 2;
 }
 
 .team-name{
@@ -1742,6 +1744,9 @@ opacity: 1;
     height: 50vh;
     background-position: 25% 75%;
   }
+  .contact-banner{
+    height: 73vh;
+  }
   .company-text-photo{
     font-size: 120%;
     width: 100%;
@@ -1878,10 +1883,11 @@ opacity: 1;
     margin-bottom: 10%;
   }
   .team-infos{
-    height: 20em;
+    min-height: 20em;
   }
   .team-name{
     font-size: 200%;
+    margin-top: 1%;
   }
   .team-title{
     font-size: 100%;
@@ -1890,5 +1896,19 @@ opacity: 1;
   .team-desc{
     font-size: 115%;
     margin-top: -2%;
+  }
+
+  .contact-button{
+    width: 60%;
+  }
+  .newsletter-form{
+    display: flex;
+    flex-direction: column;
+  }
+  .newsletter-button{
+    width: 60%;
+  }
+  .contact-front-container{
+    height: 70vh !important;
   }
 }
