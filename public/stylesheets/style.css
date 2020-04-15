@@ -852,7 +852,7 @@ font-size: 1.3em;
   z-index: 1;
 }
 .team-banner-photo{
-  background-image: url(/images/compagnie3.jg);
+  background-image: url(/images/compagnie3.jpg);
   background-size: cover;
   width: 100%;
   height: 70vh;
@@ -1532,12 +1532,16 @@ opacity: 1;
 =========================================== */
 .team-container{
   min-height: 90vh;
-  margin-top: 10%;
   display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  width: 90%;
+  margin-top: 5%;
 }
 
 .team-big-card{
   height: 30em;
+  width: 30em;
   margin-bottom: 5%;
 }
 
@@ -1551,6 +1555,7 @@ opacity: 1;
 .team-img{
   height: 100%;
   cursor: pointer;
+  object-fit: fill;
 }
 
 .right{
@@ -1559,7 +1564,7 @@ opacity: 1;
 }
 
 .team-infos{
-  height: 100%;
+  height:30em;
   background-color: rgba(0, 0, 0, 0.8);
   color: #fff;
   position: absolute;
@@ -1733,6 +1738,10 @@ opacity: 1;
     height: 50vh;
     background-position: bottom;
   }
+  .team-banner-photo{
+    height: 50vh;
+    background-position: 25% 75%;
+  }
   .company-text-photo{
     font-size: 120%;
     width: 100%;
@@ -1864,5 +1873,22 @@ opacity: 1;
     margin-left: 2%;
     margin-right: 2%;
   }
-  
+  .team-big-card{
+    height: 20em;
+    margin-bottom: 10%;
+  }
+  .team-infos{
+    height: 20em;
+  }
+  .team-name{
+    font-size: 200%;
+  }
+  .team-title{
+    font-size: 100%;
+    margin-top: -6%;
+  }
+  .team-desc{
+    font-size: 115%;
+    margin-top: -2%;
+  }
 }

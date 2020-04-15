@@ -5,7 +5,8 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
     <link rel="manifest" href="/images/site.webmanifest">
-  
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <title>Hoc Momento - Équipe</title>
@@ -22,7 +23,7 @@
         </div>
       </div>
       
-      <div class="made-container team-container">
+      <div class="team-container">
         <% for (let i=0; i<allPersons.length ; i++){ %>
           <div class="team-big-card team-card-left" id="team-card<%=i%>">
               <img src=<%= allPersons[i].photo %> class="team-img" id="team-img<%=i%>" title="Clique !" alt="<%= allPersons[i].first_name %> <%= allPersons[i].last_name %>, <%= allPersons[i].title %> dans la compagnie Hoc Momento." />   
