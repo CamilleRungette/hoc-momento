@@ -106,12 +106,7 @@ header nav a > span:hover{
 .dropdown{
   transition-duration: .5s;
   font-size: 300%;
-}
-
-.dropdown:hover{
-  transition-duration: .5s;
   cursor: pointer;
-  font-size: 350%;
 }
 
 .dropdown-menu{
@@ -1769,7 +1764,7 @@ opacity: 1;
     font-size: 350% !important;
   }
   body{
-    margin-left: .3%;
+    width: 100.5%;
   }
   .first-word{
     margin-left: 10%;
