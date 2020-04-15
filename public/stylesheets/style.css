@@ -426,10 +426,6 @@ header nav a > span:hover{
   .space{
     height: 5%;
   }
-  .space2{
-    height: 10%;
-  }
-
   .button-container{
     text-align: center;
   } 
@@ -1855,6 +1851,9 @@ opacity: 1;
   }
   .paartner-title{
     font-size: 200%;
+  }
+  .first-title{
+    margin-top: 25%;
   }
   .paartner-logo-div{
     width: 23%;
