@@ -426,6 +426,9 @@ header nav a > span:hover{
   .space{
     height: 5%;
   }
+  .space2{
+    height: 10%;
+  }
 
   .button-container{
     text-align: center;
