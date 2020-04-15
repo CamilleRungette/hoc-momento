@@ -13,8 +13,8 @@ This project also includes a back office that allows the company be in control o
 The website was coded using express and EJS; i've used Mongo DB and Mongoose for the database. I also tried to part away from libraries as much as I could so i've used the DOM to activate most of the interractive features.
 
 ## Link
-For now it's on Heroku, soon it will be online with it's wn domain name.
---> [See the website](https://hoc-momento.herokuapp.com/)
+For now it's on Heroku, soon it will be online with it's own domain name.
+[See the website](https://hoc-momento.herokuapp.com/)
 
 
 ##### The webste is exclusively in French, it will be translated in Portuguese in the future
