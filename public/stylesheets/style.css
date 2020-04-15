@@ -316,10 +316,11 @@ header nav a > span:hover{
   }
 }
 
-@media screen and (min-device-width: 300px) and (max-device-width: 800px){
+@media screen and (min-device-width: 100px) and (max-device-width: 600px){
     .company-text-photo{
       font-size: 140%;
       width: 100%;
+      background-color: violet;
     }
     .img-company1{
       width: 120%;
@@ -330,11 +331,6 @@ header nav a > span:hover{
     .banner-title{
       font-size: 500% !important;
     }
-}
-
-.test{
-  background-color: violet;
-  width: 1080px;
 }
 
 
