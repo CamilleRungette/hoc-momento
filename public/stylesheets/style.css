@@ -91,11 +91,9 @@ header nav a > span:hover{
 .nav-link-drop:hover{
   text-decoration: underline;
 }
-
 .li-dropdown{
-  margin-left: -25%;
+  margin-left: -15%;
 }
-
 .li-dropdown:hover{
   background-color: rgb(250, 250, 250);
 }
@@ -122,7 +120,7 @@ header nav a > span:hover{
   border-radius: 5px;
   z-index: 5;
   position: absolute;
-  width: 8em;
+  width: 10em;
   right: 120%;
   list-style-type: none;
   font-size: 120%;
@@ -1849,15 +1847,17 @@ opacity: 1;
     margin-left: -1%;
     text-align: justify;
   }
-
+  .paartners-logo-container{
+    margin-bottom: 35%;
+  }
   .paartner-title{
-    font-size: 250%;
+    font-size: 200%;
   }
   .paartner-logo-div{
     width: 23%;
     margin-left: 2%;
     margin-right: 2%; 
-    margin: auto; 
+    margin: 2%; 
   }
 
 }
