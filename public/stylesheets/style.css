@@ -300,7 +300,7 @@ header nav a > span:hover{
   }
 }
 
-@media screen and (min-width: 1001px) and (max-width: 1500px){
+@media screen and (min-width: 1081px) and (max-width: 1500px){
   .company-text-photo{
     width: 80%;
     margin-bottom: 4%;
@@ -316,7 +316,7 @@ header nav a > span:hover{
   }
 }
 
-@media screen and (min-width: 300px) and (max-width: 1000px){
+@media screen and (min-width: 300px) and (max-width: 1080px){
     .company-text-photo{
       font-size: 140%;
       width: 100%;
@@ -334,7 +334,7 @@ header nav a > span:hover{
 
 .test{
   background-color: violet;
-  width: 800px;
+  width: 1080px;
 }
 
 
