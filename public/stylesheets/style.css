@@ -1834,12 +1834,16 @@ opacity: 1;
     width: 100%;
   }
   .card-event-infos{
-    width: 100%;
+    width: 90%;
   }
   .card-event-period{
     margin-bottom: -15%;
   }
   .card-event-title{
     margin-bottom: -10%;
+  }
+  .card-event-desc{
+    margin-left: -1%;
+    text-align: justify;
   }
 }
