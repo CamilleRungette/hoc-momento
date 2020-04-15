@@ -38,7 +38,7 @@ body {
   align-items: center;
   justify-content: space-between;
   border-bottom: #c32527 4px solid;
-  width: 101%;
+  width: 100%;
 }
 
 header{
@@ -197,11 +197,6 @@ header nav a > span:hover{
   align-items: center;
   width: 20%;
 }
-@media screen and (min-width: 100px) and (max-width: 600px){
-  .footer-icons{
-    width: 50%;
-  }
-}
 
 /* =================================================
                         Home
@@ -318,40 +313,6 @@ header nav a > span:hover{
     width: 70%;
     margin-bottom: 4%;
   }
-}
-
-@media screen and (min-width: 100px) and (max-width: 600px){
-    .company-text-photo{
-      font-size: 120%;
-      width: 100%;
-      line-height: 1.4em;
-      text-align: justify;
-    }
-    .company-text{
-      font-size: 120%;
-      width: 100%;
-      line-height: 1.4em;
-      text-align: justify;
-    }
-    .img-company1{
-      width: 120%;
-    }
-    .banner-title{
-      font-size: 380% !important;
-    }
-    body{
-      margin-left: .3%;
-    }
-    .first-word{
-      margin-left: 10%;
-    }
-    .last-para{
-      text-align: left;
-      font-size: 120%;
-      width: 100%;
-      line-height: 1.4em;
-      margin-top: -5%;
-    }
 }
 
 
@@ -893,12 +854,6 @@ font-size: 1.3em;
   background-repeat: no-repeat;
   z-index: 1;
 }
-@media screen and (min-width: 100px) and (max-width: 600px){
-  .company-banner-photo{
-    height: 50vh;
-    background-position: bottom;
-  }
-}
 .team-banner-photo{
   background-image: url(/images/compagnie3.jg);
   background-size: cover;
@@ -920,7 +875,7 @@ font-size: 1.3em;
   top: 0;
   display: flex;
   align-items: center;
-  justify-content: center;banner
+  justify-content: center;
 }
 .contact-banner-photo{
   background-image: url(/images/contact.jpg);
@@ -974,7 +929,6 @@ font-size: 1.3em;
   font-size: 130%;
   line-height: 1.5em;
 }
-
 .aactions-container{
   display: flex;
   justify-content: space-between;
@@ -1016,7 +970,7 @@ font-size: 1.3em;
 }
 .aactions-title{
   text-align: center;
-  font-size: 2.6em;
+  font-size: 260%;
   padding-right: 25px;
   font-style: italic;
 }
@@ -1755,3 +1709,68 @@ opacity: 1;
 
 
  
+/* ==========================================
+                   MEDIA QUERY SMARTPHONE
+=========================================== */
+
+@media screen and (min-width: 100px) and (max-width: 600px){
+  .footer-icons{
+    width: 50%;
+  }
+  .company-banner-photo{
+    height: 50vh;
+    background-position: bottom;
+  }
+  .aactions-banner-photo{
+    height: 50vh;
+    background-position: bottom;
+  }
+  .company-text-photo{
+    font-size: 120%;
+    width: 100%;
+    line-height: 1.4em;
+    text-align: justify;
+  }
+  .company-text{
+    font-size: 120%;
+    width: 100%;
+    line-height: 1.4em;
+    text-align: justify;
+  }
+  .img-company1{
+    width: 100%;
+  }
+  .banner-title{
+    font-size: 350% !important;
+  }
+  body{
+    margin-left: .3%;
+  }
+  .first-word{
+    margin-left: 10%;
+  }
+  .last-para{
+    text-align: left;
+    font-size: 120%;
+    width: 100%;
+    line-height: 1.4em;
+    margin-top: -5%;
+  }
+  .aactions-text{
+    width: 90%;
+   }
+   .made-container{
+     width: 90%;
+   }
+   .aactions-img{
+     width: 100%;
+   }
+   .aactions-hover{
+    background-color: rgba(249, 176, 58, 0.7);
+   }
+   .aactions-place{
+    font-size: 300%;
+    margin-top: 5%;
+  }
+  
+}
