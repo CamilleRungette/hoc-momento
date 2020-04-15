@@ -1725,6 +1725,10 @@ opacity: 1;
     height: 50vh;
     background-position: bottom;
   }
+  .shows-banner-photo{
+    height: 50vh;
+    background-position: bottom;
+  }
   .company-text-photo{
     font-size: 120%;
     width: 100%;
@@ -1767,6 +1771,9 @@ opacity: 1;
    }
    .aactions-hover{
     background-color: rgba(249, 176, 58, 0.7);
+   }
+   .shows-hover{
+    background-color: rgba(195, 37, 39, 0.7);
    }
    .aactions-place{
     font-size: 300%;
