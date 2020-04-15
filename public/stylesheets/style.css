@@ -898,9 +898,6 @@ font-size: 1.3em;
     height: 50vh;
     background-position: bottom;
   }
-  .banner{
-    height: 60vh;
-  }
 }
 .team-banner-photo{
   background-image: url(/images/compagnie3.jg);
