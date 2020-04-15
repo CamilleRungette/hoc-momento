@@ -1742,6 +1742,9 @@ opacity: 1;
   }
   .team-banner-photo{
     height: 50vh;
+    background-position: bottom;
+  }
+  .contact-banner-photo{
     background-position: 25% 75%;
   }
   .contact-banner{
@@ -1901,9 +1904,16 @@ opacity: 1;
   .contact-button{
     width: 60%;
   }
+  .contact-form{
+    margin-top: 20%;
+  }
   .newsletter-form{
     display: flex;
     flex-direction: column;
+    margin-top: 20%;
+  }
+  .newsletter-label{
+    font-weight: bold;
   }
   .newsletter-button{
     width: 60%;
