@@ -316,7 +316,7 @@ header nav a > span:hover{
   }
 }
 
-@media screen and (min-width: 300px) and (max-width: 1080px){
+@media screen and (min-device-width: 300px) and (max-device-width: 800px){
     .company-text-photo{
       font-size: 140%;
       width: 100%;
