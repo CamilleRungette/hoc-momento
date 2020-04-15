@@ -1729,6 +1729,10 @@ opacity: 1;
     height: 50vh;
     background-position: bottom;
   }
+  .agenda-banner-photo{
+    height: 50vh;
+    background-position: bottom;
+  }
   .company-text-photo{
     font-size: 120%;
     width: 100%;
@@ -1774,6 +1778,7 @@ opacity: 1;
    }
    .shows-hover{
     background-color: rgba(195, 37, 39, 0.7);
+    overflow: hidden;
    }
    .aactions-place{
     font-size: 300%;
@@ -1817,5 +1822,24 @@ opacity: 1;
   .aaction-gallery-div{
     width: 30%;
     margin-left: 28%;
+  }
+
+  .event-card{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30%;
+  }
+  .card-event-photo{
+    width: 100%;
+  }
+  .card-event-infos{
+    width: 100%;
+  }
+  .card-event-period{
+    margin-bottom: -15%;
+  }
+  .card-event-title{
+    margin-bottom: -10%;
   }
 }
