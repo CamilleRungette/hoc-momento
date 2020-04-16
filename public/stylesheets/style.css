@@ -1722,7 +1722,6 @@ opacity: 1;
     font-size: 220%;
     margin-top: 20%;
   }
-
   .footer-icons{
     width: 50%;
   }
@@ -1737,22 +1736,27 @@ opacity: 1;
     background-position: bottom;
   }
   .aactions-banner-photo{
+    min-height: initial;
     height: 50vh;
     background-position: bottom;
   }
   .shows-banner-photo{
+    min-height: initial;
     height: 50vh;
     background-position: bottom;
   }
   .agenda-banner-photo{
+    min-height: initial;
     height: 50vh;
     background-position: bottom;
   }
   .partner-banner-photo{
+    min-height: initial;
     height: 50vh;
     background-position: bottom;
   }
   .team-banner-photo{
+    min-height: initial;
     height: 50vh;
     background-position: bottom;
   }
@@ -1779,7 +1783,7 @@ opacity: 1;
     width: 100%;
   }
   .banner-title{
-    font-size: 350% !important;
+    font-size: 13vw;
     margin-left: 2%;
   }
   body{
