@@ -1727,33 +1727,33 @@ opacity: 1;
     width: 50%;
   }
   .banner{
-    height: 13.5%;
+    height: 53vh;
   }
   .home-banner-photo{
     background-position: bottom;
   }
   .company-banner-photo{
-    height: 50%;
+    height: 50vh;
     background-position: bottom;
   }
   .aactions-banner-photo{
-    height: 50%;
+    height: 50vh;
     background-position: bottom;
   }
   .shows-banner-photo{
-    height: 50%;
+    height: 50vh;
     background-position: bottom;
   }
   .agenda-banner-photo{
-    height: 50%;
+    height: 50vh;
     background-position: bottom;
   }
   .partner-banner-photo{
-    height: 50%;
+    height: 50vh;
     background-position: bottom;
   }
   .team-banner-photo{
-    height: 50%;
+    height: 50vh;
     background-position: bottom;
   }
   .contact-banner-photo{
@@ -1780,6 +1780,7 @@ opacity: 1;
   }
   .banner-title{
     font-size: 350% !important;
+    margin-left: 2%;
   }
   body{
     width: 100.5%;
