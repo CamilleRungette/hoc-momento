@@ -1726,6 +1726,9 @@ opacity: 1;
   .footer-icons{
     width: 50%;
   }
+  .banner{
+    height: 53vh;
+  }
   .home-banner-photo{
     background-position: bottom;
   }
@@ -1757,11 +1760,11 @@ opacity: 1;
     background-position: 25% 75%;
   }
   .contact-banner{
-    height: 73vh;
+    height: 53vh;
   }
   .company-text-photo{
     font-size: 120%;
-    width: 100%;
+    width: 75%;
     line-height: 1.4em;
     text-align: justify;
   }
@@ -1791,7 +1794,11 @@ opacity: 1;
     margin-top: -5%;
   }
   .aactions-text{
-    width: 90%;
+    width: 70%;
+    line-height: 1.4em;
+   }
+   .aactions-desc{
+     font-size: 120%;
    }
    .made-container{
      width: 90%;
@@ -1819,7 +1826,9 @@ opacity: 1;
     margin-left: 3%;
   }
   .aaction-container{
-    width: 90%;
+    width: 75%;
+    text-align: justify;
+    line-height: 1.4em;
   }
   .aaction-desc{
     font-size: 120%;
@@ -1881,6 +1890,7 @@ opacity: 1;
   }
   .first-title{
     margin-top: 25%;
+    margin-bottom: 20%;
   }
   .paartners-logo-container{
     text-align: justify;
@@ -1890,9 +1900,12 @@ opacity: 1;
     margin-left: 2%;
     margin-right: 2%;
   }
+  .team-container{
+    margin-top: 10%;
+  }
   .team-big-card{
     height: 20em;
-    margin-bottom: 10%;
+    margin-bottom: 15%;
   }
   .team-infos{
     min-height: 20em;
