@@ -1769,6 +1769,7 @@ opacity: 1;
     text-align: justify;
   }
   .company-text{
+    margin: auto;
     font-size: 120%;
     width: 80%;
     line-height: 1.4em;
@@ -1789,7 +1790,8 @@ opacity: 1;
   .last-para{
     text-align: left;
     font-size: 120%;
-    width: 100%;
+    width: 80%;
+    margin: auto;
     line-height: 1.4em;
     margin-top: -5%;
   }
