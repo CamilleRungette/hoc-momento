@@ -221,7 +221,7 @@ header nav a > span:hover{
   width: 101%;
   height: 83vh;
   position: absolute;
-  top: 7.5em;
+  top: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1116,7 +1116,7 @@ font-size: 1.3em;
 .aaction-modal{
   height: 98%;
   position: absolute;
-  bottom: .5%;
+  bottom: 0;
   background-color:rgba(0, 0, 0, 0.8);
   width:100%;
   z-index: -1;
@@ -1727,7 +1727,7 @@ opacity: 1;
     width: 50%;
   }
   .banner{
-    height: 53vh;
+    height: 14%;
   }
   .home-banner-photo{
     background-position: bottom;
@@ -1745,7 +1745,7 @@ opacity: 1;
     background-position: bottom;
   }
   .agenda-banner-photo{
-    height: 50vh;
+    height: 50%;
     background-position: bottom;
   }
   .partner-banner-photo{
@@ -1844,6 +1844,14 @@ opacity: 1;
     top: 8%;
     z-index: 3;
     font-size: 200%;
+    color: rgb(133, 124, 124);
+  }
+  .li-modal{
+    max-height: 20em;
+  }
+  .aaction-modal-photo{
+    height: 100%;
+    object-fit: contain;
   }
   .logo-partner-container{
     width: 20%;
