@@ -1733,15 +1733,15 @@ opacity: 1;
     background-position: bottom;
   }
   .company-banner-photo{
-    height: 50vh;
+    height: 50%;
     background-position: bottom;
   }
   .aactions-banner-photo{
-    height: 50vh;
+    height: 50%;
     background-position: bottom;
   }
   .shows-banner-photo{
-    height: 50vh;
+    height: 50%;
     background-position: bottom;
   }
   .agenda-banner-photo{
@@ -1749,11 +1749,11 @@ opacity: 1;
     background-position: bottom;
   }
   .partner-banner-photo{
-    height: 50vh;
+    height: 50%;
     background-position: bottom;
   }
   .team-banner-photo{
-    height: 50vh;
+    height: 50%;
     background-position: bottom;
   }
   .contact-banner-photo{
