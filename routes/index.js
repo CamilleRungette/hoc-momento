@@ -11,13 +11,14 @@ var PersonModel = require('../models/persons')
 var PartnerModel = require('../models/partners')
 var ArticleModel = require('../models/articles')
 var SupportModel = require('../models/support')
+var cache = require('../middlewares/cache')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.redirect('/accueil');
 });
 
-router.get('/accueil', async function(req, res, next){
+router.get('/accueil', cache(3600), async function(req, res, next){
   allEvents = await EventModel.find(function(error, events){
     console.log("OK");
   })
@@ -32,7 +33,7 @@ router.get('/accueil', async function(req, res, next){
   res.render('home', {events: futurEvents})
 })
  
-router.get('/compagnie', function(req, res, next){
+router.get('/compagnie', cache(3600), function(req, res, next){
   res.render('company')
 })
 
@@ -96,7 +97,7 @@ router.get('/gallerie-spectacle', async function (req, res){
   res.render('show_gallery', {show})  
 })
 
-router.get('/contact', function(req, res){
+router.get('/contact',cache(3600), function(req, res){
   res.render('contact')
 })
 
@@ -177,7 +178,7 @@ router.get('/equipe', async function(req, res){
   res.render('team', {allPersons})
 })
 
-router.get('/partenaires', async function(req, res){
+router.get('/partenaires', cache(3600), async function(req, res){
   allPartners = await PartnerModel.find(function(error, partners){
     console.log(partners);
   })
