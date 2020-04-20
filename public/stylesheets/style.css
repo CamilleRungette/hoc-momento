@@ -1565,22 +1565,40 @@ opacity: 1;
   min-height: 90vh;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
   margin: auto;
   width: 90%;
-  margin-top: 5%;
+  margin-top: 10%;
+  text-align: center;
+}
+
+@media screen and (max-width: 1650px){
+  .team-container{
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 1400px){
+  .team-container{
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 1200px){
+  .team-container{
+    justify-content: center;
+  }
 }
 
 .team-big-card{
   height: 30em;
-  width: 30em;
+  width: 30%;
   margin-bottom: 5%;
-}
-
-.team-card-left{
   text-align: center;
   position: relative;
-  margin-left: 3%;
-  margin-right: 3%;
+  min-width: 28em;
+  margin-left: 1.5%;
+  margin-right: 1.5%;
 }
 
 .team-img{
