@@ -327,10 +327,6 @@ header nav a > span:hover{
   .relative{
     position: relative;
   }
-  
-  .login-container{
-    min-height: 64vh;
-  }
 
   .yellow {
     color: #fbb03b;
@@ -373,7 +369,7 @@ header nav a > span:hover{
   }
 
   .link:hover{
-    text-decoration: none;
+    text-decoration: none !important;
   }
 
   .grey{
@@ -423,6 +419,7 @@ header nav a > span:hover{
   }
   .button-container{
     text-align: center;
+    margin-top: 5%;
   } 
 
   .hundred{
@@ -578,19 +575,28 @@ header nav a > span:hover{
   /* ==========================================
               Login
   =========================================== */
+  .login-container{
+    min-height: 80vh;
+    width: 90%;
+    padding-top: 5%;
+    margin: auto;
+  }
+
   .login-form{
     font-size: 1.2em;
+    width: 40%;
+    margin: auto;
     margin-top: 10%;
   }
 
   #login-button{
     margin: auto;
     color: white;
-    font-size: 1.3rem;
     text-align: center;
-    margin-left: 40%;
   }
-
+  .text-center{
+    text-align: center;
+  }
 
    /* ==================================================================
                             Dashboard
@@ -599,6 +605,8 @@ header nav a > span:hover{
 .dashboard-container{
   position: relative;
   min-height: 85vh;
+  font-family: "Lato", sans-serif;
+
 }
 
 .form-dashboard{
@@ -637,8 +645,9 @@ label{
   position: absolute;
   top: -17em;
   left: 9em;
+  display: none;
   opacity: 0;
-  z-index: -1;
+  z-index: -2;
 }
 
 .link-div{
@@ -656,7 +665,6 @@ label{
 .cultural-actions{
   margin-top:5em;
 }
-
 
 /* =============================SHOWS============================= */
 
@@ -1219,12 +1227,16 @@ font-size: 1.3em;
 =========================================== */
 
 .container-gallery{
-  padding-top: 5%;
+  padding-top: 3%;
   width: 80%;
   margin: auto;
   min-height: 80vh;
 }
-
+.gallery-title{
+  text-align: center;
+  font-size: 240%;
+  margin-bottom: 5%;
+}
 .photos-gallery{
   margin: auto;
   width: 90%;
@@ -1233,19 +1245,21 @@ font-size: 1.3em;
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
-
 .gallery-div{
   position: relative;
+  width: 30%;
+  max-height: 15em;
+  margin-bottom: 4%;
 }
 
 .gallery-div:hover > .gallery-trash{
 opacity: 1;
 }
-
 .photo-gallery{
-  z-index: 1;
-  max-height: 15em;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
+  z-index: 1;
 }
 
 .photo-gallery:hover{
@@ -1266,9 +1280,18 @@ opacity: 1;
   filter: blur(5px);
 }
 
+.gallery-form{
+  margin-top: 4%;
+}
+
 .add-picture{
+  padding-top: 1%;
   height: 10%;
+  width: 27%;
+  margin: auto;
   text-align: center;
+  border: 1px rgb(177, 177, 177) solid;
+  border-radius: 5px;
 }
 
 .input-photos{
@@ -1277,6 +1300,18 @@ opacity: 1;
 
 .import-gallery{
   font-size: 30%;
+}
+.btn-outline-green{
+  background-color: white;
+  color:  rgb(18, 160, 18);
+  outline: none;
+  border: 2px solid rgb(18, 160, 18);
+  padding: 1%;
+  border-radius: 10px;
+}
+.btn-outline-green:hover{
+  color: white;
+  background-color:  rgb(18, 160, 18);
 }
 
   /* ==========================================

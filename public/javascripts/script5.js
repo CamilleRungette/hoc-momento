@@ -74,6 +74,7 @@ questionMark.addEventListener('click', function(){
   if (legend.classList[1] === "close"){
     legend.style.opacity = "1";
     legend.style.zIndex = "2";
+    legend.style.display = "block"
     legend.classList.remove("close")
     legend.classList.add("open")    
   } else {
