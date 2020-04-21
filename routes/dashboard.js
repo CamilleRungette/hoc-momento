@@ -12,8 +12,6 @@ var SupportModel = require('../models/support')
 var multer  = require('multer')
 var cloudinary = require('cloudinary')
 var cloudinaryStorage = require('multer-storage-cloudinary');
-// var cache = require('../middlewares/cache')
-
 // var upload = multer({ dest: './public/images/uploads/' })
 cloudinary.config({
   cloud_name:'dduugb9jy',
@@ -30,21 +28,6 @@ var parser = multer({
     }
   })
 });
-
-// // CACHE---------------
-// router.get("/*", function (req, res, next) {
-//     if (
-//       req.url.indexOf("/media/") === 0 ||
-//       req.url.indexOf("/css/") === 0 ||
-//       req.url.indexOf("/javascript/") === 0 ||
-//       req.url.indexOf("/fonts/") === 0 ||
-//       req.url === "/favicon"
-//     ) {
-//       res.setHeader("Cache-Control", "public, max-age=2678400");
-//       res.setHeader("Expires", new Date(Date.now() + 2678400000).toUTCString());
-//     }
-//     next();
-//   });
   
 
 /* CREATION AND CONNECTION ADMIN */
