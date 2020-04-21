@@ -436,7 +436,7 @@ try{
   
     let backGallery = []
     for (i=0; i< req.files.length; i++){
-        backGallery.push("/"+req.files[i].path)
+        backGallery.push("/images/uploads/"+req.files[i].originalname)
     }
 
     /////////////////////// Creating array to deal the case of one entry (string and not table)
@@ -505,7 +505,7 @@ try{
       title: req.body.title,
       period: periodArray,
       partners: req.body.partners,
-      photo: req.files[0].path,
+      photo: "/images/uploads/"+req.files[0].originalname,
       gallery: backGallery,
       partners: partnersArray, 
       supports: supportArray,
@@ -772,7 +772,7 @@ router.post('/add-photo-show',  upload.array('images'), async function(req, res,
       showGallery = show.gallery
       
     for (i=0; i< req.files.length; i++){
-      showGallery.push("/"+ req.files[i].path)
+      showGallery.push("/images/uploads/"+req.files[i].originalname)
     }
     console.log("=====================", showGallery)
 
