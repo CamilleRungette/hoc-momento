@@ -12,6 +12,9 @@ var SupportModel = require('../models/support')
 var multer  = require('multer')
 var cloudinary = require('cloudinary')
 var cloudinaryStorage = require('multer-storage-cloudinary');
+var SHA256 = require("crypto-js/sha256");
+var encBase64 = require("crypto-js/enc-base64");
+var uid2 = require("uid2");
 // var upload = multer({ dest: './public/images/uploads/' })
 cloudinary.config({
   cloud_name:'dduugb9jy',
@@ -32,20 +35,23 @@ var parser = multer({
 
 /* CREATION AND CONNECTION ADMIN */
 router.post('/create-admin', function(req, res, next){
+  var salt = uid2(32)
 	newAdmin = new AdminModel({
 		email: req.body.email,
-		password: req.body.password
+    salt: salt,
+    password: SHA256(req.body.password + salt).toString(encBase64),
+    token: uid2(32)
   })
   
-	// newAdmin.save(function(error, admin){
-  //   if (error){
-  //       console.log("ADMIN NOT SAVED:", error)
-  //       res.json({error})
-  //   } else if (admin){
-  //       console.log("ADMIN SAVED", admin)
-  //       res.json({admin})
-  //   }
-  // })
+	newAdmin.save(function(error, admin){
+    if (error){
+        console.log("ADMIN NOT SAVED:", error)
+        res.json({error})
+    } else if (admin){
+        console.log("ADMIN SAVED", admin)
+        res.json({admin})
+    }
+  })
 })
 
 router.get('/login', function(req, res, next){
@@ -53,11 +59,14 @@ router.get('/login', function(req, res, next){
 })
 
 router.post('/login', async function(req, res, next){
-		console.log(req.body)
+  
+  searchAdmin = await AdminModel.findOne({email: req.body.email})
+  var hash = SHA256(req.body.password + searchAdmin.salt).toString(encBase64);
+  console.log(req.body.password, "&&&&", hash)
+  console.log(searchAdmin);
+  
 
-		searchAdmin = await AdminModel.findOne({email: req.body.email, password: req.body.password})
-
-	if (searchAdmin){
+	if (hash === searchAdmin.password){
     console.log("OK")
     req.session.admin = searchAdmin
     console.log(req.session.admin)
