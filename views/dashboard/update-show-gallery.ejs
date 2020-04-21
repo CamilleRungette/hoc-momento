@@ -20,10 +20,10 @@
     <div class="container-gallery">
       <h2 class="text-center action-title mb-5">Gallerie photos: <br/><strong><%= show.title %></strong></h2>
       <div class="photos-gallery mt-3">
-        <% for (i=0; i<gallery.length; i++){ %>
+        <% for (i=0; i<show.gallery.length; i++){ %>
           <div class="gallery-div mb-5 col-4">
             <a href="/dashboard/delete-photo-show?index=<%=i%>&show=<%=show.id%>" class="fas fa-trash-alt gallery-trash fa-3x black"></a>
-            <img src="<%=gallery[i] %>" class="photo-gallery col-12" />
+            <img src="<%=show.gallery[i] %>" class="photo-gallery col-12" />
           </div>
         <% } %>
       </div>

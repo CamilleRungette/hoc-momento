@@ -781,10 +781,9 @@ router.post('/add-photo-show',  upload.array('images'), async function(req, res,
           {gallery: showGallery}
         )
         show = await ShowModel.findById(req.body.show)
-        gallery = show.gallery
       console.log(show)
 
-      res.render('./dashboard/update-show-gallery', {show, gallery})
+      res.render('./dashboard/update-show-gallery', {show})
   // }
 })
 
