@@ -18,7 +18,7 @@ var uid2 = require("uid2");
 var multer  = require('multer');
 const storage = multer.diskStorage({
   destination: function(req, file, cb){
-    cb(null, './public/images/uploads');
+    cb(null, './uploads');
   },
   filename: function(req, file, cb){
     cb(null, file.originalname)
