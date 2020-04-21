@@ -1,21 +1,41 @@
 var express = require('express');
 var router = express.Router();
-var AdminModel = require ('../models/admin')
-var ActionModel = require('../models/cultural_actions')
-var ShowModel = require('../models/shows')
-var MessageModel = require('../models/message')
-var EventModel = require('../models/event')
-var PersonModel = require('../models/persons')
-var PartnerModel = require('../models/partners')
-var ArticleModel = require('../models/articles')
-var SupportModel = require('../models/support')
-var multer  = require('multer')
-var cloudinary = require('cloudinary')
-var cloudinaryStorage = require('multer-storage-cloudinary');
+
+var AdminModel = require ('../models/admin');
+var ActionModel = require('../models/cultural_actions');
+var ShowModel = require('../models/shows');
+var MessageModel = require('../models/message');
+var EventModel = require('../models/event');
+var PersonModel = require('../models/persons');
+var PartnerModel = require('../models/partners');
+var ArticleModel = require('../models/articles');
+var SupportModel = require('../models/support');
+
 var SHA256 = require("crypto-js/sha256");
 var encBase64 = require("crypto-js/enc-base64");
 var uid2 = require("uid2");
-// var upload = multer({ dest: './public/images/uploads/' })
+
+var multer  = require('multer');
+const storage = multer.diskStorage({
+  destination: function(req, file, cb){
+    cb(null, './uploads');
+  },
+  filename: function(req, file, cb){
+    cb(null, file.originalname)
+  }
+})
+const fileFilter = (req, file, cb) => {
+  if (file.mimetype =='image/jpeg', 'image/png'){
+    cb(null, true)
+  } else {
+    cb(null, false)
+  }
+}
+const upload = multer({storage: storage, limits: {fileSize: 1024 * 1024 * 2}, fileFilter: fileFilter});
+
+var cloudinary = require('cloudinary')
+var cloudinaryStorage = require('multer-storage-cloudinary');
+
 cloudinary.config({
   cloud_name:'dduugb9jy',
   api_key: '163237792357483',
@@ -61,10 +81,7 @@ router.get('/login', function(req, res, next){
 router.post('/login', async function(req, res, next){
   
   searchAdmin = await AdminModel.findOne({email: req.body.email})
-  var hash = SHA256(req.body.password + searchAdmin.salt).toString(encBase64);
-  console.log(req.body.password, "&&&&", hash)
-  console.log(searchAdmin);
-  
+  var hash = SHA256(req.body.password + searchAdmin.salt).toString(encBase64);  
 
 	if (hash === searchAdmin.password){
     console.log("OK")
@@ -399,27 +416,27 @@ router.post('/add-photo-action',  parser.array('images'), async function(req, re
 /* SHOWS PART: DISPLAY, CREATION, DELETING AND UPDATING */
 
 router.get('/shows', async function(req, res, next){
-  if(!req.session.admin){
-    res.redirect('/dashboard/login')
-  } else {
+  // if(!req.session.admin){
+  //   res.redirect('/dashboard/login')
+  // } else {
     allShows = await ShowModel.find();
     allPartners = await PartnerModel.find();
-    allSupports = await SupportModel.find();
-    console.log(allShows);
-    
+    allSupports = await SupportModel.find();    
 
     res.render('./dashboard/shows', {allShows})
-  }
+  // }
 });
 
-router.post('/create-show', parser.array('images'), async function(req, res, next){
-  if(!req.session.admin){
-    res.redirect('/dashboard/login')
-  } else {
+router.post('/create-show', upload.array('images'), async function(req, res, next){
+  // if(!req.session.admin){
+  //   res.redirect('/dashboard/login')
+  // } else {
 try{    
+  console.log(req.files);
+  
     let backGallery = []
     for (i=0; i< req.files.length; i++){
-        backGallery.push(req.files[i].secure_url)
+        backGallery.push("/"+req.files[i].path)
     }
 
     /////////////////////// Creating array to deal the case of one entry (string and not table)
@@ -488,14 +505,14 @@ try{
       title: req.body.title,
       period: periodArray,
       partners: req.body.partners,
-      photo: req.files[0].secure_url,
+      photo: req.files[0].path,
       gallery: backGallery,
       partners: partnersArray, 
       supports: supportArray,
       description: req.body.description,
       links: linkArray
     })
-    console.log(newShow); 
+    console.log("NEW SHOW", newShow); 
 
     newShow.save(function(error, show){
       if (error){
@@ -510,36 +527,36 @@ try{
     console.log(error);
     
   }
-  }
+  // }
 });
 
 router.post('/delete-show', async function(req, res, next){
-  if(!req.session.admin){
-    res.redirect('/dashboard/login')
-  } else {
+  // if(!req.session.admin){
+  //   res.redirect('/dashboard/login')
+  // } else {
     show = await ShowModel.deleteOne({_id: req.body.id})
     console.log(`SHOW DELETED ============`)
 
     res.redirect('/dashboard/shows')
-  }
+  // }
 });
 
 router.get('/update-show', async function(req, res, next){
-  if(!req.session.admin){
-    res.redirect('/dashboard/login')
-  } else {  
+  // if(!req.session.admin){
+  //   res.redirect('/dashboard/login')
+  // } else {  
     show = await ShowModel.findById(req.query.id)
     allPartners = await PartnerModel.find();
     allSupports = await SupportModel.find();
 
     res.render('./dashboard/update-show', {show, allSupports, allPartners})
-  }
+  // }
 })
 
 router.post('/update-show', parser.single('image'), async function(req, res, next){
-  if(!req.session.admin){
-    res.redirect('/dashboard/login')
-  } else {
+  // if(!req.session.admin){
+  //   res.redirect('/dashboard/login')
+  // } else {
     try {
       console.log(req.body);
       
@@ -712,24 +729,24 @@ router.post('/update-show', parser.single('image'), async function(req, res, nex
     }catch(error){
       console.log(error);
     };
-  }
+  // }
 });
 
 router.get('/update-show-gallery', async function(req, res){
-  if(!req.session.admin){
-    res.redirect('/dashboard/login')
-  } else {
+  // if(!req.session.admin){
+  //   res.redirect('/dashboard/login')
+  // } else {
     show = await ShowModel.findById(req.query.id)
     gallery = show.gallery
 
     res.render('./dashboard/update-show-gallery', {show, gallery})
-  }
+  // }
   })
 
 router.get('/delete-photo-show', async function(req, res){
-  if(!req.session.admin){
-    res.redirect('/dashboard/login')
-  } else {
+  // if(!req.session.admin){
+  //   res.redirect('/dashboard/login')
+  // } else {
     showGallery = []
     show = await ShowModel.findById(req.query.show)
     showGallery = show.gallery
@@ -742,24 +759,22 @@ router.get('/delete-photo-show', async function(req, res){
     gallery = show.gallery
 
     res.render('./dashboard/update-show-gallery', {show, gallery})
-  }
+  // }
 })
 
-router.post('/add-photo-show',  parser.array('images'), async function(req, res,next){
-  if(!req.session.admin){
-    res.redirect('/dashboard/login')
-  } else {
+router.post('/add-photo-show',  upload.array('images'), async function(req, res,next){
+  // if(!req.session.admin){
+  //   res.redirect('/dashboard/login')
+  // } else {
   let showGallery = []
-    console.log(req.files, req.files.length)
 
       show = await ShowModel.findById(req.body.show)
       showGallery = show.gallery
       
     for (i=0; i< req.files.length; i++){
-      console.log(req.files[i].secure_url)
-      showGallery.push(req.files[i].secure_url)
+      showGallery.push("/"+ req.files[i].path)
     }
-    console.log(showGallery)
+    console.log("=====================", showGallery)
 
         update = await ShowModel.updateOne(
           {_id: req.body.show},
@@ -770,7 +785,7 @@ router.post('/add-photo-show',  parser.array('images'), async function(req, res,
       console.log(show)
 
       res.render('./dashboard/update-show-gallery', {show, gallery})
-  }
+  // }
 })
 
 
