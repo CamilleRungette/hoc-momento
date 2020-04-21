@@ -19,7 +19,7 @@ app.use(
   })
  );
 
-app.use(compression());
+// app.use(compression());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
