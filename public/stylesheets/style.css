@@ -78,7 +78,7 @@ header nav a > span:hover{
   font-size: 1.2em;
   display: flex;
   justify-content: space-around;
-  width: 65%;
+  width: 60%;
   margin-right: 3%;
   text-decoration: none;
 }
@@ -245,6 +245,8 @@ header nav a > span:hover{
   =========================================== */
 .company-container{
   padding-top: 10%;
+  width: 80%;
+  margin: auto;
 }
 
 .company-text{
@@ -269,12 +271,12 @@ header nav a > span:hover{
 }
 
 
-.company2{
-  /* display: flex;
+/* .company2{
+  display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
-  align-items: flex-start; */
-}
+  align-items: flex-start;
+} */
 
 @media screen and (min-width: 1301px){
   .img-company1{
@@ -1111,15 +1113,16 @@ font-size: 1.3em;
   margin: auto;
 }
 .aaction-logo{
-  width: 90%;
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
   margin: auto;
+  margin-left: -3%;
 }
 .logo-partner-container{
   width: 10%;
   min-width: 10%;
+  margin-left: 5%;
+  margin-right: 5%;
   height: 5.6em;
   margin-bottom: 2.5%;
 }
@@ -1486,8 +1489,10 @@ opacity: 1;
 }
 
 .contact-front-container{
+  padding-top: 5%;
   width: 40%;
   margin: auto;
+  min-height: 60vh;
 }
 
 .contact-form{
@@ -1833,13 +1838,15 @@ opacity: 1;
 .paartners-logo-container{
   display: flex;
   flex-wrap: wrap;
+  width: 90%;
+  margin: auto;
 }
 
 .paartner-logo-div{
-  width: 15%;
+  width: 9%;
   height: 8em;
-  margin-left: 1%;
-  margin-right: 1%;  
+  margin-left: 5.5%;
+  margin-right: 5.5%;  
   margin-bottom: 5%;
 }
 

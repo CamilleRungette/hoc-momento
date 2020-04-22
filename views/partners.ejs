@@ -31,20 +31,21 @@
         </div>
 
         <div class="made-container">
-          <h3 class="paartner-title first-title">Nous remercions chaleureusement :</h3>
-          
-          <h3 class="paartner-title">Nos soutiens</h3>
+          <br/> <br/> <br/>
+          <h3 class="paartner-title first-title">Nous remercions chaleureusement</h3>
+          <br/>
+          <h3 class="paartner-title">Nos soutiens:</h3>
           <div class="paartners-logo-container">
             <% for (let i=0; i< allSupports.length; i++) {%>
               <div class="paartner-logo-div">
                 <a href="<%= allSupports[i].link %>" target="_blank" rel="noopener noreferrer">
-                <img src="<%= allSupports[i].photo%>" class="paartner-logo"  />
+                  <img src="<%= allSupports[i].photo%>" class="paartner-logo"  />
                 </a>
               </div>
             <% } %> 
           </div>
 
-          <h3 class="paartner-title">Nos partenaires</h3>
+          <h3 class="paartner-title">Nos partenaires:</h3>
             <div class="paartners-logo-container">
               <% for (let i=0; i< allPartners.length; i++) {%>
                 <div class="paartner-logo-div">
