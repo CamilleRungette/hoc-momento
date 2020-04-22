@@ -321,6 +321,9 @@ header nav a > span:hover{
     margin-bottom: 5%;
   }
 
+  .justify{
+    text-align: justify;
+  }
   i{
     cursor: pointer;
   }
