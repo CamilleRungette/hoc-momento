@@ -262,19 +262,20 @@ header nav a > span:hover{
 .company1{
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .company2{
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
 }
 
 @media screen and (min-width: 1501px){
   .img-company1{
     width: 50%;
+    margin-top: 2%;
   }
   .company-text-photo{
     width: 45%;
@@ -1175,7 +1176,7 @@ font-size: 1.3em;
   text-align: center;
   margin-left: 2%;
   margin-right: 2%;
-  height: 11em;
+  height: 10em;
 }
 .slide-content{
   object-fit: contain;
