@@ -6,6 +6,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
   <link rel="manifest" href="/images/site.webmanifest">
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel='stylesheet' type='text/css' media='screen' href='/stylesheets/style.css'>
@@ -29,7 +30,7 @@
 
       <div class="actions-list">
       <% for (i=0; i< allShows.length; i++){ %>
-        <div class="form-flex action-item ninety">
+        <div class="form-flex action-item max-height ninety">
           <div class="input-20">
             <div class="red"><%= allShows[i].title %></div> <br/>
               <% for (let j=0; j< allShows[i].period.length; j++) {%>
@@ -81,7 +82,7 @@
           </div>
         </div>
       <br/> <br/>
-      <div class="separator col-12 my-5"></div>
+      <div class="separator"></div>
       <%}%>
     </div>
     </div>

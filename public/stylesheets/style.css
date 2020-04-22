@@ -417,7 +417,6 @@ header nav a > span:hover{
     margin: auto;
     width: 90vw;
   }
-
   .space{
     height: 5%;
   }
@@ -732,6 +731,11 @@ label{
 .cultural-actions{
   margin-top:5em;
 }
+.description-list{
+  padding-left: 3%;
+  padding-right: 3%;
+  min-width: 40%;
+}
 
 /* =============================SHOWS============================= */
 
@@ -753,12 +757,17 @@ font-size: 1.3em;
 .actions-list{
   font-size: 1.13em;
   padding-top: 5%;
+  width: 90%;
+  margin: auto;
 }
 
 .action-item{
+  padding-top: 2%;
   margin: auto;
-  max-height:12em;
   overflow: auto;
+}
+.max-height{
+  max-height: 12em;
 }
 .action-place-update{
   font-size: 110%;

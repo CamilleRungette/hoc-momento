@@ -27,33 +27,42 @@
 
       <div class="separator col-12"></div>
 
+      <% if (allEvents.length != 0) {%> 
       <div class="actions-list col-10 mx-auto relative" id="actions-list">
-        <% for (i=0; i< allEvents.length; i++){ %>
-          <div class="d-flex action-item ">
-            <div class="col-2">
-              <div class="red"><%= allEvents[i].title%></div> <br/>
-              <div><%= allEvents[i].period%></div>
-              <div> <%= allEvents[i].city  %>  </div> <br/>
-              <div><%= allEvents[i].place  %>  </div>
-              <div><%= allEvents[i].type %> </div> <br/>
-              <div> Du <%= allEvents[i].startDate.getDate() %>/<%= allEvents[i].startDate.getMonth()+1%>/<%= allEvents[i].startDate.getFullYear()%></div>
-              <div> Au <%= allEvents[i].endDate.getDate() %>/<%= allEvents[i].endDate.getMonth()+1%>/<%= allEvents[i].endDate.getFullYear()%></div>
+          <% for (i=0; i< allEvents.length; i++){ %>
+            <div class="d-flex action-item ">
+              <div class="col-2">
+                <div class="red"><%= allEvents[i].title%></div> <br/>
+                <div><%= allEvents[i].period%></div>
+                <div> <%= allEvents[i].city  %>  </div> <br/>
+                <div><%= allEvents[i].place  %>  </div>
+                <div><%= allEvents[i].type %> </div> <br/>
+                <% if (allEvents[i].startDate != null) { %> 
+                  <div> Du <%= allEvents[i].startDate.getDate() %>/<%= allEvents[i].startDate.getMonth()+1%>/<%= allEvents[i].startDate.getFullYear()%></div>
+                <%  } else{ %>
+                  Pas de date de début <br/>
+                <% } %> 
+                <% if (allEvents[i].endDate != null) {%> 
+                  <div> Au <%= allEvents[i].endDate.getDate() %>/<%= allEvents[i].endDate.getMonth()+1%>/<%= allEvents[i].endDate.getFullYear()%></div>
+                  <%  } else{ %>
+                    Pas de date de fin
+                  <% } %>               </div>
+              <div class="col-6 description-list"><%= allEvents[i].description%></div>
+              <div class="col-3"> <img src="<%=allEvents[i].photo %>" class="photo-list"  /> </div>
+              <div class="m-auto icon-column-agenda">
+                <form action="/dashboard/delete-event" method="POST">
+                  <input type="hidden" name="id" value="<%= allEvents[i].id%>"   />
+                <button class="fas fa-trash-alt fa-2x red delete-button" title="Supprimer cet événement"></button>
+                </form>
+                <a href="/dashboard/update-event?id=<%= allEvents[i].id %> " ><i class="far fa-edit fa-2x ml-1 yellow" title="Modifier"></i></a>
+              </div>
             </div>
-            <div class="col-6 description-list"><%= allEvents[i].description%></div>
-            <div class="col-3"> <img src="<%=allEvents[i].photo %>" class="photo-list"  /> </div>
-            <div class="m-auto icon-column-agenda">
-              <form action="/dashboard/delete-event" method="POST">
-                <input type="hidden" name="id" value="<%= allEvents[i].id%>"   />
-              <button class="fas fa-trash-alt fa-2x red delete-button" title="Supprimer cet événement"></button>
-              </form>
-              <a href="/dashboard/update-event?id=<%= allEvents[i].id %> " ><i class="far fa-edit fa-2x ml-1 yellow" title="Modifier"></i></a>
-            </div>
-          </div>
-        <br/> <br/>
-        <div class="separator col-12 my-5"></div>
-  
-        <%}%>
+          <br/> <br/>
+          <div class="separator col-12 my-5"></div>
+    
+          <%}%>
       </div>
+    <% } %> 
     </div>
   </div >
   <%- include('../partials/footer') %>

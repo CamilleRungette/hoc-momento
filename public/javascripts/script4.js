@@ -7,7 +7,7 @@ let arrowUp = document.getElementsByClassName('decrease');
 
 for (i=0; i < arrowDown.length; i++){
   arrowDown[i].addEventListener("click", function(){
-    this.parentNode.parentNode.classList.remove("action-item");
+    this.parentNode.parentNode.classList.remove("max-height");
     this.nextElementSibling.style.opacity = "1";
     this.style.opacity = "0";
     this.style.display = "none";
@@ -17,7 +17,7 @@ for (i=0; i < arrowDown.length; i++){
 
 for (i=0; i < arrowUp.length; i++){
   arrowUp[i].addEventListener("click", function(){
-    this.parentNode.parentNode.classList.add("action-item");
+    this.parentNode.parentNode.classList.add("max-height");
     this.previousElementSibling.style.display = "block";
     this.previousElementSibling.style.opacity = "1";
     this.style.opacity = "0";
