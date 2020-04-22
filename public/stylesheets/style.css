@@ -1209,7 +1209,10 @@ font-size: 1.3em;
   padding-right: 25px;
   font-size: 2em;
   font-style: italic;
+  /* margin-top: -5%; */
 }
+
+@media screen and (max-width)
 
   /* ==========================================
                     Landing-page
@@ -1248,7 +1251,7 @@ font-size: 1.3em;
 .gallery-div{
   position: relative;
   width: 30%;
-  max-height: 15em;
+  height: 15em;
   margin-bottom: 4%;
 }
 
@@ -1875,7 +1878,6 @@ opacity: 1;
    }
    .aactions-place{
     font-size: 300%;
-    margin-top: 5%;
   }
   .shows-period{
     font-size: 180%;

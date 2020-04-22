@@ -41,7 +41,7 @@
             <% } %>           
           <ul>
           <% for (let i=0; i<articles.length; i++) {%>
-            <li class="aaction-link"><a href="<%= articles[i].link %>" class="black">  <%- articles[i].name %> </a></li>
+            <li class="aaction-link"><a href="<%= articles[i].link %>" target="_blank" rel="noopener noreferrer" class="black">  <%- articles[i].name %> </a></li>
           <% } %>  
         </ul>
         <% } %> 
@@ -53,7 +53,7 @@
               <% } %>  
           <ul>
             <% for (let i=0; i<videos.length; i++) {%>
-              <li class="aaction-link"><a href="<%= videos[i].link %>" class="black">  <%- videos[i].name %> </a></li>
+              <li class="aaction-link"><a href="<%= videos[i].link %>" target="_blank" rel="noopener noreferrer" class="black">  <%- videos[i].name %> </a></li>
             <% } %>  
           </ul>
         <% } %> 
@@ -61,7 +61,7 @@
           <h5 class="alinea aaction-link-subtitle">Pdf: </h5>
           <ul>
             <% for (let i=0; i<pdf.length; i++) {%>
-              <li class="aaction-link"><a href="<%= pdf[i].link %>" class="black">  <%- pdf[i].name %> </a></li>
+              <li class="aaction-link"><a href="<%= pdf[i].link %>" target="_blank" rel="noopener noreferrer" class="black">  <%- pdf[i].name %> </a></li>
             <% } %>  
           </ul>
         <% } %> 
