@@ -29,11 +29,11 @@
       </div>
 
       <form action="/dashboard/add-photo-show" method="POST" class="gallery-form" enctype="multipart/form-data">
-        <div class="form-control add-picture">  
+        <div class="add-picture">  
           <label>Ajouter des photos</label> <br/>
           <input type="file" name="images" class="input-photos" multiple  />
           <input type="hidden" name="show" value="<%= show.id %>" />
-          <button class="far fa-check-circle"></button>
+          <button class="btn-outline-green"><i class="far fa-check-circle"></i></button>
         </div>
       </form>
     </div>

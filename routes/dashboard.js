@@ -542,15 +542,15 @@ router.post('/delete-show', async function(req, res, next){
 });
 
 router.get('/update-show', async function(req, res, next){
-  if(!req.session.admin){
-    res.redirect('/dashboard/login')
-  } else {  
+  // if(!req.session.admin){
+  //   res.redirect('/dashboard/login')
+  // } else {  
     show = await ShowModel.findById(req.query.id)
     allPartners = await PartnerModel.find();
     allSupports = await SupportModel.find();
 
     res.render('./dashboard/update-show', {show, allSupports, allPartners})
-  }
+  // }
 })
 
 router.post('/update-show', parser.single('image'), async function(req, res, next){
@@ -733,14 +733,14 @@ router.post('/update-show', parser.single('image'), async function(req, res, nex
 });
 
 router.get('/update-show-gallery', async function(req, res){
-  if(!req.session.admin){
-    res.redirect('/dashboard/login')
-  } else {
+  // if(!req.session.admin){
+  //   res.redirect('/dashboard/login')
+  // } else {
     show = await ShowModel.findById(req.query.id)
     gallery = show.gallery
 
     res.render('./dashboard/update-show-gallery', {show, gallery})
-  }
+  // }
   })
 
 router.get('/delete-photo-show', async function(req, res){
