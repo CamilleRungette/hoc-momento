@@ -87,7 +87,7 @@ router.post('/login', async function(req, res, next){
     console.log("OK")
     req.session.admin = searchAdmin
     console.log(req.session.admin)
-		res.redirect('/dashboard/actions')
+		res.redirect('/dashboard/shows')
 	} else {
     let error = "adresse e-mail ou mot de passe incorrect"
 		console.log("NOT OK")
@@ -416,15 +416,15 @@ router.post('/add-photo-action',  parser.array('images'), async function(req, re
 /* SHOWS PART: DISPLAY, CREATION, DELETING AND UPDATING */
 
 router.get('/shows', async function(req, res, next){
-  if(!req.session.admin){
-    res.redirect('/dashboard/login')
-  } else {
+  // if(!req.session.admin){
+  //   res.redirect('/dashboard/login')
+  // } else {
     allShows = await ShowModel.find();
     allPartners = await PartnerModel.find();
     allSupports = await SupportModel.find();    
 
     res.render('./dashboard/shows', {allShows})
-  }
+  // }
 });
 
 router.post('/create-show', upload.array('images'), async function(req, res, next){

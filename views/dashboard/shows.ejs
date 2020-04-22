@@ -8,7 +8,6 @@
   <link rel="manifest" href="/images/site.webmanifest">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel='stylesheet' type='text/css' media='screen' href='/stylesheets/style.css'>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
   <title>Hoc Momento - Spectacles</title>
@@ -16,7 +15,7 @@
 <body>
   <%- include('../partials/navbarAdmin') %> 
 
-  <div class="dashboard-container mx-auto">
+  <div class="dashboard-container">
     <img src="/images/action.png"  class="small-banner-photo" />
     <div class="small-banner">
       <h1 class="small-banner-title black">SPECTACLES</h1>
@@ -26,12 +25,12 @@
     <div class="cultural-actions">
     <%- include('./create-shows') %> 
 
-    <div class="separator col-12 my-5"></div>
+    <div class="separator"></div>
 
-      <div class="actions-list col-10 mx-auto mt-3">
+      <div class="actions-list">
       <% for (i=0; i< allShows.length; i++){ %>
-        <div class="d-flex action-item ">
-          <div class="col-2">
+        <div class="form-flex action-item ninety">
+          <div class="input-20">
             <div class="red"><%= allShows[i].title %></div> <br/>
               <% for (let j=0; j< allShows[i].period.length; j++) {%>
                   <div><%= allShows[i].period[j] %></div>
@@ -68,9 +67,9 @@
               </div> 
 
            </div>
-          <div class="col-6 description-list"><%= allShows[i].description%></div>
-          <div class="col-3"> <img src="<%= allShows[i].photo %>" class="photo-list"  /> </div>
-          <div class="m-auto icon-column">
+          <div class="input-40 description-list"><%= allShows[i].description%></div>
+          <div class="thirty"> <img src="<%= allShows[i].photo %>" class="photo-list"  /> </div>
+          <div class="input-10 icon-column">
             <form action="/dashboard/delete-show" method="POST">
               <input type="hidden" name="id" value="<%= allShows[i].id%>"   />
             <button class="fas fa-trash-alt fa-2x red delete-button"></button>

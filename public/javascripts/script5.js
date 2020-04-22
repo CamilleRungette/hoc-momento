@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////////////////
-///////// Adding article Periodin form
+///////// Adding article in form
 
 let plus = document.getElementById('addField');
 let linkField = document.getElementById('linkField');
@@ -7,11 +7,11 @@ let linkField = document.getElementById('linkField');
 plus.addEventListener('click', function(){
   console.log("click");
   let bigDiv = document.createElement('div');  
-    bigDiv.setAttribute('class', "col-12 d-flex link-div");
+    bigDiv.setAttribute('class', "hundred form-flex link-div");
 
 // Selection div :
   let lilDiv3 =  document.createElement('div')
-    lilDiv3.setAttribute('class', "col-2")
+    lilDiv3.setAttribute('class', "ten")
 
   let selectDiv = document.createElement('select');
     selectDiv.setAttribute('name', "type");
@@ -34,11 +34,11 @@ plus.addEventListener('click', function(){
 
 // Name of the link input
   let lilDiv1 = document.createElement('div')
-    lilDiv1.setAttribute('class', "col-4")
+    lilDiv1.setAttribute('class', "INPUT-30")
 
   let input1 = document.createElement('input')
     input1.setAttribute('type', 'text');
-    input1.setAttribute('class', 'made-form');
+    input1.setAttribute('class', 'made-form input-dashboard');
     input1.setAttribute('placeholder', "Nom de l'article");
     input1.setAttribute('name', 'nameLink');
 
@@ -46,11 +46,11 @@ plus.addEventListener('click', function(){
 
 // Link input
   let lilDiv2 = document.createElement('div')
-    lilDiv2.setAttribute('class', "col-5")
+    lilDiv2.setAttribute('class', "input-50")
 
   let input2 = document.createElement('input')
     input2.setAttribute('type', 'text');
-    input2.setAttribute('class', 'made-form');
+    input2.setAttribute('class', 'made-form input-dashboard');
     input2.setAttribute('placeholder', "Lien");
     input2.setAttribute('name', 'link');
 
@@ -92,6 +92,7 @@ questionMark.addEventListener('click', function(){
 let plusPeriod = document.getElementById('addPeriodField');
 let periodField = document.getElementById('periodField');
 let placeField = document.getElementById('placeField');
+let cityField = document.getElementById('cityField');
 
 if (plusPeriod){
   plusPeriod.addEventListener('click', function(){
@@ -99,7 +100,7 @@ if (plusPeriod){
 
     let input1 = document.createElement('input')
       input1.setAttribute('type', 'text');
-      input1.setAttribute('class', 'made-form col-11');
+      input1.setAttribute('class', 'made-form input-dashboard');
       input1.setAttribute('placeholder', "Septembre - Février 2020 ...");
       input1.setAttribute('name', 'period');
 
@@ -107,36 +108,29 @@ if (plusPeriod){
     periodField.insertBefore(bigDiv, periodField.firstElementChild)
 
     console.log("NOUVELLE PERIODE");
-    let bigDiv1 = document.createElement('div');  
-      bigDiv1.setAttribute('class', "d-flex");
 
-      
-    let lilDiv1 = document.createElement('div')
-      lilDiv1.setAttribute('class', "col-6")
-
+    let bigDiv1 = document.createElement('span');  
+     
     let input2 = document.createElement('input')
       input2.setAttribute('type', 'text');
-      input2.setAttribute('class', 'made-form');
+      input2.setAttribute('class', 'made-form input-dashboard');
       input2.setAttribute('placeholder', "Acc.mie Fratellini ...");
       input2.setAttribute('name', 'place');
 
-    lilDiv1.appendChild(input2)
+    bigDiv1.appendChild(input2)
+    placeField.insertBefore(bigDiv1, placeField.firstElementChild)
 
-    let lilDiv2 = document.createElement('div')
-      lilDiv2.setAttribute('class', "col-6")
+
+    let bigDiv2 = document.createElement('span')
 
     let input3 = document.createElement('input')
       input3.setAttribute('type', 'text');
-      input3.setAttribute('class', 'made-form col-11');
+      input3.setAttribute('class', 'made-form input-dashboard');
       input3.setAttribute('placeholder', "Saint-Denis, ...");
       input3.setAttribute('name', 'city');
 
-    lilDiv2.appendChild(input3)
-
-      bigDiv1.appendChild(lilDiv1)
-      bigDiv1.appendChild(lilDiv2)
-
-      placeField.insertBefore(bigDiv1, placeField.firstElementChild )
+    bigDiv2.appendChild(input3)
+    cityField.insertBefore(bigDiv2, cityField.firstElementChild )
   })
 }
 

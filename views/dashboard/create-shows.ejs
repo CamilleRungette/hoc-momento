@@ -1,40 +1,40 @@
-<form action="/dashboard/create-show" method="POST" class="col-8 border p-3 form-dashboard mx-auto" enctype="multipart/form-data">
-  <div class="form-group d-flex">
-    <div class="col-6">
+<form action="/dashboard/create-show" method="POST" class="create-form" enctype="multipart/form-data">
+  <div class="create-form-group form-flex">
+    <div class="input-50">
       <label>Titre</label>
-      <input type="text" class="made-form" placeholder="Montjoie! Saint-Denis, ..." name="title">
+      <input type="text" class="made-form input-dashboard" placeholder="Montjoie! Saint-Denis, ..." name="title">
     </div >
-    <div class="col-6">
+    <div class="input-50 label">
       <label>Période</label>
       <div id="periodField">
         <div class="d-flex">
-          <input type="text" class="made-form col-11" placeholder="Septembre - Février 2020 ..." name="period" > 
+          <input type="text" class="made-form input-dashboard ninety" placeholder="Septembre - Février 2020 ..." name="period" > 
           <i class="fas fa-plus col-1" id="addPeriodField"></i>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="form-group">
-    <div class="d-flex">
-      <label class="col-6">Lieu</label>
-      <label class="col-6">Ville</label>
-    </div>
-    <div class="col-12" id="placeField">
-      <div class="d-flex">
-        <div class="col-6">
-          <input type="text" class="made-form" placeholder="Acc.mie Fratellini,  ..." name="place">
-        </div>
-        <div class="col-6 d-flex">
-          <input type="text" class="made-form col-11" placeholder="Saint-Denis" name="city" >
-        </div>
+  <div class="create-form-group">
+    <div class="hundred form-flex">
+      <div class="fifty">
+        <label>Lieu</label>
+        <span  id="placeField">
+          <input type="text" class="made-form input-dashboard" placeholder="Acc.mie Fratellini,  ..." name="place">
+        </span>
       </div>
+      <div class="fifty">
+        <label>Ville</label>
+        <span id="cityField">
+          <input type="text" class="made-form input-dashboard" placeholder="Saint-Denis" name="city" >
+        </span>
+        </div>
     </div>
   </div>
   
-  <div class="form-group col-12 relative">
+  <div class="create-form-group hundred relative label">
     <label>Description <i class="far fa-question-circle" id="questionMark"></i></label>
-    <textarea class="made-form" placeholder="Montjoie ! Saint-Denis ! est une œuvre théâtrale in situ ..." name="description"></textarea>
+    <textarea class="made-form input-dashboard" placeholder="Montjoie ! Saint-Denis ! est une œuvre théâtrale in situ ..." name="description"></textarea>
     <div class="legend-div close" id="legend">
       <ul class="legend"> 
         <li>Paragraphe: &lt;p class="aactions-desc"&gt; Texte &lt;/p&gt;</li>
@@ -52,44 +52,44 @@
     </div>
   </div> 
 
-  <label class="col-12">Liens Articles</label>
-  <div class="form-group" id="linkField">
-    <div class="col-12 d-flex link-div">
-      <div class="col-2">
+  <label class="hundred label">Liens Articles</label>
+  <div class="create-form-group hundred" id="linkField">
+    <div class="hundred form-flex link-div">
+      <div class="ten">
         <select name="type">
           <option value="pdf">PDF</option>
           <option value="article">Article</option>
           <option value="video">Vidéo</option>
         </select>
       </div>
-      <div class="col-4">
-        <input type="text" class="made-form" placeholder="Nom de l'article" name="nameLink"/>
+      <div class="input-30">
+        <input type="text" class="made-form input-dashboard" placeholder="Nom de l'article" name="nameLink"/>
       </div> 
-      <div class="col-5">
-        <input type="text" class="made-form" placeholder="Lien" name="link"/>
+      <div class="input-50">
+        <input type="text" class="made-form input-dashboard" placeholder="Lien" name="link"/>
       </div>
-      <i class="fas fa-plus" id="addField"></i>
+      <i class="fas fa-plus ten" id="addField"></i>
     </div>
   </div>
 
-  <div class="form-group d-flex">
-    <div class="col-6 ">
+  <div class="create-form-group form-flex">
+    <div class="input-50 ">
       <label>Photo principale</label><br/>
-      <input type="file" name="images"/>
+      <input type="file" name="images" class="input-dashboard"/>
     </div>  
-    <div class="col-6 m-auto ">  
+    <div class="input-50">  
       <label>Gallerie photos</label> <br/>
-      <input type="file" name="images" multiple  />
+      <input type="file" name="images" class="input-dashboard" multiple  />
     </div>
   </div>
 
-  <div class="form-group d-flex">
-    <div class="fifty">
+  <div class="create-form-group form-flex">
+    <div class="input-50">
       <label>Partenaires</label>
-      <div class="partners-scroll">
+      <div class="partners-scroll input-dashboard">
       <% for (let i=0; i < allPartners.length; i++) {%> 
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="<%= allPartners[i].id %>" name="partners_id">
+        <div>
+          <input type="checkbox" value="<%= allPartners[i].id %>" name="partners_id">
           <label class="form-check-label">
             <%= allPartners[i].name  %>
           </label>
@@ -98,12 +98,12 @@
       </div>
     </div>
 
-    <div class="fifty">
+    <div class="input-50 label">
       <label>Soutiens</label>
-      <div class="partners-scroll">
+      <div class="partners-scroll input-dashboard">
       <% for (let i=0; i < allSupports.length; i++) {%> 
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="<%= allSupports[i].id %>" name="support_id">
+        <div>
+          <input type="checkbox" value="<%= allSupports[i].id %>" name="support_id">
           <label class="form-check-label">
             <%= allSupports[i].name  %>
           </label>
@@ -115,7 +115,7 @@
   </div>
 
   <div class="button-container">
-    <button type="submit" class="btn btn-warning text-white action-button">Créer </button>
+    <button type="submit" class="btn btn-create action-button">Créer </button>
   </div>
   </form>
 
