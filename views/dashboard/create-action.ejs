@@ -1,33 +1,29 @@
-
-
-
-<form action="/dashboard/create-action" method="POST" class="col-8 border p-3 form-dashboard mx-auto" enctype="multipart/form-data">
-
-  <div class="form-group d-flex">
-    <div class="col-6">
+<form action="/dashboard/create-action" method="POST" class="create-form" enctype="multipart/form-data">
+  <div class="create-form-group form-flex">
+    <div class="input-50">
       <label>Lieu</label><br/>
-      <input type="text" class="made-form" placeholder="Espace imaginaire,  ..." name="place">
+      <input type="text" class="made-form input-dashboard" placeholder="Espace imaginaire,  ..." name="place">
     </div>
-    <div class="col-6">
+    <div class="input-50">
       <label>Genre</label><br/>
-      <input type="text" class="made-form" placeholder="Atelier-Création, ..." name="title">
+      <input type="text" class="made-form input-dashboard" placeholder="Atelier-Création, ..." name="title">
     </div>
   </div>
 
-  <div class="form-group d-flex">
-    <div class="col-6">
+  <div class="create-form-group form-flex">
+    <div class="input-50">
       <label>Ville</label>
-      <input type="text" class="made-form" placeholder="Saint-Denis" name="city" >
+      <input type="text" class="made-form input-dashboard" placeholder="Saint-Denis" name="city" >
     </div>
-    <div class="col-6">
+    <div class="input-50">
       <label>Période</label>
-      <input type="text" class="made-form" placeholder="Septembre - Février 2020 ..." name="period">
+      <input type="text" class="made-form input-dashboard" placeholder="Septembre - Février 2020 ..." name="period">
     </div>
   </div>
   
-  <div class="form-group col-12 relative">
+  <div class="create-form-group hundred relative label">
     <label>Description <i class="far fa-question-circle" id="questionMark"></i></label>
-    <textarea class="made-form" placeholder="Montjoie ! Saint-Denis ! est une œuvre théâtrale in situ ..." name="description"></textarea>
+    <textarea class="made-form input-dashboard" placeholder="Montjoie ! Saint-Denis ! est une œuvre théâtrale in situ ..." name="description"></textarea>
     <div class="legend-div close" id="legend">
       <ul class="legend"> 
         <li>Paragraphe: &lt;p class="aactions-desc"&gt; Texte &lt;/p&gt;</li>
@@ -35,9 +31,11 @@
         <li>Sauter une la ligne: &lt;br/&gt;&lt;br/&gt;</li>
         <li>Liste:  <br/>
           &lt;ul class="aactions-desc"&gt; <br/>
-          &lt;li&gt; Ligne1 &lt;/li&gt; <br/>
-          &lt;li&gt; Ligne2 &lt;/li&gt;<br/>
-          &lt;li&gt; ... &lt;/li&gt;<br/>
+          <ul>
+          <li>&lt;li&gt; Ligne1 &lt;/li&gt;</li>
+          <li>&lt;li&gt; Ligne2 &lt;/li&gt; </li>
+          <li>&lt;li&gt; ... &lt;/li&gt;</li>
+          </ul>
           &lt;/ul&gt; </li>
         <li>Italic: &lt;em&gt; <em> Italic </em> &lt;/em&gt; </li>
         <li>Gras:  &lt;strong&gt;<span class="bold"> En gras </span> &lt;/strong&gt;</li>
@@ -45,45 +43,45 @@
     </div>
   </div>
   
-  <label class="col-12">Liens Articles</label>
-  <div class="form-group" id="linkField">
-    <div class="col-12 d-flex link-div">
-      <div class="col-2">
+  <label class="hundred label">Liens Articles</label>
+  <div class="create-form-group hundred" id="linkField">
+    <div class="hundred form-flex link-div">
+      <div class="ten">
         <select name="type">
           <option value="pdf">PDF</option>
           <option value="article">Article</option>
           <option value="video">Vidéo</option>
         </select>
       </div>
-      <div class="col-4">
-        <input type="text" class="made-form" placeholder="Nom de l'article" name="nameLink"/>
+      <div class="input-30">
+        <input type="text" class="made-form input-dashboard" placeholder="Nom de l'article" name="nameLink"/>
       </div> 
-      <div class="col-5">
-        <input type="text" class="made-form" placeholder="Lien" name="link"/>
+      <div class="input-50">
+        <input type="text" class="made-form input-dashboard" placeholder="Lien" name="link"/>
       </div>
       <i class="fas fa-plus" id="addField"></i>
     </div>
   </div>
 
-  <div class="form-group d-flex">
-      <div class="fifty">
+  <div class="create-form-group form-flex">
+      <div class="input-50">
         <label>Photo principale</label><br/>
-        <input type="file" name="images"/>
+        <input type="file" name="images" class="input-dashboard"/>
       </div>  
       <br/>
-      <div class="fifty">  
-        <label>Gallerie photos</label> <br/>
-        <input type="file" name="images" multiple  />
+      <div class="input-50">  
+        <label>Galerie photos</label> <br/>
+        <input type="file" name="images" class="input-dashboard" multiple  />
       </div>
   </div>
 
-  <div class="form-group d-flex">
-    <div class="fifty">
+  <div class="create-form-group form-flex">
+    <div class="input-50">
       <label>Partenaires</label>
-      <div class="partners-scroll">
+      <div class="partners-scroll input-dashboard">
       <% for (let i=0; i < allPartners.length; i++) {%> 
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="<%= allPartners[i].id %>" name="partners_id">
+        <div>
+          <input type="checkbox" value="<%= allPartners[i].id %>" name="partners_id">
           <label class="form-check-label">
             <%= allPartners[i].name  %>
           </label>
@@ -92,12 +90,12 @@
       </div>
     </div>
 
-    <div class="fifty">
+    <div class="input-50">
       <label>Soutiens</label>
-      <div class="partners-scroll">
+      <div class="partners-scroll class="input-dashboard"">
       <% for (let i=0; i < allSupports.length; i++) {%> 
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="<%= allSupports[i].id %>" name="support_id">
+        <div>
+          <input type="checkbox" value="<%= allSupports[i].id %>" name="support_id">
           <label class="form-check-label">
             <%= allSupports[i].name  %>
           </label>

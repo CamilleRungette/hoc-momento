@@ -13,7 +13,7 @@
   <body>
     <%- include('../partials/navbarAdmin') %> 
     <div class="made-container update-container">
-      <h2 class="text-center action-title mb-5">Modifier le spectacle : <%= show.title %></h2>
+      <h2 class="text-center action-title">Modifier le spectacle : <%= show.title %></h2>
       <form action="/dashboard/update-show" class="update-form" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="id" value="<%= show.id %>" />
         <div class="create-form-group form-flex">
@@ -149,7 +149,7 @@
 
         <div class="button-container mt-5">
           <a href="/dashboard/shows" ><button class="btn btn-secondary text-white action-button">Annuler</button></a>
-          <button type="submit" class="btn btn btn-create action-button">Modifier </button>
+          <button type="submit" class="btn btn-create action-button">Modifier </button>
         </div>
       </form>
     </div>

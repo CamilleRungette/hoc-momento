@@ -106,9 +106,9 @@ router.get('/logout', function(req,res){
 
 router.get('/actions', async function(req, res, next) {
   console.log("session:", req.session.admin)
-  if(!req.session.admin){
-    res.redirect('/dashboard/login')
-  } else {
+  // if(!req.session.admin){
+  //   res.redirect('/dashboard/login')
+  // } else {
     console.log(req.session.admin);
 
     allActions = await ActionModel.find();
@@ -117,7 +117,7 @@ router.get('/actions', async function(req, res, next) {
     allArticles = await ArticleModel.find();        
       
     res.render('./dashboard/actions', {allActions, allPartners, allSupports, allArticles});
-  }
+  // }
 });
 
 router.post('/create-action', parser.array('images'), async function(req, res, next){
@@ -217,15 +217,15 @@ router.post('/delete-action', async function(req, res, next){
 });
 
 router.get('/update-action', async function(req, res, next){
-  if(!req.session.admin){
-    res.redirect('/dashboard/login')
-  } else {    
+  // if(!req.session.admin){
+  //   res.redirect('/dashboard/login')
+  // } else {    
     action = await ActionModel.findById(req.query.id)
     allPartners = await PartnerModel.find();
     allSupports = await SupportModel.find();
 
     res.render('./dashboard/update-actions', {action, allSupports, allPartners})
-  }
+  // }
 })
 
 router.post('/update-action', parser.single('image'), async function(req, res, next){
@@ -542,15 +542,15 @@ router.post('/delete-show', async function(req, res, next){
 });
 
 router.get('/update-show', async function(req, res, next){
-  if(!req.session.admin){
-    res.redirect('/dashboard/login')
-  } else {  
+  // if(!req.session.admin){
+  //   res.redirect('/dashboard/login')
+  // } else {  
     show = await ShowModel.findById(req.query.id)
     allPartners = await PartnerModel.find();
     allSupports = await SupportModel.find();
 
     res.render('./dashboard/update-show', {show, allSupports, allPartners})
-  }
+  // }
 })
 
 router.post('/update-show', parser.single('image'), async function(req, res, next){

@@ -375,6 +375,12 @@ header nav a > span:hover{
   .link:hover{
     text-decoration: none !important;
   }
+  .no-underline{
+    text-decoration: none !important;
+  }
+  .no-underline:hover{
+    text-decoration: underline !important;
+  }
 
   .grey{
     color: rgb(122, 122, 122);
@@ -627,8 +633,8 @@ header nav a > span:hover{
   margin-bottom: 5%;
 }
 .create-form-group{
-  margin-top: 1%;
-  margin-bottom: 1%;
+  margin-top: 2%;
+  margin-bottom: 2%;
 }
 .input-dashboard{
   margin-top: 1%;

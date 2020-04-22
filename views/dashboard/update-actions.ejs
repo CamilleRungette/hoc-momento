@@ -6,7 +6,6 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
     <link rel="manifest" href="/images/site.webmanifest">
   
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel='stylesheet' type='text/css' media='screen' href='/stylesheets/style.css'>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">  
     <title>Hoc Momento - Modifier l'action culturelle</title>
@@ -16,25 +15,25 @@
     <div class="made-container update-container">
       <h2 class="text-center action-title mb-5">Modifier l'action culturelle : <%= action.place %></h2>
 
-      <form action="/dashboard/update-action" class="col-8 border p-3 mx-auto" method="POST" enctype="multipart/form-data">
+      <form action="/dashboard/update-action" class="create-form" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="id" value="<%= action.id %>" />
-        <div class="form-group">
+        <div class="create-form-group">
           <label>Lieu</label>
           <input type="text" class="made-form" value="<%= action.place %>" name="place">
         </div>
-        <div class="form-group">
+        <div class="create-form-group">
           <label>Genre</label>
           <input type="text" class="made-form" value="<%= action.title %>" name="title">
         </div>
-        <div class="form-group">
+        <div class="create-form-group">
           <label>Ville</label>
           <input type="text" class="made-form" value="<%= action.city %>" name="city">
         </div>
-        <div class="form-group">
+        <div class="create-form-group">
           <label>Période</label>
           <input type="text" class="made-form" value="<%= action.period %>" name="period">
         </div>
-        <div class="form-group relative">
+        <div class="create-form-group relative">
           <label>Description <i class="far fa-question-circle" id="questionMark" title="Clique"></i></label>
           <textarea class="made-form" value="<%=action.description%>" name="description"> <%= action.description %> </textarea>
           <div class="legend-div close" id="legend">
@@ -53,19 +52,19 @@
             </ul>
           </div>
         </div>
-        <label>Liens</label>
-        <div class="form-group" id="linkField">
+        <label class="label">Liens</label>
+        <div class="create-form-group" id="linkField">
           <% for (let i=0; i<action.links.length; i++) {%>
             <div  class="inputDiv">
-              <div class="col-12 d-flex link-div">
-                <div class="col-2"><%= action.links[i].type %>  </div>
-                <div class="col-4"> <a href="<%= action.links[i].link %>"><%- action.links[i].name  %></a> </div>
-                <div class=" col-5" data-link="<%= action.links[i].link %>"><%= action.links[i].link %>  </div>
-                <i class="fas fa-minus delete-link col-1" title="Supprimer le lien"></i>
+              <div class="hundred d-flex link-div">
+                <div class="twenty"><%= action.links[i].type %>  </div>
+                <div class="forty"> <a href="<%= action.links[i].link %>"><%- action.links[i].name  %></a> </div>
+                <div class="forty" data-link="<%= action.links[i].link %>"><%= action.links[i].link %>  </div>
+                <i class="fas fa-minus delete-link ten" title="Supprimer le lien"></i>
               </div>
             </div>
           <% } %>  
-          <div class="col-12 d-flex link-div">
+          <div class="hundred form-flex link-div">
             <div class="col-2">
               <select name="type">
                 <option value="pdf">PDF</option>
@@ -73,28 +72,28 @@
                 <option value="video">Vidéo</option>
               </select>
             </div>
-            <div class="col-4">
+            <div class="input-30">
               <input type="text" class="made-form" placeholder="Nom de l'article" name="nameLink"/>
             </div> 
-            <div class="col-5">
+            <div class="input-50">
               <input type="text" class="made-form" placeholder="Lien" name="link"/>
             </div>
-            <div class="col-1"><i class="fas fa-plus" id="addField" title="Ajouter un lien"></i></div>
+            <div class="ten"><i class="fas fa-plus" id="addField" title="Ajouter un lien"></i></div>
           </div>
         </div>
         
-        <div class="form-group">
+        <div class="create-form-group">
           <label>Photo principale</label><br/>
           <input type="file" name="image"/>
         </div>
 
-        <div class="form-group d-flex">
-          <div class="fifty">
+        <div class="create-form-group form-flex">
+          <div class="input-50">
             <label>Partenaires <i class="far fa-question-circle" title="Si rien n'est cliqué, l'information initiale sera conservée"></i></label>
             <div class="partners-scroll">
             <% for (let i=0; i < allPartners.length; i++) {%> 
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="<%= allPartners[i].id %>" name="partners_id">
+              <div>
+                <input type="checkbox" value="<%= allPartners[i].id %>" name="partners_id">
                 <label class="form-check-label">
                   <%= allPartners[i].name  %>
                 </label>
@@ -103,12 +102,12 @@
             </div>
           </div>
       
-          <div class="fifty">
+          <div class="input-50">
             <label>Soutiens</label>
             <div class="partners-scroll">
             <% for (let i=0; i < allSupports.length; i++) {%> 
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="<%= allSupports[i].id %>" name="support_id">
+              <div>
+                <input type="checkbox" value="<%= allSupports[i].id %>" name="support_id">
                 <label class="form-check-label">
                   <%= allSupports[i].name  %>
                 </label>
@@ -120,7 +119,7 @@
         </div>
         <div class="button-container mt-5">
           <a href="/dashboard/actions" ><button class="btn btn-secondary text-white action-button">Annuler</button></a>
-          <button type="submit" class="btn btn-warning text-white action-button">Modifier </button>
+          <button type="submit" class="btn btn-create text-white action-button">Modifier </button>
         </div>
       </form>
     </div>
