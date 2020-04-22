@@ -416,21 +416,21 @@ router.post('/add-photo-action',  parser.array('images'), async function(req, re
 /* SHOWS PART: DISPLAY, CREATION, DELETING AND UPDATING */
 
 router.get('/shows', async function(req, res, next){
-  // if(!req.session.admin){
-  //   res.redirect('/dashboard/login')
-  // } else {
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {
     allShows = await ShowModel.find();
     allPartners = await PartnerModel.find();
     allSupports = await SupportModel.find();    
 
     res.render('./dashboard/shows', {allShows})
-  // }
+  }
 });
 
 router.post('/create-show', upload.array('images'), async function(req, res, next){
-  // if(!req.session.admin){
-  //   res.redirect('/dashboard/login')
-  // } else {
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {
 try{    
   console.log(req.files);
   
@@ -527,36 +527,36 @@ try{
     console.log(error);
     
   }
-  // }
+  }
 });
 
 router.post('/delete-show', async function(req, res, next){
-  // if(!req.session.admin){
-  //   res.redirect('/dashboard/login')
-  // } else {
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {
     show = await ShowModel.deleteOne({_id: req.body.id})
     console.log(`SHOW DELETED ============`)
 
     res.redirect('/dashboard/shows')
-  // }
+  }
 });
 
 router.get('/update-show', async function(req, res, next){
-  // if(!req.session.admin){
-  //   res.redirect('/dashboard/login')
-  // } else {  
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {  
     show = await ShowModel.findById(req.query.id)
     allPartners = await PartnerModel.find();
     allSupports = await SupportModel.find();
 
     res.render('./dashboard/update-show', {show, allSupports, allPartners})
-  // }
+  }
 })
 
 router.post('/update-show', parser.single('image'), async function(req, res, next){
-  // if(!req.session.admin){
-  //   res.redirect('/dashboard/login')
-  // } else {
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {
     try {
       console.log(req.body);
       
@@ -729,24 +729,24 @@ router.post('/update-show', parser.single('image'), async function(req, res, nex
     }catch(error){
       console.log(error);
     };
-  // }
+  }
 });
 
 router.get('/update-show-gallery', async function(req, res){
-  // if(!req.session.admin){
-  //   res.redirect('/dashboard/login')
-  // } else {
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {
     show = await ShowModel.findById(req.query.id)
     gallery = show.gallery
 
     res.render('./dashboard/update-show-gallery', {show, gallery})
-  // }
+  }
   })
 
 router.get('/delete-photo-show', async function(req, res){
-  // if(!req.session.admin){
-  //   res.redirect('/dashboard/login')
-  // } else {
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {
     showGallery = []
     show = await ShowModel.findById(req.query.show)
     showGallery = show.gallery
@@ -759,13 +759,13 @@ router.get('/delete-photo-show', async function(req, res){
     gallery = show.gallery
 
     res.render('./dashboard/update-show-gallery', {show, gallery})
-  // }
+  }
 })
 
 router.post('/add-photo-show',  upload.array('images'), async function(req, res,next){
-  // if(!req.session.admin){
-  //   res.redirect('/dashboard/login')
-  // } else {
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {
   let showGallery = []
 
       show = await ShowModel.findById(req.body.show)
@@ -784,7 +784,7 @@ router.post('/add-photo-show',  upload.array('images'), async function(req, res,
       console.log(show)
 
       res.render('./dashboard/update-show-gallery', {show})
-  // }
+  }
 })
 
 
