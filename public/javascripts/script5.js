@@ -59,8 +59,8 @@ plus.addEventListener('click', function(){
     bigDiv.appendChild(lilDiv3);
     bigDiv.appendChild(lilDiv1);
     bigDiv.appendChild(lilDiv2);
-
-  linkField.insertBefore(bigDiv, linkField.firstElementChild )
+    
+  linkField.insertBefore(bigDiv, linkField.childNodes[3] )
 })
 
 ///////////////////////////////////////////////////////////////

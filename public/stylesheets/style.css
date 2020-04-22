@@ -608,11 +608,18 @@ header nav a > span:hover{
   font-family: "Lato", sans-serif;
 }
 
+.update-form{
+  width: 80%;
+  margin: auto;
+  padding: 1.5%;
+  border: 1px rgb(209, 209, 209) solid;
+  margin-bottom: 5%;
+}
 .create-form{
   width: 60%;
   margin: auto;
   padding: 1.5%;
-  border: 1px rgb(175, 175, 175) solid;
+  border: 1px rgb(209, 209, 209) solid;
   border-radius: 10px;
   margin-bottom: 5%;
 }
@@ -678,7 +685,10 @@ header nav a > span:hover{
 label{
   font-size: 1.2em;
 }
-
+.update-photo{
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
 .decrease{
   opacity: 0;
 }
@@ -1135,11 +1145,11 @@ font-size: 1.3em;
 .slider {
   position: relative;
   width: max-content;
-  font-size: 0;
   display: flex;
   align-items: center;
   width: 100%;
   overflow-x: auto;
+  height: 17em;
 }
 .slider::-webkit-scrollbar{
   width: 13px;
@@ -1158,21 +1168,22 @@ font-size: 1.3em;
 .slider::-webkit-scrollbar-thumb:hover {
   background: #777777; 
 }
-.slide {
+.slide{
   display: inline-block;
   position: relative;
   margin: 0px;
   text-align: center;
   margin-left: 2%;
   margin-right: 2%;
+  height: 11em;
 }
 .slide-content{
-  height: 15%;
   object-fit: contain;
   margin: auto;
   transition-duration: .5s;
   padding-top: 4%;
   padding-bottom: 8%;
+  height: 100%;
 }
 
 .aaction-modal{

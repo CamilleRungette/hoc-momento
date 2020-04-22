@@ -5,8 +5,8 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
     <link rel="manifest" href="/images/site.webmanifest">
-  
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel='stylesheet' type='text/css' media='screen' href='/stylesheets/style.css'>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">  
   </head>
@@ -14,14 +14,14 @@
     <%- include('../partials/navbarAdmin') %> 
     <div class="made-container update-container">
       <h2 class="text-center action-title mb-5">Modifier le spectacle : <%= show.title %></h2>
-      <form action="/dashboard/update-show" class="col-8 border  p-3 mx-auto" method="POST" enctype="multipart/form-data">
+      <form action="/dashboard/update-show" class="update-form" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="id" value="<%= show.id %>" />
-        <div class="form-group d-flex">
-          <div class="col-6">
+        <div class="create-form-group form-flex">
+          <div class="input-50 label">
             <label>Titre</label>
               <input type="text" class="made-form" value="<%= show.title %>" name="title">
           </div >
-          <div class="col-6">
+          <div class="input-50 label">
             <label>Période</label>
             <div id="periodField">
               <div class="d-flex">
@@ -32,27 +32,28 @@
           </div>
         </div>
       
-        <div class="form-group">
-          <div>
-            <div class="d-flex">
-              <label class="col-6">Lieu</label>
-              <label class="col-6">Ville</label>
-            </div>
-            <div class="col-12" id="placeField">
-              <div class="d-flex">
-                <div class="col-6">
-                  <input type="text" class="made-form" name="place">
-                </div>
-                <div class="col-6 d-flex">
-                  <input type="text" class="made-form col-11" name="city" >
-                </div>
+        <div class="create-form-group">
+          <div class="create-form-group">
+            <div class="hundred form-flex">
+              <div class="input-50">
+                <label>Lieu</label>
+                <span  id="placeField">
+                  <input type="text" class="made-form input-dashboard" placeholder="Acc.mie Fratellini,  ..." name="place">
+                </span>
               </div>
+              <div class="input-50 label">
+                <label>Ville</label>
+                <span id="cityField">
+                  <input type="text" class="made-form input-dashboard" placeholder="Saint-Denis" name="city" >
+                </span>
+                </div>
             </div>
           </div>
-          <div class="col-12 mt-4">
+        
+          <div class="hundred mt-4">
             <label>Représentations:</label>
             <% for (let i=0; i<show.period.length;i++) {%>
-                <div class="action-place-update">
+                <div class="action-place-update label">
                   <div data-period="<%= show.period[i] %>" data-place="<%= show.place[i] %>" data-city="<%= show.city[i] %>"><%= show.period[i] %>: <%= show.place[i] %>, <%= show.city[i] %> 
                   <i class="fas fa-minus delete-perf alinea" title="Supprimer la représentation"></i></div>
                 </div>
@@ -61,7 +62,7 @@
         </div>
 
 
-        <div class="form-group col-12">
+        <div class="form-group hundred label">
           <label>Description <i class="far fa-question-circle" id="questionMark" title="Clique"></i></label>
           <textarea class="made-form" value="<%= show.description %>" name="description"> <%= show.description %> </textarea>
           <div class="legend-div close" id="legend">
@@ -80,43 +81,44 @@
             </ul>
           </div>
         </div>
-        <label>Liens</label>
-        <div class="form-group" id="linkField">
+
+        <label class="label">Liens</label>
+        <div class="create-form-group label" id="linkField">
           <% for (let i=0; i<show.links.length; i++) {%>
             <div class="inputDiv">
-              <div class="col-12 d-flex link-div">
-                <div class="col-2"><%= show.links[i].type %>  </div>
-                <div class="col-4"> <a href="<%= show.links[i].link %>"><%- show.links[i].name  %></a> </div>
-                <div class=" col-5" data-link="<%= show.links[i].link %>"><%= show.links[i].link %></div>
-                <i class="fas fa-minus delete-link"></i> 
+              <div class="hundred form-flex link-div">
+                <div class="twenty"><%= show.links[i].type %>  </div>
+                <div class="forty"> <a href="<%= show.links[i].link %>"><%- show.links[i].name  %></a> </div>
+                <div class="forty" data-link="<%= show.links[i].link %>"><%= show.links[i].link %></div>
+                <i class="fas fa-minus delete-link ten"></i> 
               </div>
             </div>
           <% } %>  
-          <div class="col-12 d-flex link-div">
-            <div class="col-2">
+          <div class="hundred form-flex link-div label">
+            <div class="ten">
               <select name="type">
                 <option value="pdf">PDF</option>
                 <option value="article">Article</option>
                 <option value="video">Vidéo</option>
               </select>
             </div>
-            <div class="col-4">
-              <input type="text" class="made-form" placeholder="Nom de l'article" name="nameLink"/>
+            <div class="input-30">
+              <input type="text" class="made-form input-dashboard" placeholder="Nom de l'article" name="nameLink"/>
             </div> 
-            <div class="col-5">
-              <input type="text" class="made-form" placeholder="Lien" name="link"/>
+            <div class="input-50">
+              <input type="text" class="made-form input-dashboard" placeholder="Lien" name="link"/>
             </div>
-            <div class="col-1"><i class="fas fa-plus" id="addField"></i></div>
+            <div class="ten"><i class="fas fa-plus" id="addField"></i></div>
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group update-photo label">
           <label>Photo principale</label><br/>
           <input type="file" name="image"/>
         </div>
 
-        <div class="form-group d-flex">
-          <div class="fifty">
+        <div class="form-group form-flex">
+          <div class="input-50 label">
             <label>Partenaires <i class="far fa-question-circle" title="Si rien n'est cliqué, l'information initiale sera conservée"></i></label>
             <div class="partners-scroll">
             <% for (let i=0; i < allPartners.length; i++) {%> 
@@ -130,7 +132,7 @@
             </div>
           </div>
       
-          <div class="fifty">
+          <div class="input-50 label">
             <label>Soutiens</label>
             <div class="partners-scroll">
             <% for (let i=0; i < allSupports.length; i++) {%> 
@@ -147,7 +149,7 @@
 
         <div class="button-container mt-5">
           <a href="/dashboard/shows" ><button class="btn btn-secondary text-white action-button">Annuler</button></a>
-          <button type="submit" class="btn btn-warning text-white action-button">Modifier </button>
+          <button type="submit" class="btn btn btn-create action-button">Modifier </button>
         </div>
       </form>
     </div>
