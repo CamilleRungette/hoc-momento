@@ -63,15 +63,15 @@ router.post('/create-admin', function(req, res, next){
     token: uid2(32)
   })
   
-	newAdmin.save(function(error, admin){
-    if (error){
-        console.log("ADMIN NOT SAVED:", error)
-        res.json({error})
-    } else if (admin){
-        console.log("ADMIN SAVED", admin)
-        res.json({admin})
-    }
-  })
+	// newAdmin.save(function(error, admin){
+  //   if (error){
+  //       console.log("ADMIN NOT SAVED:", error)
+  //       res.json({error})
+  //   } else if (admin){
+  //       console.log("ADMIN SAVED", admin)
+  //       res.json({admin})
+  //   }
+  // })
 })
 
 router.get('/login', function(req, res, next){
@@ -120,7 +120,7 @@ router.get('/actions', async function(req, res, next) {
   // }
 });
 
-router.post('/create-action', parser.array('images'), async function(req, res, next){
+router.post('/create-action', upload.array('images'), async function(req, res, next){
   if(!req.session.admin){
     res.redirect('/dashboard/login')
   } else {
@@ -130,7 +130,7 @@ try{
   ///////////////////////// Creating photo gallery
     let backGallery = []    
     for (i=0; i< req.files.length; i++){
-        backGallery.push(req.files[i].secure_url)
+      backGallery.push("/images/uploads/"+req.files[i].originalname)
     }    
 
     /////////////////////// Creating array to deal the case of one entry (string and not table)
@@ -181,7 +181,7 @@ try{
       partners: partnersArray, 
       support: supportArray,
       links: linkArray,
-      photo: req.files[0].secure_url, 
+      photo: "/images/uploads/"+req.files[0].originalname, 
       gallery: backGallery,
       description: req.body.description,
       city: req.body.city,
@@ -228,7 +228,7 @@ router.get('/update-action', async function(req, res, next){
   // }
 })
 
-router.post('/update-action', parser.single('image'), async function(req, res, next){
+router.post('/update-action', upload.single('image'), async function(req, res, next){
   if(!req.session.admin){
     res.redirect('/dashboard/login')
   } else {
@@ -294,7 +294,7 @@ router.post('/update-action', parser.single('image'), async function(req, res, n
       ///////  Processing of the main picture
       let photo;
       if (req.file != undefined){
-        photo = req.file.secure_url
+        photo = "/images/uploads/"+req.file.originalname+"new"
       } else {
         photo = thisAction.photo
       }
@@ -382,21 +382,19 @@ router.get('/delete-photo-action', async function(req, res){
   }
 })
 
-router.post('/add-photo-action',  parser.array('images'), async function(req, res){
+router.post('/add-photo-action',  upload.array('images'), async function(req, res){
   if(!req.session.admin){
     res.redirect('/dashboard/login')
   } else {
     let actionGallery = []
-  console.log(req.files, req.files.length)
 
     action = await ActionModel.findById(req.body.action)
     actionGallery = action.gallery
     
   for (i=0; i< req.files.length; i++){
     console.log(req.files[i].secure_url)
-    actionGallery.push(req.files[i].secure_url)
+    actionGallery.push("/images/uploads/"+req.files[i].originalname)
   }
-  console.log(actionGallery)
 
       update = await ActionModel.updateOne(
         {_id: req.body.action},
@@ -661,7 +659,7 @@ router.post('/update-show', parser.single('image'), async function(req, res, nex
 /////////////////// UPDATE MAIN PICTURE
       let photo;
       if (req.file != undefined){
-        photo = req.file.secure_url
+        photo = "/images/uploads/"+req.file.originalname+"new"
       } else {
         photo = thisShow.photo
       }

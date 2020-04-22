@@ -259,27 +259,30 @@ header nav a > span:hover{
   text-align: justify;
 }
 
-.company1{
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+.img-company1{
+  float: left;
+  padding-right: 3%;
 }
+.img-company2{
+  float: right;
+  padding-left: 3%;
+}
+
 
 .company2{
-  display: flex;
+  /* display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: flex-start; */
 }
 
-@media screen and (min-width: 1501px){
+@media screen and (min-width: 1301px){
   .img-company1{
     width: 50%;
-    margin-top: 2%;
   }
-  .company-text-photo{
-    width: 45%;
-    margin-left: 2px;
+  .img-company2{
+    margin-top: 1%;
+    width: 50%;
   }
 }
 @media screen and (max-width: 1500px){
@@ -768,7 +771,7 @@ font-size: 1.3em;
 }
 
 .action-item{
-  padding-top: 2%;
+  padding-top: 4%;
   margin: auto;
   overflow: auto;
 }
