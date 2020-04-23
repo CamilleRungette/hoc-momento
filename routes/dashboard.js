@@ -106,9 +106,9 @@ router.get('/logout', function(req,res){
 
 router.get('/actions', async function(req, res, next) {
   console.log("session:", req.session.admin)
-  // if(!req.session.admin){
-  //   res.redirect('/dashboard/login')
-  // } else {
+  if(!req.session.admin){
+    res.redirect('/dashboard/login')
+  } else {
     console.log(req.session.admin);
 
     allActions = await ActionModel.find();
@@ -117,7 +117,7 @@ router.get('/actions', async function(req, res, next) {
     allArticles = await ArticleModel.find();        
       
     res.render('./dashboard/actions', {allActions, allPartners, allSupports, allArticles});
-  // }
+  }
 });
 
 router.post('/create-action', upload.array('images'), async function(req, res, next){

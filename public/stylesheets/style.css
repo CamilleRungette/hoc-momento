@@ -2113,7 +2113,15 @@ opacity: 1;
   .footer{
     margin-bottom: -2%;
   }
-
+  .logo{
+    width: 5em;
+  }
+  .hand-nav {
+    height: 6.5em;
+  }
+  .footer{
+    height: 5em;
+  }
 
   /* BACK OFFICE */
   .small-banner-title{
