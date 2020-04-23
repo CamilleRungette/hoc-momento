@@ -551,7 +551,7 @@ router.get('/update-show', async function(req, res, next){
   }
 })
 
-router.post('/update-show', parser.single('image'), async function(req, res, next){
+router.post('/update-show', upload.single('image'), async function(req, res, next){
   if(!req.session.admin){
     res.redirect('/dashboard/login')
   } else {
@@ -841,37 +841,69 @@ router.get('/agenda', async function(req,res){
       futurEvents.push(allEvents[i])
     }else{
       pastEvents.push(allEvents[i])
+
+  allActions = await ActionModel.find();
+  allShows = await ShowModel.find();
+  
     }
   }
-  res.render('dashboard/agenda', {allEvents, futurEvents, pastEvents})
+  res.render('dashboard/agenda', {allEvents, futurEvents, pastEvents, allActions, allShows})
 }
 })
 
-router.post('/create-event', parser.single('image'), async function(req,res){
+router.post('/create-event', upload.single('image'), async function(req,res){
   if(!req.session.admin){
     res.redirect('/dashboard/login')
   } else {
 console.log(req.body);
 
+/////////////////////////////// Creating array for dates and place
+    let showArray = []
+
+    if(typeof req.body.startDate == "string"){
+      showArray.push({
+        startDate: new Date(req.body.startDate),
+        endDate: new Date(req.body.endDate),
+        place: req.body.place,
+        address: req.body.address,
+        city: req.body.city
+      })
+    } else {
+      for( i=0; i< req.body.startDate.length; i++){
+        showArray.push({
+          startDate: new Date(req.body.startDate[i]),
+          endDate: new Date(req.body.endDate[i]),
+          place: req.body.place[i],
+          address: req.body.address[i],
+          city: req.body.city[i]
+        })
+      }
+    }
+
+    let photo = "";
+    if (req.file){photo = "/images/uploads/"+req.file.originalname}
+
+    let description = "";
+    if (req.body.description){description = req.body.description }
+
+    let page = "";
+    if (req.body.id){page = req.body.id}
+
+
     newEvent = new EventModel({
+      photo: photo,
       title: req.body.title,
-      place: req.body.place,
-      photo: req.file.secure_url,
-      period: req.body.period,
-      description: req.body.description,
-      city: req.body.city, 
+      show: showArray, 
+      description: description,
       type: req.body.type,
-      startDate: req.body.startDate,
-      endDate: req.body.endDate
+      page: page
     })
-    console.log(newEvent);
     
 
     newEvent.save(function(error, event){
       console.log("EVENT SAVED:", event);
     })
 
-    console.log(newEvent);  
   res.redirect('/dashboard/agenda')
   }
 })

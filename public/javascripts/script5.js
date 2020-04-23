@@ -4,64 +4,66 @@
 let plus = document.getElementById('addField');
 let linkField = document.getElementById('linkField');
 
-plus.addEventListener('click', function(){
-  console.log("click");
-  let bigDiv = document.createElement('div');  
-    bigDiv.setAttribute('class', "hundred form-flex link-div");
+if(plus){
+  plus.addEventListener('click', function(){
+    console.log("click");
+    let bigDiv = document.createElement('div');  
+      bigDiv.setAttribute('class', "hundred form-flex link-div");
 
-// Selection div :
-  let lilDiv3 =  document.createElement('div')
-    lilDiv3.setAttribute('class', "ten")
+  // Selection div :
+    let lilDiv3 =  document.createElement('div')
+      lilDiv3.setAttribute('class', "ten")
 
-  let selectDiv = document.createElement('select');
-    selectDiv.setAttribute('name', "type");
-  let optionPdf = document.createElement('option');
-    optionPdf.setAttribute('value', 'pdf');
-    optionPdf.textContent = "PDF";
-  selectDiv.appendChild(optionPdf);
+    let selectDiv = document.createElement('select');
+      selectDiv.setAttribute('name', "type");
+    let optionPdf = document.createElement('option');
+      optionPdf.setAttribute('value', 'pdf');
+      optionPdf.textContent = "PDF";
+    selectDiv.appendChild(optionPdf);
 
-  let optionArticle = document.createElement('option');
-    optionArticle.setAttribute('value', 'article');
-    optionArticle.textContent = "Article";
-  selectDiv.appendChild(optionArticle); 
-  
-  let optionVideo = document.createElement('option');
-    optionVideo.setAttribute('value', 'video');
-    optionVideo.textContent = "Vidéo";
-  selectDiv.appendChild(optionVideo);
-
-  lilDiv3.appendChild(selectDiv)
-
-// Name of the link input
-  let lilDiv1 = document.createElement('div')
-    lilDiv1.setAttribute('class', "INPUT-30")
-
-  let input1 = document.createElement('input')
-    input1.setAttribute('type', 'text');
-    input1.setAttribute('class', 'made-form input-dashboard');
-    input1.setAttribute('placeholder', "Nom de l'article");
-    input1.setAttribute('name', 'nameLink');
-
-  lilDiv1.appendChild(input1)
-
-// Link input
-  let lilDiv2 = document.createElement('div')
-    lilDiv2.setAttribute('class', "input-50")
-
-  let input2 = document.createElement('input')
-    input2.setAttribute('type', 'text');
-    input2.setAttribute('class', 'made-form input-dashboard');
-    input2.setAttribute('placeholder', "Lien");
-    input2.setAttribute('name', 'link');
-
-  lilDiv2.appendChild(input2)
-
-    bigDiv.appendChild(lilDiv3);
-    bigDiv.appendChild(lilDiv1);
-    bigDiv.appendChild(lilDiv2);
+    let optionArticle = document.createElement('option');
+      optionArticle.setAttribute('value', 'article');
+      optionArticle.textContent = "Article";
+    selectDiv.appendChild(optionArticle); 
     
-  linkField.insertBefore(bigDiv, linkField.childNodes[3] )
-})
+    let optionVideo = document.createElement('option');
+      optionVideo.setAttribute('value', 'video');
+      optionVideo.textContent = "Vidéo";
+    selectDiv.appendChild(optionVideo);
+
+    lilDiv3.appendChild(selectDiv)
+
+  // Name of the link input
+    let lilDiv1 = document.createElement('div')
+      lilDiv1.setAttribute('class', "INPUT-30")
+
+    let input1 = document.createElement('input')
+      input1.setAttribute('type', 'text');
+      input1.setAttribute('class', 'made-form input-dashboard');
+      input1.setAttribute('placeholder', "Nom de l'article");
+      input1.setAttribute('name', 'nameLink');
+
+    lilDiv1.appendChild(input1)
+
+  // Link input
+    let lilDiv2 = document.createElement('div')
+      lilDiv2.setAttribute('class', "input-50")
+
+    let input2 = document.createElement('input')
+      input2.setAttribute('type', 'text');
+      input2.setAttribute('class', 'made-form input-dashboard');
+      input2.setAttribute('placeholder', "Lien");
+      input2.setAttribute('name', 'link');
+
+    lilDiv2.appendChild(input2)
+
+      bigDiv.appendChild(lilDiv3);
+      bigDiv.appendChild(lilDiv1);
+      bigDiv.appendChild(lilDiv2);
+      
+    linkField.insertBefore(bigDiv, linkField.childNodes[3] )
+  })
+}
 
 ///////////////////////////////////////////////////////////////
 ///////////// Showing the legend in action form
@@ -185,5 +187,52 @@ for (let i=0; i<minusLink.length; i++){
 
     bigDiv[i].appendChild(input);
     console.log(bigDiv[i]);
+  })
+}
+
+
+
+//////////// Adding an event date a link
+let addEventField = document.getElementById('addeventField');
+let startDateField = document.getElementById('startDateField');
+let endDateField = document.getElementById('endDateField');
+let placeEventField = document.getElementById('placeField');
+let addressField = document.getElementById('addressField');
+let cityEventField = document.getElementById('cityField');
+
+if (addEventField){
+  addEventField.addEventListener('click', function(){
+    let input1 = document.createElement('input');
+      input1.setAttribute('type', 'date');
+      input1.setAttribute('class', 'made-form input-dashboard');
+      input1.setAttribute('name', 'startDate');    
+    startDateField.insertBefore(input1, startDateField.firstElementChild);
+
+
+    let input2 = document.createElement('input');
+      input2.setAttribute('type', 'date');
+      input2.setAttribute('class', 'made-form input-dashboard');
+      input2.setAttribute('name', 'endDate');    
+    endDateField.insertBefore(input2, endDateField.firstElementChild);
+
+
+    let input3 = document.createElement('input');
+      input3.setAttribute('type', 'text');
+      input3.setAttribute('class', 'made-form input-dashboard');
+      input3.setAttribute('name', 'place');    
+    placeEventField.insertBefore(input3, placeEventField.firstElementChild);
+
+    let input4 = document.createElement('input');
+      input4.setAttribute('type', 'text');
+      input4.setAttribute('class', 'made-form input-dashboard');
+      input4.setAttribute('name', 'address');    
+    addressField.insertBefore(input4, addressField.firstElementChild);
+
+    let input5 = document.createElement('input');
+      input5.setAttribute('type', 'text');
+      input5.setAttribute('class', 'made-form input-dashboard');
+      input5.setAttribute('name', 'city');    
+    cityEventField.insertBefore(input5, cityEventField.firstElementChild);
+
   })
 }

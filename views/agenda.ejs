@@ -19,34 +19,41 @@
         <div class="agenda-banner-photo"></div>
         <div class="banner">
           <h1 class="banner-title white">AGENDA</h1>
-          <div class="arroow down">
-            <div class="arrow-top"></div>
-            <div class="arrow-bottom"></div>
-          </div>
       </div>
       </div>
-
 <br/> <br/>
       <div class="made-container">
         <div class="futur-event">Événements à venir</div>
-
         <% for (let i=0; i< futurEvents.length; i++) { %>  
           <div class="event-card">
             <div class="card-event-photo">
               <img src=<%= futurEvents[i].photo %> class="event-photo" alt="<%= futurEvents[i].title %>" /> 
             </div>
             <div class="card-event-infos">
-              <p class="card-event-period"> <i class="fas fa-caret-right"></i> <%= futurEvents[i].period %> </p>
               <h5 class="card-event-title yellow"><%= futurEvents[i].title %></h5>
-              <h6 class="card-event-place"><span class="grey">Lieu :</span> <%= futurEvents[i].place %> - <%= futurEvents[i].city %>  </h6>
-              <h6 class="card-event-desc"><span class="grey bold">Description:</span> <%= futurEvents[i].description %>  </h6>
-              <h6 class="card-event-desc"><span class="grey bold"><%= futurEvents[i].type %></span></h6>
+              <h6 class="card-event-type grey bold "> <%= futurEvents[i].type %></h6>
+               <p class="card-event-date">
+                <% for(j=0; j< futurEvents[i].show.length; j++) {%>
+                  <p class="para-event-date"><i class="fas fa-caret-right grey"></i> <strong>Du <%= futurEvents[i].show[j].startDate.getDate() %> /<%= futurEvents[i].show[j].startDate.getMonth()+1%>/<%= futurEvents[i].show[j].startDate.getFullYear()%>
+                    au <%= futurEvents[i].show[j].endDate.getDate() %> /<%= futurEvents[i].show[j].endDate.getMonth()+1%>/<%= futurEvents[i].show[j].endDate.getFullYear()%> : </strong><br/>
+                    <%= futurEvents[i].show[j].place %> <br/>
+                    <%= futurEvents[i].show[j].address %>, <%= futurEvents[i].show[j].city %>   
+                    <p>
+                 <% } %>  
+              </p>
+              <h6 class="card-event-desc"><span class="grey bold">Description:</span></h6>
+                <p class="para-event-date"> <%= futurEvents[i].description %> </p>
+              <h6 class="card-event-desc"><a 
+                <% if (futurEvents[i].type === "Action Culturelle") {%> 
+                href="/action-culturelle?id=<%=futurEvents[i].page %>"
+                <% } else if (futurEvents[i].type === "Spectacle") {%>
+                  href="/spectacle?id=<%=futurEvents[i].page %>"
+                <% } %>  
+                class=" no-underline"><span class="grey bold no-underline">Plus d'informations</span></a></h6>
             </div>
           </div>
-        <% } %> 
-          
+        <% } %>  
       </div>
       <%- include('./partials/footer') %> 
-
   </body>
 </html>

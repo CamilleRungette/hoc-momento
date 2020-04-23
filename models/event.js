@@ -2,14 +2,11 @@ const mongoose = require('./db');
 
 let eventSchema = mongoose.Schema({
     photo: String, 
-    place: String, 
     title: String, 
-    period: String, 
+    show: Array,
     description: String,
-    city: String,
     type: String,
-    startDate: Date,
-    endDate: Date
+    page: String,
 });
 
 const eventModel = mongoose.model("events", eventSchema);

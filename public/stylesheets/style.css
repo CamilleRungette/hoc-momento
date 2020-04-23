@@ -662,8 +662,18 @@ header nav a > span:hover{
   margin-left: 1%;
   margin-right: 1%;
 }
+.input-45{
+  width: 43%;
+  margin-left: 1%;
+  margin-right: 1%;
+}
+.input-40{
+  width: 38%;
+  margin-left: 1%;
+  margin-right: 1%;
+}
 .input-30{
-  width: 28%;
+  width: 30%;
   margin-left: 1%;
   margin-right: 1%;
 }
@@ -675,7 +685,10 @@ header nav a > span:hover{
 .input-10{
   width: 8%;
   margin-left: 1%;
-  margin-right: 1%;
+  margin-right: -0% !important;
+}
+#addeventField{
+  text-align: right;
 }
 .d-flex{
   display: flex;
@@ -685,6 +698,9 @@ header nav a > span:hover{
 }
 .test{
   background-color: khaki;
+}
+.test2{
+  background-color: lightcoral;
 }
 .made-form{
   border: none;
@@ -754,7 +770,18 @@ label{
 
 /* =============================PARTNERS============================= */
 
-
+.event-link-page-div{
+  border: 1px rgb(194, 194, 194) solid;
+  padding: 1%;
+  border-radius: 5px;
+  /* width: 70%; */
+  /* margin-left: 3%; */
+  height: 8em;
+  overflow: auto;
+}
+.event-link-page{
+  margin-left: 3%;
+}
 .messages-title{
   margin-top: 2em;
   margin-bottom: 2em;
@@ -1580,23 +1607,9 @@ opacity: 1;
   margin: auto;
   display: flex;
   position: relative;
-  margin-bottom: 5%;  
+  margin-bottom: 8%;  
   transition-duration: .5s;
 }
-
-.event-card:hover > .card-event-photo{
-  width: 50%;
-  transition-duration: .5s;
-  margin-right: -3%;
-}
-
-.event-card:hover > .card-event-infos{
-  /* width: 50%;
-  padding: 0%; */
-  transform: translateX(.8em);
-  transition-duration: .5s;
-
-} 
 
 .card-event-photo{
   width: 47%;
@@ -1613,23 +1626,25 @@ opacity: 1;
 .card-event-infos{
   width: 50%;
   margin-left: 5%;
-  transition-duration: .5s;
   padding: 1%;
 }
 
 .card-event-title{
   font-size: 220%;
-  margin-bottom: -2%;
+  margin-bottom: -3%;
+  margin-top: -2%;
 }
 
-.card-event-place{
+.card-event-date{
   border-top: 1px solid #D7D7D7;
   font-weight: bold;
-  padding-top: 1%;
-  font-size: 100%;
   margin-bottom: -5%;
+  padding-top: 4%;
 }
-
+.para-event-date{
+  font-size: 115%;
+  line-height: 1.4em;
+}
 .card-event-desc{
   border-top: 1px solid #D7D7D7;
   padding-top: 1%;
@@ -1640,9 +1655,18 @@ opacity: 1;
   text-overflow: ellipsis; */
   white-space: normal;
   font-size: 90%;
-  margin-bottom: -5%;
+  margin-bottom: -3%;
+  margin-top: -3%;
+  font-size: 115%;
 }
-
+.card-event-type{
+  border-top: 1px solid #D7D7D7;
+  padding-top: 1%;
+  white-space: normal;
+  font-size: 90%;
+  font-size: 115%;
+  margin-bottom: -3%;
+}
 .bold{
   font-weight: bold;
 }

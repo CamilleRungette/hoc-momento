@@ -7,10 +7,8 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
   <link rel="manifest" href="/images/site.webmanifest">
 
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel='stylesheet' type='text/css' media='screen' href='/stylesheets/style.css'>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <title>Hoc Momento - Agenda</title>
 </head>
 <body>
@@ -25,31 +23,28 @@
     <div class="cultural-actions">
     <%- include('./create-event') %> 
 
-      <div class="separator col-12"></div>
+      <div class="separator"></div>
 
       <% if (allEvents.length != 0) {%> 
-      <div class="actions-list col-10 mx-auto relative" id="actions-list">
+      <div class="actions-list relative" id="actions-list">
           <% for (i=0; i< allEvents.length; i++){ %>
-            <div class="d-flex action-item ">
-              <div class="col-2">
+            <div class="form-flex action-item ">
+              <div class="input-30">
                 <div class="red"><%= allEvents[i].title%></div> <br/>
-                <div><%= allEvents[i].period%></div>
-                <div> <%= allEvents[i].city  %>  </div> <br/>
-                <div><%= allEvents[i].place  %>  </div>
                 <div><%= allEvents[i].type %> </div> <br/>
-                <% if (allEvents[i].startDate != null) { %> 
-                  <div> Du <%= allEvents[i].startDate.getDate() %>/<%= allEvents[i].startDate.getMonth()+1%>/<%= allEvents[i].startDate.getFullYear()%></div>
-                <%  } else{ %>
-                  Pas de date de début <br/>
-                <% } %> 
-                <% if (allEvents[i].endDate != null) {%> 
-                  <div> Au <%= allEvents[i].endDate.getDate() %>/<%= allEvents[i].endDate.getMonth()+1%>/<%= allEvents[i].endDate.getFullYear()%></div>
-                  <%  } else{ %>
-                    Pas de date de fin
-                  <% } %>               </div>
-              <div class="col-6 description-list"><%= allEvents[i].description%></div>
-              <div class="col-3"> <img src="<%=allEvents[i].photo %>" class="photo-list"  /> </div>
-              <div class="m-auto icon-column-agenda">
+                 <div>
+                   <% for(j=0; j< allEvents[i].show.length; j++) {%>
+                    <p><i class="fas fa-caret-right grey"></i> <strong>Du <%= allEvents[i].show[j].startDate.getDate() %> /<%= allEvents[i].show[j].startDate.getMonth()+1%>/<%= allEvents[i].show[j].startDate.getFullYear()%> <br/>
+                      au <%= allEvents[i].show[j].endDate.getDate() %> /<%= allEvents[i].show[j].endDate.getMonth()+1%>/<%= allEvents[i].show[j].endDate.getFullYear()%> : </strong><br/>
+                      <%= allEvents[i].show[j].place %> <br/>
+                      <%= allEvents[i].show[j].address %>, <%= allEvents[i].show[j].city %>   
+                      <p>
+                   <% } %> 
+                 </div>
+              </div>
+              <div class="input-30 description-list"><%= allEvents[i].description%></div>
+              <div class="thirty"> <img src="<%=allEvents[i].photo %>" class="photo-list"  /> </div>
+              <div class="input-10 icon-column-agenda">
                 <form action="/dashboard/delete-event" method="POST">
                   <input type="hidden" name="id" value="<%= allEvents[i].id%>"   />
                 <button class="fas fa-trash-alt fa-2x red delete-button" title="Supprimer cet événement"></button>
@@ -58,7 +53,7 @@
               </div>
             </div>
           <br/> <br/>
-          <div class="separator col-12 my-5"></div>
+          <div class="separator"></div>
     
           <%}%>
       </div>

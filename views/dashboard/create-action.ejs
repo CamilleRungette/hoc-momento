@@ -92,7 +92,7 @@
 
     <div class="input-50">
       <label>Soutiens</label>
-      <div class="partners-scroll class="input-dashboard"">
+      <div class="partners-scroll input-dashboard">
       <% for (let i=0; i < allSupports.length; i++) {%> 
         <div>
           <input type="checkbox" value="<%= allSupports[i].id %>" name="support_id">
@@ -106,7 +106,7 @@
   </div>
 
   <div class="button-container mt-5">
-    <button type="submit" class="btn btn-create text-white action-button">Créer </button>
+    <button type="submit" class="btn btn-create action-button">Créer </button>
   </div>
 
   </form>
