@@ -1332,7 +1332,6 @@ font-size: 1.3em;
 
 .shows-period{
   text-align: center;
-  padding-right: 25px;
   font-size: 2em;
   font-style: italic;
   /* margin-top: -5%; */
@@ -2030,6 +2029,8 @@ opacity: 1;
   }
   .shows-period{
     font-size: 150%;
+    text-align: center;
+    margin: auto;
   }
 
   .aaction-place{
