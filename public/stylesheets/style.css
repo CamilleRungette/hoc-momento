@@ -266,17 +266,15 @@ header nav a > span:hover{
   padding-right: 3%;
 }
 .img-company2{
-  float: right;
   padding-left: 3%;
 }
 
-
-/* .company2{
+.company2{
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
   align-items: flex-start;
-} */
+}
 
 @media screen and (min-width: 1301px){
   .img-company1{
@@ -981,7 +979,18 @@ font-size: 1.3em;
   background-repeat: no-repeat;
   z-index: 1;
 }
-
+.contact-banner-photo{
+  background-image: url(/images/contact.jpg);
+  background-size: cover;
+  width: 100%;
+  height: 70vh;
+  min-height: 30em;
+  object-fit: cover;
+  background-attachment: fixed;
+  top: 30em;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
 .contact-banner{
   background-color: rgba(0, 0, 0, 0.3);
   width: 100%;
@@ -992,7 +1001,7 @@ font-size: 1.3em;
   align-items: center;
   justify-content: center;
 }
-.contact-banner-photo{
+/* .contact-banner-photo{
   background-image: url(/images/contact.jpg);
   background-size: cover;
   width: 100%;
@@ -1003,7 +1012,7 @@ font-size: 1.3em;
   top: 30em;
   background-repeat: no-repeat;
   z-index: 1;
-}
+} */
 
 .small-banner-photo{
   width: 100%;
@@ -1908,6 +1917,7 @@ opacity: 1;
     background-position: bottom;
   }
   .company-banner-photo{
+    min-height: initial;
     height: 50vh;
     background-position: bottom;
   }
@@ -1937,6 +1947,8 @@ opacity: 1;
     background-position: bottom;
   }
   .contact-banner-photo{
+    min-height: initial;
+    height: 50vh;
     background-position: 25% 75%;
   }
   .contact-banner{
@@ -1947,6 +1959,7 @@ opacity: 1;
     width: 80%;
     line-height: 1.4em;
     text-align: justify;
+    margin: auto;
   }
   .company-text{
     margin: auto;
@@ -1955,7 +1968,22 @@ opacity: 1;
     line-height: 1.4em;
     text-align: justify;
   }
+  .company1{
+    display: flex;
+    flex-direction: column;
+  }
+  .company2{
+    display: flex;
+    flex-direction: column;
+  }
   .img-company1{
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: 100%;
+  }
+  .img-company2{
+    margin-top: 5%;
+    margin-bottom: 5%;
     width: 100%;
   }
   .banner-title{
@@ -2132,8 +2160,8 @@ opacity: 1;
   }
   .contact-front-container{
     height: 70vh !important;
+    width: 70%;
   }
-
   .footer{
     margin-bottom: -2%;
   }
