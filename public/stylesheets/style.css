@@ -2016,6 +2016,7 @@ opacity: 1;
    }
    .aactions-img{
      width: 100%;
+     height: 25em;
    }
    .aactions-hover{
     background-color: rgba(249, 176, 58, 0.7);
@@ -2025,10 +2026,10 @@ opacity: 1;
     overflow: hidden;
    }
    .aactions-place{
-    font-size: 300%;
+    font-size: 200%;
   }
   .shows-period{
-    font-size: 180%;
+    font-size: 150%;
   }
 
   .aaction-place{
