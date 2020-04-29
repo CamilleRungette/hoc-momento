@@ -2023,9 +2023,11 @@ opacity: 1;
    .shows-hover{
     background-color: rgba(195, 37, 39, 0.5);
     overflow: hidden;
+    vertical-align: middle;
    }
    .aactions-place{
-    font-size: 200%;
+    font-size: 250%;
+    margin-bottom: 4%;
   }
   .shows-period{
     font-size: 150%;
