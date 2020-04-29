@@ -2137,11 +2137,12 @@ opacity: 1;
   }
   .paartners-logo-container{
     text-align: justify;
+    margin-bottom: 20%;
   }
   .paartner-logo-div{
-    width: 20%;
-    margin-left: 2%;
-    margin-right: 2%;
+    width: 35%;
+    margin-left: 7.5%;
+    margin-right: 7.5%;
   }
   .team-container{
     margin-top: 10%;
