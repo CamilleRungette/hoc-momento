@@ -2094,6 +2094,12 @@ opacity: 1;
     margin-left: 28%;
   }
 
+  .futur-event{ 
+    margin-top: 10%;
+    margin-bottom: 20%;
+    font-size: 160%;
+    text-align: center;
+  }
   .event-card{
     width: 90%;
     display: flex;
@@ -2102,6 +2108,7 @@ opacity: 1;
   }
   .card-event-photo{
     width: 100%;
+    margin-bottom: 3%;
   }
   .card-event-infos{
     width: 90%;
@@ -2111,6 +2118,7 @@ opacity: 1;
   }
   .card-event-title{
     margin-bottom: -10%;
+    font-size: 150%;
   }
   .card-event-desc{
     margin-left: -1%;
