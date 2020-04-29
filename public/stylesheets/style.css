@@ -31,7 +31,7 @@ body {
 }
 
 .hand-nav {
-  font-family: 'Lato', sans-serif;
+  /* font-family: 'Lato', sans-serif; */
   background-color: white;
   height: 7.5em;
   display: flex;
