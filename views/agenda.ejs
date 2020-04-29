@@ -35,13 +35,33 @@
               <h6 class="card-event-type grey bold "> <%= futurEvents[i].type %></h6>
                <p class="card-event-date">
                 <% for(j=0; j< futurEvents[i].show.length; j++) {%>
-                  <p class="para-event-date"><i class="fas fa-caret-right grey"></i> <strong>Du <%= futurEvents[i].show[j].startDate.getDate() %> /<%= futurEvents[i].show[j].startDate.getMonth()+1%>/<%= futurEvents[i].show[j].startDate.getFullYear()%>
-                    au <%= futurEvents[i].show[j].endDate.getDate() %> /<%= futurEvents[i].show[j].endDate.getMonth()+1%>/<%= futurEvents[i].show[j].endDate.getFullYear()%> : </strong><br/>
-                    <%= futurEvents[i].show[j].place %> <br/>
-                    <%= futurEvents[i].show[j].address %>, <%= futurEvents[i].show[j].city %>   
-                    <p>
-                 <% } %>  
-              </p>
+                  <p class="para-event-date"><i class="fas fa-caret-right grey"></i> 
+                    <strong>Du
+                    <!-- Si le jour et le mois sont inférieur à 10 rajouter un 0 -->
+                    <% if (futurEvents[i].show[j].startDate.getDate() < 10) {%> 
+                      0<%= futurEvents[i].show[j].startDate.getDate() %>
+                    <%} else {%>
+                      <%=futurEvents[i].show[j].startDate.getDate()%>
+                    <%}%>/<% if (futurEvents[i].show[j].startDate.getMonth()+1 < 10) {%> 
+                      0<%= futurEvents[i].show[j].startDate.getMonth()+1%>
+                    <%} else {%>
+                      <%= futurEvents[i].show[j].startDate.getMonth()+1%>
+                    <%}%>/ <%= futurEvents[i].show[j].startDate.getFullYear()%>
+                    au
+                    <% if (futurEvents[i].show[j].endDate.getDate() < 10) {%> 
+                      0<%= futurEvents[i].show[j].endDate.getDate() %>
+                    <% }else{ %> 
+                      <%= futurEvents[i].show[j].endDate.getDate() %>
+                    <% } %>/<% if (futurEvents[i].show[j].endDate.getMonth()+1 < 10) {%> 
+                      0<%= futurEvents[i].show[j].endDate.getMonth()+1%>
+                    <% }else{ %> 
+                      <%= futurEvents[i].show[j].endDate.getMonth()+1%>
+                    <% } %>/ <%= futurEvents[i].show[j].endDate.getFullYear()%> : </strong><br/>
+                    <em><%= futurEvents[i].show[j].place %></em> <br/>
+                    <%= futurEvents[i].show[j].address %>, <%= futurEvents[i].show[j].city %>  
+                  </p>
+                <% } %>   
+               </p>
               <h6 class="card-event-desc"><span class="grey bold">Description:</span></h6>
                 <p class="para-event-date"> <%= futurEvents[i].description %> </p>
               <% if (futurEvents[i].page) {%> 

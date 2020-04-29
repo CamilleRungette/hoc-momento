@@ -153,7 +153,7 @@ router.post('/newsletter', function(req, res){
 
 router.get('/agenda', async function(req, res ){
   futurEvents = await EventModel.find(function(error, events){
-    console.log(events[1].show);
+    console.log(events[1].show[1].startDate==events[1].show[1].endDate);
   })
   // let futurEvents = [];
   // let currentDate = new Date
