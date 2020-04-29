@@ -43,13 +43,15 @@
               </p>
               <h6 class="card-event-desc"><span class="grey bold">Description:</span></h6>
                 <p class="para-event-date"> <%= futurEvents[i].description %> </p>
-              <h6 class="card-event-desc"><a 
-                <% if (futurEvents[i].type === "Action Culturelle") {%> 
-                href="/action-culturelle?id=<%=futurEvents[i].page %>"
-                <% } else if (futurEvents[i].type === "Spectacle") {%>
-                  href="/spectacle?id=<%=futurEvents[i].page %>"
-                <% } %>  
-                class=" no-underline"><span class="grey bold no-underline">Plus d'informations</span></a></h6>
+              <% if (futurEvents[i].page) {%> 
+                <h6 class="card-event-desc"><a 
+                  <% if (futurEvents[i].type === "Action Culturelle") {%> 
+                  href="/action-culturelle?id=<%=futurEvents[i].page %>"
+                  <% } else if (futurEvents[i].type === "Spectacle") {%>
+                    href="/spectacle?id=<%=futurEvents[i].page %>"
+                  <% } %>  
+                  class=" no-underline"><span class="grey bold no-underline">Plus d'informations</span></a></h6>
+                  <% } %> 
             </div>
           </div>
         <% } %>  
