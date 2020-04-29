@@ -1100,8 +1100,7 @@ font-size: 1.3em;
 }
 .aactions-period{
   text-align: center;
-  padding-right: 25px;
-  font-size: 2em;
+  font-size: 200%;
   font-style: italic;
 }
 @media screen and (max-width: 1740px){
@@ -1301,6 +1300,11 @@ font-size: 1.3em;
 }
 
 /*=============================SHOWS============================= */
+.shows-title{
+  font-size: 350%;
+  text-align: center;
+}
+
 .shows-hover{
   transition-duration: 500ms;
   background-color: rgba(195, 37, 39, 0.3);
@@ -1317,13 +1321,13 @@ font-size: 1.3em;
   background-color: rgba(195, 37, 39, 0.6);
 }
 
-.shows-title{
+/* .shows-title{
   text-align: right;
   font-size: 1.8em;
   font-weight: bold;
   padding-right: 25px;
   font-style: italic;
-}
+} */
 
 .show-title{
   font-size: 4em;
@@ -2017,6 +2021,12 @@ opacity: 1;
      width: 100%;
      height: 25em;
    }
+   .aactions-title{
+     font-size: 170% ;
+   }
+   .aactions-period{
+     font-size: 150%;
+   }
    .aactions-hover{
     background-color: rgba(249, 176, 58, 0.7);
    }
@@ -2025,9 +2035,12 @@ opacity: 1;
     overflow: hidden;
     vertical-align: middle;
    }
-   .aactions-place{
+   .shows-title{
     font-size: 250%;
     margin-bottom: 4%;
+   }
+   .aactions-place{
+    font-size: 250%;
   }
   .shows-period{
     font-size: 150%;
