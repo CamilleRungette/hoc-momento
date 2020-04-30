@@ -217,15 +217,15 @@ router.post('/delete-action', async function(req, res, next){
 });
 
 router.get('/update-action', async function(req, res, next){
-  if(!req.session.admin){
-    res.redirect('/dashboard/login')
-  } else {    
+  // if(!req.session.admin){
+  //   res.redirect('/dashboard/login')
+  // } else {    
     action = await ActionModel.findById(req.query.id)
     allPartners = await PartnerModel.find();
     allSupports = await SupportModel.find();
 
     res.render('./dashboard/update-actions', {action, allSupports, allPartners})
-  }
+  // }
 })
 
 router.post('/update-action', upload.single('image'), async function(req, res, next){
@@ -540,15 +540,15 @@ router.post('/delete-show', async function(req, res, next){
 });
 
 router.get('/update-show', async function(req, res, next){
-  if(!req.session.admin){
-    res.redirect('/dashboard/login')
-  } else {  
+  // if(!req.session.admin){
+  //   res.redirect('/dashboard/login')
+  // } else {  
     show = await ShowModel.findById(req.query.id)
     allPartners = await PartnerModel.find();
     allSupports = await SupportModel.find();
 
     res.render('./dashboard/update-show', {show, allSupports, allPartners})
-  }
+  // }
 })
 
 router.post('/update-show', upload.single('image'), async function(req, res, next){
@@ -855,7 +855,6 @@ router.post('/create-event', upload.single('image'), async function(req,res){
   if(!req.session.admin){
     res.redirect('/dashboard/login')
   } else {
-console.log(req.body);
 
 /////////////////////////////// Creating array for dates and place
     let showArray = []
@@ -879,6 +878,23 @@ console.log(req.body);
         })
       }
     }
+
+    // console.log(showArray);
+    
+
+    // for (i=0; i< showArray.length-1; i++){
+    //     if (showArray[i].endDate > showArray[i+1].endDate){
+    //       let show1 = showArray[i]
+    //       let show2 = showArray[i+1]
+    //       showArray[i] = show2
+    //       showArray[i+1] = show1
+    //       console.log("le show", showArray[i]);
+    //       console.log("le suivant", showArray[i+1]);
+    //     }
+    // }
+
+    // console.log("FIIN", showArray);
+    
 
     let photo = "";
     if (req.file){photo = "/images/uploads/"+req.file.originalname}
@@ -1195,10 +1211,6 @@ router.post('/update-support', parser.single('image'), async function(req, res){
   res.redirect('/dashboard/partners')
     }
 })
-
-
-
-
 
 
 

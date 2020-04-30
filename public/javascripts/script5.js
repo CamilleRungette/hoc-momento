@@ -70,12 +70,14 @@ if(plus){
 
 let questionMark = document.getElementById('questionMark')
 if (questionMark){
-let legend = document.getElementById('legend')
+let legend = document.getElementById('legend');
 
 questionMark.addEventListener('click', function(){
+  console.log("click");
+  
   if (legend.classList[1] === "close"){
     legend.style.opacity = "1";
-    legend.style.zIndex = "2";
+    legend.style.zIndex = "4";
     legend.style.display = "block"
     legend.classList.remove("close")
     legend.classList.add("open")    
@@ -206,33 +208,33 @@ if (addEventField){
       input1.setAttribute('type', 'date');
       input1.setAttribute('class', 'made-form input-dashboard');
       input1.setAttribute('name', 'startDate');    
-    startDateField.insertBefore(input1, startDateField.firstElementChild);
+    startDateField.appendChild(input1);
 
 
     let input2 = document.createElement('input');
       input2.setAttribute('type', 'date');
       input2.setAttribute('class', 'made-form input-dashboard');
       input2.setAttribute('name', 'endDate');    
-    endDateField.insertBefore(input2, endDateField.firstElementChild);
+    endDateField.appendChild(input2);
 
 
     let input3 = document.createElement('input');
       input3.setAttribute('type', 'text');
       input3.setAttribute('class', 'made-form input-dashboard');
       input3.setAttribute('name', 'place');    
-    placeEventField.insertBefore(input3, placeEventField.firstElementChild);
+    placeEventField.appendChild(input3);
 
     let input4 = document.createElement('input');
       input4.setAttribute('type', 'text');
       input4.setAttribute('class', 'made-form input-dashboard');
       input4.setAttribute('name', 'address');    
-    addressField.insertBefore(input4, addressField.firstElementChild);
+    addressField.appendChild(input4);
 
     let input5 = document.createElement('input');
       input5.setAttribute('type', 'text');
       input5.setAttribute('class', 'made-form input-dashboard');
       input5.setAttribute('name', 'city');    
-    cityEventField.insertBefore(input5, cityEventField.firstElementChild);
+    cityEventField.appendChild(input5);
 
   })
 }

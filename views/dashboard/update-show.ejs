@@ -26,7 +26,7 @@
             <div id="periodField">
               <div class="d-flex">
                 <input type="text" class="made-form col-11" name="period" > 
-                <i class="fas fa-plus col-1" id="addPeriodField" title="Ajouter une représentation"></i>
+                <i class="fas fa-plus col-1" id="addPeriodField" title="Ajouter une période, un lieu et une ville"></i>
               </div>
             </div>
           </div>
@@ -63,9 +63,9 @@
 
 
         <div class="form-group hundred label">
-          <label>Description <i class="far fa-question-circle" id="questionMark" title="Clique"></i></label>
+          <label>Description <i class="far fa-question-circle" id="questionMark" title="Plus d'infos"></i></label>
           <textarea class="made-form" value="<%= show.description %>" name="description"> <%= show.description %> </textarea>
-          <div class="legend-div close" id="legend">
+          <div class="legend-div-update-show close" id="legend">
             <ul class="legend"> 
               <li>Paragraphe: &lt;p class="aactions-desc"&gt; Texte &lt;/p&gt;</li>
               <li>Retour à la ligne: &lt;br/&gt;</li>
@@ -90,7 +90,7 @@
                 <div class="twenty"><%= show.links[i].type %>  </div>
                 <div class="forty"> <a href="<%= show.links[i].link %>"><%- show.links[i].name  %></a> </div>
                 <div class="forty" data-link="<%= show.links[i].link %>"><%= show.links[i].link %></div>
-                <i class="fas fa-minus delete-link ten"></i> 
+                <i class="fas fa-minus delete-link ten" title="Supprimer le lien"></i> 
               </div>
             </div>
           <% } %>  
@@ -108,7 +108,7 @@
             <div class="input-50">
               <input type="text" class="made-form input-dashboard" placeholder="Lien" name="link"/>
             </div>
-            <div class="ten"><i class="fas fa-plus" id="addField"></i></div>
+            <div class="ten"><i class="fas fa-plus" id="addField" title="Ajouter un lien"></i></div>
           </div>
         </div>
 

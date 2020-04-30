@@ -16,7 +16,7 @@
     <div class="made-container update-container">
       <h2 class="text-center action-title mb-5">Modifier l'événement : <%= event.title %></h2>
 
-      <form action="/dashboard/update-event" class="col-10 mx-auto mt-5" enctype="multipart/form-data" method="POST">
+      <form action="/dashboard/update-event" class="col-10 mx-auto mt-5 create-form" enctype="multipart/form-data" method="POST">
         <input type="hidden" name="id" value="<%= event.id %>" />
         <div class="form-group d-flex">
           <div class="fifty">

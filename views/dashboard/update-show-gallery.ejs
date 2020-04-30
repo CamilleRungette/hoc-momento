@@ -22,7 +22,7 @@
       <div class="photos-gallery">
         <% for (i=0; i<show.gallery.length; i++){ %>
           <div class="gallery-div">
-            <a href="/dashboard/delete-photo-show?index=<%=i%>&show=<%=show.id%>" class="fas fa-trash-alt gallery-trash fa-3x black"></a>
+            <a href="/dashboard/delete-photo-show?index=<%=i%>&show=<%=show.id%>" class="fas fa-trash-alt gallery-trash fa-3x black" title="Supprimer la photo"></a>
             <img src="<%=show.gallery[i]%>" class="photo-gallery" />
           </div>
         <% } %>

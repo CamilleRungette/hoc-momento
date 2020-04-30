@@ -34,8 +34,8 @@
                 <div><%= allEvents[i].type %> </div> <br/>
                  <div>
                    <% for(j=0; j< allEvents[i].show.length; j++) {%>
-                    <p><i class="fas fa-caret-right grey"></i> <strong>Du <%= allEvents[i].show[j].startDate.getDate() %> /<%= allEvents[i].show[j].startDate.getMonth()+1%>/<%= allEvents[i].show[j].startDate.getFullYear()%> <br/>
-                      au <%= allEvents[i].show[j].endDate.getDate() %> /<%= allEvents[i].show[j].endDate.getMonth()+1%>/<%= allEvents[i].show[j].endDate.getFullYear()%> : </strong><br/>
+                    <p><i class="fas fa-caret-right grey"></i> <strong>Du <%= allEvents[i].show[j].startDate.getDate() %>/<%= allEvents[i].show[j].startDate.getMonth()+1%>/<%= allEvents[i].show[j].startDate.getFullYear()%> <br/>
+                      au <%= allEvents[i].show[j].endDate.getDate() %>/<%= allEvents[i].show[j].endDate.getMonth()+1%>/<%= allEvents[i].show[j].endDate.getFullYear()%> : </strong><br/>
                       <%= allEvents[i].show[j].place %> <br/>
                       <%= allEvents[i].show[j].address %>, <%= allEvents[i].show[j].city %>   
                       <p>

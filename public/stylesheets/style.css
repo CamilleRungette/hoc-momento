@@ -330,6 +330,9 @@ header nav a > span:hover{
   i{
     cursor: pointer;
   }
+  .pointer{
+    cursor: pointer;
+  }
   
   .relative{
     position: relative;
@@ -740,6 +743,33 @@ label{
   opacity: 0;
   z-index: -2;
 }
+.legend-div-update-show{
+  border: 1px rgb(172, 172, 172) solid;
+  background-color: rgb(240, 240, 240);
+  border-radius: 10px;
+  width: 40%;
+  padding: 1%;
+  position: absolute;
+  top: 15.5em;
+  left: 28.5em;
+  display: none;
+  opacity: 0;
+  z-index: -2;
+}
+.legend-div-update-action{
+  border: 1px rgb(172, 172, 172) solid;
+  background-color: rgb(240, 240, 240);
+  border-radius: 10px;
+  width: 40%;
+  padding: 1%;
+  position: absolute;
+  top: -17em;
+  left: 8em;
+  display: none;
+  opacity: 0;
+  z-index: -2;
+}
+
 
 .link-div{
   margin-top: 1%;
