@@ -82,6 +82,12 @@ header nav a > span:hover{
   text-decoration: none;
 }
 
+@media screen and (max-width: 1600px){
+  .nav-links{
+    width: 70%;
+  }
+}
+
 .nav-link-drop{
   text-decoration: none;
   margin-left: 8%;
@@ -151,7 +157,7 @@ header nav a > span:hover{
   cursor: pointer;
 }
 
-@media screen and (max-width: 1500px){
+@media screen and (max-width: 1300px){
 
   .display-menu{
     display: block;
@@ -161,6 +167,7 @@ header nav a > span:hover{
     display: none;
   }
 }
+
 
 .nav-link{
   text-decoration: none;
