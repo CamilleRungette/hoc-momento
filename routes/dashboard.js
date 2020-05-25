@@ -294,7 +294,8 @@ router.post('/update-action', upload.single('image'), async function(req, res, n
       ///////  Processing of the main picture
       let photo;
       if (req.file != undefined){
-        photo = "/images/uploads/"+req.file.originalname
+        let newName = "new" + req.file.originalname
+        photo = "/images/uploads/"+newName
       } else {
         photo = thisAction.photo
       }
@@ -661,7 +662,8 @@ router.post('/update-show', upload.single('image'), async function(req, res, nex
       console.log(req.file);
       
       if (req.file != undefined){
-        photo = "/images/uploads/"+req.file.originalname
+        let newName = "new" + req.file.originalname
+        photo = "/images/uploads/"+newName
       } else {
         photo = thisShow.photo
       }
