@@ -185,7 +185,7 @@ router.get('/partenaires', async function(req, res){
   allSupports = await SupportModel.find(function(error, supports){
     console.log(supports);
   })
-
+  console.log(allPartners, allSupports);
   res.render('partners', {allPartners, allSupports})
 })
 

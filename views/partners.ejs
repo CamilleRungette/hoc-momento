@@ -39,7 +39,7 @@
           <div class="paartners-logo-container">
             <% for (let i=0; i< allSupports.length; i++) {%>
               <div class="paartner-logo-div">
-                <a href="<%= allSupports[i].link %>" target="_blank" rel="noopener noreferrer">
+                <a href="<%= allSupports[i].link %>" target="_blank" rel="noopener noreferrer" title="<%= allSupports[i].name %>" >
                   <img src="<%= allSupports[i].photo%>" class="paartner-logo"  />
                 </a>
               </div>
@@ -51,7 +51,7 @@
               <% for (let i=0; i< allPartners.length; i++) {%>
                 <div class="paartner-logo-div">
                   <a href="<%= allPartners[i].link %>" target="_blank" rel="noopener noreferrer">
-                  <img src="<%= allPartners[i].photo%>" class="paartner-logo"  />
+                  <img src="<%= allPartners[i].photo%>" class="paartner-logo" title="<%=allPartners[i].name %> "  />
                   </a>
                 </div>
               <% } %> 
