@@ -553,6 +553,14 @@ header nav a > span:hover{
     height: 100%;
   }
 
+
+  .no-event{
+    margin-top: 14rem;
+    text-align: center;
+    color: #9c9c9c;
+    font-size: 3.5rem;
+  }
+
   .big-img{
     width: 100%;
     height: 100%;

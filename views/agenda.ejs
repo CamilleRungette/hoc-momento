@@ -24,6 +24,7 @@
       </div>
 <br/> <br/>
       <div class="made-container">
+        <% if (futurEvents.length > 0) {%> 
         <div class="futur-event">Événements à venir</div>
         <% for (let i=0; i< futurEvents.length; i++) { %>  
           <div class="event-card">
@@ -75,7 +76,12 @@
                   <% } %> 
             </div>
           </div>
-        <% } %>  
+        <% } %>
+        <% } else {%>
+          <div class="no-event-div">
+            <h3 class="no-event"> Pas d'événements prévus pour le moment</h3>
+          </div>
+        <% } %> 
       </div>
       <%- include('./partials/footer') %> 
   </body>
