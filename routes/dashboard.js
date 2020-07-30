@@ -801,6 +801,8 @@ router.get('/messages', async function (req, res){
     allMessages = await MessageModel.find(function(err, messages){
       console.log(messages)
     })
+
+    allMessages.reverse()
     res.render('./dashboard/messages', {allMessages})
   }
 })
