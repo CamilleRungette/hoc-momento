@@ -121,11 +121,14 @@ router.post('/contact', function(req, res){
       const sgMail = require('@sendgrid/mail');
       sgMail.setApiKey(process.env.SECRET_SENGRID_KEY);
       const msg = {
-        to: 'c.rungette@gmail.com',
+        to: 'hocmomentotheatre@gmail.com',
         from: req.body.email,
         subject: 'Nouveau messages depuis le site Hoc Momento',
-        text: 'and easy to do anywhere, even with Node.js',
-        html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+        text: `Organisation: ${req.body.organisation}
+        ${req.body.content}`,
+        html: `<strong>Organisation: ${req.body.organisation}</strong> <br/>
+          <p> ${req.body.content} </p>
+        `,
       };
       sgMail.send(msg);
     }
