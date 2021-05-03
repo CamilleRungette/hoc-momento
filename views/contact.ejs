@@ -8,6 +8,7 @@
     <link rel="manifest" href="/images/site.webmanifest">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans&display=swap" rel="stylesheet">
+    <script src="https://www.google.com/recaptcha/api.js?render=6LfrcMQaAAAAAMDCcbitp17fYMvRBT578-t-e1vM"></script>
 
   
     <link rel='stylesheet' href='/stylesheets/style.css'>
@@ -23,26 +24,27 @@
 
       <div class="contact-front-container">
 
-        <form action="/contact" method="POST" class="contact-form">
+        <form id="verifyForm" class="contact-form">
           <div class="form-group">
-            <input type="text" name="name" placeholder="Nom" class="made-form input-contact" />
+            <input type="text" name="name" id="name" placeholder="Nom" class="made-form input-contact" />
           </div>
 
           <div class="form-group">
-            <input type="email" name="email" placeholder="Email" class="made-form input-contact" />
+            <input type="email" name="email" id="email" placeholder="Email" class="made-form input-contact" />
           </div>
 
           <div class="form-group">
-            <input type="text" name="organisation" placeholder="Organisation" class="made-form input-contact" />
+            <input type="text" name="organisation" id="organisation" placeholder="Organisation" class="made-form input-contact" />
           </div>
 
           <div class="form-group">
-            <textarea type="text" name="content" placeholder="Message" class="made-form input-contact"></textarea>
+            <textarea type="text" name="content" id="content" placeholder="Message" class="made-form input-contact"></textarea>
           </div>
 
           <div class="contact-button-div">
-            <button class="contact-button">Envoyer</button>
+            <button type="submit" class="contact-button">Envoyer</button>
           </div>
+
         </form>
         
         <!-- <div class="newsletter-container">
@@ -55,5 +57,41 @@
       </div>
   </div>
   <%- include('./partials/footer') %>
+
+  <script>
+    let ex = document.getElementById('verifyForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      runCaptcha();
+    });
+
+    function runCaptcha(){
+          grecaptcha.execute('6LfrcMQaAAAAAMDCcbitp17fYMvRBT578-t-e1vM', {action: 'submit'}).then(function(token) {
+            const name = document.querySelector('#name').value;
+            const email = document.querySelector('#email').value;
+            const organisation = document.querySelector('#organisation').value;
+            const content = document.querySelector('#content').value;
+            const captcha = token;
+
+            sendData(name, email, organisation, content, captcha);
+          });
+    };
+
+    function sendData(name, email, organisation, content, captcha){
+      const info = JSON.stringify({name:name, email:email, organisation:organisation, content:content, captcha:captcha});
+
+      fetch('/dashboard/verify', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json, text/plan, */*',
+          'Content-type' : 'application/json'
+        },
+        body: info
+      })
+      .then(res => res.json()).then(data => {
+        alert('msg' + data.msg + ", score: " + data.score )
+      });
+    }
+
+  </script>
   </body>
 </html>
