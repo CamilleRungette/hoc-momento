@@ -16,8 +16,6 @@ var SHA256 = require("crypto-js/sha256");
 var encBase64 = require("crypto-js/enc-base64");
 var uid2 = require("uid2");
 
-let captchaSecretKey = "6LfrcMQaAAAAAHyadYhMZzXTMrGcuMVbhN4pH5JY";
-
 var multer  = require('multer');
 const storage = multer.diskStorage({
   destination: function(req, file, cb){
@@ -55,30 +53,6 @@ var parser = multer({
   })
 });
   
-
-router.post('/verify', function (req, res){
-  console.log(req.body.captcha);
-  if (!req.body.captcha){
-    res.json({'msg':'captcha token is undefined'})
-  };
-
-  const verifyUrl= `https://www.google.com/recaptcha/api/siteverify?secret=${captchaSecretKey}&response=${req.body.captcha}`;
-  
-  request(verifyUrl, (err, response, body) => {
-    if (err) {
-      console.log("erreur", err);
-    }
-
-    body = JSON.parse(body);
-    console.log("body", body);
-
-    if(!body.sucess || body.score < 0.4){
-      return res.json({ 'msg': 'You might be a robot sorry, you are banned !', 'score' : body.score});
-    }
-    return res.json({ 'msg': 'You have been verified, you may proceed !', 'score' : body.score});
-  });
-
-});
 
 /* CREATION AND CONNECTION ADMIN */
 router.post('/create-admin', function(req, res, next){

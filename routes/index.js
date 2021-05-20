@@ -10,7 +10,10 @@ var EventModel = require('../models/event')
 var PersonModel = require('../models/persons')
 var PartnerModel = require('../models/partners')
 var ArticleModel = require('../models/articles')
-var SupportModel = require('../models/support')
+var SupportModel = require('../models/support');
+const request = require('request');
+
+let recaptchaSecretKey = "6LdQMd0aAAAAAKcdJ1bBl7mUBR1-a9Fhvj_oeg5q";
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -98,48 +101,63 @@ router.get('/gallerie-spectacle', async function (req, res){
 
 router.get('/contact', function(req, res){
   res.render('contact')
-})
+});
 
-router.post('/contact', function(req, res){
-  console.log(req.body)
-  newMessage = new MessageModel({
-    date: new Date,
-    name: req.body.name,
-    email: req.body.email,
-    organisation: req.body.organisation,
-    content: req.body.content,
-    read: false,
-  })
+router.post('/verify', async function(req, res){
+  if (req.body.captcha === undefined || req.body.captcha === '' || req.body.captcha === null){
+    let response = {success: false, msg: "Please select captcha"};
+    return res.send(response);
+  };
 
-  try{
-  newMessage.save(function(err, message){
-    if (err){
-      console.log("MESSAGE NOT SAVED", error);
-    } else if (message){
-      console.log("MESSAGE SAVED", message); 
+  const verifyUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${recaptchaSecretKey}&response=${req.body.captcha}`;
 
-      const sgMail = require('@sendgrid/mail');
-      sgMail.setApiKey(process.env.SECRET_SENGRID_KEY);
-      const msg = {
-        to: 'hocmomentotheatre@gmail.com',
-        from: req.body.email,
-        subject: 'Nouveau messages depuis le site Hoc Momento',
-        text: `Organisation: ${req.body.organisation}
-        ${req.body.content}`,
-        html: `<strong>Organisation: ${req.body.organisation}</strong> <br/>
-          <p> ${req.body.content} </p>
-        `,
+  try {
+
+  request(verifyUrl, async (err, response, body) => {
+    body = JSON.parse(body);
+
+    if (body.success){
+
+      newMessage = new MessageModel({
+        date: new Date,
+        name: req.body.name,
+        email: req.body.email,
+        organisation: req.body.organisation,
+        content: req.body.content,
+        read: false,
+      })
+       await newMessage.save((err, msg) => {
+         if (err) console.log(err);
+         else if (msg) console.log("message saved", msg);
+       });
+
+        // if (err){
+        //   console.log("MESSAGE NOT SAVED", error);
+        // } else if (message){
+        //   console.log("MESSAGE SAVED", message); 
+    
+        //   const sgMail = require('@sendgrid/mail');
+        //   sgMail.setApiKey(process.env.SECRET_SENGRID_KEY);
+        //   const msg = {
+        //     to: 'hocmomentotheatre@gmail.com',
+        //     from: req.body.email,
+        //     subject: 'Nouveau messages depuis le site Hoc Momento',
+        //     text: `Organisation: ${req.body.organisation}
+        //     ${req.body.content}`,
+        //     html: `<strong>Organisation: ${req.body.organisation}</strong> <br/>
+        //       <p> ${req.body.content} </p>
+        //     `,
+        //   };
+        //   sgMail.send(msg);
+        // };
       };
-      sgMail.send(msg);
-    }
-  })
-}catch(error){
-  console.log(error);
-  
+      res.redirect('contact');
+  });
+}catch(err){
+  console.log(err);
 }
-
-  res.redirect('/contact')
-})
+  // res.redirect('contact ');
+});
 
 router.post('/newsletter', function(req, res){
   console.log(req.body);

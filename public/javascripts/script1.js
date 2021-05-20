@@ -3,7 +3,6 @@
 var icon = document.getElementById('icon');
 var drop = document.getElementById('dropdown-menu');
 
-console.log("OK");
 icon.addEventListener('click', function(){
   if (drop.classList[1] === "close"){
     drop.style.display = "block"    

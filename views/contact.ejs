@@ -8,7 +8,7 @@
     <link rel="manifest" href="/images/site.webmanifest">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans&display=swap" rel="stylesheet">
-    <script src="https://www.google.com/recaptcha/api.js?render=6LfrcMQaAAAAAMDCcbitp17fYMvRBT578-t-e1vM"></script>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
 
   
     <link rel='stylesheet' href='/stylesheets/style.css'>
@@ -40,9 +40,13 @@
           <div class="form-group">
             <textarea type="text" name="content" id="content" placeholder="Message" class="made-form input-contact"></textarea>
           </div>
+          <div class="g-recaptcha" 
+            data-sitekey="6LdQMd0aAAAAAElifZTzdOfUd3x0w5D2Q19qD2kx"
+            data-callback='submitCaptcha'
+            ></div>
 
           <div class="contact-button-div">
-            <button type="submit" class="contact-button">Envoyer</button>
+            <button disabled class="contact-button" id="contact-button" type="submit">Envoyer</button>
           </div>
 
         </form>
@@ -59,38 +63,44 @@
   <%- include('./partials/footer') %>
 
   <script>
-    let ex = document.getElementById('verifyForm').addEventListener('submit', (e) => {
-      e.preventDefault();
-      runCaptcha();
-    });
-
-    function runCaptcha(){
-          grecaptcha.execute('6LfrcMQaAAAAAMDCcbitp17fYMvRBT578-t-e1vM', {action: 'submit'}).then(function(token) {
-            const name = document.querySelector('#name').value;
-            const email = document.querySelector('#email').value;
-            const organisation = document.querySelector('#organisation').value;
-            const content = document.querySelector('#content').value;
-            const captcha = token;
-
-            sendData(name, email, organisation, content, captcha);
-          });
-    };
-
-    function sendData(name, email, organisation, content, captcha){
-      const info = JSON.stringify({name:name, email:email, organisation:organisation, content:content, captcha:captcha});
-
-      fetch('/dashboard/verify', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json, text/plan, */*',
-          'Content-type' : 'application/json'
-        },
-        body: info
-      })
-      .then(res => res.json()).then(data => {
-        alert('msg' + data.msg + ", score: " + data.score )
-      });
+    
+    function submitCaptcha() {
+      let submitBtn = document.getElementById("contact-button");
+      console.log(submitBtn);
+      submitBtn.removeAttribute('disabled')
+      submitBtn.style.cursor = "pointer";
     }
+
+    document.getElementById('verifyForm').addEventListener('submit', (e)=> {;
+      e.preventDefault();
+
+      const name = document.querySelector('#name').value;
+      const email = document.querySelector('#email').value;
+      const organisation = document.querySelector('#organisation').value;
+      const content = document.querySelector('#content').value;
+      const captcha = document.querySelector('#g-recaptcha-response').value;
+
+      fetch('/verify', {
+        method: "POST", 
+        headers: {
+          'Accept': 'application/json, text/plain, */*',
+          'Content-type': 'application/json'
+        },
+        body: JSON.stringify({name, email, organisation, content, captcha})
+      })
+      .then(res => {
+        document.getElementById('name').value = "";
+        document.getElementById('email').value = "";
+        document.getElementById('organisation').value = "";
+        document.getElementById('content').value = "";
+
+        let submitBtn = document.getElementById("contact-button");
+        console.log(submitBtn);
+        submitBtn.setAttribute('disabled', "")
+        submitBtn.style.cursor = "not-allowed";
+
+      })
+    });
 
   </script>
   </body>
