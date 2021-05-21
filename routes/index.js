@@ -1,4 +1,4 @@
-require('dotenv/config')
+require('dotenv').config();
 
 var express = require('express');
 var router = express.Router();
@@ -13,7 +13,6 @@ var ArticleModel = require('../models/articles')
 var SupportModel = require('../models/support');
 const request = require('request');
 
-let recaptchaSecretKey = "6LdQMd0aAAAAAKcdJ1bBl7mUBR1-a9Fhvj_oeg5q";
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -109,7 +108,7 @@ router.post('/verify', async function(req, res){
     return res.send(response);
   };
 
-  const verifyUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${recaptchaSecretKey}&response=${req.body.captcha}`;
+  const verifyUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET}&response=${req.body.captcha}`;
 
   try {
 
