@@ -126,29 +126,28 @@ router.post('/verify', async function(req, res){
         read: false,
       })
        await newMessage.save((err, msg) => {
-         if (err) console.log(err);
-         else if (msg) console.log("message saved", msg);
-       });
+         if (err) {
+           console.log(err);
+         } else if (msg) {
+           console.log("message saved");
 
-        // if (err){
-        //   console.log("MESSAGE NOT SAVED", error);
-        // } else if (message){
-        //   console.log("MESSAGE SAVED", message); 
-    
-        //   const sgMail = require('@sendgrid/mail');
-        //   sgMail.setApiKey(process.env.SECRET_SENGRID_KEY);
-        //   const msg = {
-        //     to: 'hocmomentotheatre@gmail.com',
-        //     from: req.body.email,
-        //     subject: 'Nouveau messages depuis le site Hoc Momento',
-        //     text: `Organisation: ${req.body.organisation}
-        //     ${req.body.content}`,
-        //     html: `<strong>Organisation: ${req.body.organisation}</strong> <br/>
-        //       <p> ${req.body.content} </p>
-        //     `,
-        //   };
-        //   sgMail.send(msg);
-        // };
+           const sgMail = require('@sendgrid/mail');
+           sgMail.setApiKey(process.env.SECRET_SENGRID_KEY);
+           
+           const message = {
+             to: 'hocmomentotheatre@gmail.com',
+             from: req.body.email,
+             subject: 'Nouveau messages depuis le site Hoc Momento',
+             text: `Organisation: ${req.body.organisation}
+             ${req.body.content}`,
+             html: `<strong> Nouveau message de la part de: ${req.body.name} </strong>
+             <strong>Organisation: ${req.body.organisation}</strong> <br/>
+               <p> ${req.body.content} </p>
+             `,
+           };
+           sgMail.send(message);
+         }
+       })    
       };
       res.redirect('contact');
   });
