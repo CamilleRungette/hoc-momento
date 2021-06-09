@@ -137,7 +137,7 @@ router.post('/verify', async function(req, res){
            const message = {
              to: 'hocmomentotheatre@gmail.com',
              from: req.body.email,
-             subject: 'Nouveau messages depuis le site Hoc Momento',
+             subject: 'Nouveau message depuis le site Hoc Momento',
              text: `Organisation: ${req.body.organisation}
              ${req.body.content}`,
              html: `<strong> Nouveau message de la part de: ${req.body.name} </strong> <br/>
