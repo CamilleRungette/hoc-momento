@@ -140,7 +140,7 @@ router.post('/verify', async function(req, res){
              subject: 'Nouveau messages depuis le site Hoc Momento',
              text: `Organisation: ${req.body.organisation}
              ${req.body.content}`,
-             html: `<strong> Nouveau message de la part de: ${req.body.name} </strong>
+             html: `<strong> Nouveau message de la part de: ${req.body.name} </strong> <br/>
              <strong>Organisation: ${req.body.organisation}</strong> <br/>
                <p> ${req.body.content} </p>
              `,
